@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "import_alias_example/*": ["./src/*"]
+    }
+  }
+}
