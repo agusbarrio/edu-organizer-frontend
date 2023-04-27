@@ -1,7 +1,16 @@
 {
   "compilerOptions": {
     "paths": {
-      "import_alias_example/*": ["./src/*"]
+      "pages/*": ["./src/pages/*"],
+      "components/*": ["./src/components/*"],
+      "hooks/*": ["./src/hooks/*"],
+      "contexts/*": ["./src/contexts/*"],
+      "styles/*": ["./src/styles/*"],
+      "services/*": ["./src/services/*"],
+      "lib/*": ["./src/lib/*"],
+      "constants/*": ["./src/constants/*"],
+      "utils/*": ["./src/utils/*"],
+      "core/*": ["./src/core/*"]
     }
   }
 }

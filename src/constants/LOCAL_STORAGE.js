@@ -1,0 +1,6 @@
+const LOCAL_STORAGE = {
+    IS_LOGGED_IN: 'IS_LOGGED_IN',
+    PERMISSIONS: 'PERMISSIONS',
+};
+
+export default LOCAL_STORAGE;
