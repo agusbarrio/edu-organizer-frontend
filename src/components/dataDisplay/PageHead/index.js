@@ -1,5 +1,5 @@
 import TEXTS from "constants/TEXTS"
-import useLocaleContext from "contexts/LocaleContext/useLocaleContext"
+import useLocaleContext from "hooks/useLocaleContext"
 import Head from "next/head"
 
 function PageHead({ title, description }) {

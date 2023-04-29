@@ -3,7 +3,7 @@ import { useCallback } from 'react';
 import DEFAULT_VALIDATIONS from '../constants/DEFAULT_VALIDATIONS';
 import _ from 'lodash';
 import YupPassword from 'yup-password';
-import useLocaleContext from 'contexts/LocaleContext/useLocaleContext';
+import useLocaleContext from 'hooks/useLocaleContext';
 YupPassword(Yup);
 
 function useValidator() {

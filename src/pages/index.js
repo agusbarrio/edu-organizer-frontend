@@ -2,7 +2,9 @@ import PageHead from 'components/dataDisplay/PageHead'
 import Redirect from 'components/navigation/Redirect'
 import PATHS from 'constants/PATHS'
 import TEXTS from 'constants/TEXTS'
-import useLocaleContext from 'contexts/LocaleContext/useLocaleContext'
+import useLocaleContext from 'hooks/useLocaleContext'
+
+setupAnalyticsService(process.env.NEXT_PUBLIC_ANALYTICS_ID)
 
 export default function Home() {
   const { translate } = useLocaleContext()

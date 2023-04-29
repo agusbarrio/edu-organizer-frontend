@@ -1,7 +1,7 @@
 import Form from "core/components/Form"
 import ControllerInput from "core/components/ControllerInput"
 import useValidator from "hooks/useValidator"
-import useLocaleContext from "contexts/LocaleContext/useLocaleContext"
+import useLocaleContext from "hooks/useLocaleContext"
 import PasswordInput from "core/components/PasswordInput"
 import SubmitButton from "core/components/SubmitButton"
 import TEXTS from "constants/TEXTS"
@@ -18,11 +18,10 @@ function LoginForm({ onSubmit }) {
     }), [email, form, password])
 
     return (
-        <Form schema={schema} onSubmit={onSubmit}>
+        <Form schema={schema} onSubmit={onSubmit} templateProps={{ submitButtonProps: { children: translate(TEXTS.LOGIN_BUTTON) } }}>
             <Stack spacing={2}>
                 <ControllerInput render={TextInput} name={"email"} label={translate(TEXTS.EMAIL_LABEL)} placeholder={translate(TEXTS.EMAIL_PLACEHOLDER)} />
                 <ControllerInput render={PasswordInput} name={"password"} label={translate(TEXTS.PASSWORD_LABEL)} placeholder={translate(TEXTS.PASSWORD_PLACEHOLDER)} />
-                <SubmitButton>{translate(TEXTS.LOGIN_BUTTON)}</SubmitButton>
             </Stack>
 
         </Form>

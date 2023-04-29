@@ -1,6 +1,6 @@
 
 import { useCallback } from 'react';
-import useSessionContext from 'contexts/SessionContext/useSessionContext';
+import useSessionContext from 'hooks/useSessionContext';
 import _ from 'lodash';
 import PATHS from 'constants/PATHS';
 
