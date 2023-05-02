@@ -1,5 +1,5 @@
-const { useRouter } = require("next/router");
-const { useEffect } = require("react");
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 function Redirect({ url, as, options }) {
     const router = useRouter();

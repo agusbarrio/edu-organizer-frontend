@@ -9,6 +9,17 @@ const TEXTS = {
     HOME_HEAD_DESCRIPTION: { es: 'Organiza las clases de tu institución educativa', en: 'Organize your educational institution classes' },
     LOGIN_HEAD_TITLE: { es: 'Iniciar sesión', en: 'Login' },
     LOGIN_HEAD_DESCRIPTION: { es: 'Inicia sesión en Edu Organizer', en: 'Login to Edu Organizer' },
+    ORGANIZATION_NAME_LABEL: { es: 'Nombre de la organización', en: 'Organization name' },
+    ORGANIZATION_NAME_PLACEHOLDER: { es: 'Ingresa el nombre de tu organización', en: 'Enter your organization name' },
+    FIRST_NAME_LABEL: { es: 'Nombre', en: 'First name' },
+    FIRST_NAME_PLACEHOLDER: { es: 'Ingresa tu nombre', en: 'Enter your first name' },
+    LAST_NAME_LABEL: { es: 'Apellido', en: 'Last name' },
+    LAST_NAME_PLACEHOLDER: { es: 'Ingresa tu apellido', en: 'Enter your last name' },
+    REPEAT_PASSWORD_LABEL: { es: 'Repite tu contraseña', en: 'Repeat your password' },
+    REPEAT_PASSWORD_PLACEHOLDER: { es: 'Ingresa tu contraseña nuevamente', en: 'Enter your password again' },
+    REGISTER_HEAD_TITLE: { es: 'Registrarse', en: 'Register' },
+    REGISTER_HEAD_DESCRIPTION: { es: 'Registra tu organización y empieza a organizar tus clases', en: 'Register your organization and start organizing your classes' },
+    REGISTER_PAGE_TITLE: { es: 'Registrarse', en: 'Register' },
 }
 
 export default TEXTS

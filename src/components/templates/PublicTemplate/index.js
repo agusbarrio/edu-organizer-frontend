@@ -1,18 +1,22 @@
-import { Box, Container, Stack } from "@mui/material";
+import { Container, Stack } from "@mui/material";
 import Header from "components/dataDisplay/Header";
 import Typography from "core/components/Typography";
-import { useMemo, useRef } from "react";
+
 function PublicTemplate({ children, title }) {
 
-    return (<Stack height={'100vh'} width={'100vw'} spacing={2} alignItems={'center'}>
-        <Header></Header>
-        <Container maxWidth="sm" sx={{ height: '100%' }}>
-            <Stack spacing={8} height={'100%'} >
-                {title && <Typography variant="h1" component="h1">{title}</Typography>}
-                {children}
+    return (
+        <Stack height={'100vh'} width={'100vw'} overflow={'hidden'}>
+            <Header></Header>
+            <Stack width={'100%'} alignItems={'center'} overflow={'scroll'} padding={2}>
+                <Container maxWidth="sm" >
+                    <Stack spacing={2} height={'100%'} alignItems={'center'}>
+                        {title && <Typography variant="h3" component="h1">{title}</Typography>}
+                        {children}
+                    </Stack>
+                </Container>
             </Stack>
-        </Container>
-    </Stack>)
+
+        </Stack>)
 }
 
 export default PublicTemplate;

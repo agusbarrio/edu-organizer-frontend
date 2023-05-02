@@ -109,8 +109,7 @@ function useValidator() {
                 _.cloneDeep(DEFAULT_VALIDATIONS.EQUAL_TO),
                 config
             );
-
-            return string(null, configResult).oneOf(
+            return string(configResult).oneOf(
                 [Yup.ref(field)],
                 translate(configResult.oneOf?.message)
             );

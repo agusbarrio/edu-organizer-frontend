@@ -3,6 +3,7 @@ import { FormProvider } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import _ from 'lodash';
 import FormTemplate from 'components/templates/FormTemplate';
+import style from './style.module.css'
 
 function Form({ children, onSubmit, schema, defaultValues, config, template: Template = FormTemplate, templateProps = {}, ...props }) {
     const methods = useForm({
@@ -19,7 +20,7 @@ function Form({ children, onSubmit, schema, defaultValues, config, template: Tem
 
     return (
         <FormProvider {...methods} >
-            <form onSubmit={methods.handleSubmit(onSubmit)} {...props} noValidate>
+            <form className={style.Form} onSubmit={methods.handleSubmit(onSubmit)} {...props} noValidate>
                 <Template {...templateProps}>
                     {children}
                 </Template>
