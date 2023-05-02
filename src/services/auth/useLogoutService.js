@@ -10,7 +10,7 @@ function useLogoutService() {
     await post(
       AUTH_ENDPOINTS.LOGOUT,
       null,
-      { withCredentials: true },
+      {},
       { showSuccessMessage: false }
     );
     logoutStore();

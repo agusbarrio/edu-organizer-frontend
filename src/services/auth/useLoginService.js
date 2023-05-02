@@ -12,10 +12,8 @@ function useLoginService() {
       const result = await post(
         AUTH_ENDPOINTS.LOGIN,
         values,
-        {
-          withCredentials: true,
-        },
-        { logout401: false, showSuccessMessage: false }
+        {},
+        { showSuccessMessage: false },
       );
       if (!!result) {
         loginContext();

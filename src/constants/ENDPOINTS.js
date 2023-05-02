@@ -1,5 +1,6 @@
-import URLS from "./urls";
-const authBaseUrl = `${URLS.API_BASE_URL}/auth`;
+import ENV_CONFIG from "./ENV_CONFIG";
+
+const authBaseUrl = `${ENV_CONFIG.NEXT_PUBLIC_API_URL}/auth`;
 
 export const AUTH_ENDPOINTS = {
     LOGIN: `${authBaseUrl}/login`,

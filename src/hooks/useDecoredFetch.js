@@ -34,7 +34,7 @@ function useDecoredFetch() {
       return {
         successHandler: () => {
           if (resultConfig?.showSuccessMessage)
-            successNotification({ message: resultConfig?.successMessage });
+            successNotification(resultConfig?.successMessage);
         },
         errorHandler: ({ error, type }) => {
           if (resultConfig?.showErrorMessage) {
@@ -53,7 +53,7 @@ function useDecoredFetch() {
             }
             if (!!resultConfig.errorMessage)
               resultErrorMessage = resultConfig.errorMessage;
-            errorNotification({ message: resultErrorMessage });
+            errorNotification(resultErrorMessage);
           }
         },
       };

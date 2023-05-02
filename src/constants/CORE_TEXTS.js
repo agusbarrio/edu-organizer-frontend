@@ -9,8 +9,8 @@ const CORE_TEXTS = {
         E409: { es: 'Conflicto', en: 'Conflict' },
         E422: { es: 'Entidad no procesable', en: 'Unprocessable entity' },
         //Custom errors
-        E401_001: { es: 'Credenciales inválidas', en: 'Invalid credentials' },
-        E409_001: { es: 'Email no disponible', en: 'Email not available' },
+        E401_1: { es: 'Credenciales inválidas', en: 'Invalid credentials' },
+        E409_1: { es: 'Email no disponible', en: 'Email not available' },
     },
     VALIDATIONS_REQUIRED: { es: 'Campo obligatorio', en: 'Required field' },
     VALIDATIONS_EMAIL: { es: 'Correo electrónico inválido.', en: 'Invalid email.' },

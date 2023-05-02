@@ -4,8 +4,6 @@ import PATHS from 'constants/PATHS'
 import TEXTS from 'constants/TEXTS'
 import useLocaleContext from 'hooks/useLocaleContext'
 
-setupAnalyticsService(process.env.NEXT_PUBLIC_ANALYTICS_ID)
-
 export default function Home() {
   const { translate } = useLocaleContext()
   return (
