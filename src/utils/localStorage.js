@@ -1,4 +1,5 @@
 export const set = (key, value) => {
+  if (typeof window === "undefined") return;
   try {
     localStorage.setItem(key, JSON.stringify(value));
   } catch (error) {
@@ -6,6 +7,7 @@ export const set = (key, value) => {
   }
 };
 export const get = (key) => {
+  if (typeof window === "undefined") return;
   try {
     const item = localStorage.getItem(key);
     return JSON.parse(item);
@@ -15,9 +17,10 @@ export const get = (key) => {
   }
 };
 export const clear = (key) => {
+  if (typeof window === "undefined") return;
   localStorage.removeItem(key);
 };
 
-const localStorage = { set, get, clear };
+const localStorageUtils = { set, get, clear };
 
-export default localStorage;
+export default localStorageUtils;

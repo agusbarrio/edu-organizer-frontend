@@ -1,9 +1,7 @@
-import { Container, Stack } from "@mui/material";
+import { Container, Stack, Typography } from "@mui/material";
 import Header from "components/dataDisplay/Header";
-import Typography from "core/components/Typography";
 
 function PublicTemplate({ children, title }) {
-
     return (
         <Stack height={'100vh'} width={'100vw'} overflow={'hidden'}>
             <Header></Header>

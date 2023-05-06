@@ -41,6 +41,7 @@ const CORE_TEXTS = {
     GENERIC_DELETE_DESCRIPTION_CONFIRM: { es: '¿Estas seguro de que deseas eliminar esto?', en: 'Are you sure you want to delete this?' },
     GENERIC_DELETE_ALL_DESCRIPTION_CONFIRM: { es: '¿Estas seguro de que deseas eliminar todo?', en: 'Are you sure you want to delete all?' },
     GENERIC_SUBMIT: { es: 'Enviar', en: 'Submit' },
+    COOMING_SOON: { es: 'Próximamente...', en: 'Cooming soon...' },
 };
 
 export default CORE_TEXTS;

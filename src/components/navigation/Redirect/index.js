@@ -1,11 +1,10 @@
 import { useEffect } from 'react';
-import { useRouter } from 'next/router';
-
+import useNavigate from 'hooks/useNavigate';
 function Redirect({ url, as, options }) {
-    const router = useRouter();
+    const { go } = useNavigate()
     useEffect(() => {
-        router.push(url, as, options)
-    }, [url, as, options, router])
+        go(url, as, options)
+    }, [go, url, as, options])
     return <></>;
 }
 

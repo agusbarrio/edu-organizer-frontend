@@ -20,6 +20,16 @@ const TEXTS = {
     REGISTER_HEAD_TITLE: { es: 'Registrarse', en: 'Register' },
     REGISTER_HEAD_DESCRIPTION: { es: 'Registra tu organización y empieza a organizar tus clases', en: 'Register your organization and start organizing your classes' },
     REGISTER_PAGE_TITLE: { es: 'Registrarse', en: 'Register' },
+    LOGIN_PAGE_RECOVER_PASSWORD_LINK: { es: '¿Olvidaste tu contraseña?', en: 'Forgot your password?' },
+    LOGIN_PAGE_REGISTER_LINK: { es: '¿No tienes una cuenta? Regístrate', en: 'Don\'t have an account? Register' },
+    REGISTER_PAGE_LOGIN_LINK: { es: '¿Ya tienes una cuenta? Inicia sesión', en: 'Already have an account? Login' },
+    MY_ACCOUNT_PAGE_TITLE: { es: 'Mi cuenta', en: 'My account' },
+    LOGOUT_BUTTON: { es: 'Cerrar sesión', en: 'Logout' },
+    ACCOUNT_BUTTON_TOOLTIP: { es: 'Mi cuenta', en: 'My account' },
+    ADMIN_MENU_BUTTON_COURSES: { es: 'Cursos', en: 'Courses' },
+    ADMIN_MENU_BUTTON_STUDENTS: { es: 'Estudiantes', en: 'Students' },
+    ADMIN_MENU_BUTTON_TEACHERS: { es: 'Profesores', en: 'Teachers' },
+    ADMIN_MENU_BUTTON_CLASS_SESSIONS: { es: 'Clases', en: 'Class sessions' },
 }
 
 export default TEXTS

@@ -1,12 +1,11 @@
 import { useCallback } from 'react';
-
 import useDecoredFetch from 'hooks/useDecoredFetch';
-
 import { AUTH_ENDPOINTS } from 'constants/ENDPOINTS';
 import useSessionContext from 'hooks/useSessionContext';
+
 function useLoginService() {
   const { post } = useDecoredFetch();
-  const { login: loginContext, logout: logoutContext } = useSessionContext();
+  const { login: loginContext } = useSessionContext();
   const login = useCallback(
     async (values) => {
       const result = await post(
@@ -16,12 +15,10 @@ function useLoginService() {
         { showSuccessMessage: false },
       );
       if (!!result) {
-        loginContext();
-      } else {
-        logoutContext();
+        loginContext({ userPermissions: result.permissions.map(permissionData => permissionData.permission) })
       }
     },
-    [post, loginContext, logoutContext]
+    [post, loginContext,]
   );
   return { login };
 }

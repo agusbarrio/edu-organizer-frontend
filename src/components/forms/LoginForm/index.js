@@ -3,7 +3,6 @@ import ControllerInput from "core/components/ControllerInput"
 import useValidator from "hooks/useValidator"
 import useLocaleContext from "hooks/useLocaleContext"
 import PasswordInput from "core/components/PasswordInput"
-import SubmitButton from "core/components/SubmitButton"
 import TEXTS from "constants/TEXTS"
 import { useMemo } from "react"
 import TextInput from "core/components/TextInput"
@@ -23,7 +22,6 @@ function LoginForm({ onSubmit }) {
                 <ControllerInput render={TextInput} name={"email"} label={translate(TEXTS.EMAIL_LABEL)} placeholder={translate(TEXTS.EMAIL_PLACEHOLDER)} />
                 <ControllerInput render={PasswordInput} name={"password"} label={translate(TEXTS.PASSWORD_LABEL)} placeholder={translate(TEXTS.PASSWORD_PLACEHOLDER)} />
             </Stack>
-
         </Form>
     )
 }

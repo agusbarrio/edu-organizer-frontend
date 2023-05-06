@@ -5,32 +5,31 @@ import _ from 'lodash';
 import PATHS from 'constants/PATHS';
 
 function useSecurity() {
-    const { session } = useSessionContext()
-
+    const { loggedIn, userPermissions: userPermissionsContext, loggedInWithPin } = useSessionContext()
     const getAccessData = useCallback(
         ({ needUserSession, userPermissions, needPinSession }) => {
             let canAccess = true;
             let redirectPath = null;
             if (needUserSession != undefined) {
-                if (needUserSession && !session?.loggedIn) {
+                if (needUserSession && !loggedIn) {
                     canAccess = false;
                     redirectPath = PATHS.LOGIN
                 };
-                if (!needUserSession && session?.loggedIn) {
+                if (!needUserSession && loggedIn) {
                     canAccess = false;
                     redirectPath = PATHS.DASHBOARD
                 }
-                if (!!userPermissions && userPermissions.some((permission) => !session?.userPermissions?.includes(permission))) {
+                if (!!userPermissions && userPermissions.some((permission) => !userPermissionsContext?.includes(permission))) {
                     canAccess = false;
                     redirectPath = PATHS.LOGIN
                 }
             }
             if (needPinSession != undefined) {
-                if (needPinSession && !session?.loggedInWithPin) {
+                if (needPinSession && !loggedInWithPin) {
                     canAccess = false;
                     redirectPath = PATHS.LOGIN_PIN
                 };
-                if (!needPinSession && session?.loggedInWithPin) {
+                if (!needPinSession && loggedInWithPin) {
                     canAccess = false;
                     redirectPath = PATHS.COURSE
                 }
@@ -38,10 +37,10 @@ function useSecurity() {
 
             return { canAccess, redirectPath, }
         },
-        [session]
+        [loggedIn, loggedInWithPin, userPermissionsContext]
     );
 
-    return { getAccessData, };
+    return { getAccessData };
 }
 
 export default useSecurity;

@@ -1,6 +1,5 @@
 const LOCAL_STORAGE = {
-    IS_LOGGED_IN: 'IS_LOGGED_IN',
-    PERMISSIONS: 'PERMISSIONS',
+    SESSION: 'SESSION',
 };
 
 export default LOCAL_STORAGE;

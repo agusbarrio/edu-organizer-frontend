@@ -1,20 +1,20 @@
 import { useCallback } from 'react';
-import useSessionStore from '../../../app/contexts/SessionStoreContext/useSessionStore';
-import useDecoredFetch from '../../core/hooks/useDecoredFetch';
-import AUTH_ENDPOINTS from '../constants/endpoints';
+import useDecoredFetch from 'hooks/useDecoredFetch';
+import { AUTH_ENDPOINTS } from 'constants/ENDPOINTS';
+import useSessionContext from 'hooks/useSessionContext';
+
 
 function useLogoutService() {
-  const { post } = useDecoredFetch();
-  const { logout: logoutStore } = useSessionStore();
+  const { get } = useDecoredFetch();
+  const { logout: logoutContext } = useSessionContext();
   const logout = useCallback(async () => {
-    await post(
+    await get(
       AUTH_ENDPOINTS.LOGOUT,
-      null,
       {},
       { showSuccessMessage: false }
     );
-    logoutStore();
-  }, [post, logoutStore]);
+    logoutContext();
+  }, [get, logoutContext]);
   return { logout };
 }
 
