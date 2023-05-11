@@ -1,12 +1,24 @@
-import AccessManager from "components/managers/AccesssManager"
 import TeachersPage from "components/pages/TeachersPage"
+import USER_PERMISSIONS from "constants/USER_PERMISSIONS"
+import { SessionContextProvider } from "contexts/SessionContext"
+import { authenticate } from "utils/auth"
 
-function Teachers() {
+function Teachers({ sessionData }) {
     return (
-        <AccessManager needUserSession={true}>
+        <SessionContextProvider sessionData={sessionData}>
             <TeachersPage></TeachersPage>
-        </AccessManager>
+        </SessionContextProvider>
     )
+}
+
+export async function getServerSideProps(context) {
+    const { redirectOptions, sessionData } = await authenticate(context, { needUserSession: true, userPermissionsAllowed: [USER_PERMISSIONS.ADMIN] })
+    if (redirectOptions) {
+        return redirectOptions
+    }
+    return {
+        props: { sessionData },
+    }
 }
 
 export default Teachers

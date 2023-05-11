@@ -1,12 +1,20 @@
-import AccessManager from "components/managers/AccesssManager"
 import LoginPage from "components/pages/LoginPage"
+import { authenticate } from "utils/auth"
 
 function Login() {
     return (
-        <AccessManager needUserSession={false}>
-            <LoginPage></LoginPage>
-        </AccessManager>
+        <LoginPage></LoginPage>
     )
+}
+
+export async function getServerSideProps(context) {
+    const { redirectOptions } = await authenticate(context, { needUserSession: false })
+    if (redirectOptions) {
+        return redirectOptions
+    }
+    return {
+        props: {},
+    }
 }
 
 export default Login

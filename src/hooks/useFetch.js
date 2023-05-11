@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useCallback } from 'react';
 import _ from 'lodash';
-import FETCH_ERROR_TYPES from 'core/constants/FETCH_ERROR_TYPES';
+import FETCH_ERROR_TYPES from 'constants/FETCH_ERROR_TYPES';
 
 function useFetch() {
   const axiosHandler = useCallback(

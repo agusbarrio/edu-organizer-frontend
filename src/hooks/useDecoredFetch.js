@@ -3,17 +3,15 @@
 import { useCallback, useMemo } from 'react';
 import useLocaleContext from 'hooks/useLocaleContext';
 import _ from 'lodash';
-import FETCH_ERROR_TYPES from 'core/constants/FETCH_ERROR_TYPES';
+import FETCH_ERROR_TYPES from 'constants/FETCH_ERROR_TYPES';
 import CORE_TEXTS from 'constants/CORE_TEXTS';
-import useFetch from 'core/hooks/useFetch';
-import useSessionContext from 'hooks/useSessionContext';
+import useFetch from './useFetch';
 import useSnackbar from './useSnackbar';
 
 function useDecoredFetch() {
   const { success: successNotification, error: errorNotification } =
     useSnackbar();
   const { translate } = useLocaleContext();
-  const { logout: logoutContext } = useSessionContext();
   const defaultConfig = useMemo(
     () => ({
       successMessage: translate(CORE_TEXTS.GENERIC_SUCCESS),
@@ -42,7 +40,7 @@ function useDecoredFetch() {
             if (type === FETCH_ERROR_TYPES.SERVER) {
               const status = _.get(error, 'response.status');
               if (status === 401 && resultConfig.logout401) {
-                logoutContext();
+                //TODO handle logout
               }
 
               const errorCode = _.get(error, 'response.data.errorCode');
@@ -63,7 +61,6 @@ function useDecoredFetch() {
       errorNotification,
       successNotification,
       translate,
-      logoutContext,
     ]
   );
 

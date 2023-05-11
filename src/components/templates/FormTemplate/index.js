@@ -1,7 +1,7 @@
 import { Stack } from "@mui/material";
 import CORE_TEXTS from "constants/CORE_TEXTS";
 import useLocaleContext from "hooks/useLocaleContext";
-import SubmitButton from "core/components/SubmitButton";
+import SubmitButton from "components/generic/SubmitButton";
 
 function FormTemplate({ children, submitButtonProps }) {
     const { translate } = useLocaleContext()

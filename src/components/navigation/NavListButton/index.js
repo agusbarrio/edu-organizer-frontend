@@ -1,4 +1,4 @@
-import ListItemButton from "core/components/ListItemButton"
+import ListItemButton from "components/generic/ListItemButton"
 import Link from "next/link"
 
 function NavListButton({ linkProps, ...props }) {

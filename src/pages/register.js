@@ -1,11 +1,19 @@
-import AccessManager from "components/managers/AccesssManager"
 import RegisterPage from "components/pages/RegisterPage"
+import { authenticate } from "utils/auth"
 function Register() {
     return (
-        <AccessManager needUserSession={false}>
-            <RegisterPage></RegisterPage>
-        </AccessManager>
+        <RegisterPage></RegisterPage>
     )
+}
+
+export async function getServerSideProps(context) {
+    const { redirectOptions } = await authenticate(context, { needUserSession: false })
+    if (redirectOptions) {
+        return redirectOptions
+    }
+    return {
+        props: {},
+    }
 }
 
 export default Register

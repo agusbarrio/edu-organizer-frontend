@@ -4,19 +4,21 @@ import LoginForm from "components/forms/LoginForm"
 import PublicTemplate from "components/templates/PublicTemplate"
 import PATHS from "constants/PATHS"
 import TEXTS from "constants/TEXTS"
-import Link from "core/components/Link"
+import Link from "components/generic/Link"
 import useLocaleContext from "hooks/useLocaleContext"
-
+import useNavigate from "hooks/useNavigate"
 import useLoginService from "services/auth/useLoginService"
 
 function LoginPage() {
     const { translate } = useLocaleContext()
     const { login } = useLoginService()
+    const { go } = useNavigate()
     return (
         <PublicTemplate title={translate(TEXTS.LOGIN_PAGE_TITLE)}>
             <Stack spacing={2} width={'100%'}>
                 <LoginForm onSubmit={async ({ email, password }) => {
-                    await login({ email, password })
+                    const result = await login({ email, password })
+                    if (result) go(PATHS.DASHBOARD)
                 }}></LoginForm>
                 <Link href={PATHS.RECOVER_PASSWORD}>{translate(TEXTS.LOGIN_PAGE_RECOVER_PASSWORD_LINK)}</Link>
                 <Link href={PATHS.REGISTER}>{translate(TEXTS.LOGIN_PAGE_REGISTER_LINK)}</Link>

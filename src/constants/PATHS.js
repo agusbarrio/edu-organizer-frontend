@@ -4,7 +4,7 @@ const PATHS = {
     REGISTER: '/register',
     MY_ACCOUNT: '/my-account',
     DASHBOARD: '/dashboard',
-    LOGIN_PIN: '/login-pin',
+    LOGIN_COURSE: '/login-course',
     COURSE: '/course',
     RECOVER_PASSWORD: '/recover-password',
     DASHBOARD_COURSES: '/dashboard/courses',

@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import SessionContext from "../contexts/SessionContext";
 function useSessionContext() {
-    const { session, login, logout, setPermissions, loginPin, logoutPin, loggedIn, loggedInWithPin, userPermissions } = useContext(SessionContext);
-    return { session, login, logout, setPermissions, loginPin, logoutPin, loggedIn, loggedInWithPin, userPermissions };
+    const context = useContext(SessionContext);
+    return { userSession: context?.userSession ?? null, courseSession: context?.courseSession ?? null }
 }
 
 export default useSessionContext;

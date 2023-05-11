@@ -12,7 +12,7 @@ function AdminMenu() {
         <List>
             <NavListButton linkProps={{ href: PATHS.DASHBOARD_COURSES }} icon={<MenuBook></MenuBook>} text={translate(TEXTS.ADMIN_MENU_BUTTON_COURSES)}></NavListButton>
             <NavListButton linkProps={{ href: PATHS.DASHBOARD_STUDENTS }} icon={<Face></Face>} text={translate(TEXTS.ADMIN_MENU_BUTTON_STUDENTS)}></NavListButton>
-            <NavListButton linkProps={{ href: PATHS.DASHBOARD_STUDENTS }} icon={<SupervisorAccount></SupervisorAccount>} text={translate(TEXTS.ADMIN_MENU_BUTTON_TEACHERS)}></NavListButton>
+            <NavListButton linkProps={{ href: PATHS.DASHBOARD_TEACHERS }} icon={<SupervisorAccount></SupervisorAccount>} text={translate(TEXTS.ADMIN_MENU_BUTTON_TEACHERS)}></NavListButton>
             <NavListButton linkProps={{ href: PATHS.DASHBOARD_CLASS_SESSIONS }} icon={<HistoryEdu></HistoryEdu>} text={translate(TEXTS.ADMIN_MENU_BUTTON_CLASS_SESSIONS)}></NavListButton>
         </List>
     )

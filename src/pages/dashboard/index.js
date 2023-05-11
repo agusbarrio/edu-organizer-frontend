@@ -1,12 +1,26 @@
-import AccessManager from "components/managers/AccesssManager"
 import DashboardPage from "components/pages/DashboardPage"
+import USER_PERMISSIONS from "constants/USER_PERMISSIONS"
+import { SessionContextProvider } from "contexts/SessionContext"
+import { authenticate } from "utils/auth"
 
-function Dashboard() {
+
+function Dashboard({ sessionData }) {
     return (
-        <AccessManager needUserSession={true}>
+        <SessionContextProvider sessionData={sessionData}>
             <DashboardPage></DashboardPage>
-        </AccessManager>
+        </SessionContextProvider>
+
     )
+}
+
+export async function getServerSideProps(context) {
+    const { sessionData, redirectOptions } = await authenticate(context, { needUserSession: true, userPermissionsAllowed: [USER_PERMISSIONS.ADMIN] })
+    if (redirectOptions) {
+        return redirectOptions
+    }
+    return {
+        props: { sessionData },
+    }
 }
 
 export default Dashboard

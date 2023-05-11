@@ -8,11 +8,11 @@ import TeacherMenu from "./components/TeacherMenu"
 import { useMemo } from "react"
 
 function NavMenu() {
-    const { userPermissions } = useSessionContext();
-    const isTeacher = useMemo(() => userPermissions.includes(USER_PERMISSIONS.TEACHER), [userPermissions])
-    const isOwner = useMemo(() => userPermissions.includes(USER_PERMISSIONS.OWNER), [userPermissions])
-    const isAdmin = useMemo(() => userPermissions.includes(USER_PERMISSIONS.ADMIN), [userPermissions])
-    const isSuperAdmin = useMemo(() => userPermissions.includes(USER_PERMISSIONS.SUPERADMIN), [userPermissions])
+    const { userSession: { permissions } } = useSessionContext();
+    const isTeacher = useMemo(() => permissions.includes(USER_PERMISSIONS.TEACHER), [permissions])
+    const isOwner = useMemo(() => permissions.includes(USER_PERMISSIONS.OWNER), [permissions])
+    const isAdmin = useMemo(() => permissions.includes(USER_PERMISSIONS.ADMIN), [permissions])
+    const isSuperAdmin = useMemo(() => permissions.includes(USER_PERMISSIONS.SUPERADMIN), [permissions])
     return (
         <Drawer variant="permanent" PaperProps={{ sx: { position: 'static' } }} >
             {isSuperAdmin && (

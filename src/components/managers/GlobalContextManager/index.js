@@ -1,18 +1,16 @@
-import LoadingPage from "components/pages/LoadingPage"
 import LocaleContextProvider from "contexts/LocaleContext"
-import SnackbarContextProvider from "core/contexts/SnackbarContext"
-import dynamic from "next/dynamic"
-const SessionContextProvider = dynamic(() => import('contexts/SessionContext').then(mod => mod.SessionContextProvider), { ssr: false, loading: LoadingPage })
+import ModalContextProvider from "contexts/ModalContext"
+import SnackbarContextProvider from "contexts/SnackbarContext"
 
 function GlobalContextManager({ children, }) {
     return (
-        <SessionContextProvider>
-            <LocaleContextProvider>
-                <SnackbarContextProvider>
+        <LocaleContextProvider>
+            <SnackbarContextProvider>
+                <ModalContextProvider>
                     {children}
-                </SnackbarContextProvider>
-            </LocaleContextProvider>
-        </SessionContextProvider>
+                </ModalContextProvider>
+            </SnackbarContextProvider>
+        </LocaleContextProvider>
     )
 }
 

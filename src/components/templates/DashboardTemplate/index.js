@@ -16,11 +16,10 @@ function DashboardTemplate({ children }) {
             <Header drawerOpen={mobileOpen} onClickDrawerButton={handleDrawerToggle}></Header>
             <Stack direction={'row'} height={'100%'} >
                 <NavMenu open={mobileOpen}></NavMenu>
-                <Box >
+                <Box width={'100%'}>
                     {children}
                 </Box>
             </Stack>
-
         </Stack>
     )
 }

@@ -1,4 +1,4 @@
-import Button from "../Button";
+import { Button } from "@mui/material";
 
 function SubmitButton(props) {
     return <Button type="submit" variant="contained"{...props} />;

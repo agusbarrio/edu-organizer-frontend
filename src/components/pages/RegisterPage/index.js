@@ -6,7 +6,7 @@ import useLocaleContext from "hooks/useLocaleContext"
 import useRegisterService from "services/auth/useRegisterService"
 import { useRouter } from 'next/router'
 import PATHS from "constants/PATHS"
-import Link from "core/components/Link"
+import Link from "components/generic/Link"
 import { Stack } from "@mui/material"
 
 function RegisterPage() {

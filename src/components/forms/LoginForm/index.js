@@ -1,11 +1,11 @@
-import Form from "core/components/Form"
-import ControllerInput from "core/components/ControllerInput"
+import Form from "components/generic/Form"
+import ControllerInput from "components/generic/ControllerInput"
 import useValidator from "hooks/useValidator"
 import useLocaleContext from "hooks/useLocaleContext"
-import PasswordInput from "core/components/PasswordInput"
+import PasswordInput from "components/generic/PasswordInput"
 import TEXTS from "constants/TEXTS"
 import { useMemo } from "react"
-import TextInput from "core/components/TextInput"
+import TextInput from "components/generic/TextInput"
 import { Stack } from "@mui/material"
 
 function LoginForm({ onSubmit }) {
