@@ -1,7 +1,7 @@
 import CourseCard from "components/cards/CourseCard"
 import CardsGrid from "components/dataDisplay/CardsGrid"
 import CoomingSoon from "components/dataDisplay/CoomingSoon"
-import ABMTemplate from "components/templates/ABMTemplate"
+import ABTemplate from "components/templates/ABTemplate"
 import DashboardTemplate from "components/templates/DashboardTemplate"
 import LoadingBackdrop from "components/generic/LoadingBackdrop"
 import useService from "hooks/useService"
@@ -17,11 +17,11 @@ function CoursesPage() {
     return (
         <DashboardTemplate>
             <LoadingBackdrop loading={loading}></LoadingBackdrop>
-            <ABMTemplate onClickAdd={() => { }} onClickDeleteAll={() => { }} onClickEdit={() => { }}>
+            <ABTemplate onClickAdd={() => { }} onClickDeleteAll={() => { }}>
                 <CardsGrid>
                     {courses?.map((course) => (<CourseCard key={course.id} {...course}></CourseCard>))}
                 </CardsGrid>
-            </ABMTemplate>
+            </ABTemplate>
         </DashboardTemplate>
     )
 }

@@ -1,24 +1,24 @@
-import CoursesPage from "components/pages/CoursesPage"
+
+import StudentsPage from "components/pageContents/StudentsPage"
 import USER_PERMISSIONS from "constants/USER_PERMISSIONS"
 import { SessionContextProvider } from "contexts/SessionContext"
 import { authenticate } from "utils/auth"
 
-function Courses({ sessionData }) {
+function Students({ sessionData }) {
     return (
         <SessionContextProvider sessionData={sessionData}>
-            <CoursesPage></CoursesPage>
+            <StudentsPage></StudentsPage>
         </SessionContextProvider>
+
     )
 }
 
 export async function getServerSideProps(context) {
     const { redirectOptions, sessionData } = await authenticate(context, { needUserSession: true, userPermissionsAllowed: [USER_PERMISSIONS.ADMIN] })
-    if (redirectOptions) {
-        return redirectOptions
-    }
     return {
+        ...redirectOptions,
         props: { sessionData },
     }
 }
 
-export default Courses
+export default Students

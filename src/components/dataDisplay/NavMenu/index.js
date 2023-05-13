@@ -8,7 +8,7 @@ import TeacherMenu from "./components/TeacherMenu"
 import { useMemo } from "react"
 
 function NavMenu() {
-    const { userSession: { permissions } } = useSessionContext();
+    const { userSession: { user: { permissions } } } = useSessionContext();
     const isTeacher = useMemo(() => permissions.includes(USER_PERMISSIONS.TEACHER), [permissions])
     const isOwner = useMemo(() => permissions.includes(USER_PERMISSIONS.OWNER), [permissions])
     const isAdmin = useMemo(() => permissions.includes(USER_PERMISSIONS.ADMIN), [permissions])

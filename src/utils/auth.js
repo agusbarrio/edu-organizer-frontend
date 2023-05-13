@@ -3,7 +3,7 @@ import { AUTH_ENDPOINTS } from "constants/ENDPOINTS";
 import { get } from 'utils/fetch'
 import _ from "lodash";
 import COOKIES from "constants/COOKIES";
-
+import Mustache from "mustache";
 
 async function checkSession(context, { needUserSession, userPermissionsAllowed = [], needCourseSession }) {
     let redirectPath = null;
@@ -14,17 +14,20 @@ async function checkSession(context, { needUserSession, userPermissionsAllowed =
         const Cookie = context.req.cookies[COOKIES.SESSION] ? `${COOKIES.SESSION}=${context.req.cookies[COOKIES.SESSION]};` : undefined;
         const response = await get(AUTH_ENDPOINTS.VERIFY_SESSION, { withCredentials: 'include', headers: { Cookie } }) ?? null;
         userSession = response?.data ?? null;
-        const permissions = userSession?.permissions ?? []
+        const permissions = userSession?.user?.permissions ?? []
         if (needUserSession && !userSession) {
             redirectPath = PATHS.LOGIN
             clearCookie = true;
         };
-        if (!needUserSession && userSession) {
-            redirectPath = PATHS.DASHBOARD
+        if ((!needUserSession && userSession)) {
+            redirectPath = Mustache.render(PATHS.DASHBOARD, { organizationShortId: userSession?.organization?.shortId })
         }
         if (!_.isEmpty(userPermissionsAllowed) && userPermissionsAllowed.some((permission) => !permissions?.includes(permission))) {
             redirectPath = PATHS.LOGIN
             clearCookie = true;
+        }
+        if (context?.params?.organizationShortId && context.params.organizationShortId !== userSession?.organization?.shortId) {
+            redirectPath = context.resolvedUrl.replace(context.params.organizationShortId, userSession?.organization?.shortId)
         }
         if (clearCookie) context.res.setHeader('Set-Cookie', `${COOKIES.SESSION}=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT`)
     }
