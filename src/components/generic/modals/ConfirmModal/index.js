@@ -12,17 +12,15 @@ import { useCallback } from 'react';
 
 import _ from 'lodash';
 import useModalContext from 'hooks/useModalContext';
+import CORE_TEXTS from 'constants/CORE_TEXTS';
+import useLocaleContext from 'hooks/useLocaleContext';
 
 function ConfirmModal({
   children,
   onClose,
   onConfirm,
-  confirmButtonProps = {
-    children: 'Confirm',
-  },
-  closeButtonProps = {
-    children: 'Close',
-  },
+  confirmButtonProps,
+  closeButtonProps,
   textContent,
   title,
   open = false,
@@ -30,7 +28,7 @@ function ConfirmModal({
   ...props
 }) {
   const { closeModal } = useModalContext();
-
+  const { translate } = useLocaleContext()
   const handleClose = useCallback(() => {
     if (_.isFunction(onClose)) onClose();
     closeModal();
@@ -57,14 +55,14 @@ function ConfirmModal({
       <Divider></Divider>
       <DialogActions>
         <Button onClick={handleClose} {...closeButtonProps}>
-          {closeButtonProps.children}
+          {closeButtonProps?.children || translate(CORE_TEXTS.GENERIC_CLOSE)}
         </Button>
         <Button
           onClick={handleConfirm}
           variant="contained"
           {...confirmButtonProps}
         >
-          {confirmButtonProps.children}
+          {confirmButtonProps?.children || translate(CORE_TEXTS.GENERIC_CONFIRM)}
         </Button>
       </DialogActions>
     </DialogMaterial>

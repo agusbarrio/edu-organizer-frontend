@@ -8,7 +8,8 @@ import Link from "components/generic/Link"
 import useLocaleContext from "hooks/useLocaleContext"
 import useNavigate from "hooks/useNavigate"
 import useLoginService from "services/auth/useLoginService"
-import Mustache from "mustache"
+import { renderText } from "utils/text"
+
 function LoginPage() {
     const { translate } = useLocaleContext()
     const { login } = useLoginService()
@@ -18,7 +19,7 @@ function LoginPage() {
             <Stack spacing={2} width={'100%'}>
                 <LoginForm onSubmit={async ({ email, password }) => {
                     const result = await login({ email, password })
-                    if (result) go(Mustache.render(PATHS.DASHBOARD, { organizationShortId: result.organization.shortId }))
+                    if (result) go(renderText(PATHS.DASHBOARD, { organizationShortId: result.organization.shortId }))
                 }}></LoginForm>
                 <Link href={PATHS.RECOVER_PASSWORD}>{translate(TEXTS.LOGIN_PAGE_RECOVER_PASSWORD_LINK)}</Link>
                 <Link href={PATHS.REGISTER}>{translate(TEXTS.LOGIN_PAGE_REGISTER_LINK)}</Link>

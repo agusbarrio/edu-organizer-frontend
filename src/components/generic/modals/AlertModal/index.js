@@ -12,11 +12,13 @@ import { useCallback } from 'react';
 
 import _ from 'lodash';
 import useModalContext from 'hooks/useModalContext';
+import CORE_TEXTS from 'constants/CORE_TEXTS';
+import useLocaleContext from 'hooks/useLocaleContext';
 
 function AlertModal({
   children,
   onClose,
-  closeButtonText = 'Close',
+  closeButtonText,
   textContent,
   title,
   open = false,
@@ -24,7 +26,7 @@ function AlertModal({
   ...props
 }) {
   const { closeModal } = useModalContext();
-
+  const { translate } = useLocaleContext()
   const handleClose = useCallback(() => {
     if (_.isFunction(onClose)) onClose();
     closeModal();
@@ -46,7 +48,7 @@ function AlertModal({
       </DialogContent>
       <Divider></Divider>
       <DialogActions>
-        <Button onClick={handleClose}>{closeButtonText}</Button>
+        <Button onClick={handleClose}>{closeButtonText || translate(CORE_TEXTS.GENERIC_CLOSE)}</Button>
       </DialogActions>
     </DialogMaterial>
   );

@@ -2,6 +2,7 @@ import ENV_CONFIG from "./ENV_CONFIG";
 
 const authBaseUrl = `${ENV_CONFIG.NEXT_PUBLIC_API_URL}/auth`;
 const coursesBaseUrl = `${ENV_CONFIG.NEXT_PUBLIC_API_URL}/courses`;
+const studentsBaseUrl = `${ENV_CONFIG.NEXT_PUBLIC_API_URL}/students`;
 export const AUTH_ENDPOINTS = {
     LOGIN: `${authBaseUrl}/login`,
     REGISTER: `${authBaseUrl}/register`,
@@ -14,5 +15,9 @@ export const AUTH_ENDPOINTS = {
 
 export const COURSES_ENDPOINTS = {
     COURSES: `${coursesBaseUrl}`,
-    COURSE_ID: `${coursesBaseUrl}/:id`,
 };
+
+export const STUDENTS_ENDPOINTS = {
+    STUDENTS: `${studentsBaseUrl}`,
+};
+

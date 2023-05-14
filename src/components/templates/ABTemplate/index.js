@@ -7,7 +7,7 @@ import { useMemo, useRef } from "react";
 
 function ABMTemplate({
     children,
-    onClickAdd,
+    onClickCreate,
     onClickDeleteAll,
 }) {
     const { translate } = useLocaleContext();
@@ -22,11 +22,11 @@ function ABMTemplate({
     return (
         <Stack height={1}>
             <Stack direction="row" spacing={2} padding={1} ref={controllsRef}>
-                {onClickAdd && (
+                {onClickCreate && (
                     <Button
                         variant="contained"
                         startIcon={<Add></Add>}
-                        onClick={onClickAdd}
+                        onClick={onClickCreate}
                     >
                         {translate(CORE_TEXTS.GENERIC_ADD)}
                     </Button>
@@ -43,7 +43,9 @@ function ABMTemplate({
                 )}
             </Stack>
             <Box
+                width={'100%'}
                 height={`calc(100% - ${controllsHeight}px)`}
+                padding={2}
             >
                 {children}
             </Box>

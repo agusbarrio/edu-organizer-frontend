@@ -4,7 +4,7 @@ import { SessionContextProvider } from "contexts/SessionContext"
 import { authenticate } from "utils/auth"
 
 
-function DashboardOrganization({ sessionData }) {
+function Dashboard({ sessionData }) {
     return (
         <SessionContextProvider sessionData={sessionData}>
             <DashboardPage></DashboardPage>
@@ -21,4 +21,4 @@ export async function getServerSideProps(context) {
     }
 }
 
-export default DashboardOrganization
+export default Dashboard

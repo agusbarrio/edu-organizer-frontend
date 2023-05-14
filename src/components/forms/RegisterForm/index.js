@@ -3,11 +3,9 @@ import ControllerInput from "components/generic/ControllerInput"
 import useValidator from "hooks/useValidator"
 import useLocaleContext from "hooks/useLocaleContext"
 import PasswordInput from "components/generic/PasswordInput"
-import SubmitButton from "components/generic/SubmitButton"
 import TEXTS from "constants/TEXTS"
 import { useMemo } from "react"
 import TextInput from "components/generic/TextInput"
-import { Stack } from "@mui/material"
 
 function LoginForm({ onSubmit }) {
     const { form, email, password, equalTo, text } = useValidator()
@@ -23,15 +21,12 @@ function LoginForm({ onSubmit }) {
 
     return (
         <Form schema={schema} onSubmit={onSubmit} templateProps={{ submitButtonProps: { children: translate(TEXTS.LOGIN_BUTTON) } }}>
-            <Stack spacing={2}>
-                <ControllerInput render={TextInput} name={"organizationName"} label={translate(TEXTS.ORGANIZATION_NAME_LABEL)} placeholder={translate(TEXTS.ORGANIZATION_NAME_PLACEHOLDER)} />
-                <ControllerInput render={TextInput} name={"firstName"} label={translate(TEXTS.FIRST_NAME_LABEL)} placeholder={translate(TEXTS.FIRST_NAME_PLACEHOLDER)} />
-                <ControllerInput render={TextInput} name={"lastName"} label={translate(TEXTS.LAST_NAME_LABEL)} placeholder={translate(TEXTS.LAST_NAME_PLACEHOLDER)} />
-                <ControllerInput render={TextInput} name={"email"} label={translate(TEXTS.EMAIL_LABEL)} placeholder={translate(TEXTS.EMAIL_PLACEHOLDER)} />
-                <ControllerInput render={PasswordInput} name={"password"} label={translate(TEXTS.PASSWORD_LABEL)} placeholder={translate(TEXTS.PASSWORD_PLACEHOLDER)} />
-                <ControllerInput render={PasswordInput} name={"repeatPassword"} label={translate(TEXTS.REPEAT_PASSWORD_LABEL)} placeholder={translate(TEXTS.REPEAT_PASSWORD_PLACEHOLDER)} />
-            </Stack>
-
+            <ControllerInput render={TextInput} name={"organizationName"} label={translate(TEXTS.ORGANIZATION_NAME_LABEL)} placeholder={translate(TEXTS.ORGANIZATION_NAME_PLACEHOLDER)} />
+            <ControllerInput render={TextInput} name={"firstName"} label={translate(TEXTS.FIRST_NAME_LABEL)} placeholder={translate(TEXTS.FIRST_NAME_PLACEHOLDER)} />
+            <ControllerInput render={TextInput} name={"lastName"} label={translate(TEXTS.LAST_NAME_LABEL)} placeholder={translate(TEXTS.LAST_NAME_PLACEHOLDER)} />
+            <ControllerInput render={TextInput} name={"email"} label={translate(TEXTS.EMAIL_LABEL)} placeholder={translate(TEXTS.EMAIL_PLACEHOLDER)} />
+            <ControllerInput render={PasswordInput} name={"password"} label={translate(TEXTS.PASSWORD_LABEL)} placeholder={translate(TEXTS.PASSWORD_PLACEHOLDER)} />
+            <ControllerInput render={PasswordInput} name={"repeatPassword"} label={translate(TEXTS.REPEAT_PASSWORD_LABEL)} placeholder={translate(TEXTS.REPEAT_PASSWORD_PLACEHOLDER)} />
         </Form>
     )
 }

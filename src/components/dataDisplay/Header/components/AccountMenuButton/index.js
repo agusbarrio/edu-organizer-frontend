@@ -1,12 +1,10 @@
-import Box from '@mui/material/Box';
 import Menu from '@mui/material/Menu';
-import IconButton from '@mui/material/IconButton';
-import Tooltip from '@mui/material/Tooltip';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import { useMemo, useState } from 'react';
 import useLocaleContext from 'hooks/useLocaleContext';
 import TEXTS from 'constants/TEXTS';
 import LogoutMenuButton from '../LogoutMenuButton';
+import IconButton from 'components/generic/IconButton';
 
 function AccountMenuButton() {
     const { translate } = useLocaleContext()
@@ -21,19 +19,16 @@ function AccountMenuButton() {
 
     return (
         <>
-            <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-                <Tooltip title={translate(TEXTS.ACCOUNT_BUTTON_TOOLTIP)}>
-                    <IconButton
-                        onClick={handleClick}
-                        color='inherit'
-                        aria-controls={open ? 'account-menu' : undefined}
-                        aria-haspopup="true"
-                        aria-expanded={open ? 'true' : undefined}
-                    >
-                        <AccountCircle></AccountCircle>
-                    </IconButton>
-                </Tooltip>
-            </Box>
+            <IconButton
+                tooltip={translate(TEXTS.ACCOUNT_BUTTON_TOOLTIP)}
+                onClick={handleClick}
+                color='inherit'
+                aria-controls={open ? 'account-menu' : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? 'true' : undefined}
+            >
+                <AccountCircle></AccountCircle>
+            </IconButton>
             <Menu
                 anchorEl={anchorEl}
                 id="account-menu"

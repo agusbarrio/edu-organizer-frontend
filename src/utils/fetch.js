@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { useCallback } from 'react';
 import _ from 'lodash';
 import FETCH_ERROR_TYPES from 'constants/FETCH_ERROR_TYPES';
 
@@ -27,7 +26,14 @@ const axiosHandler = async (axiosFunction, successHandler, errorHandler) => {
     }
 }
 
-export const get = async (url, config, handlers) => {
+const defaultConfig = { withCredentials: true }
+
+const getConfig = (config) => {
+    return _.merge(_.cloneDeep(defaultConfig), config)
+}
+
+export const get = async (url, incomingConfig, handlers) => {
+    const config = getConfig(incomingConfig)
     return await axiosHandler(
         async () => await axios.get(url, config),
         handlers?.successHandler,
@@ -36,7 +42,8 @@ export const get = async (url, config, handlers) => {
 }
 
 
-export const post = async (url, data, config, handlers) => {
+export const post = async (url, data, incomingConfig, handlers) => {
+    const config = getConfig(incomingConfig)
     return await axiosHandler(
         async () => await axios.post(url, data, config),
         handlers?.successHandler,
@@ -44,7 +51,8 @@ export const post = async (url, data, config, handlers) => {
     );
 }
 
-export const put = async (url, data, config, handlers) => {
+export const put = async (url, data, incomingConfig, handlers) => {
+    const config = getConfig(incomingConfig)
     return await axiosHandler(
         async () => await axios.put(url, data, config),
         handlers?.successHandler,
@@ -52,7 +60,8 @@ export const put = async (url, data, config, handlers) => {
     );
 }
 
-export const del = async (url, config, handlers) => {
+export const del = async (url, incomingConfig, handlers) => {
+    const config = getConfig(incomingConfig)
     return await axiosHandler(
         async () => await axios.delete(url, config),
         handlers?.successHandler,

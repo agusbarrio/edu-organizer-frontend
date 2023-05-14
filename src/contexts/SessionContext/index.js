@@ -4,13 +4,15 @@ const SessionContext = createContext();
 export default SessionContext;
 
 export function SessionContextProvider({ children, sessionData }) {
-    const { userSession, courseSession } = useMemo(() => ({
-        userSession: sessionData?.userSession ?? null,
-        courseSession: sessionData?.courseSession ?? null,
-    }), [sessionData?.userSession, sessionData?.courseSession]);
+
+    const { user, course, organization } = useMemo(() => ({
+        user: sessionData?.user ?? null,
+        course: sessionData?.course ?? null,
+        organization: sessionData?.organization ?? null
+    }), [sessionData])
 
     return (
-        <SessionContext.Provider value={{ userSession, courseSession }}>
+        <SessionContext.Provider value={{ user, course, organization }}>
             {children}
         </SessionContext.Provider>
     );

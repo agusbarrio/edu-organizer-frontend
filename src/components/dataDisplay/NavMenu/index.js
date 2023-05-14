@@ -7,14 +7,14 @@ import SuperAdminMenu from "./components/SuperAdminMenu"
 import TeacherMenu from "./components/TeacherMenu"
 import { useMemo } from "react"
 
-function NavMenu() {
-    const { userSession: { user: { permissions } } } = useSessionContext();
+function NavMenu({ innerRef }) {
+    const { user: { permissions } } = useSessionContext();
     const isTeacher = useMemo(() => permissions.includes(USER_PERMISSIONS.TEACHER), [permissions])
     const isOwner = useMemo(() => permissions.includes(USER_PERMISSIONS.OWNER), [permissions])
     const isAdmin = useMemo(() => permissions.includes(USER_PERMISSIONS.ADMIN), [permissions])
     const isSuperAdmin = useMemo(() => permissions.includes(USER_PERMISSIONS.SUPERADMIN), [permissions])
     return (
-        <Drawer variant="permanent" PaperProps={{ sx: { position: 'static' } }} >
+        <Drawer variant="permanent" PaperProps={{ sx: { position: 'static' } }} ref={innerRef}>
             {isSuperAdmin && (
                 <>
                     <SuperAdminMenu></SuperAdminMenu>

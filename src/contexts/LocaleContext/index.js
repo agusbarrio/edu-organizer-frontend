@@ -1,8 +1,8 @@
 import { createContext, useCallback, useMemo } from 'react';
-import mustache from 'mustache';
 import _ from 'lodash';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { renderText } from 'utils/text';
 export const LocaleContext = createContext();
 
 function LocaleContextProvider({
@@ -12,19 +12,19 @@ function LocaleContextProvider({
   dateFormat,
   defaultDateFormat = 'DD/MM/YYYY',
 }) {
+  const currentLang = useMemo(() => lang || defaultLang, [defaultLang, lang])
   const translate = useCallback(
     (translation, params = {}) => {
       if (_.isString(translation)) return translation;
       const errorMessage = 'Translation not found';
-      const currentLang = lang || defaultLang;
       const text =
         translation && translation[currentLang]
           ? translation[currentLang]
           : errorMessage;
 
-      return mustache.render(text, params);
+      return renderText(text, params);
     },
-    [defaultLang, lang]
+    [currentLang]
   );
 
   const resultDateFormat = useMemo(
@@ -33,7 +33,7 @@ function LocaleContextProvider({
   );
 
   return (
-    <LocaleContext.Provider value={{ translate, dateFormat: resultDateFormat }}>
+    <LocaleContext.Provider value={{ translate, dateFormat: resultDateFormat, lang: currentLang }}>
       <LocalizationProvider
         dateAdapter={AdapterMoment}
         dateFormats={{ fullDate: resultDateFormat }}
