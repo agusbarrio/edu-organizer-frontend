@@ -1,9 +1,8 @@
 import { ArrowBack } from "@mui/icons-material";
-import { Box, Button, Divider, Stack, Typography } from "@mui/material";
+import { Box, Button, Divider, Stack, } from "@mui/material";
 import Header from "components/dataDisplay/Header";
 import NavMenu from "components/dataDisplay/NavMenu";
-import { useCallback, useMemo, useRef, useState } from "react";
-import Link from 'components/generic/Link'
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Truncate from "components/generic/Truncate";
 
 
@@ -14,27 +13,31 @@ function DashboardTemplate({ children, title, subtitle, backButtonProps }) {
         setMobileOpen(!mobileOpen);
     }, [mobileOpen]);
 
-    const menuRef = useRef()
-    const headerRef = useRef()
-    const titleRef = useRef()
+    const menuRef = useRef(null)
+    const headerRef = useRef(null)
+    const titleRef = useRef(null)
 
-    const headerHeight = useMemo(() => {
-        return !!headerRef?.current
-            ? headerRef.current.getBoundingClientRect().height
-            : 0;
+
+    const [headerHeight, setHeaderHeight] = useState(0)
+    const [menuWidth, setMenuWidth] = useState(0)
+    const [titleHeight, setTitleHeight] = useState(0)
+
+    useEffect(() => {
+        if (!!headerRef?.current) {
+            setHeaderHeight(headerRef.current.getBoundingClientRect().height)
+        }
     }, [headerRef])
-
-    const menuWidth = useMemo(() => {
-        return !!menuRef?.current
-            ? menuRef.current.getBoundingClientRect().width
-            : 0;
+    useEffect(() => {
+        if (!!menuRef?.current) {
+            setMenuWidth(menuRef.current.getBoundingClientRect().width)
+        }
     }, [menuRef])
-
-    const titleHeight = useMemo(() => {
-        return !!titleRef?.current
-            ? titleRef.current.getBoundingClientRect().height
-            : 0;
+    useEffect(() => {
+        if (!!titleRef?.current) {
+            setTitleHeight(titleRef.current.getBoundingClientRect().height)
+        }
     }, [titleRef])
+
 
     return (
         <Stack height={'100vh'} width={'100vw'} >
@@ -43,7 +46,7 @@ function DashboardTemplate({ children, title, subtitle, backButtonProps }) {
                 <NavMenu open={mobileOpen} innerRef={menuRef}></NavMenu>
                 <Box width={`calc(100% - ${menuWidth}px)`}  >
                     {(!!title || !!subtitle || !!backButtonProps) &&
-                        <Stack width={'100%'} ref={titleRef} padding={1} pb={0}>
+                        <Stack width={'100%'} padding={1} pb={0} ref={titleRef}>
                             {!!backButtonProps && <Button size="small" startIcon={<ArrowBack></ArrowBack>} {...backButtonProps} sx={{ width: 'max-content', ...backButtonProps?.sx }}></Button>}
                             {!!title && <Truncate line={1} element={'h1'} variant={'h4'} sx={{ pl: 4, fontWeight: 'bold' }}>{title}</Truncate>}
                             {!!subtitle && <Truncate line={2} element={'h2'} variant={'subtitle1'} sx={{ pl: 4, fontWeight: 'bold' }}>{subtitle}</Truncate>}

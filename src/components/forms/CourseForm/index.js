@@ -6,7 +6,7 @@ import TEXTS from "constants/TEXTS"
 import { useMemo } from "react"
 import TextInput from "components/generic/TextInput"
 
-function CourseForm({ onSubmit, defaultValues }) {
+function CourseForm({ onSubmit, defaultValues, innerRef }) {
     const { form, text } = useValidator()
     const { translate } = useLocaleContext()
     const schema = useMemo(() => form({
@@ -14,7 +14,7 @@ function CourseForm({ onSubmit, defaultValues }) {
     }), [form, text])
 
     return (
-        <Form schema={schema} defaultValues={defaultValues} onSubmit={onSubmit}>
+        <Form schema={schema} defaultValues={defaultValues} onSubmit={onSubmit} innerRef={innerRef}>
             <ControllerInput render={TextInput} name={"name"} label={translate(TEXTS.COURSE_NAME_LABEL)} placeholder={translate(TEXTS.COURSE_NAME_PLACEHOLDER)} />
         </Form>
     )

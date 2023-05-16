@@ -7,7 +7,7 @@ import TEXTS from "constants/TEXTS"
 import useLocaleContext from "hooks/useLocaleContext"
 import useNavigate from "hooks/useNavigate"
 import useSessionContext from "hooks/useSessionContext"
-import { useCallback } from "react"
+import { useCallback, useRef } from "react"
 import useCreateStudentService from "services/students/useCreateStudentService"
 import { renderText } from "utils/text"
 
@@ -17,12 +17,14 @@ function CreateStudentPage() {
     const { go } = useNavigate()
     const { createStudent } = useCreateStudentService()
 
+    const formRef = useRef(null)
+
     const handleSubmit = useCallback(async (data) => {
         const result = await createStudent(data)
-        if (result) {
-            go(renderText(PATHS.DASHBOARD_STUDENTS, { organizationShortId: organization.shortId }))
+        if (result && formRef?.current) {
+            formRef.current.reset()
         }
-    }, [createStudent, go, organization.shortId])
+    }, [createStudent, formRef])
 
     return (
         <DashboardTemplate
@@ -33,7 +35,7 @@ function CreateStudentPage() {
                 onClick: () => go(renderText(PATHS.DASHBOARD_STUDENTS, { organizationShortId: organization.shortId }))
             }}>
             <Container maxWidth={'md'}>
-                <StudentForm onSubmit={handleSubmit}></StudentForm>
+                <StudentForm onSubmit={handleSubmit} innerRef={formRef}></StudentForm>
             </Container>
         </DashboardTemplate>
 

@@ -6,8 +6,11 @@ import useLocaleContext from "hooks/useLocaleContext"
 function TeachersPage() {
     const { translate } = useLocaleContext()
     return (
-        <DashboardTemplate >
-            <CoomingSoon>{translate(TEXTS.TEACHERS_PAGE_TITLE)}</CoomingSoon>
+        <DashboardTemplate
+            title={translate(TEXTS.TEACHERS_PAGE_TITLE)}
+            subtitle={translate(TEXTS.TEACHERS_PAGE_SUBTITLE)}
+        >
+            <CoomingSoon></CoomingSoon>
         </DashboardTemplate>
     )
 }

@@ -10,7 +10,7 @@ function FormTemplate({ children, submitButtonProps }) {
             <Stack spacing={2}>
                 {children}
             </Stack>
-            <SubmitButton {...submitButtonProps} sx={{ alignSelf: 'flex-end', ...submitButtonProps?.sx }}>{submitButtonProps?.children ?? translate(CORE_TEXTS.GENERIC_SUBMIT)}</SubmitButton>
+            {submitButtonProps && <SubmitButton {...submitButtonProps} sx={{ alignSelf: 'flex-end', ...submitButtonProps?.sx }}>{submitButtonProps?.children ?? translate(CORE_TEXTS.GENERIC_SUBMIT)}</SubmitButton>}
         </Stack>
     );
 }

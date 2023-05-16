@@ -39,7 +39,7 @@ const TEXTS = {
     COURSE_SHORT_ID_LABEL: { es: 'Identificador del curso', en: 'Course short ID' },
     STUDENT_FIRST_NAME_LABEL: { es: 'Nombre', en: 'First name' },
     STUDENT_LAST_NAME_LABEL: { es: 'Apellido', en: 'Last name' },
-    GO_STUDENT: { es: 'Ir al estudiante', en: 'Go student' },
+    GO_STUDENT: { es: 'Ver estudiante', en: 'Go student' },
     CREATE_COURSE_PAGE_TITLE: { es: 'Crear curso', en: 'Create course' },
     CREATE_COURSE_PAGE_SUBTITLE: { es: 'Aqui puedes crear un nuevo curso', en: 'Here you can create a new course' },
     CREATE_STUDENT_PAGE_TITLE: { es: 'Crear estudiante', en: 'Create student' },
@@ -50,6 +50,14 @@ const TEXTS = {
     STUDENT_PAGE_SUBTITLE: { es: 'Aqui puedes ver y editar la información del estudiante', en: 'Here you can see and edit the student information' },
     STUDENT_FIRST_NAME_PLACEHOLDER: { es: 'Ingresa el nombre del estudiante', en: 'Enter the student first name' },
     STUDENT_LAST_NAME_PLACEHOLDER: { es: 'Ingresa el apellido del estudiante', en: 'Enter the student last name' },
+    CLASS_SESSIONS_PAGE_TITLE: { es: 'Clases', en: 'Class sessions' },
+    CLASS_SESSIONS_PAGE_SUBTITLE: { es: 'Aqui puedes ver los registros de asistencia', en: 'Here you can see the attendance records' },
+    COURSES_PAGE_TITLE: { es: 'Cursos', en: 'Courses' },
+    COURSES_PAGE_SUBTITLE: { es: 'Aqui puedes ver todos los cursos', en: 'Here you can see all the courses' },
+    STUDENTS_PAGE_TITLE: { es: 'Estudiantes', en: 'Students' },
+    STUDENTS_PAGE_SUBTITLE: { es: 'Aqui puedes ver todos los estudiantes', en: 'Here you can see all the students' },
+    TEACHERS_PAGE_SUBTITLE: { es: 'Aqui puedes ver todos los profesores', en: 'Here you can see all the teachers' },
+    STUDENT_COURSE_LABEL: { es: 'Curso', en: 'Course' },
 }
 
 export default TEXTS

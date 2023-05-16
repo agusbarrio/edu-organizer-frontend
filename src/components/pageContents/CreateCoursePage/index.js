@@ -7,9 +7,11 @@ import TEXTS from "constants/TEXTS"
 import useLocaleContext from "hooks/useLocaleContext"
 import useNavigate from "hooks/useNavigate"
 import useSessionContext from "hooks/useSessionContext"
+import CreateCourseMachine from "machines/CreateCourseMachine"
 import { useCallback } from "react"
 import useCreateCourseService from "services/courses/useCreateCourseService"
 import { renderText } from "utils/text"
+
 
 function CreateCoursePage() {
     const { organization } = useSessionContext()
@@ -32,9 +34,7 @@ function CreateCoursePage() {
                 children: translate(TEXTS.GO_BACK_COURSES),
                 onClick: () => go(renderText(PATHS.DASHBOARD_COURSES, { organizationShortId: organization.shortId }))
             }}>
-            <Container maxWidth={'md'}>
-                <CourseForm onSubmit={handleSubmit}></CourseForm>
-            </Container>
+            <CreateCourseMachine></CreateCourseMachine>
         </DashboardTemplate>
 
     )
