@@ -29,7 +29,7 @@ function ABMTemplate({
                         startIcon={<Add></Add>}
                         onClick={onClickCreate}
                     >
-                        {translate(CORE_TEXTS.GENERIC_ADD)}
+                        {translate(CORE_TEXTS.GENERIC_CREATE)}
                     </Button>
                 )}
                 {onClickDeleteAll && (

@@ -7,24 +7,31 @@ import { useMemo } from "react"
 import TextInput from "components/generic/TextInput"
 import CoursesSelect from "components/inputs/CourseSelect"
 
-function StudentForm({ onSubmit, defaultValues, innerRef }) {
+function StudentForm({ onSubmit, defaultValues, innerRef, withCourse = true, templateProps, size }) {
     const { form, text, id } = useValidator()
     const { translate } = useLocaleContext()
-    const schema = useMemo(() => form({
-        firstName: text({ required: { value: true } }),
-        lastName: text({ required: { value: true } }),
-        courseId: id(),
-    }), [form, text, id])
+    const schema = useMemo(() => {
+        const baseSchema = {
+            firstName: text({ required: { value: true } }),
+            lastName: text({ required: { value: true } }),
+        }
+        if (withCourse) {
+            baseSchema.courseId = id()
+        }
+
+        return form(baseSchema)
+    }, [form, text, id, withCourse])
 
     return (
-        <Form schema={schema} defaultValues={defaultValues} onSubmit={onSubmit} innerRef={innerRef}>
-            <ControllerInput render={TextInput} name={"firstName"} label={translate(TEXTS.STUDENT_FIRST_NAME_LABEL)} placeholder={translate(TEXTS.STUDENT_FIRST_NAME_PLACEHOLDER)} />
-            <ControllerInput render={TextInput} name={"lastName"} label={translate(TEXTS.STUDENT_LAST_NAME_LABEL)} placeholder={translate(TEXTS.STUDENT_LAST_NAME_PLACEHOLDER)} />
-            <ControllerInput
+        <Form schema={schema} defaultValues={defaultValues} onSubmit={onSubmit} innerRef={innerRef} templateProps={templateProps}>
+            <ControllerInput render={TextInput} size={size} name={"firstName"} label={translate(TEXTS.STUDENT_FIRST_NAME_LABEL)} placeholder={translate(TEXTS.STUDENT_FIRST_NAME_PLACEHOLDER)} />
+            <ControllerInput render={TextInput} size={size} name={"lastName"} label={translate(TEXTS.STUDENT_LAST_NAME_LABEL)} placeholder={translate(TEXTS.STUDENT_LAST_NAME_PLACEHOLDER)} />
+            {withCourse && <ControllerInput
                 render={CoursesSelect}
+                size={size}
                 name="courseId"
                 label={translate(TEXTS.STUDENT_COURSE_LABEL)}
-            ></ControllerInput>
+            ></ControllerInput>}
         </Form>
     )
 }

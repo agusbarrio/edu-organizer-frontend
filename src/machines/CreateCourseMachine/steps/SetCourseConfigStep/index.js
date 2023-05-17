@@ -1,7 +1,8 @@
 import StepTemplate from "components/templates/StepTemplate";
+import { useEffect } from "react";
 
 function SetCourseConfigStep({ state, send }) {
-    console.log(state.context)
+
     return <StepTemplate
         onClickBack={() => send('PREV')}
         onClickCancel={() => send('CANCEL')}

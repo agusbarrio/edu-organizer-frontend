@@ -15,7 +15,7 @@ function Toolbar({ onClickAdd, ...props }) {
                     {/*  <GridToolbarDensitySelector /> */}
                     {/* <GridToolbarExport /> */}
                 </Stack>
-                <Button variant="contained" startIcon={<Add></Add>} size="small" onClick={onClickAdd}>{translate(CORE_TEXTS.GENERIC_ADD)}</Button>
+                <Button variant="contained" startIcon={<Add></Add>} size="small" onClick={onClickAdd}>{translate(CORE_TEXTS.GENERIC_CREATE)}</Button>
             </Stack>
 
 

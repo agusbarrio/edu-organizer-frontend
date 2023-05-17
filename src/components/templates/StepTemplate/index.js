@@ -20,7 +20,7 @@ function StepTemplate({ children, onClickBack, onClickNext, onClickCancel, onCli
             <Box height={`calc(100% - ${buttonsHeight}px)`}>
                 {children}
             </Box>
-            <Stack direction={'row'} spacing={1} ref={buttonsRef} width={'100%'} justifyContent={'space-between'}>
+            <Stack direction={'row'} spacing={1} ref={buttonsRef} width={'100%'} justifyContent={'space-between'} pt={2}>
                 <Stack direction={'row'} spacing={1}>
                     {onClickBack && <Button onClick={onClickBack} variant="contained" startIcon={<ArrowBack></ArrowBack>}>{translate(CORE_TEXTS.GENERIC_BACK)}</Button>}
                     {onClickCancel && <Button onClick={onClickCancel} variant="contained" color='error' startIcon={<Close></Close>}>{translate(CORE_TEXTS.GENERIC_CANCEL)}</Button>}

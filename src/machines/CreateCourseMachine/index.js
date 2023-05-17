@@ -9,8 +9,7 @@ function CreateCourseMachine({ onCancel, onFinish }) {
     const [state, send] = useMachine(machine, {
         context: {
             name: '',
-            studentsToCreate: [],
-            studentsToSet: [],
+            students: [],
         },
         actions: {
             onCancel: (context, event) => {

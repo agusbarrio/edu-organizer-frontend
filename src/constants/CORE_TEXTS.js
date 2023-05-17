@@ -31,7 +31,7 @@ const CORE_TEXTS = {
     VALIDATIONS_INTEGER: { es: 'El valor debe ser un número entero', en: 'The value must be an integer' },
     GENERIC_ERROR: { es: 'Ha ocurrido un error', en: 'An error has occurred' },
     GENERIC_SUCCESS: { es: 'Operación exitosa', en: 'Successful operation' },
-    GENERIC_ADD: { es: 'Crear', en: 'Create' },
+    GENERIC_CREATE: { es: 'Crear', en: 'Create' },
     GENERIC_DELETE_ALL: { es: 'Eliminar todo', en: 'Delete all' },
     GENERIC_CLOSE: { es: 'Cerrar', en: 'Close' },
     GENERIC_CONFIRM: { es: 'Confirmar', en: 'Confirm' },
@@ -47,6 +47,7 @@ const CORE_TEXTS = {
     GENERIC_CANCEL: { es: 'Cancelar', en: 'Cancel' },
     GENERIC_NEXT: { es: 'Siguiente', en: 'Next' },
     GENERIC_FINISH: { es: 'Finalizar', en: 'Finish' },
+    GENERIC_ADD: { es: 'Agregar', en: 'Add' },
 };
 
 export default CORE_TEXTS;

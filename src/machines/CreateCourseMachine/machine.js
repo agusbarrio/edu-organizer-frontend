@@ -9,7 +9,9 @@ const machine = createMachine({
       on: {
         NEXT: {
           target: 'setCourseStudents',
-          actions: [assign({ name: (context, event) => event.name })],
+          actions: [assign({
+            name: (context, event) => event.name
+          })],
         },
         CANCEL: { actions: ['onCancel'] }
       },
@@ -18,9 +20,12 @@ const machine = createMachine({
       on: {
         NEXT: {
           target: 'setCourseConfig',
-          actions: [assign({ studentsToCreate: (context, event) => event.studentsToCreate, studentsToSet: (context, event) => event.studentsToSet })],
+          actions: [assign({ students: (context, event) => event.students })],
         },
-        PREV: { target: 'setCourseData' },
+        PREV: {
+          target: 'setCourseData',
+          actions: [assign({ students: (context, event) => event.students })],
+        },
         CANCEL: { actions: ['onCancel'] }
       },
     },

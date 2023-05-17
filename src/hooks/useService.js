@@ -11,6 +11,7 @@ function useService({ service, defaultValue, format }) {
       const formatData = _.isFunction(format) ? format(data) : data;
       setValue(formatData);
       setLoading(false);
+      return formatData;
     },
     [service, format]
   );

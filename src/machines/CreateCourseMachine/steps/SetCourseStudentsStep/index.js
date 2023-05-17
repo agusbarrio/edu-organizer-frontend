@@ -1,12 +1,21 @@
+import CourseStudentsSelection from "components/inputs/CourseStudentsSelection";
 import StepTemplate from "components/templates/StepTemplate";
+import { useCallback, useState } from "react";
 
 function SetCourseStudentsStep({ state, send }) {
+
+    const [students, setStudents] = useState(state.context.students)
+
+    const handleChange = useCallback((students) => {
+        setStudents(students)
+    }, [])
+
     return <StepTemplate
-        onClickBack={() => send('PREV')}
+        onClickBack={() => send('PREV', { students })}
         onClickCancel={() => send('CANCEL')}
-        onClickNext={() => send('NEXT', { studentsToCreate: [1, 2, 3], studentsToSet: [1, 2, 3] })}
+        onClickNext={() => send('NEXT', { students })}
     >
-        SetCourseStudentsStep
+        <CourseStudentsSelection onChange={handleChange} initialStudents={state.context.students}></CourseStudentsSelection>
     </StepTemplate>
 }
 

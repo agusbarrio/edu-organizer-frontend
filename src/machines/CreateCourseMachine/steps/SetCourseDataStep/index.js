@@ -14,11 +14,10 @@ function SetCourseDataStep({ state, send }) {
         send('NEXT', { name })
     }, [send])
 
-    return <StepTemplate
-        onClickNext={handleClickNext}
-    >
-        <CourseForm onSubmit={handleSubmit} innerRef={formRef} defaultValues={{ name: state.context.name }}></CourseForm>
-    </StepTemplate>
+    return (
+        <StepTemplate onClickNext={handleClickNext} >
+            <CourseForm onSubmit={handleSubmit} templateProps={{ showSubmitButton: false }} innerRef={formRef} defaultValues={{ name: state.context.name }}></CourseForm>
+        </StepTemplate>)
 }
 
 export default SetCourseDataStep;
