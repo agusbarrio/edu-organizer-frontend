@@ -21,7 +21,7 @@ function CoursesPage() {
             title={translate(TEXTS.COURSES_PAGE_TITLE)}
             subtitle={translate(TEXTS.COURSES_PAGE_SUBTITLE)}
         >
-            <CoursesDataTable courses={courses}></CoursesDataTable>
+            <CoursesDataTable courses={courses} onDelete={runService}></CoursesDataTable>
         </DashboardTemplate>
     )
 }

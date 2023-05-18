@@ -36,7 +36,8 @@ function ConfirmModal({
 
   const handleConfirm = useCallback(() => {
     if (_.isFunction(onConfirm)) onConfirm();
-  }, [onConfirm]);
+    closeModal();
+  }, [onConfirm, closeModal]);
 
   return (
     <DialogMaterial

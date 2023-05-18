@@ -1,4 +1,4 @@
-import { Grid, useMediaQuery } from "@mui/material"
+import { Grid, } from "@mui/material"
 
 import StudentsListCard from "./components/StudentsListCard"
 import AvaibleStudentsListCard from "./components/AvaibleStudentsListCard"
@@ -9,6 +9,7 @@ import CustomSkeleton from "./components/CustomSkeleton"
 import { v4 as uuidv4 } from 'uuid';
 import _ from "lodash"
 import NewStudentCard from "./components/NewStudentCard"
+import useDevice from "hooks/useDevice"
 
 function CourseStudentsSelection({ onChange, initialStudents = [] }) {
     const { getAllStudents } = useGetAllStudentsService({ params: { withCourse: false } })
@@ -49,21 +50,16 @@ function CourseStudentsSelection({ onChange, initialStudents = [] }) {
         }
     }, [])
 
-    const isMd = useMediaQuery((theme) => theme.breakpoints.up('md'));
-
-    const height = useMemo(() => {
-        return isMd ? '100%' : '50%'
-    }, [isMd])
 
     return (
-        <Grid container height={'100%'} spacing={2}>
-            <Grid item xs={6} md={4} height={height}>
+        <Grid container height={'100%'} spacing={2} sx={{ overflow: 'scroll' }}>
+            <Grid item xs={12} md={4} maxHeight={'100%'} >
                 {loading ? <CustomSkeleton></CustomSkeleton> : <NewStudentCard onSubmit={handleSubmitStudent}></NewStudentCard>}
             </Grid>
-            <Grid item xs={6} md={4} height={height}>
+            <Grid item xs={12} md={4} height={'100%'}>
                 {loading ? <CustomSkeleton></CustomSkeleton> : <AvaibleStudentsListCard students={studentsToSelect} onClickAdd={handleAddStudent}></AvaibleStudentsListCard>}
             </Grid>
-            <Grid item xs={12} md={4} height={height}>
+            <Grid item xs={12} md={4} height={'100%'}>
                 {loading ? <CustomSkeleton></CustomSkeleton> : <StudentsListCard students={students} onClickDrop={handleDropStudent}></StudentsListCard>}
             </Grid>
         </Grid>

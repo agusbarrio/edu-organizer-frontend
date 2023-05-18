@@ -30,7 +30,9 @@ const TEXTS = {
     COURSE_NAME_LABEL: { es: 'Nombre del curso', en: 'Course name' },
     COURSE_NAME_PLACEHOLDER: { es: 'Ingresa el nombre del curso', en: 'Enter the course name' },
     CREATE_COURSE_MODAL_TITLE: { es: 'Crear curso', en: 'Create course' },
-    GO_COURSE: { es: 'Ir al curso', en: 'Go course' },
+    GO_COURSE: { es: 'Ver detalles del curso', en: 'Go course details' },
+    GO_EDIT_COURSE: { es: 'Editar curso', en: 'Go edit course' },
+    DELETE_COURSE_TOOLTIP: { es: 'Eliminar curso', en: 'Delete course' },
     GO_BACK_COURSES: { es: 'Volver a cursos', en: 'Go back courses' },
     COURSE_PAGE_SUBTITLE: { es: 'Aqui puedes ver y editar la información del curso', en: 'Here you can see and edit the course information' },
     TEACHERS_PAGE_TITLE: { es: 'Profesores', en: 'Teachers' },
@@ -61,6 +63,11 @@ const TEXTS = {
     AVAIBLE_STUDENTS_LIST_CARD_TITLE: { es: 'Estudiantes disponibles', en: 'Avaible students' },
     COURSE_STUDENTS_LIST_CARD_TITLE: { es: 'Estudiantes del curso', en: 'Course students' },
     COURSE_CREATE_STUDENT_CARD_TITLE: { es: 'Nuevo estudiante', en: 'New student' },
+    COURSE_CREATE_STUDENT_CARD_HELP: { es: 'Los estudiantes que agregues por este medio se crearán al completar la creación del curso y seran asignados a este', en: 'The students you add this way will be created when you complete the course creation and will be assigned to it' },
+    AVAIBLE_STUDENTS_LIST_CARD_HELP: { es: 'Estos son los estudiantes que actualmente no estan asignados a ningun curso y estan disponibles para ser agregados. Haz clic en uno para agregarlo al curso', en: 'These are the students who are currently not assigned to any course and are available to be added. Click on one to add it to the course' },
+    COURSE_STUDENTS_LIST_CARD_HELP: { es: 'Estos son los estudiantes que seran asignados al curso. Si deseas quitar un estudiante puedes hacerlo haciendo clic sobre el', en: 'These are the students who will be assigned to the course. If you want to remove a student you can do it by clicking on it' },
+    DELETE_COURSE_MODAL_TITLE: { es: 'Eliminar curso', en: 'Delete course' },
+    DELETE_COURSE_MODAL_CONTENT: { es: '¿Estás seguro que deseas eliminar este curso?', en: 'Are you sure you want to delete this course?' },
 }
 
 export default TEXTS

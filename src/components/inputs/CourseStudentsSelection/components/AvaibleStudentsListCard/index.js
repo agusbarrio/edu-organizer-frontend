@@ -9,7 +9,13 @@ import useLocaleContext from "hooks/useLocaleContext"
 function AvaibleStudentsListCard({ onClickAdd, students }) {
     const { translate } = useLocaleContext()
     return (
-        <StudentsList cardTitle={translate(TEXTS.AVAIBLE_STUDENTS_LIST_CARD_TITLE)} onClickItem={onClickAdd} students={students} listItemIconProps={{ children: <AddCircleOutline color="primary" /> }}></StudentsList>
+        <StudentsList
+            cardTitle={translate(TEXTS.AVAIBLE_STUDENTS_LIST_CARD_TITLE)}
+            help={translate(TEXTS.AVAIBLE_STUDENTS_LIST_CARD_HELP)}
+            onClickItem={onClickAdd}
+            students={students}
+            listItemIconProps={{ children: <AddCircleOutline color="primary" /> }}
+        ></StudentsList>
     )
 }
 

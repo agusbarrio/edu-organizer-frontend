@@ -4,11 +4,14 @@ import {
   CardContent,
   Divider,
   Stack,
+  Tooltip,
 } from '@mui/material';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Truncate from '../Truncate';
+import IconButton from '../IconButton';
+import HelpOutline from '@mui/icons-material/HelpOutline';
 
-function Card({ children, actions, title, cardContentProps, ...props }) {
+function Card({ children, actions, title, cardContentProps, help, ...props }) {
   const showTopDivider = useMemo(() => !!title, [title]);
   const showBottomDivider = useMemo(
     () => !!children && !!actions,
@@ -46,6 +49,12 @@ function Card({ children, actions, title, cardContentProps, ...props }) {
     }
   }, [actionsRef]);
 
+  const [helpOpen, setHelpOpen] = useState(false);
+
+  const toggleHelp = useCallback(() => {
+    setHelpOpen((prevHelpOpen) => !prevHelpOpen);
+  }, []);
+
 
 
 
@@ -55,9 +64,16 @@ function Card({ children, actions, title, cardContentProps, ...props }) {
 
   return (
     <CardMaterial  {...props}>
-      {!!title && (
-        <Stack padding={2} ref={titleRef}>
-          <Truncate variant="h5">{title}</Truncate>
+      {(!!title || !!help) && (
+        <Stack padding={2} ref={titleRef} direction={'row'}>
+          <Truncate variant="h5" sx={{ flexGrow: 1 }}>{title}</Truncate>
+          {!!help && (
+            <Tooltip title={help} sx={{ maxWidth: 300 }} open={helpOpen} arrow>
+              <IconButton size="small" color="info" onClick={toggleHelp} >
+                <HelpOutline />
+              </IconButton>
+            </Tooltip>
+          )}
         </Stack>
       )}
       {showTopDivider && <Divider ref={topDividerRef}></Divider>}

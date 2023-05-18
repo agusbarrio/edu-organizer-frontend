@@ -1,4 +1,4 @@
-import { ArrowForward, } from "@mui/icons-material"
+import { ArrowForward, Delete, Edit, } from "@mui/icons-material"
 import CORE_TEXTS from "constants/CORE_TEXTS"
 import PATHS from "constants/PATHS"
 import TEXTS from "constants/TEXTS"
@@ -9,19 +9,42 @@ import useSessionContext from "hooks/useSessionContext"
 import { renderText } from "utils/text"
 import CustomDataGrid from "components/generic/CustomDataGrid"
 import IconButton from "components/generic/IconButton"
+import useModalContext from "hooks/useModalContext"
+import ConfirmModal from "components/generic/modals/ConfirmModal"
+import useDeleteCourseService from "services/courses/useDeleteCourseService"
+import _ from "lodash"
 
-function CoursesDataTable({ courses = [] }) {
+function CoursesDataTable({ courses = [], onDelete }) {
     const { translate } = useLocaleContext()
     const { organization } = useSessionContext()
     const { go } = useNavigate()
-
+    const { openModal } = useModalContext()
+    const { deleteCourse } = useDeleteCourseService()
     const navigateToCourse = useCallback((courseId) => {
         go(renderText(PATHS.DASHBOARD_COURSE, { organizationShortId: organization.shortId, courseId }))
     }, [go, organization])
 
+    const navigateToEditCourse = useCallback((courseId) => {
+        //TODO crear pagina de editar curso
+    }, [])
+
     const navigateToCreateCourse = useCallback(() => {
         go(renderText(PATHS.DASHBOARD_COURSE_CREATE, { organizationShortId: organization.shortId }))
     }, [go, organization])
+
+    const handleClickDeleteCourse = useCallback((courseId) => {
+        openModal(ConfirmModal, {
+            title: translate(TEXTS.DELETE_COURSE_MODAL_TITLE),
+            textContent: translate(TEXTS.DELETE_COURSE_MODAL_CONTENT),
+            onConfirm: async () => {
+                const result = await deleteCourse(courseId)
+                if (result && _.isFunction(onDelete)) {
+                    onDelete()
+                }
+            }
+
+        })
+    }, [openModal, translate, deleteCourse, onDelete])
 
     const columns = useMemo(() => {
         return [
@@ -32,14 +55,23 @@ function CoursesDataTable({ courses = [] }) {
                 headerName: translate(CORE_TEXTS.GENERIC_ACTIONS),
                 getActions: (data) => {
                     return [
-                        <IconButton size={'small'} tooltip={translate(TEXTS.GO_COURSE)} key={`go-course-${data.id}`} onClick={() => {
+                        <IconButton color="error" size={'small'} tooltip={translate(TEXTS.DELETE_COURSE_TOOLTIP)} key={`delete-course-${data.id}`} onClick={() => {
+                            handleClickDeleteCourse(data.id)
+                        }}><Delete fontSize="inherit"></Delete>
+                        </IconButton>,
+                        <IconButton size={'small'} tooltip={translate(TEXTS.GO_EDIT_COURSE)} key={`go-edit-${data.id}`} onClick={() => {
+                            navigateToEditCourse(data.id)
+                        }}><Edit fontSize="inherit"></Edit>
+                        </IconButton>,
+                        <IconButton color="primary" size={'small'} tooltip={translate(TEXTS.GO_COURSE)} key={`go-course-${data.id}`} onClick={() => {
                             navigateToCourse(data.id)
-                        }}><ArrowForward fontSize="inherit"></ArrowForward></IconButton>
+                        }}><ArrowForward fontSize="inherit"></ArrowForward>
+                        </IconButton>,
                     ]
                 }
             }
         ]
-    }, [translate, navigateToCourse])
+    }, [translate, navigateToCourse, handleClickDeleteCourse, navigateToEditCourse])
 
     return <CustomDataGrid rows={courses} columns={columns} onClickAdd={navigateToCreateCourse}></CustomDataGrid>
 }
