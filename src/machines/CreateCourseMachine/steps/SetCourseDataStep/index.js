@@ -10,8 +10,8 @@ function SetCourseDataStep({ state, send }) {
         }
     }, [formRef])
 
-    const handleSubmit = useCallback(({ name }) => {
-        send('NEXT', { name })
+    const handleSubmit = useCallback(({ name, accessPin }) => {
+        send('NEXT', { name, accessPin })
     }, [send])
 
     return (

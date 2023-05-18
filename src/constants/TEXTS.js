@@ -68,6 +68,8 @@ const TEXTS = {
     COURSE_STUDENTS_LIST_CARD_HELP: { es: 'Estos son los estudiantes que seran asignados al curso. Si deseas quitar un estudiante puedes hacerlo haciendo clic sobre el', en: 'These are the students who will be assigned to the course. If you want to remove a student you can do it by clicking on it' },
     DELETE_COURSE_MODAL_TITLE: { es: 'Eliminar curso', en: 'Delete course' },
     DELETE_COURSE_MODAL_CONTENT: { es: '¿Estás seguro que deseas eliminar este curso?', en: 'Are you sure you want to delete this course?' },
+    COURSE_ACCESS_PIN_LABEL: { es: 'PIN de acceso', en: 'Access PIN' },
+    COURSE_ACCESS_PIN_PLACEHOLDER: { es: 'Ingresa el PIN de acceso', en: 'Enter the access PIN' },
 }
 
 export default TEXTS

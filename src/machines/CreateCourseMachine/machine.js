@@ -10,35 +10,41 @@ const machine = createMachine({
         NEXT: {
           target: 'setCourseStudents',
           actions: [assign({
-            name: (context, event) => event.name
+            name: (context, event) => event.name,
+            accessPin: (context, event) => event.accessPin,
           })],
         },
-        CANCEL: { actions: ['onCancel'] }
+        CANCEL: { actions: ['cancel'] }
       },
     },
     setCourseStudents: {
       on: {
         NEXT: {
-          target: 'setCourseConfig',
+          target: 'createCourse',
           actions: [assign({ students: (context, event) => event.students })],
         },
         PREV: {
           target: 'setCourseData',
           actions: [assign({ students: (context, event) => event.students })],
         },
-        CANCEL: { actions: ['onCancel'] }
+        CANCEL: { actions: ['cancel'] }
       },
     },
-    setCourseConfig: {
-      on: {
-        NEXT: { target: 'finish' },
-        PREV: { target: 'setCourseStudents' },
-        CANCEL: { actions: ['onCancel'] }
+    createCourse: {
+      invoke: {
+        src: 'createCourse',
+        onDone: {
+          target: 'finish',
+        },
+        onError: {
+          target: 'setCourseStudents',
+        },
       },
+
     },
     finish: {
       type: 'final',
-      actions: ['onFinish'],
+      entry: ['finish'],
     },
   },
 });

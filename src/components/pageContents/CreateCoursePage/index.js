@@ -17,14 +17,10 @@ function CreateCoursePage() {
     const { organization } = useSessionContext()
     const { translate } = useLocaleContext()
     const { go } = useNavigate()
-    const { createCourse } = useCreateCourseService()
 
-    const handleSubmit = useCallback(async (data) => {
-        const result = await createCourse(data)
-        if (result) {
-            go(renderText(PATHS.DASHBOARD_COURSES, { organizationShortId: organization.shortId }))
-        }
-    }, [createCourse, go, organization.shortId])
+    const goCourses = useCallback(() => {
+        go(renderText(PATHS.DASHBOARD_COURSES, { organizationShortId: organization.shortId }))
+    }, [go, organization.shortId])
 
     return (
         <DashboardTemplate
@@ -34,7 +30,7 @@ function CreateCoursePage() {
                 children: translate(TEXTS.GO_BACK_COURSES),
                 onClick: () => go(renderText(PATHS.DASHBOARD_COURSES, { organizationShortId: organization.shortId }))
             }}>
-            <CreateCourseMachine></CreateCourseMachine>
+            <CreateCourseMachine onFinish={goCourses} onCancel={goCourses}></CreateCourseMachine>
         </DashboardTemplate>
 
     )

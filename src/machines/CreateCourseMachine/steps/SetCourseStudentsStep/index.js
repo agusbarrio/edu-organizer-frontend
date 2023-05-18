@@ -13,7 +13,7 @@ function SetCourseStudentsStep({ state, send }) {
     return <StepTemplate
         onClickBack={() => send('PREV', { students })}
         onClickCancel={() => send('CANCEL')}
-        onClickNext={() => send('NEXT', { students })}
+        onClickFinish={() => send('NEXT', { students })}
     >
         <CourseStudentsSelection onChange={handleChange} initialStudents={state.context.students}></CourseStudentsSelection>
     </StepTemplate>

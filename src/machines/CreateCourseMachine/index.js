@@ -3,24 +3,31 @@ import machine from "./machine";
 import { Fragment, useMemo } from "react";
 import SetCourseDataStep from "./steps/SetCourseDataStep";
 import SetCourseStudentsStep from "./steps/SetCourseStudentsStep";
-import SetCourseConfigStep from "./steps/SetCourseConfigStep";
+import LoadingBox from "components/dataDisplay/LoadingBox";
+import useCreateCourseService from "services/courses/useCreateCourseService";
 
 function CreateCourseMachine({ onCancel, onFinish }) {
+    const { createCourse } = useCreateCourseService()
     const [state, send] = useMachine(machine, {
         context: {
             name: '',
+            accessPin: '',
             students: [],
         },
         actions: {
-            onCancel: (context, event) => {
-                console.log('onCancel', context, event);
+            cancel: (context, event) => {
                 if (onCancel) onCancel(context, event);
             },
-            onFinish: (context, event) => {
-                console.log('onFinish', context, event);
+            finish: (context, event) => {
                 if (onFinish) onFinish(context, event);
             },
         },
+        services: {
+            createCourse: async (context, event) => {
+                const result = await createCourse(context)
+                if (!result) throw new Error('Error creating course')
+            }
+        }
     });
 
     const Step = useMemo(() => {
@@ -29,8 +36,10 @@ function CreateCourseMachine({ onCancel, onFinish }) {
                 return SetCourseDataStep
             case 'setCourseStudents':
                 return SetCourseStudentsStep
-            case 'setCourseConfig':
-                return SetCourseConfigStep
+            case 'createCourse':
+                return LoadingBox
+            case 'finish':
+                return LoadingBox
             default:
                 return null
         }
