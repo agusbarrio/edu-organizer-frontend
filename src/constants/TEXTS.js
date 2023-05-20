@@ -73,6 +73,7 @@ const TEXTS = {
     SET_COURSE_DATA_TITLE: { es: 'Datos del curso', en: 'Course data' },
     SET_COURSE_STUDENTS_TITLE: { es: 'Seleccion de estudiantes', en: 'Students selection' },
     SET_COURSE_CLASS_SESSIONS_CONFIG_TITLE: { es: 'Configuracion de clases', en: 'Class sessions config' },
+    EDIT_SELECTED_COURSES_MODAL_TITLE: { es: 'Editar cursos seleccionados', en: 'Edit selected courses' },
 }
 
 export default TEXTS

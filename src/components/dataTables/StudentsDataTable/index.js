@@ -17,10 +17,6 @@ function StudentsDataTable({ students = [] }) {
         go(renderText(PATHS.DASHBOARD_STUDENT, { studentId }))
     }, [go])
 
-    const navigateToCreateStudent = useCallback(() => {
-        go(renderText(PATHS.DASHBOARD_STUDENT_CREATE))
-    }, [go])
-
     const columns = useMemo(() => {
         return [
             { field: 'firstName', flex: 1, headerName: translate(TEXTS.STUDENT_FIRST_NAME_LABEL) },
@@ -31,7 +27,7 @@ function StudentsDataTable({ students = [] }) {
                 headerName: translate(CORE_TEXTS.GENERIC_ACTIONS),
                 getActions: (data) => {
                     return [
-                        <IconButton size={'small'} tooltip={translate(TEXTS.GO_STUDENT)} key={`go-student-${data.id}`} onClick={() => {
+                        <IconButton size={'small'} color="primary" tooltip={translate(TEXTS.GO_STUDENT)} key={`go-student-${data.id}`} onClick={() => {
                             navigateToStudent(data.id)
                         }}><ArrowForward fontSize="inherit"></ArrowForward></IconButton>
                     ]
@@ -40,7 +36,7 @@ function StudentsDataTable({ students = [] }) {
         ]
     }, [translate, navigateToStudent])
 
-    return <CustomDataGrid rows={students} columns={columns} onClickAdd={navigateToCreateStudent}></CustomDataGrid>
+    return <CustomDataGrid rows={students} columns={columns}></CustomDataGrid>
 }
 
 export default StudentsDataTable

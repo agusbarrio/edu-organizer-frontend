@@ -48,6 +48,8 @@ const CORE_TEXTS = {
     GENERIC_NEXT: { es: 'Siguiente', en: 'Next' },
     GENERIC_FINISH: { es: 'Finalizar', en: 'Finish' },
     GENERIC_ADD: { es: 'Agregar', en: 'Add' },
+    GENERIC_EDIT_SELECTION: { es: 'Editar selección', en: 'Edit selection' },
+    GENERIC_DELETE_SELECTION: { es: 'Eliminar selección', en: 'Delete selection' }
 };
 
 export default CORE_TEXTS;

@@ -8,7 +8,7 @@ import LoadingBox from "components/dataDisplay/LoadingBox";
 
 const drawerWidth = 240;
 
-function DashboardTemplate({ children, title, subtitle, backButtonProps, loading = false }) {
+function DashboardTemplate({ children, title, subtitle, backButtonProps, rightButtonProps, loading = false }) {
 
     const drawerRef = useRef(null)
     const headerRef = useRef(null)
@@ -43,9 +43,16 @@ function DashboardTemplate({ children, title, subtitle, backButtonProps, loading
                 <Box sx={{ flexGrow: 1, width: { xs: '100%', sm: `calc(100% - ${drawerWidth}px)` } }}>
                     {(!!title || !!subtitle || !!backButtonProps) &&
                         <Stack width={'100%'} padding={1} pb={0} ref={titleRef}>
-                            {!!backButtonProps && <Button size="small" startIcon={<ArrowBack></ArrowBack>} {...backButtonProps} sx={{ width: 'max-content', ...backButtonProps?.sx }}></Button>}
-                            {!!title && <Truncate line={1} element={'h1'} variant={'h4'} sx={{ pl: 4, fontWeight: 'bold' }}>{title}</Truncate>}
-                            {!!subtitle && <Truncate line={2} element={'h2'} variant={'subtitle1'} sx={{ pl: 4, fontWeight: 'bold' }}>{subtitle}</Truncate>}
+                            <Stack direction={'row'} justifyContent={'space-between'}>
+                                <Stack>
+                                    {!!backButtonProps && <Button size="small" startIcon={<ArrowBack></ArrowBack>} {...backButtonProps} sx={{ width: 'max-content', ...backButtonProps?.sx }}></Button>}
+                                    {!!title && <Truncate line={1} element={'h1'} variant={'h4'} sx={{ pl: 2, fontWeight: 'bold' }}>{title}</Truncate>}
+                                    {!!subtitle && <Truncate line={2} element={'h2'} variant={'subtitle1'} sx={{ pl: 2, fontWeight: 'bold' }}>{subtitle}</Truncate>}
+                                </Stack>
+                                <Stack justifyContent={'center'} alignItems={'center'}>
+                                    {!!rightButtonProps && <Button variant="contained" size="small"{...rightButtonProps}></Button>}
+                                </Stack>
+                            </Stack>
                             <Divider></Divider>
                         </Stack>}
                     {

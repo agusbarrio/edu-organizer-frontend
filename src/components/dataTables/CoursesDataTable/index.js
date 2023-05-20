@@ -16,7 +16,6 @@ import _ from "lodash"
 
 function CoursesDataTable({ courses = [], onDelete }) {
     const { translate } = useLocaleContext()
-
     const { go } = useNavigate()
     const { openModal } = useModalContext()
     const { deleteCourse } = useDeleteCourseService()
@@ -27,10 +26,6 @@ function CoursesDataTable({ courses = [], onDelete }) {
     const navigateToEditCourse = useCallback((courseId) => {
         //TODO crear pagina de editar curso
     }, [])
-
-    const navigateToCreateCourse = useCallback(() => {
-        go(renderText(PATHS.DASHBOARD_COURSE_CREATE))
-    }, [go])
 
     const handleClickDeleteCourse = useCallback((courseId) => {
         openModal(ConfirmModal, {
@@ -45,6 +40,16 @@ function CoursesDataTable({ courses = [], onDelete }) {
 
         })
     }, [openModal, translate, deleteCourse, onDelete])
+
+    const handleEditSelection = useCallback((rowsSelected) => {
+        openModal(ConfirmModal, {
+            title: translate(TEXTS.EDIT_SELECTED_COURSES_MODAL_TITLE),
+            children: <div>TODO</div>,//TODO agregar componente para definir los inputs del formulario de asistencia
+            onConfirm: () => console.log(rowsSelected) //TODO llamar servicio
+        })
+    }, [openModal, translate])
+
+    const handleDeleteSelection = useCallback(() => { }, []) //TODO llamar servicio
 
     const columns = useMemo(() => {
         return [
@@ -73,7 +78,7 @@ function CoursesDataTable({ courses = [], onDelete }) {
         ]
     }, [translate, navigateToCourse, handleClickDeleteCourse, navigateToEditCourse])
 
-    return <CustomDataGrid rows={courses} columns={columns} onClickAdd={navigateToCreateCourse}></CustomDataGrid>
+    return <CustomDataGrid rows={courses} columns={columns} onClickEditSelection={handleEditSelection} onClickDeleteSelection={handleDeleteSelection} checkboxSelection rowSelection></CustomDataGrid>
 }
 
 export default CoursesDataTable

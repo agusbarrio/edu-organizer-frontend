@@ -28,7 +28,8 @@ function CoursePage() {
             backButtonProps={{
                 children: translate(TEXTS.GO_BACK_COURSES),
                 onClick: () => go(renderText(PATHS.DASHBOARD_COURSES))
-            }}>
+            }}
+        >
             <LabelValue label={translate(TEXTS.COURSE_NAME_LABEL)} value={course?.name}></LabelValue>
             <LabelValue label={translate(TEXTS.COURSE_ID_LABEL)} value={course?.id}></LabelValue>
             <LabelValue label={translate(TEXTS.COURSE_SHORT_ID_LABEL)} value={course?.shortId}></LabelValue>
