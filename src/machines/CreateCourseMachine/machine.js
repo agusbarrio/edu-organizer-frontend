@@ -14,20 +14,28 @@ const machine = createMachine({
             accessPin: (context, event) => event.accessPin,
           })],
         },
-        CANCEL: { actions: ['cancel'] }
       },
     },
     setCourseStudents: {
       on: {
         NEXT: {
-          target: 'createCourse',
+          target: 'setCourseClassSessionsConfig',
           actions: [assign({ students: (context, event) => event.students })],
         },
         PREV: {
           target: 'setCourseData',
           actions: [assign({ students: (context, event) => event.students })],
         },
-        CANCEL: { actions: ['cancel'] }
+      },
+    },
+    setCourseClassSessionsConfig: {
+      on: {
+        NEXT: {
+          target: 'createCourse',
+        },
+        PREV: {
+          target: 'setCourseStudents',
+        },
       },
     },
     createCourse: {

@@ -5,8 +5,9 @@ import SetCourseDataStep from "./steps/SetCourseDataStep";
 import SetCourseStudentsStep from "./steps/SetCourseStudentsStep";
 import LoadingBox from "components/dataDisplay/LoadingBox";
 import useCreateCourseService from "services/courses/useCreateCourseService";
+import SetCourseClassSessionsConfigStep from "./steps/SetCourseClassSessionsConfigStep";
 
-function CreateCourseMachine({ onCancel, onFinish }) {
+function CreateCourseMachine({ onFinish }) {
     const { createCourse } = useCreateCourseService()
     const [state, send] = useMachine(machine, {
         context: {
@@ -15,9 +16,6 @@ function CreateCourseMachine({ onCancel, onFinish }) {
             students: [],
         },
         actions: {
-            cancel: (context, event) => {
-                if (onCancel) onCancel(context, event);
-            },
             finish: (context, event) => {
                 if (onFinish) onFinish(context, event);
             },
@@ -36,6 +34,8 @@ function CreateCourseMachine({ onCancel, onFinish }) {
                 return SetCourseDataStep
             case 'setCourseStudents':
                 return SetCourseStudentsStep
+            case 'setCourseClassSessionsConfig':
+                return SetCourseClassSessionsConfigStep
             case 'createCourse':
                 return LoadingBox
             case 'finish':

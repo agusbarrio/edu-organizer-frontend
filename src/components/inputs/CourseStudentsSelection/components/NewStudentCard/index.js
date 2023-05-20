@@ -20,7 +20,7 @@ function NewStudentCard({ onSubmit }) {
     }, [onSubmit, formRef])
 
     return (
-        <Card sx={{ width: '100%', height: '100%' }} cardContentProps={{ sx: { height: '100%' } }} variant="outlined" title={translate(TEXTS.COURSE_CREATE_STUDENT_CARD_TITLE)} help={translate(TEXTS.COURSE_CREATE_STUDENT_CARD_HELP)}>
+        <Card sx={{ width: '100%', height: '100%' }} title={translate(TEXTS.COURSE_CREATE_STUDENT_CARD_TITLE)} help={translate(TEXTS.COURSE_CREATE_STUDENT_CARD_HELP)}>
             <StudentForm withCourse={false} onSubmit={handleSubmitStudent} templateProps={{ submitButtonProps: { children: translate(CORE_TEXTS.GENERIC_ADD) } }} size={"small"} innerRef={formRef}></StudentForm>
         </Card>
     );

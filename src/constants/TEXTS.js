@@ -70,6 +70,9 @@ const TEXTS = {
     DELETE_COURSE_MODAL_CONTENT: { es: '¿Estás seguro que deseas eliminar este curso?', en: 'Are you sure you want to delete this course?' },
     COURSE_ACCESS_PIN_LABEL: { es: 'PIN de acceso', en: 'Access PIN' },
     COURSE_ACCESS_PIN_PLACEHOLDER: { es: 'Ingresa el PIN de acceso', en: 'Enter the access PIN' },
+    SET_COURSE_DATA_TITLE: { es: 'Datos del curso', en: 'Course data' },
+    SET_COURSE_STUDENTS_TITLE: { es: 'Seleccion de estudiantes', en: 'Students selection' },
+    SET_COURSE_CLASS_SESSIONS_CONFIG_TITLE: { es: 'Configuracion de clases', en: 'Class sessions config' },
 }
 
 export default TEXTS

@@ -52,7 +52,7 @@ function CourseStudentsSelection({ onChange, initialStudents = [] }) {
 
 
     return (
-        <Grid container height={'100%'} spacing={2} sx={{ overflow: 'scroll' }}>
+        <Grid container spacing={2} sx={{ overflow: 'scroll', height: '100%' }}>
             <Grid item xs={12} md={4} maxHeight={'100%'} >
                 {loading ? <CustomSkeleton></CustomSkeleton> : <NewStudentCard onSubmit={handleSubmitStudent}></NewStudentCard>}
             </Grid>

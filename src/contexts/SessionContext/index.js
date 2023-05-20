@@ -1,10 +1,9 @@
-import { createContext, useMemo, } from "react";
+import { createContext, useEffect, useMemo, } from "react";
 const SessionContext = createContext();
 
 export default SessionContext;
 
 export function SessionContextProvider({ children, sessionData }) {
-
     const { user, course, organization } = useMemo(() => ({
         user: sessionData?.user ?? null,
         course: sessionData?.course ?? null,

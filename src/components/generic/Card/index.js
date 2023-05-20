@@ -63,7 +63,7 @@ function Card({ children, actions, title, cardContentProps, help, ...props }) {
   }, [titleHeight, topDividerHeight, bottomDividerHeight, actionsHeight])
 
   return (
-    <CardMaterial  {...props}>
+    <CardMaterial variant="outlined"  {...props}>
       {(!!title || !!help) && (
         <Stack padding={2} ref={titleRef} direction={'row'}>
           <Truncate variant="h5" sx={{ flexGrow: 1 }}>{title}</Truncate>
