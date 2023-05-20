@@ -5,23 +5,21 @@ import TEXTS from "constants/TEXTS"
 import useLocaleContext from "hooks/useLocaleContext"
 import useNavigate from "hooks/useNavigate"
 import { useCallback, useMemo } from "react"
-import useSessionContext from "hooks/useSessionContext"
 import { renderText } from "utils/text"
 import CustomDataGrid from "components/generic/CustomDataGrid"
 import IconButton from "components/generic/IconButton"
 
 function StudentsDataTable({ students = [] }) {
     const { translate } = useLocaleContext()
-    const { organization } = useSessionContext()
     const { go } = useNavigate()
 
     const navigateToStudent = useCallback((studentId) => {
-        go(renderText(PATHS.DASHBOARD_STUDENT, { organizationShortId: organization.shortId, studentId }))
-    }, [go, organization])
+        go(renderText(PATHS.DASHBOARD_STUDENT, { studentId }))
+    }, [go])
 
     const navigateToCreateStudent = useCallback(() => {
-        go(renderText(PATHS.DASHBOARD_STUDENT_CREATE, { organizationShortId: organization.shortId }))
-    }, [go, organization])
+        go(renderText(PATHS.DASHBOARD_STUDENT_CREATE))
+    }, [go])
 
     const columns = useMemo(() => {
         return [

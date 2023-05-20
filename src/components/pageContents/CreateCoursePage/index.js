@@ -10,20 +10,19 @@ import { renderText } from "utils/text"
 
 
 function CreateCoursePage() {
-    const { organization } = useSessionContext()
     const { translate } = useLocaleContext()
     const { go } = useNavigate()
 
     const goCourses = useCallback(() => {
-        go(renderText(PATHS.DASHBOARD_COURSES, { organizationShortId: organization.shortId }))
-    }, [go, organization.shortId])
+        go(renderText(PATHS.DASHBOARD_COURSES))
+    }, [go])
 
     return (
         <DashboardTemplate
             title={translate(TEXTS.CREATE_COURSE_PAGE_TITLE)}
             backButtonProps={{
                 children: translate(TEXTS.GO_BACK_COURSES),
-                onClick: () => go(renderText(PATHS.DASHBOARD_COURSES, { organizationShortId: organization.shortId }))
+                onClick: () => go(renderText(PATHS.DASHBOARD_COURSES))
             }}>
             <CreateCourseMachine onFinish={goCourses}></CreateCourseMachine>
         </DashboardTemplate>

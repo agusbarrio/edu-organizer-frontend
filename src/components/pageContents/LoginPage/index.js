@@ -9,17 +9,20 @@ import useLocaleContext from "hooks/useLocaleContext"
 import useNavigate from "hooks/useNavigate"
 import useLoginService from "services/auth/useLoginService"
 import { renderText } from "utils/text"
+import useSessionContext from "hooks/useSessionContext"
 
 function LoginPage() {
     const { translate } = useLocaleContext()
+    const { userLogin } = useSessionContext()
     const { login } = useLoginService()
-    const { go } = useNavigate()
     return (
         <PublicTemplate title={translate(TEXTS.LOGIN_PAGE_TITLE)}>
             <Stack spacing={2} width={'100%'}>
                 <LoginForm onSubmit={async ({ email, password }) => {
                     const result = await login({ email, password })
-                    if (result) go(renderText(PATHS.DASHBOARD, { organizationShortId: result.organization.shortId }))
+                    if (result) {
+                        userLogin({ ...result, permissions: result.permissions.map(({ permission }) => permission) })
+                    }
                 }}></LoginForm>
                 <Link href={PATHS.RECOVER_PASSWORD}>{translate(TEXTS.LOGIN_PAGE_RECOVER_PASSWORD_LINK)}</Link>
                 <Link href={PATHS.REGISTER}>{translate(TEXTS.LOGIN_PAGE_REGISTER_LINK)}</Link>

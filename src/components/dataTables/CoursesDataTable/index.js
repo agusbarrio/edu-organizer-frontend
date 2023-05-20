@@ -16,21 +16,21 @@ import _ from "lodash"
 
 function CoursesDataTable({ courses = [], onDelete }) {
     const { translate } = useLocaleContext()
-    const { organization } = useSessionContext()
+
     const { go } = useNavigate()
     const { openModal } = useModalContext()
     const { deleteCourse } = useDeleteCourseService()
     const navigateToCourse = useCallback((courseId) => {
-        go(renderText(PATHS.DASHBOARD_COURSE, { organizationShortId: organization.shortId, courseId }))
-    }, [go, organization])
+        go(renderText(PATHS.DASHBOARD_COURSE, { courseId }))
+    }, [go])
 
     const navigateToEditCourse = useCallback((courseId) => {
         //TODO crear pagina de editar curso
     }, [])
 
     const navigateToCreateCourse = useCallback(() => {
-        go(renderText(PATHS.DASHBOARD_COURSE_CREATE, { organizationShortId: organization.shortId }))
-    }, [go, organization])
+        go(renderText(PATHS.DASHBOARD_COURSE_CREATE))
+    }, [go])
 
     const handleClickDeleteCourse = useCallback((courseId) => {
         openModal(ConfirmModal, {

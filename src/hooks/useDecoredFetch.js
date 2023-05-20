@@ -7,10 +7,12 @@ import FETCH_ERROR_TYPES from 'constants/FETCH_ERROR_TYPES';
 import CORE_TEXTS from 'constants/CORE_TEXTS';
 import useFetch from './useFetch';
 import useSnackbar from './useSnackbar';
+import useSessionContext from './useSessionContext';
 
 function useDecoredFetch() {
   const { success: successNotification, error: errorNotification } =
     useSnackbar();
+  const { userLogout, courseLogout } = useSessionContext()
   const { translate } = useLocaleContext();
   const defaultConfig = useMemo(
     () => ({
@@ -40,9 +42,9 @@ function useDecoredFetch() {
             if (type === FETCH_ERROR_TYPES.SERVER) {
               const status = _.get(error, 'response.status');
               if (status === 401 && resultConfig.logout401) {
-                //TODO handle logout
+                userLogout()
+                courseLogout()
               }
-
               const errorCode = _.get(error, 'response.data.errorCode');
               if (!!CORE_TEXTS.SERVER_ERRORS[errorCode])
                 resultErrorMessage = translate(
@@ -61,6 +63,8 @@ function useDecoredFetch() {
       errorNotification,
       successNotification,
       translate,
+      userLogout,
+      courseLogout
     ]
   );
 

@@ -10,14 +10,14 @@ import useDevice from 'hooks/useDevice';
 import HomeLinkIcon from 'components/navigation/HomeLinkIcon';
 
 function Header({ innerRef, onClickDrawerButton }) {
-    const { user } = useSessionContext()
+    const { user: { logged } } = useSessionContext()
     const { isSm } = useDevice()
     return (
         <AppBar position="static" ref={innerRef}>
             <Toolbar sx={{ justifyContent: 'space-between' }}>
                 {!isSm && <HomeLinkIcon sx={{ color: 'inherit' }}></HomeLinkIcon>}
                 {isSm && <DrawerMenuButton onClick={onClickDrawerButton}></DrawerMenuButton>}
-                {user && (<AccountMenuButton></AccountMenuButton>)}
+                {logged && (<AccountMenuButton></AccountMenuButton>)}
             </Toolbar>
         </AppBar>
     );

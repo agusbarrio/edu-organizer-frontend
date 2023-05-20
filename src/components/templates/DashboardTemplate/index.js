@@ -1,13 +1,14 @@
 import { ArrowBack } from "@mui/icons-material";
-import { Box, Button, Divider, Stack, } from "@mui/material";
+import { Box, Button, Divider, Skeleton, Stack, } from "@mui/material";
 import Header from "components/dataDisplay/Header";
 import DrawerMenu from "components/dataDisplay/DrawerMenu";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Truncate from "components/generic/Truncate";
+import LoadingBox from "components/dataDisplay/LoadingBox";
 
 const drawerWidth = 240;
 
-function DashboardTemplate({ children, title, subtitle, backButtonProps }) {
+function DashboardTemplate({ children, title, subtitle, backButtonProps, loading = false }) {
 
     const drawerRef = useRef(null)
     const headerRef = useRef(null)
@@ -47,9 +48,13 @@ function DashboardTemplate({ children, title, subtitle, backButtonProps }) {
                             {!!subtitle && <Truncate line={2} element={'h2'} variant={'subtitle1'} sx={{ pl: 4, fontWeight: 'bold' }}>{subtitle}</Truncate>}
                             <Divider></Divider>
                         </Stack>}
-                    <Box height={`calc(100% - ${titleHeight}px)`} width={'100%'} padding={2} overflow={'scroll'}>
-                        {children}
-                    </Box>
+                    {
+                        loading
+                            ? <LoadingBox></LoadingBox>
+                            : <Box height={`calc(100% - ${titleHeight}px)`} width={'100%'} padding={2} overflow={'scroll'}>
+                                {children}
+                            </Box>
+                    }
                 </Box>
             </Stack>
         </Stack >

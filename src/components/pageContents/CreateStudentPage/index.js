@@ -12,7 +12,6 @@ import useCreateStudentService from "services/students/useCreateStudentService"
 import { renderText } from "utils/text"
 
 function CreateStudentPage() {
-    const { organization } = useSessionContext()
     const { translate } = useLocaleContext()
     const { go } = useNavigate()
     const { createStudent } = useCreateStudentService()
@@ -32,7 +31,7 @@ function CreateStudentPage() {
             subtitle={translate(TEXTS.CREATE_STUDENT_PAGE_SUBTITLE)}
             backButtonProps={{
                 children: translate(TEXTS.GO_BACK_STUDENTS),
-                onClick: () => go(renderText(PATHS.DASHBOARD_STUDENTS, { organizationShortId: organization.shortId }))
+                onClick: () => go(renderText(PATHS.DASHBOARD_STUDENTS))
             }}>
             <Container maxWidth={'md'}>
                 <StudentForm onSubmit={handleSubmit} innerRef={formRef}></StudentForm>

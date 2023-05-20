@@ -1,8 +1,9 @@
-import HomePage from 'components/pageContents/HomePage'
+import Redirect from 'components/navigation/Redirect'
+import PATHS from 'constants/PATHS'
 
 export default function Home() {
   return (
-    <HomePage></HomePage>
+    <Redirect url={PATHS.LOGIN}></Redirect>
   )
 }
 

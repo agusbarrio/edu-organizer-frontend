@@ -6,11 +6,13 @@ import TEXTS from "constants/TEXTS"
 
 import useLocaleContext from "hooks/useLocaleContext"
 import useSessionContext from "hooks/useSessionContext"
+import { useMemo } from "react"
 import { renderText } from "utils/text"
 
 function AdminMenu() {
     const { translate } = useLocaleContext()
-    const { organization: { shortId } } = useSessionContext()
+    const { user: { organization: { shortId } } } = useSessionContext()
+
     return (
         <List>
             <NavListButton linkProps={{ href: renderText(PATHS.DASHBOARD_COURSES, { organizationShortId: shortId }) }} icon={<MenuBook></MenuBook>} text={translate(TEXTS.ADMIN_MENU_BUTTON_COURSES)}></NavListButton>
