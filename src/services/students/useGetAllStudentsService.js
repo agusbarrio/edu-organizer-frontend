@@ -13,7 +13,7 @@ function useGetAllStudentsService(reqConfigDefault) {
             );
             return result;
         },
-        [get]
+        [get, reqConfigDefault],
     );
     return { getAllStudents };
 }

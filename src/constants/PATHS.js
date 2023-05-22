@@ -6,7 +6,7 @@ const PATHS = {
     DASHBOARD: '/dashboard',
     LOGIN_COURSE: '/login-course',
     COURSE: '/course',
-    RECOVER_PASSWORD: '/recover-password',
+    RECOVER_PASSWORD: '/auth/recover',
     DASHBOARD_COURSES: '/dashboard/courses',
     DASHBOARD_COURSE: '/dashboard/courses/{{courseId}}',
     DASHBOARD_STUDENTS: '/dashboard/students',

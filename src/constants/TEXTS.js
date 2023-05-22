@@ -17,6 +17,7 @@ const TEXTS = {
     REGISTER_HEAD_TITLE: { es: 'Registrarse', en: 'Register' },
     REGISTER_HEAD_DESCRIPTION: { es: 'Registra tu organización y empieza a organizar tus clases', en: 'Register your organization and start organizing your classes' },
     REGISTER_PAGE_TITLE: { es: 'Registrarse', en: 'Register' },
+    REGISTER_BUTTON: { es: 'Registrarse', en: 'Register' },
     LOGIN_PAGE_RECOVER_PASSWORD_LINK: { es: '¿Olvidaste tu contraseña?', en: 'Forgot your password?' },
     LOGIN_PAGE_REGISTER_LINK: { es: '¿No tienes una cuenta? Regístrate', en: 'Don\'t have an account? Register' },
     REGISTER_PAGE_LOGIN_LINK: { es: '¿Ya tienes una cuenta? Inicia sesión', en: 'Already have an account? Login' },
@@ -74,6 +75,8 @@ const TEXTS = {
     SET_COURSE_STUDENTS_TITLE: { es: 'Seleccion de estudiantes', en: 'Students selection' },
     SET_COURSE_CLASS_SESSIONS_CONFIG_TITLE: { es: 'Configuracion de clases', en: 'Class sessions config' },
     EDIT_SELECTED_COURSES_MODAL_TITLE: { es: 'Editar cursos seleccionados', en: 'Edit selected courses' },
+    RECOVER_PAGE_TITLE: { es: 'Recuperar contraseña', en: 'Recover password' },
+    RECOVER_PAGE_GO_BACK_LOGIN_LINK: { es: 'Volver', en: 'Go back' },
 }
 
 export default TEXTS
