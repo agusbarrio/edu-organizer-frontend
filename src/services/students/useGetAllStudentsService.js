@@ -6,15 +6,16 @@ function useGetAllStudentsService(reqConfigDefault) {
     const { get } = useDecoredFetch();
     const getAllStudents = useCallback(
         async (reqConfig) => {
+            const config = reqConfig ?? reqConfigDefault;
             const result = await get(
                 STUDENTS_ENDPOINTS.STUDENTS,
-                reqConfig || reqConfigDefault,
+                config,
                 { showSuccessMessage: false },
             );
             return result;
-        },
-        [get, reqConfigDefault],
-    );
+
+        }, [get, reqConfigDefault])
+
     return { getAllStudents };
 }
 

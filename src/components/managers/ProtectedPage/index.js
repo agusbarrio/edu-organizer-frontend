@@ -4,6 +4,7 @@ import useSessionContext from "hooks/useSessionContext";
 import { useMemo } from "react"
 import _ from "lodash"
 import LoadingBox from "components/dataDisplay/LoadingBox";
+import { Box } from "@mui/material";
 
 function ProtectedPage({ children, needUserSession, userPermissionsAllowed, needCourseSession }) {
     const { user, course, loading } = useSessionContext();
@@ -36,7 +37,7 @@ function ProtectedPage({ children, needUserSession, userPermissionsAllowed, need
     return (
         <>
             {loading
-                ? <LoadingBox></LoadingBox>
+                ? <Box sx={{ width: '100vw', height: '100vh' }}><LoadingBox></LoadingBox></Box>
                 :
                 <>
                     {redirectPath ? <Redirect url={redirectPath} /> : children}
