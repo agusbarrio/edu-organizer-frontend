@@ -16,7 +16,7 @@ function CoursesPage() {
     const { getAllCourses } = useGetAllCoursesService()
     const { translate } = useLocaleContext()
     const { go } = useNavigate()
-    const { value: courses, runService } = useService({ service: getAllCourses, defeaultValue: [] })
+    const { value: courses, runService } = useService({ service: getAllCourses, defaultValue: [] })
     useEffect(() => {
         runService()
     }, [runService])

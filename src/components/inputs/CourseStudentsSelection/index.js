@@ -12,10 +12,7 @@ import NewStudentCard from "./components/NewStudentCard"
 import useDevice from "hooks/useDevice"
 
 function CourseStudentsSelection({ onChange, initialStudents = [] }) {
-    const reqConfig = useMemo(() => ({
-        params: { withCourse: false }
-    }), [])
-    const { getAllStudents } = useGetAllStudentsService(reqConfig)
+    const { getAllStudents } = useGetAllStudentsService()
     const { loading, runService } = useService({ defaultValue: [], service: getAllStudents })
 
     const [studentsToSelect, setStudentsToSelect] = useState([])
@@ -26,7 +23,7 @@ function CourseStudentsSelection({ onChange, initialStudents = [] }) {
     }, [students, onChange])
 
     useEffect(() => {
-        runService().then((result) => {
+        runService({ params: { withCourse: false } }).then((result) => {
             setStudentsToSelect(result)
         })
     }, [runService])

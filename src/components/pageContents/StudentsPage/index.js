@@ -14,7 +14,7 @@ function StudentsPage() {
     const { getAllStudents } = useGetAllStudentsService()
     const { translate } = useLocaleContext()
     const { go } = useNavigate()
-    const { value: students, runService } = useService({ service: getAllStudents, defeaultValue: [] })
+    const { value: students, runService } = useService({ service: getAllStudents, defaultValue: [] })
     useEffect(() => {
         runService()
     }, [runService])
