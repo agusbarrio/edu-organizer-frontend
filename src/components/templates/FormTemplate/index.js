@@ -3,7 +3,7 @@ import SubmitButton from "components/generic/SubmitButton";
 import CORE_TEXTS from "constants/CORE_TEXTS";
 import useLocaleContext from "hooks/useLocaleContext";
 
-function FormTemplate({ children, submitButtonProps, showSubmitButton = true, spacing = 2, containerProps, childrenContainerProps }) {
+function FormTemplate({ children, submitButtonProps, showSubmitButton = true, spacing = 2, containerProps, childrenContainerProps, outerChildren }) {
     const { translate } = useLocaleContext()
 
     return (
@@ -12,6 +12,7 @@ function FormTemplate({ children, submitButtonProps, showSubmitButton = true, sp
                 {children}
             </Stack>
             {showSubmitButton && <SubmitButton {...submitButtonProps} sx={{ alignSelf: 'flex-end', ...submitButtonProps?.sx }}>{submitButtonProps?.children ?? translate(CORE_TEXTS.GENERIC_SUBMIT)}</SubmitButton>}
+            {outerChildren}
         </Stack>
     );
 }

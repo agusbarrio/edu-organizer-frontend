@@ -67,12 +67,15 @@ const DEFAULT_VALIDATIONS = {
     moreThan: { message: CORE_TEXTS.VALIDATIONS_MORE_THAN_NUMBER },
     lessThan: { message: CORE_TEXTS.VALIDATIONS_LESS_THAN_NUMBER },
   },
-
   ID: {
     integer: { value: true, message: CORE_TEXTS.VALIDATIONS_INTEGER },
     required: { value: true, message: CORE_TEXTS.VALIDATIONS_REQUIRED },
     moreThan: { value: 0, message: CORE_TEXTS.VALIDATIONS_MIN_NUMBER },
   },
+  ONE_OF: {
+    oneOf: { value: [], message: CORE_TEXTS.VALIDATIONS_ONE_OF },
+    required: { value: false, message: CORE_TEXTS.VALIDATIONS_REQUIRED },
+  }
 };
 
 export default DEFAULT_VALIDATIONS;

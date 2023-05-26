@@ -4,7 +4,7 @@ import PATHS from "constants/PATHS"
 import TEXTS from "constants/TEXTS"
 import useLocaleContext from "hooks/useLocaleContext"
 import useNavigate from "hooks/useNavigate"
-import { useCallback, useMemo } from "react"
+import { useCallback, useMemo, useRef } from "react"
 import useSessionContext from "hooks/useSessionContext"
 import { renderText } from "utils/text"
 import CustomDataGrid from "components/generic/CustomDataGrid"
@@ -13,6 +13,7 @@ import useModalContext from "hooks/useModalContext"
 import ConfirmModal from "components/generic/modals/ConfirmModal"
 import useDeleteCourseService from "services/courses/useDeleteCourseService"
 import _ from "lodash"
+import InputsCreation from "components/inputs/InputsCreation"
 
 function CoursesDataTable({ courses = [], onDelete }) {
     const { translate } = useLocaleContext()
@@ -41,15 +42,21 @@ function CoursesDataTable({ courses = [], onDelete }) {
         })
     }, [openModal, translate, deleteCourse, onDelete])
 
+
     const handleEditSelection = useCallback((rowsSelected) => {
+        //TODO implementar edit multiple
+    }, [])
+
+    const handleDeleteSelection = useCallback((rowsSelected) => {
         openModal(ConfirmModal, {
-            title: translate(TEXTS.EDIT_SELECTED_COURSES_MODAL_TITLE),
-            children: <div>TODO</div>,//TODO agregar componente para definir los inputs del formulario de asistencia
-            onConfirm: () => console.log(rowsSelected) //TODO llamar servicio
+            title: translate(TEXTS.DELETE_COURSES_SELECTION_MODAL_TITLE),
+            textContent: translate(TEXTS.DELETE_COURSES_SELECTION_MODAL_CONTENT),
+            onConfirm: async () => {
+                //TODO implementar delete multiple
+            }
+
         })
     }, [openModal, translate])
-
-    const handleDeleteSelection = useCallback(() => { }, []) //TODO llamar servicio
 
     const columns = useMemo(() => {
         return [

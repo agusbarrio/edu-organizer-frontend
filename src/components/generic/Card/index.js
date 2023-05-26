@@ -54,10 +54,6 @@ function Card({ children, actions, title, cardContentProps, help, ...props }) {
   const toggleHelp = useCallback(() => {
     setHelpOpen((prevHelpOpen) => !prevHelpOpen);
   }, []);
-
-
-
-
   const cardContentHeight = useMemo(() => {
     return `calc(100% - ${titleHeight + topDividerHeight + bottomDividerHeight + actionsHeight}px)`
   }, [titleHeight, topDividerHeight, bottomDividerHeight, actionsHeight])
@@ -68,11 +64,9 @@ function Card({ children, actions, title, cardContentProps, help, ...props }) {
         <Stack padding={2} ref={titleRef} direction={'row'}>
           <Truncate variant="h5" sx={{ flexGrow: 1 }}>{title}</Truncate>
           {!!help && (
-            <Tooltip title={help} sx={{ maxWidth: 300 }} open={helpOpen} arrow>
-              <IconButton size="small" color="info" onClick={toggleHelp} >
-                <HelpOutline />
-              </IconButton>
-            </Tooltip>
+            <IconButton size="small" color="info" onClick={toggleHelp} tooltip={help} tooltipProps={{ sx: { maxWidth: 300 }, arrow: true, open: helpOpen }} >
+              <HelpOutline />
+            </IconButton>
           )}
         </Stack>
       )}

@@ -32,9 +32,11 @@ const machine = createMachine({
       on: {
         NEXT: {
           target: 'createCourse',
+          actions: [assign({ inputs: (context, event) => event.inputs })],
         },
         PREV: {
           target: 'setCourseStudents',
+          actions: [assign({ inputs: (context, event) => event.inputs })],
         },
       },
     },

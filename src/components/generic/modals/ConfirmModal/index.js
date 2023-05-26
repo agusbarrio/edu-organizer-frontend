@@ -6,9 +6,10 @@ import {
   DialogActions,
   Button,
   Divider,
+  Box,
 } from '@mui/material';
 import PropTypes from 'prop-types';
-import { useCallback } from 'react';
+import { useCallback, useMemo, useRef } from 'react';
 
 import _ from 'lodash';
 import useModalContext from 'hooks/useModalContext';

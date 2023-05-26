@@ -14,6 +14,7 @@ function CreateCourseMachine({ onFinish }) {
             name: '',
             accessPin: '',
             students: [],
+            inputs: [],
         },
         actions: {
             finish: (context, event) => {
@@ -22,7 +23,17 @@ function CreateCourseMachine({ onFinish }) {
         },
         services: {
             createCourse: async (context, event) => {
-                const result = await createCourse(context)
+                const result = await createCourse({
+                    name: context.name,
+                    accessPin: context.accessPin,
+                    students: context.students.map((student) => {
+                        if (student.isNew) {
+                            return { studentData: student, isNew: true }
+                        }
+                        return { id: student.id, isNew: false }
+                    }),
+                    studentAttendanceFormData: context.inputs
+                })
                 if (!result) throw new Error('Error creating course')
             }
         }

@@ -21,7 +21,6 @@ function LocaleContextProvider({
         translation && translation[currentLang]
           ? translation[currentLang]
           : errorMessage;
-
       return renderText(text, params);
     },
     [currentLang]

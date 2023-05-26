@@ -62,7 +62,7 @@ function SelectInput({
   );
   return (
     <FormControl error={error} >
-      <InputLabel id={label} error={error}>{label}</InputLabel>
+      <InputLabel id={label} error={error} size={props?.size}>{label}</InputLabel>
       <Select
         value={value}
         onChange={handleChange}

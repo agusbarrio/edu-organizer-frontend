@@ -9,7 +9,7 @@ function useLoginService() {
       const result = await post(
         AUTH_ENDPOINTS.LOGIN,
         values,
-        { withCredentials: true },
+        {},
         { showSuccessMessage: false },
       );
       return result;

@@ -5,7 +5,7 @@ import Card from "components/generic/Card"
 function StudentsList({ onClickItem, students, listItemIconProps, cardTitle, help }) {
     return (
         <Card title={cardTitle} sx={{ width: '100%', height: '100%' }} help={help}>
-            <List sx={{ width: '100%', height: '100%', overflow: 'scroll', border: 'thin solid black', borderRadius: '.25rem' }} dense={true}>
+            <List sx={{ width: '100%', height: '100%', overflowY: 'auto', border: 'thin solid black', borderRadius: '.25rem' }} dense={true}>
                 {students.map((student) => <StudentListItem
                     onClick={() => onClickItem(student)}
                     listItemIconProps={listItemIconProps}

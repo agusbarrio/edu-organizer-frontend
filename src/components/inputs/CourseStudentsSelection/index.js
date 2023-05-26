@@ -5,11 +5,10 @@ import AvaibleStudentsListCard from "./components/AvaibleStudentsListCard"
 import useService from "hooks/useService"
 import useGetAllStudentsService from "services/students/useGetAllStudentsService"
 import { useCallback, useEffect, useMemo, useState } from "react"
-import CustomSkeleton from "./components/CustomSkeleton"
 import { v4 as uuidv4 } from 'uuid';
 import _ from "lodash"
 import NewStudentCard from "./components/NewStudentCard"
-import useDevice from "hooks/useDevice"
+import FullSkeleton from "components/generic/FullSkeleton"
 
 function CourseStudentsSelection({ onChange, initialStudents = [] }) {
     const { getAllStudents } = useGetAllStudentsService()
@@ -19,7 +18,14 @@ function CourseStudentsSelection({ onChange, initialStudents = [] }) {
     const [students, setStudents] = useState(initialStudents)
 
     useEffect(() => {
-        if (onChange) onChange(students)
+        if (onChange) onChange(students.map((student) => {
+            if (student.id) {
+                student.isNew = false
+            } else {
+                student.isNew = true
+            }
+            return student
+        }))
     }, [students, onChange])
 
     useEffect(() => {
@@ -49,15 +55,15 @@ function CourseStudentsSelection({ onChange, initialStudents = [] }) {
 
 
     return (
-        <Grid container spacing={2} sx={{ overflow: 'scroll', height: '100%' }}>
+        <Grid container spacing={2} sx={{ overflowY: 'auto', height: '100%' }}>
             <Grid item xs={12} md={4} maxHeight={'100%'} >
-                {loading ? <CustomSkeleton></CustomSkeleton> : <NewStudentCard onSubmit={handleSubmitStudent}></NewStudentCard>}
+                {loading ? <FullSkeleton></FullSkeleton> : <NewStudentCard onSubmit={handleSubmitStudent}></NewStudentCard>}
             </Grid>
             <Grid item xs={12} md={4} height={'100%'}>
-                {loading ? <CustomSkeleton></CustomSkeleton> : <AvaibleStudentsListCard students={studentsToSelect} onClickAdd={handleAddStudent}></AvaibleStudentsListCard>}
+                {loading ? <FullSkeleton></FullSkeleton> : <AvaibleStudentsListCard students={studentsToSelect} onClickAdd={handleAddStudent}></AvaibleStudentsListCard>}
             </Grid>
             <Grid item xs={12} md={4} height={'100%'}>
-                {loading ? <CustomSkeleton></CustomSkeleton> : <StudentsListCard students={students} onClickDrop={handleDropStudent}></StudentsListCard>}
+                {loading ? <FullSkeleton></FullSkeleton> : <StudentsListCard students={students} onClickDrop={handleDropStudent}></StudentsListCard>}
             </Grid>
         </Grid>
     )

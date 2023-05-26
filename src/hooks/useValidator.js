@@ -20,14 +20,12 @@ function useValidator() {
             } else {
                 yupString = yupString.nullable();
             }
-
             if (config?.url?.value) {
                 yupString = yupString.url(translate(config.url.message));
             }
             if (config?.email?.value) {
                 yupString = yupString.email(translate(config.email.message));
             }
-
             if (config?.max?.value) {
                 const max = config.max.value;
                 yupString = yupString.max(max, translate(config.max.message, { max }));
@@ -35,6 +33,10 @@ function useValidator() {
             if (config?.min?.value) {
                 const min = config.min.value;
                 yupString = yupString.min(min, translate(config.min.message, { min }));
+            }
+            if (config?.oneOf?.value) {
+                const oneOf = config.oneOf.value;
+                yupString = yupString.oneOf(oneOf, translate(config.oneOf.message, { oneOf }));
             }
 
             return yupString;
@@ -174,7 +176,12 @@ function useValidator() {
 
     const oneOf = useCallback(
         (values, config = {}) => {
-            const yupOneOf = string(config).oneOf(values);
+            const configResult = _.merge(
+                _.cloneDeep(DEFAULT_VALIDATIONS.ONE_OF),
+                config
+            );
+            configResult.oneOf.value = values;
+            const yupOneOf = string(configResult)
             return yupOneOf;
         },
         [string]

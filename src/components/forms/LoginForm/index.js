@@ -6,7 +6,6 @@ import PasswordInput from "components/generic/PasswordInput"
 import TEXTS from "constants/TEXTS"
 import { useMemo } from "react"
 import TextInput from "components/generic/TextInput"
-import { Stack } from "@mui/material"
 
 function LoginForm({ onSubmit }) {
     const { form, email, password } = useValidator()

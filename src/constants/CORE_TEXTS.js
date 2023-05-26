@@ -49,7 +49,8 @@ const CORE_TEXTS = {
     GENERIC_FINISH: { es: 'Finalizar', en: 'Finish' },
     GENERIC_ADD: { es: 'Agregar', en: 'Add' },
     GENERIC_EDIT_SELECTION: { es: 'Editar selección', en: 'Edit selection' },
-    GENERIC_DELETE_SELECTION: { es: 'Eliminar selección', en: 'Delete selection' }
+    GENERIC_DELETE_SELECTION: { es: 'Eliminar selección', en: 'Delete selection' },
+    VALIDATIONS_ONE_OF: { es: 'Debe ser uno de los siguientes valores: {{oneOf}}', en: 'Must be one of the following values: {{oneOf}}' },
 };
 
 export default CORE_TEXTS;

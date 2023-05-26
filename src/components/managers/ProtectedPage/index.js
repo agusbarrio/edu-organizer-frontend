@@ -37,7 +37,7 @@ function ProtectedPage({ children, needUserSession, userPermissionsAllowed, need
     return (
         <>
             {loading
-                ? <Box sx={{ width: '100vw', height: '100vh' }}><LoadingBox></LoadingBox></Box>
+                ? <Box sx={{ width: '100vw', height: '100dvh' }}><LoadingBox></LoadingBox></Box>
                 :
                 <>
                     {redirectPath ? <Redirect url={redirectPath} /> : children}

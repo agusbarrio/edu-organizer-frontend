@@ -36,7 +36,7 @@ function DashboardTemplate({ children, title, subtitle, backButtonProps, rightBu
     }, [titleRef])
 
     return (
-        <Stack height={'100vh'} width={'100vw'} >
+        <Stack height={'100dvh'} width={'100vw'} >
             <Header onClickDrawerButton={handleOpenDrawer} innerRef={headerRef}></Header>
             <Stack direction={'row'} height={`calc(100% - ${headerHeight}px)`}>
                 <DrawerMenu drawerWidth={drawerWidth} innerRef={drawerRef}></DrawerMenu>
@@ -58,7 +58,7 @@ function DashboardTemplate({ children, title, subtitle, backButtonProps, rightBu
                     {
                         loading
                             ? <LoadingBox></LoadingBox>
-                            : <Box height={`calc(100% - ${titleHeight}px)`} width={'100%'} padding={2} overflow={'scroll'}>
+                            : <Box sx={{ padding: 2, height: `calc(100% - ${titleHeight}px)`, width: '100%' }} >
                                 {children}
                             </Box>
                     }
