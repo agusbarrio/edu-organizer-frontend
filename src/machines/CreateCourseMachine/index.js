@@ -5,7 +5,7 @@ import SetCourseDataStep from "./steps/SetCourseDataStep";
 import SetCourseStudentsStep from "./steps/SetCourseStudentsStep";
 import LoadingBox from "components/dataDisplay/LoadingBox";
 import useCreateCourseService from "services/courses/useCreateCourseService";
-import SetCourseClassSessionsConfigStep from "./steps/SetCourseClassSessionsConfigStep";
+import SetCourseStudentAttendanceFormDataStep from "./steps/SetCourseStudentAttendanceFormDataStep";
 
 function CreateCourseMachine({ onFinish }) {
     const { createCourse } = useCreateCourseService()
@@ -14,7 +14,7 @@ function CreateCourseMachine({ onFinish }) {
             name: '',
             accessPin: '',
             students: [],
-            inputs: [],
+            studentAttendanceFormData: [],
         },
         actions: {
             finish: (context, event) => {
@@ -32,7 +32,7 @@ function CreateCourseMachine({ onFinish }) {
                         }
                         return { id: student.id, isNew: false }
                     }),
-                    studentAttendanceFormData: context.inputs
+                    studentAttendanceFormData: context.studentAttendanceFormData
                 })
                 if (!result) throw new Error('Error creating course')
             }
@@ -45,8 +45,8 @@ function CreateCourseMachine({ onFinish }) {
                 return SetCourseDataStep
             case 'setCourseStudents':
                 return SetCourseStudentsStep
-            case 'setCourseClassSessionsConfig':
-                return SetCourseClassSessionsConfigStep
+            case 'setCourseStudentAttendanceFormData':
+                return SetCourseStudentAttendanceFormDataStep
             case 'createCourse':
                 return LoadingBox
             case 'finish':

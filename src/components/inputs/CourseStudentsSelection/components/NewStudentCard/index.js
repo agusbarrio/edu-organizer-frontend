@@ -1,10 +1,5 @@
-import { RemoveCircleOutline } from "@mui/icons-material";
-import { List } from "@mui/material";
-import StudentListItem from "components/dataDisplay/StudentListItem";
 import StudentForm from "components/forms/StudentForm";
 import Card from "components/generic/Card";
-
-import IconButton from "components/generic/IconButton";
 import CORE_TEXTS from "constants/CORE_TEXTS";
 import TEXTS from "constants/TEXTS";
 import useLocaleContext from "hooks/useLocaleContext";
@@ -20,7 +15,7 @@ function NewStudentCard({ onSubmit }) {
     }, [onSubmit, formRef])
 
     return (
-        <Card sx={{ width: '100%', height: '100%' }} title={translate(TEXTS.COURSE_CREATE_STUDENT_CARD_TITLE)} help={translate(TEXTS.COURSE_CREATE_STUDENT_CARD_HELP)}>
+        <Card title={translate(TEXTS.COURSE_CREATE_STUDENT_CARD_TITLE)} help={translate(TEXTS.COURSE_CREATE_STUDENT_CARD_HELP)}>
             <StudentForm withCourse={false} onSubmit={handleSubmitStudent} templateProps={{ submitButtonProps: { children: translate(CORE_TEXTS.GENERIC_ADD) } }} size={"small"} innerRef={formRef}></StudentForm>
         </Card>
     );

@@ -14,12 +14,16 @@ import ConfirmModal from "components/generic/modals/ConfirmModal"
 import useDeleteCourseService from "services/courses/useDeleteCourseService"
 import _ from "lodash"
 import InputsCreation from "components/inputs/InputsCreation"
+import useDeleteCoursesService from "services/courses/useDeleteCoursesService"
+import useEditCoursesService from "services/courses/useEditCoursesService"
 
-function CoursesDataTable({ courses = [], onDelete }) {
+function CoursesDataTable({ courses = [], onDelete, onEdit }) {
     const { translate } = useLocaleContext()
     const { go } = useNavigate()
     const { openModal } = useModalContext()
     const { deleteCourse } = useDeleteCourseService()
+    const { deleteCourses } = useDeleteCoursesService()
+    const { editCourses } = useEditCoursesService()
     const navigateToCourse = useCallback((courseId) => {
         go(renderText(PATHS.DASHBOARD_COURSE, { courseId }))
     }, [go])
@@ -42,21 +46,40 @@ function CoursesDataTable({ courses = [], onDelete }) {
         })
     }, [openModal, translate, deleteCourse, onDelete])
 
+    const inputsCreationRef = useRef()
 
     const handleEditSelection = useCallback((rowsSelected) => {
-        //TODO implementar edit multiple
-    }, [])
+        openModal(ConfirmModal, {
+            PaperProps: { sx: { height: '100%' } },
+            maxWidth: false,
+            title: translate(TEXTS.EDIT_COURSES_SELECTION_MODAL_TITLE),
+            children: <InputsCreation ref={inputsCreationRef}></InputsCreation>,
+            onConfirm: async () => {
+                if (inputsCreationRef.current) {
+                    const ids = rowsSelected.map((row) => row.id)
+                    const studentAttendanceFormData = inputsCreationRef.current.getValue()
+                    const result = await editCourses({ ids, studentAttendanceFormData })
+                    if (result && _.isFunction(onEdit)) {
+                        onEdit()
+                    }
+                }
+            }
+        })
+    }, [openModal, translate, editCourses, onEdit, inputsCreationRef])
 
     const handleDeleteSelection = useCallback((rowsSelected) => {
         openModal(ConfirmModal, {
             title: translate(TEXTS.DELETE_COURSES_SELECTION_MODAL_TITLE),
             textContent: translate(TEXTS.DELETE_COURSES_SELECTION_MODAL_CONTENT),
             onConfirm: async () => {
-                //TODO implementar delete multiple
+                const ids = rowsSelected.map((row) => row.id)
+                const result = await deleteCourses(ids)
+                if (result && _.isFunction(onDelete)) {
+                    onDelete()
+                }
             }
-
         })
-    }, [openModal, translate])
+    }, [openModal, translate, deleteCourses, onDelete])
 
     const columns = useMemo(() => {
         return [
@@ -85,7 +108,7 @@ function CoursesDataTable({ courses = [], onDelete }) {
         ]
     }, [translate, navigateToCourse, handleClickDeleteCourse, navigateToEditCourse])
 
-    return <CustomDataGrid rows={courses} columns={columns} onClickEditSelection={handleEditSelection} onClickDeleteSelection={handleDeleteSelection} checkboxSelection rowSelection></CustomDataGrid>
+    return <CustomDataGrid rows={courses} columns={columns} onClickEditSelection={handleEditSelection} onClickDeleteSelection={handleDeleteSelection} checkboxSelection rowSelection ></CustomDataGrid>
 }
 
 export default CoursesDataTable

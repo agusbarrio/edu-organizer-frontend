@@ -3,16 +3,17 @@ import Card from "components/generic/Card"
 import List from "components/generic/List"
 import ListItemButton from "components/generic/ListItemButton"
 
-function StudentsList({ onClickItem, students, itemIconProps, cardTitle, help }) {
+function CoursesList({ onClickItem, courses, itemIconProps, cardTitle, help }) {
+    console.log(courses)
     return (
         <Card title={cardTitle} help={help}>
             <List>
-                {students.map(student => <>
+                {courses.map(course => <>
                     <ListItemButton
-                        key={student.id || student.key}
+                        key={course.id || course.key}
                         iconProps={itemIconProps}
-                        buttonProps={{ onClick: () => { if (onClickItem) onClickItem(student) } }}
-                        text={`${student.firstName} ${student.lastName}`}
+                        buttonProps={{ onClick: () => { if (onClickItem) onClickItem(course) } }}
+                        text={`${course.name}`}
                     ></ListItemButton>
                     <Divider></Divider>
                 </>)}
@@ -21,4 +22,4 @@ function StudentsList({ onClickItem, students, itemIconProps, cardTitle, help })
     )
 }
 
-export default StudentsList
+export default CoursesList

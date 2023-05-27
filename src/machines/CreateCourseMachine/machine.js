@@ -19,7 +19,7 @@ const machine = createMachine({
     setCourseStudents: {
       on: {
         NEXT: {
-          target: 'setCourseClassSessionsConfig',
+          target: 'setCourseStudentAttendanceFormData',
           actions: [assign({ students: (context, event) => event.students })],
         },
         PREV: {
@@ -28,15 +28,15 @@ const machine = createMachine({
         },
       },
     },
-    setCourseClassSessionsConfig: {
+    setCourseStudentAttendanceFormData: {
       on: {
         NEXT: {
           target: 'createCourse',
-          actions: [assign({ inputs: (context, event) => event.inputs })],
+          actions: [assign({ studentAttendanceFormData: (context, event) => event.studentAttendanceFormData })],
         },
         PREV: {
           target: 'setCourseStudents',
-          actions: [assign({ inputs: (context, event) => event.inputs })],
+          actions: [assign({ studentAttendanceFormData: (context, event) => event.studentAttendanceFormData })],
         },
       },
     },

@@ -1,16 +1,26 @@
 const CORE_TEXTS = {
     SERVER_ERRORS: {
-        //Generic errors
-        E500: { es: 'Error interno del servidor.', en: 'Internal server error.' },
+        //400
         E400: { es: 'Petición incorrecta', en: 'Bad request' },
+        //401
         E401: { es: 'No autorizado', en: 'Unauthorized' },
-        E403: { es: 'Prohibido', en: 'Forbidden' },
-        E404: { es: 'No encontrado.', en: 'Not found.' },
-        E409: { es: 'Conflicto', en: 'Conflict' },
-        E422: { es: 'Entidad no procesable', en: 'Unprocessable entity' },
-        //Custom errors
         E401_1: { es: 'Credenciales inválidas', en: 'Invalid credentials' },
+        //403
+        E403: { es: 'Prohibido', en: 'Forbidden' },
+        E403_1: { es: 'No tiene permiso para acceder a este recurso', en: 'You do not have permission to access this resource' },
+        //404
+        E404: { es: 'No encontrado.', en: 'Not found.' },
+        E404_1: { es: 'Usuario no encontrado.', en: 'User not found.' },
+        E404_2: { es: 'Curso no encontrado.', en: 'Course not found.' },
+        E404_3: { es: 'Estudiante no encontrado.', en: 'Student not found.' },
+        //409
+        E409: { es: 'Conflicto', en: 'Conflict' },
         E409_1: { es: 'Email no disponible', en: 'Email not available' },
+        //422
+        E422: { es: 'Entidad no procesable', en: 'Unprocessable entity' },
+        //500
+        E500: { es: 'Error interno del servidor.', en: 'Internal server error.' },
+        E500_1: { es: 'Error enviando el correo electrónico.', en: 'Error sending email.' },
     },
     VALIDATIONS_REQUIRED: { es: 'Campo obligatorio', en: 'Required field' },
     VALIDATIONS_EMAIL: { es: 'Correo electrónico inválido.', en: 'Invalid email.' },

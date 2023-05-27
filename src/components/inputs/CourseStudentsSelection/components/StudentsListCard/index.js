@@ -12,7 +12,7 @@ function StudentsListCard({ students, onClickDrop }) {
         help={translate(TEXTS.COURSE_STUDENTS_LIST_CARD_HELP)}
         onClickItem={onClickDrop}
         students={students}
-        listItemIconProps={{ children: <RemoveCircleOutline color="error" /> }}
+        itemIconProps={{ children: <RemoveCircleOutline color="error" /> }}
     ></StudentsList>
 }
 

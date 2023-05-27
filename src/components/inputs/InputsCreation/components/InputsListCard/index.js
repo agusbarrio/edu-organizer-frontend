@@ -13,7 +13,7 @@ function InputsListCard({ inputs, onClickDrop }) {
         help={translate(TEXTS.INPUTS_LIST_CARD_HELP)}
         onClickItem={onClickDrop}
         inputs={inputs}
-        listItemIconProps={{ children: <RemoveCircleOutline color="error" /> }}
+        itemIconProps={{ children: <RemoveCircleOutline color="error" /> }}
     ></InputsList>
 }
 

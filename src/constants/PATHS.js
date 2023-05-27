@@ -15,6 +15,7 @@ const PATHS = {
     DASHBOARD_CLASS_SESSIONS: '/dashboard/class-sessions',
     DASHBOARD_COURSE_CREATE: '/dashboard/courses/create',
     DASHBOARD_STUDENT_CREATE: '/dashboard/students/create',
+    NOT_FOUND: '/404',
 }
 
 export default PATHS;

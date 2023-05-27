@@ -92,6 +92,9 @@ const TEXTS = {
     INPUTS_LIST_CARD_HELP: { es: 'Estos son los campos que se van a mostrar en el formulario de asistencia de cada estudiante.', en: 'These are the fields that will be shown in the attendance form of each student.' },
     DELETE_COURSES_SELECTION_MODAL_TITLE: { es: 'Eliminar cursos', en: 'Delete courses' },
     DELETE_COURSES_SELECTION_MODAL_CONTENT: { es: '¿Estás seguro que deseas eliminar los cursos seleccionados?', en: 'Are you sure you want to delete the selected courses?' },
+    COPY_CONFIG_COURSES_LIST_CARD_TITLE: { es: 'Cursos', en: 'Courses' },
+    COPY_CONFIG_LIST_CARD_HELP: { es: 'Estos son los formularios de tus otros cursos. Podés elegir uno para copiarlo y usarlo como base para el formulario de este curso.', en: 'These are the forms of your other courses. You can choose one to copy it and use it as a base for the form of this course.' },
+    EDIT_COURSES_SELECTION_MODAL_TITLE: { es: 'Editar cursos', en: 'Edit courses' },
 }
 
 export default TEXTS

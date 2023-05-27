@@ -8,12 +8,15 @@ import CORE_TEXTS from 'constants/CORE_TEXTS';
 import useFetch from './useFetch';
 import useSnackbar from './useSnackbar';
 import useSessionContext from './useSessionContext';
+import useNavigate from './useNavigate';
+import PATHS from 'constants/PATHS';
 
 function useDecoredFetch() {
   const { success: successNotification, error: errorNotification } =
     useSnackbar();
   const { userLogout, courseLogout } = useSessionContext()
   const { translate } = useLocaleContext();
+  const { go } = useNavigate()
   const defaultConfig = useMemo(
     () => ({
       successMessage: translate(CORE_TEXTS.GENERIC_SUCCESS),
@@ -22,6 +25,7 @@ function useDecoredFetch() {
       errorMessage: null,
       defaultErrorMessage: translate(CORE_TEXTS.GENERIC_ERROR),
       logout401: true,
+      navigate404: true,
     }),
     [translate]
   );
@@ -44,6 +48,9 @@ function useDecoredFetch() {
               if (status === 401 && resultConfig.logout401) {
                 userLogout()
                 courseLogout()
+              }
+              if (status === 404 && resultConfig.navigate404) {
+                go(PATHS.NOT_FOUND)
               }
               const errorCode = _.get(error, 'response.data.errorCode');
               if (!!CORE_TEXTS.SERVER_ERRORS[errorCode])

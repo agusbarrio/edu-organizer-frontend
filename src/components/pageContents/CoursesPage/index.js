@@ -33,7 +33,7 @@ function CoursesPage() {
                 }
             }}
         >
-            <CoursesDataTable courses={courses} onDelete={runService}></CoursesDataTable>
+            <CoursesDataTable courses={courses} onDelete={runService} onEdit={runService}></CoursesDataTable>
         </DashboardTemplate>
     )
 }

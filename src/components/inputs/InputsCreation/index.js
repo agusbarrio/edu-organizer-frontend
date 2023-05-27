@@ -1,19 +1,9 @@
-import Form from "components/generic/Form"
-import ControllerInput from "components/generic/ControllerInput"
-import useValidator from "hooks/useValidator"
-import useLocaleContext from "hooks/useLocaleContext"
-import PasswordInput from "components/generic/PasswordInput"
-import TEXTS from "constants/TEXTS"
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from "react"
-import TextInput from "components/generic/TextInput"
-import { Box, Button, Grid, InputAdornment, Stack } from "@mui/material"
+import { Grid } from "@mui/material"
 import { v4 as uuidv4 } from 'uuid';
-import InputsList from "components/dataDisplay/InputsList"
-import { Add, RemoveCircleOutline } from "@mui/icons-material"
-import InputForm from "components/forms/InputForm"
 import InputsListCard from "./components/InputsListCard"
-import FullSkeleton from "components/generic/FullSkeleton"
 import NewInputCard from "./components/NewInputCard"
+import CopyConfigCoursesListCard from "./components/CopyConfigCoursesListCard";
 
 
 const InputsCreation = forwardRef(({ onChange, value = [] }, ref) => {
@@ -22,7 +12,6 @@ const InputsCreation = forwardRef(({ onChange, value = [] }, ref) => {
     useEffect(() => {
         if (onChange) onChange(inputs)
     }, [inputs, onChange])
-
 
     useImperativeHandle(ref, () => ({
         getValue: () => inputs
@@ -39,12 +28,19 @@ const InputsCreation = forwardRef(({ onChange, value = [] }, ref) => {
         setInputs((prevInputs) => [...prevInputs].filter(prevInput => prevInput.key !== input.key))
     }, [])
 
+    const handleClickCourse = useCallback((course) => {
+        setInputs(course.studentAttendanceFormData)
+    }, [])
+
     return (
         <Grid container spacing={2} sx={{ overflowY: 'auto', height: '100%' }}>
-            <Grid item xs={12} md={6} maxHeight={'100%'} >
+            <Grid item xs={12} md={4} maxHeight={'100%'} >
                 <NewInputCard onSubmit={handleSubmitInput}></NewInputCard>
             </Grid>
-            <Grid item xs={12} md={6} height={'100%'}>
+            <Grid item xs={12} md={4} height={'100%'} >
+                <CopyConfigCoursesListCard onClickCourse={handleClickCourse} ></CopyConfigCoursesListCard>
+            </Grid>
+            <Grid item xs={12} md={4} height={'100%'}>
                 <InputsListCard inputs={inputs} onClickDrop={handleRemoveInput} ></InputsListCard>
             </Grid>
         </Grid>
