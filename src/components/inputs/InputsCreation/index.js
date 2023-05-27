@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import InputsListCard from "./components/InputsListCard"
 import NewInputCard from "./components/NewInputCard"
 import CopyConfigCoursesListCard from "./components/CopyConfigCoursesListCard";
-
+import _ from "lodash";
 
 const InputsCreation = forwardRef(({ onChange, value = [] }, ref) => {
     const [inputs, setInputs] = useState(value)
@@ -29,7 +29,7 @@ const InputsCreation = forwardRef(({ onChange, value = [] }, ref) => {
     }, [])
 
     const handleClickCourse = useCallback((course) => {
-        setInputs(course.studentAttendanceFormData)
+        setInputs(course.studentAttendanceFormData.map((input) => ({ key: uuidv4(), ...input })))
     }, [])
 
     return (
