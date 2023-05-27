@@ -4,7 +4,6 @@ import List from "components/generic/List"
 import ListItemButton from "components/generic/ListItemButton"
 
 function CoursesList({ onClickItem, courses, itemIconProps, cardTitle, help }) {
-    console.log(courses)
     return (
         <Card title={cardTitle} help={help}>
             <List>
