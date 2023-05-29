@@ -16,7 +16,7 @@ function DrawerMenu({ drawerWidth = 240, innerRef }) {
     const isOwner = useMemo(() => permissions.includes(USER_PERMISSIONS.OWNER), [permissions])
     const isAdmin = useMemo(() => permissions.includes(USER_PERMISSIONS.ADMIN), [permissions])
     const isSuperAdmin = useMemo(() => permissions.includes(USER_PERMISSIONS.SUPERADMIN), [permissions])
-    const { isSm } = useDevice()
+    const { lessThanSm } = useDevice()
 
     const [mobileOpen, setMobileOpen] = useState(false)
 
@@ -34,14 +34,14 @@ function DrawerMenu({ drawerWidth = 240, innerRef }) {
     }), [openMobile, closeMobile])
 
     useEffect(() => {
-        if (!isSm) {
+        if (!lessThanSm) {
             closeMobile()
         }
-    }, [isSm, closeMobile])
+    }, [lessThanSm, closeMobile])
 
     const drawerProps = useMemo(() => {
         const resultProps = { sx: { width: drawerWidth }, PaperProps: { sx: { width: drawerWidth } } }
-        if (isSm) {
+        if (lessThanSm) {
             resultProps.variant = 'temporary'
             resultProps.open = mobileOpen
             resultProps.onClose = () => {
@@ -53,11 +53,11 @@ function DrawerMenu({ drawerWidth = 240, innerRef }) {
             resultProps.PaperProps.sx.position = 'static'
         }
         return resultProps
-    }, [isSm, mobileOpen, drawerWidth, closeMobile])
+    }, [lessThanSm, mobileOpen, drawerWidth, closeMobile])
 
     return (
         <Drawer {...drawerProps} >
-            {isSm && (
+            {lessThanSm && (
                 <>
                     <DrawerHeader></DrawerHeader>
                     <Divider></Divider>

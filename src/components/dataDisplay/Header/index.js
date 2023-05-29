@@ -8,12 +8,12 @@ import HomeLinkIcon from 'components/navigation/HomeLinkIcon';
 
 function Header({ innerRef, onClickDrawerButton }) {
     const { user: { logged } } = useSessionContext()
-    const { isSm } = useDevice()
+    const { lessThanSm } = useDevice()
     return (
         <AppBar position="static" ref={innerRef}>
             <Toolbar sx={{ justifyContent: 'space-between' }}>
-                {!(isSm && logged) && <HomeLinkIcon sx={{ color: 'inherit' }}></HomeLinkIcon>}
-                {isSm && logged && <DrawerMenuButton onClick={onClickDrawerButton}></DrawerMenuButton>}
+                {!(lessThanSm && logged) && <HomeLinkIcon sx={{ color: 'inherit' }}></HomeLinkIcon>}
+                {lessThanSm && logged && <DrawerMenuButton onClick={onClickDrawerButton}></DrawerMenuButton>}
                 {logged && (<AccountMenuButton></AccountMenuButton>)}
             </Toolbar>
         </AppBar>
