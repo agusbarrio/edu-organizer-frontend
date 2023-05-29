@@ -10,7 +10,6 @@ import useLocalMachine from "./hooks/useLocalMachine";
 
 
 function CourseMachine({ onFinish, initialContext, edit }) {
-    console.log(initialContext)
     const { createCourse } = useCreateCourseService()
     const { editCourse } = useEditCourseService()
     const machine = useLocalMachine(edit)
