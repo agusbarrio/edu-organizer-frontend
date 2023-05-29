@@ -95,6 +95,9 @@ const TEXTS = {
     COPY_CONFIG_COURSES_LIST_CARD_TITLE: { es: 'Cursos', en: 'Courses' },
     COPY_CONFIG_LIST_CARD_HELP: { es: 'Estos son los formularios de tus otros cursos. Podés elegir uno para copiarlo y usarlo como base para el formulario de este curso.', en: 'These are the forms of your other courses. You can choose one to copy it and use it as a base for the form of this course.' },
     EDIT_COURSES_SELECTION_MODAL_TITLE: { es: 'Editar cursos', en: 'Edit courses' },
+    OWNER_MENU: { es: 'Menu del propietario', en: 'Owner menu' },
+    TEACHER_MENU: { es: 'Menu del profesor', en: 'Teacher menu' },
+    EDIT_COURSE_PAGE_TITLE: { es: 'Editar curso', en: 'Edit course' },
 }
 
 export default TEXTS

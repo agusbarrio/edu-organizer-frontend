@@ -9,6 +9,7 @@ const PATHS = {
     RECOVER_PASSWORD: '/auth/recover',
     DASHBOARD_COURSES: '/dashboard/courses',
     DASHBOARD_COURSE: '/dashboard/courses/{{courseId}}',
+    DASHBOARD_EDIT_COURSE: '/dashboard/courses/{{courseId}}/edit',
     DASHBOARD_STUDENTS: '/dashboard/students',
     DASHBOARD_STUDENT: '/dashboard/students/{{studentId}}',
     DASHBOARD_TEACHERS: '/dashboard/teachers',

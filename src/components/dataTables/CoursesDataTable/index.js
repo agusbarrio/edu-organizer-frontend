@@ -29,8 +29,8 @@ function CoursesDataTable({ courses = [], onDelete, onEdit }) {
     }, [go])
 
     const navigateToEditCourse = useCallback((courseId) => {
-        //TODO crear pagina de editar curso
-    }, [])
+        go(renderText(PATHS.DASHBOARD_EDIT_COURSE, { courseId }))
+    }, [go])
 
     const handleClickDeleteCourse = useCallback((courseId) => {
         openModal(ConfirmModal, {

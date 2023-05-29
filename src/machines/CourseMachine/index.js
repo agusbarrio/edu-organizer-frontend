@@ -1,20 +1,26 @@
 import { useMachine } from "@xstate/react";
-import machine from "./machine";
 import { Fragment, useMemo } from "react";
 import SetCourseDataStep from "./steps/SetCourseDataStep";
 import SetCourseStudentsStep from "./steps/SetCourseStudentsStep";
 import LoadingBox from "components/dataDisplay/LoadingBox";
 import useCreateCourseService from "services/courses/useCreateCourseService";
 import SetCourseStudentAttendanceFormDataStep from "./steps/SetCourseStudentAttendanceFormDataStep";
+import useEditCourseService from "services/courses/useEditCourseService";
+import useLocalMachine from "./hooks/useLocalMachine";
 
-function CreateCourseMachine({ onFinish }) {
+
+function CourseMachine({ onFinish, initialContext, edit }) {
+    console.log(initialContext)
     const { createCourse } = useCreateCourseService()
+    const { editCourse } = useEditCourseService()
+    const machine = useLocalMachine(edit)
     const [state, send] = useMachine(machine, {
         context: {
-            name: '',
-            accessPin: '',
-            students: [],
-            studentAttendanceFormData: [],
+            name: initialContext?.name || '',
+            accessPin: initialContext?.accessPin || '',
+            students: initialContext?.students || [],
+            studentAttendanceFormData: initialContext?.studentAttendanceFormData || [],
+            id: initialContext?.id || null,
         },
         actions: {
             finish: (context, event) => {
@@ -35,6 +41,21 @@ function CreateCourseMachine({ onFinish }) {
                     studentAttendanceFormData: context.studentAttendanceFormData
                 })
                 if (!result) throw new Error('Error creating course')
+            },
+            editCourse: async (context, event) => {
+                const result = await editCourse(context.id
+                    , {
+                        name: context.name,
+                        accessPin: context.accessPin,
+                        students: context.students.map((student) => {
+                            if (student.isNew) {
+                                return { studentData: student, isNew: true }
+                            }
+                            return { id: student.id, isNew: false }
+                        }),
+                        studentAttendanceFormData: context.studentAttendanceFormData
+                    })
+                if (!result) throw new Error('Error editing course')
             }
         }
     });
@@ -48,6 +69,8 @@ function CreateCourseMachine({ onFinish }) {
             case 'setCourseStudentAttendanceFormData':
                 return SetCourseStudentAttendanceFormDataStep
             case 'createCourse':
+                return LoadingBox
+            case 'editCourse':
                 return LoadingBox
             case 'finish':
                 return LoadingBox
@@ -65,4 +88,4 @@ function CreateCourseMachine({ onFinish }) {
 
 }
 
-export default CreateCourseMachine;
+export default CourseMachine;

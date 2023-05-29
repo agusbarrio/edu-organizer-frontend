@@ -6,8 +6,8 @@ import NewInputCard from "./components/NewInputCard"
 import CopyConfigCoursesListCard from "./components/CopyConfigCoursesListCard";
 import _ from "lodash";
 
-const InputsCreation = forwardRef(({ onChange, value = [] }, ref) => {
-    const [inputs, setInputs] = useState(value)
+const InputsCreation = forwardRef(({ onChange, initialInputs = [] }, ref) => {
+    const [inputs, setInputs] = useState(initialInputs)
 
     useEffect(() => {
         if (onChange) onChange(inputs)
