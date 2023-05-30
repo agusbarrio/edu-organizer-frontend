@@ -37,7 +37,7 @@ async function checkSession(context, { needUserSession, userPermissionsAllowed =
         const response = await get(AUTH_ENDPOINTS.VERIFY_SESSION_COURSE, { headers: { Cookie } }) ?? null;
         courseSession = response?.data ?? null;
         if (needCourseSession && !courseSession) {
-            redirectPath = PATHS.LOGIN_COURSE
+            redirectPath = PATHS.LOGIN
         };
         if (!needCourseSession && courseSession) {
             redirectPath = PATHS.COURSE

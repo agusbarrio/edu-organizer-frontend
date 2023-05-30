@@ -26,6 +26,7 @@ function LoginPage() {
                 }}></LoginForm>
                 <Link href={PATHS.RECOVER_PASSWORD}>{translate(TEXTS.LOGIN_PAGE_RECOVER_PASSWORD_LINK)}</Link>
                 <Link href={PATHS.REGISTER}>{translate(TEXTS.LOGIN_PAGE_REGISTER_LINK)}</Link>
+                <Link href={PATHS.COURSE}>{translate(TEXTS.COURSE_PAGE_LINK)}</Link>
             </Stack>
         </PublicTemplate>
     )

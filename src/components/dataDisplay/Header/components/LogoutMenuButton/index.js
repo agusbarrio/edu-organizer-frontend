@@ -7,13 +7,16 @@ import { useCallback } from "react"
 import useLogoutService from "services/auth/useLogoutService"
 
 function LogoutMenuButton() {
-    const { userLogout } = useSessionContext()
+    const { userLogout, courseLogout } = useSessionContext()
     const { logout } = useLogoutService()
     const { translate } = useLocaleContext()
     const handleClick = useCallback(async () => {
         const result = await logout()
-        if (result) userLogout()
-    }, [logout, userLogout])
+        if (result) {
+            userLogout()
+            courseLogout()
+        }
+    }, [logout, userLogout, courseLogout])
     return (
         <MenuItem onClick={handleClick}>
             <ListItemIcon>

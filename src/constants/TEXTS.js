@@ -98,6 +98,16 @@ const TEXTS = {
     OWNER_MENU: { es: 'Menu del propietario', en: 'Owner menu' },
     TEACHER_MENU: { es: 'Menu del profesor', en: 'Teacher menu' },
     EDIT_COURSE_PAGE_TITLE: { es: 'Editar curso', en: 'Edit course' },
+    COURSE_LOGIN_PAGE_TITLE: { es: 'Acceder al curso', en: 'Access the course' },
+    ACCESS_PIN_LABEL: { es: 'PIN de acceso', en: 'Access PIN' },
+    ACCESS_PIN_PLACEHOLDER: { es: 'Ingresa el PIN de acceso', en: 'Enter the access PIN' },
+    COURSE_LOGIN_BUTTON: { es: 'Acceder', en: 'Access' },
+    COURSE_ATTENDANCE_PAGE_TITLE: { es: 'Asistencia', en: 'Attendance' },
+    COURSE_GO_LOGIN_PAGE_TITLE: { es: 'Ingresar curso', en: 'Enter course' },
+    COURSE_SHORT_ID_PLACEHOLDER: { es: 'Ingresa el identificador del curso', en: 'Enter the course short ID' },
+    GO_BACK_LOGIN_COURSE: { es: 'Elegir otro curso', en: 'Choose another course' },
+    COURSE_PAGE_LINK: { es: 'Tenés un identificador de curso? Ingresá aquí', en: 'Do you have a course identifier? Enter here' },
+    GO_BACK_LOGIN: { es: 'Volver a inicio de sesión', en: 'Go back login' },
 }
 
 export default TEXTS

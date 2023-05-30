@@ -1,10 +1,11 @@
 import { Container, Stack, Typography } from "@mui/material";
 import Header from "components/dataDisplay/Header";
+import TEMPLATE_TYPES from "constants/TEMPLATE_TYPES";
 
-function PublicTemplate({ children, title }) {
+function PublicTemplate({ children, title, type = TEMPLATE_TYPES.USER }) {
     return (
         <Stack height={'100dvh'} width={'100vw'} overflow={'hidden'}>
-            <Header></Header>
+            <Header type={type}></Header>
             <Stack width={'100%'} alignItems={'center'} padding={2}>
                 <Container maxWidth="sm" >
                     <Stack spacing={2} height={'100%'} alignItems={'center'}>

@@ -24,10 +24,10 @@ function ProtectedPage({ children, needUserSession, userPermissionsAllowed, need
         }
         if (needCourseSession != undefined) {
             if (needCourseSession && !course.logged) {
-                redirectPath = PATHS.LOGIN_COURSE
-            }
-            if (!needCourseSession && course.courseLogged) {
                 redirectPath = PATHS.COURSE
+            }
+            if (!needCourseSession && course.logged) {
+                redirectPath = PATHS.COURSE_ATTENDANCE
             }
         }
         return redirectPath

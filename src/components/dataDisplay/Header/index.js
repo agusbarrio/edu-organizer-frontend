@@ -6,15 +6,52 @@ import DrawerMenuButton from './components/DrawerMenuButton';
 import useDevice from 'hooks/useDevice';
 import HomeLinkIcon from 'components/navigation/HomeLinkIcon';
 
-function Header({ innerRef, onClickDrawerButton }) {
-    const { user: { logged } } = useSessionContext()
+import { useMemo } from 'react';
+import TEMPLATE_TYPES from 'constants/TEMPLATE_TYPES';
+import { Box } from '@mui/material';
+
+function Header({ innerRef, onClickDrawerButton, type = TEMPLATE_TYPES.USER }) {
+    const { user: { logged }, course: { logged: courseLogged } } = useSessionContext()
     const { lessThanSm } = useDevice()
+    const showHomeLink = useMemo(() => {
+        if (type === TEMPLATE_TYPES.USER) {
+            return !(lessThanSm && logged)
+        }
+        if (type === TEMPLATE_TYPES.COURSE) {
+            return !courseLogged
+        }
+        return false
+    }, [type, logged, lessThanSm, courseLogged])
+    const showDrawerButton = useMemo(() => {
+        if (type === TEMPLATE_TYPES.USER) {
+            return lessThanSm && logged
+        }
+        if (type === TEMPLATE_TYPES.COURSE) {
+            return false
+        }
+        return false
+    }, [type, logged, lessThanSm])
+
+    const showAccountMenuButton = useMemo(() => {
+        if (type === TEMPLATE_TYPES.USER) {
+            return logged
+        }
+        if (type === TEMPLATE_TYPES.COURSE) {
+            return courseLogged
+        }
+        return false
+    }, [type, logged, courseLogged])
+
     return (
         <AppBar position="static" ref={innerRef}>
             <Toolbar sx={{ justifyContent: 'space-between' }}>
-                {!(lessThanSm && logged) && <HomeLinkIcon sx={{ color: 'inherit' }}></HomeLinkIcon>}
-                {lessThanSm && logged && <DrawerMenuButton onClick={onClickDrawerButton}></DrawerMenuButton>}
-                {logged && (<AccountMenuButton></AccountMenuButton>)}
+                <Box>
+                    {showHomeLink && <HomeLinkIcon sx={{ color: 'inherit' }} type={type}></HomeLinkIcon>}
+                    {showDrawerButton && <DrawerMenuButton onClick={onClickDrawerButton}></DrawerMenuButton>}
+                </Box>
+                <Box>
+                    {showAccountMenuButton && (<AccountMenuButton></AccountMenuButton>)}
+                </Box>
             </Toolbar>
         </AppBar>
     );

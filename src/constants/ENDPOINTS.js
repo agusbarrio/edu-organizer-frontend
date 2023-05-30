@@ -5,6 +5,7 @@ const coursesBaseUrl = `${ENV_CONFIG.NEXT_PUBLIC_API_URL}/courses`;
 const studentsBaseUrl = `${ENV_CONFIG.NEXT_PUBLIC_API_URL}/students`;
 export const AUTH_ENDPOINTS = {
     LOGIN: `${authBaseUrl}/login`,
+    COURSE_LOGIN: `${authBaseUrl}/course/{{shortId}}/login`,
     REGISTER: `${authBaseUrl}/register`,
     LOGOUT: `${authBaseUrl}/logout`,
     REQUEST_PASSWORD_RECOVERY: `${authBaseUrl}/requestPasswordRecovery`,
