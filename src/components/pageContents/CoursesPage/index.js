@@ -1,6 +1,4 @@
-import ABTemplate from "components/templates/ABTemplate"
 import DashboardTemplate from "components/templates/DashboardTemplate"
-import LoadingBackdrop from "components/generic/LoadingBackdrop"
 import useService from "hooks/useService"
 import { useEffect } from "react"
 import useGetAllCoursesService from "services/courses/useGetAllCoursesService"
