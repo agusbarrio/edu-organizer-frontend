@@ -10,7 +10,7 @@ function CourseShortIdForm({ onSubmit }) {
     const { form, text } = useValidator()
     const { translate } = useLocaleContext()
     const schema = useMemo(() => form({
-        shortId: text(),
+        shortId: text({ required: { value: true } }),
     }), [form, text])
 
     return (

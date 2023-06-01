@@ -8,9 +8,6 @@ import TEMPLATE_TYPES from "constants/TEMPLATE_TYPES"
 import TEXTS from "constants/TEXTS"
 import useLocaleContext from "hooks/useLocaleContext"
 import useNavigate from "hooks/useNavigate"
-import useSessionContext from "hooks/useSessionContext"
-import { useMemo } from "react"
-import useCourseLoginService from "services/auth/useCourseLoginService"
 import { renderText } from "utils/text"
 
 function CourseGoLoginPage() {

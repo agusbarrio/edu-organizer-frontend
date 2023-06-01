@@ -10,7 +10,7 @@ function CourseLoginForm({ onSubmit }) {
     const { form, text } = useValidator()
     const { translate } = useLocaleContext()
     const schema = useMemo(() => form({
-        accessPin: text(),
+        accessPin: text({ required: { value: true } }),
     }), [form, text])
 
     return (
