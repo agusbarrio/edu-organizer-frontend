@@ -1,40 +1,51 @@
-import LabelValue from "components/generic/LabelValue"
-import DashboardTemplate from "components/templates/DashboardTemplate"
-import PATHS from "constants/PATHS"
-import TEXTS from "constants/TEXTS"
+import PublicTemplate from "components/templates/PublicTemplate"
+import TEMPLATE_TYPES from "constants/TEMPLATE_TYPES"
 import useLocaleContext from "hooks/useLocaleContext"
-import useNavigate from "hooks/useNavigate"
-import { renderText } from "utils/text"
+import useSessionContext from "hooks/useSessionContext"
+import { useEffect, useMemo } from "react"
 import useService from "hooks/useService"
-import useGetCourseService from "services/courses/useGetCourseService"
-import { useEffect } from "react"
+
+import useGetCourseService from "services/courseAccess/useGetCourseService"
+import { Button } from "@mui/material"
+import { Add, Face } from "@mui/icons-material"
+import TEXTS from "constants/TEXTS"
+import useNavigate from "hooks/useNavigate"
+import useModalContext from "hooks/useModalContext"
+import AlertModal from "components/generic/modals/AlertModal"
+import PATHS from "constants/PATHS"
 
 function CoursePage() {
-    const { getCourse } = useGetCourseService()
-    const { runService, loading, value: course } = useService({ service: getCourse, defaultValue: {} })
-    const { params } = useNavigate()
-
-    useEffect(() => {
-        if (params.courseId) runService(params.courseId)
-    }, [runService, params.courseId])
-
     const { translate } = useLocaleContext()
+    const { course: courseSession } = useSessionContext()
+    const { getCourse } = useGetCourseService()
+    const { value: course, runService, loading } = useService({ service: getCourse, defaultValue: {} })
     const { go } = useNavigate()
-    return (
-        <DashboardTemplate
-            title={translate(TEXTS.COURSE_PAGE_TITLE)}
-            subtitle={translate(TEXTS.COURSE_PAGE_SUBTITLE)}
-            loading={loading}
-            backButtonProps={{
-                children: translate(TEXTS.GO_BACK_COURSES),
-                onClick: () => go(renderText(PATHS.DASHBOARD_COURSES))
-            }}
-        >
-            <LabelValue label={translate(TEXTS.COURSE_NAME_LABEL)} value={course?.name}></LabelValue>
-            <LabelValue label={translate(TEXTS.COURSE_ID_LABEL)} value={course?.id}></LabelValue>
-            <LabelValue label={translate(TEXTS.COURSE_SHORT_ID_LABEL)} value={course?.shortId}></LabelValue>
-        </DashboardTemplate>
+    const { openModal } = useModalContext()
+    useEffect(() => {
+        runService(courseSession.id)
+    }, [runService, courseSession.id])
 
+    const buttonProps = useMemo(() => ({
+        variant: 'outlined',
+        fullWidth: true,
+        size: 'large',
+        sx: {
+            height: '4rem',
+        }
+    }), [])
+
+    const handleClickNewClass = () => {
+        go(PATHS.COURSE_NEW_CLASS)
+    }
+
+    const handleClickNewStudent = () => {
+        go(PATHS.COURSE_NEW_STUDENT)
+    }
+    return (
+        <PublicTemplate title={course?.name} type={TEMPLATE_TYPES.COURSE} loading={loading}>
+            <Button {...buttonProps} startIcon={<Add></Add>} onClick={handleClickNewClass}>{translate(TEXTS.NEW_CLASS_BUTTON)}</Button>
+            <Button {...buttonProps} size="large" startIcon={<Face></Face>} onClick={handleClickNewStudent}>{translate(TEXTS.NEW_STUDENT_BUTTON)}</Button>
+        </PublicTemplate>
     )
 }
 

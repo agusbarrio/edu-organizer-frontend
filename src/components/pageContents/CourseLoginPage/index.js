@@ -28,7 +28,7 @@ function CourseLoginPage() {
                         courseLoginContext(result)
                     }
                 }}></CourseLoginForm>
-                <Link href={PATHS.COURSE}>{translate(TEXTS.GO_BACK_LOGIN_COURSE)}</Link>
+                <Link href={PATHS.COURSE_SELECTION}>{translate(TEXTS.GO_BACK_LOGIN_COURSE)}</Link>
             </Stack>
         </PublicTemplate>
     )

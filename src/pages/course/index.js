@@ -1,12 +1,12 @@
 
 import ProtectedPage from "components/managers/ProtectedPage";
-import CourseAttendancePage from "components/pageContents/CourseAttendancePage"
+import CoursePage from "components/pageContents/CoursePage"
 
 function Course() {
 
     return (
         <ProtectedPage needCourseSession={true}>
-            <CourseAttendancePage></CourseAttendancePage>
+            <CoursePage></CoursePage>
         </ProtectedPage>
     )
 }

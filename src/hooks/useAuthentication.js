@@ -27,7 +27,7 @@ function useAuthentication({ needUserSession, userPermissionsAllowed, needCourse
                 go(PATHS.LOGIN)
             }
             if (!needCourseSession && course.courseLogged) {
-                go(PATHS.COURSE)
+                go(PATHS.COURSE_SELECTION)
             }
         }
     }, [user, course, userLogout, courseLogout, needUserSession, needCourseSession, userPermissionsAllowed, go])

@@ -40,7 +40,7 @@ async function checkSession(context, { needUserSession, userPermissionsAllowed =
             redirectPath = PATHS.LOGIN
         };
         if (!needCourseSession && courseSession) {
-            redirectPath = PATHS.COURSE
+            redirectPath = PATHS.COURSE_SELECTION
             clearCookie = true;
         }
         if (clearCookie) context.res.setHeader('Set-Cookie', `${COOKIES.COURSE}=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT`)

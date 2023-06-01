@@ -110,6 +110,8 @@ const TEXTS = {
     GO_BACK_LOGIN: { es: 'Volver al inicio de sesión', en: 'Go back login' },
     NEW_CLASS_BUTTON: { es: 'Nueva clase', en: 'New class' },
     NEW_STUDENT_BUTTON: { es: 'Agregar un estudiante', en: 'Add a student' },
+    COURSE_NEW_CLASS_PAGE_TITLE: { es: 'Nueva clase', en: 'New class' },
+    COURSE_NEW_STUDENT_PAGE_TITLE: { es: 'Agregar un estudiante', en: 'Add a student' },
 }
 
 export default TEXTS

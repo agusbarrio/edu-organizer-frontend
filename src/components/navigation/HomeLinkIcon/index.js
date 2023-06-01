@@ -9,7 +9,7 @@ function HomeLinkIcon({ iconProps, type = TEMPLATE_TYPES.USER, ...props }) {
             return PATHS.HOME
         }
         if (type === TEMPLATE_TYPES.COURSE) {
-            return PATHS.COURSE
+            return PATHS.COURSE_SELECTION
         }
         return PATHS.HOME
     }, [type])
