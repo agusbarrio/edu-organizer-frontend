@@ -50,6 +50,7 @@ export function SessionContextProvider({ children }) {
                     ...state,
                     course: {
                         logged: true,
+                        lastCourseLoggedShortId: action?.payload?.shortId,
                         ...action.payload
                     }
                 }
@@ -59,6 +60,7 @@ export function SessionContextProvider({ children }) {
                     ...state,
                     course: {
                         logged: false,
+                        lastCourseLoggedShortId: state?.course?.lastCourseLoggedShortId,
                     }
                 }
                 break;

@@ -1,5 +1,6 @@
 import { Logout } from "@mui/icons-material"
 import { ListItemIcon, MenuItem } from "@mui/material"
+import TEMPLATE_TYPES from "constants/TEMPLATE_TYPES"
 import TEXTS from "constants/TEXTS"
 import useLocaleContext from "hooks/useLocaleContext"
 import useSessionContext from "hooks/useSessionContext"
@@ -10,6 +11,7 @@ function LogoutMenuButton() {
     const { userLogout, courseLogout } = useSessionContext()
     const { logout } = useLogoutService()
     const { translate } = useLocaleContext()
+
     const handleClick = useCallback(async () => {
         const result = await logout()
         if (result) {

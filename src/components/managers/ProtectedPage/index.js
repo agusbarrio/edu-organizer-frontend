@@ -5,6 +5,7 @@ import { useMemo } from "react"
 import _ from "lodash"
 import LoadingBox from "components/dataDisplay/LoadingBox";
 import { Box } from "@mui/material";
+import { renderText } from "utils/text";
 
 function ProtectedPage({ children, needUserSession, userPermissionsAllowed, needCourseSession }) {
     const { user, course, loading } = useSessionContext();
@@ -24,7 +25,11 @@ function ProtectedPage({ children, needUserSession, userPermissionsAllowed, need
         }
         if (needCourseSession != undefined) {
             if (needCourseSession && !course.logged) {
-                redirectPath = PATHS.COURSE_SELECTION
+                if (course?.lastCourseLoggedShortId) {
+                    redirectPath = renderText(PATHS.COURSE_LOGIN, { shortId: course?.lastCourseLoggedShortId })
+                } else {
+                    redirectPath = PATHS.FORBIDDEN
+                }
             }
             if (!needCourseSession && course.logged) {
                 redirectPath = PATHS.COURSE

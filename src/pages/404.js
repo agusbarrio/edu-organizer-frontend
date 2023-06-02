@@ -1,8 +1,7 @@
-const { default: Redirect } = require("components/navigation/Redirect");
-const { default: PATHS } = require("constants/PATHS");
+import NotFoundPage from "components/pageContents/NotFoundPage";
 
 function NotFound() {
-    return <Redirect url={PATHS.LOGIN}></Redirect>
+    return <NotFoundPage></NotFoundPage>
 }
 
 export default NotFound

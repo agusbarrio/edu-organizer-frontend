@@ -102,16 +102,14 @@ const TEXTS = {
     ACCESS_PIN_LABEL: { es: 'PIN de acceso', en: 'Access PIN' },
     ACCESS_PIN_PLACEHOLDER: { es: 'Ingresá el PIN de acceso', en: 'Enter the access PIN' },
     COURSE_LOGIN_BUTTON: { es: 'Acceder', en: 'Access' },
-    COURSE_ATTENDANCE_PAGE_TITLE: { es: 'Asistencia', en: 'Attendance' },
-    COURSE_GO_LOGIN_PAGE_TITLE: { es: 'Ingresar curso', en: 'Enter course' },
-    COURSE_SHORT_ID_PLACEHOLDER: { es: 'Ingresá el identificador del curso', en: 'Enter the course short ID' },
-    GO_BACK_LOGIN_COURSE: { es: 'Elegir otro curso', en: 'Choose another course' },
-    COURSE_PAGE_LINK: { es: '¿Tenés un identificador de curso? Ingresá acá', en: 'Do you have a course identifier? Enter here' },
-    GO_BACK_LOGIN: { es: 'Volver al inicio de sesión', en: 'Go back login' },
     NEW_CLASS_BUTTON: { es: 'Nueva clase', en: 'New class' },
     NEW_STUDENT_BUTTON: { es: 'Agregar un estudiante', en: 'Add a student' },
     COURSE_NEW_CLASS_PAGE_TITLE: { es: 'Nueva clase', en: 'New class' },
     COURSE_NEW_STUDENT_PAGE_TITLE: { es: 'Agregar un estudiante', en: 'Add a student' },
+    FORBIDDEN_PAGE_TITLE: { es: 'Prohibido', en: 'Forbidden' },
+    FORBIDDEN_PAGE_DESCRIPTION: { es: 'No tiene permiso para acceder a este recurso', en: 'You do not have permission to access this resource' },
+    NOT_FOUND_PAGE_TITLE: { es: 'No encontrado', en: 'Not found' },
+    NOT_FOUND_PAGE_DESCRIPTION: { es: 'Esta página no existe', en: 'This page does not exist' },
 }
 
 export default TEXTS

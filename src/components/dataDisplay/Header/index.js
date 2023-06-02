@@ -18,16 +18,13 @@ function Header({ innerRef, onClickDrawerButton, type = TEMPLATE_TYPES.USER }) {
             return !(lessThanSm && logged)
         }
         if (type === TEMPLATE_TYPES.COURSE) {
-            return !courseLogged
+            return true
         }
         return false
-    }, [type, logged, lessThanSm, courseLogged])
+    }, [type, logged, lessThanSm])
     const showDrawerButton = useMemo(() => {
         if (type === TEMPLATE_TYPES.USER) {
             return lessThanSm && logged
-        }
-        if (type === TEMPLATE_TYPES.COURSE) {
-            return false
         }
         return false
     }, [type, logged, lessThanSm])

@@ -4,7 +4,6 @@ const PATHS = {
     REGISTER: '/auth/register',
     MY_ACCOUNT: '/my-account',
     DASHBOARD: '/dashboard',
-    COURSE_SELECTION: '/auth/course',
     COURSE: '/course',
     COURSE_NEW_CLASS: '/course/new-class',
     COURSE_NEW_STUDENT: '/course/new-student',
@@ -20,6 +19,7 @@ const PATHS = {
     DASHBOARD_COURSE_CREATE: '/dashboard/courses/create',
     DASHBOARD_STUDENT_CREATE: '/dashboard/students/create',
     NOT_FOUND: '/404',
+    FORBIDDEN: '/403',
 }
 
 export default PATHS;
