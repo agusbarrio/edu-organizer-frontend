@@ -1,18 +1,16 @@
-import PublicTemplate from "components/templates/PublicTemplate"
-import TEMPLATE_TYPES from "constants/TEMPLATE_TYPES"
 import useLocaleContext from "hooks/useLocaleContext"
 import useSessionContext from "hooks/useSessionContext"
 import { useEffect, useMemo } from "react"
 import useService from "hooks/useService"
 
 import useGetCourseService from "services/courseAccess/useGetCourseService"
-import { Button } from "@mui/material"
+import { Button, Stack } from "@mui/material"
 import { Add, Face } from "@mui/icons-material"
 import TEXTS from "constants/TEXTS"
 import useNavigate from "hooks/useNavigate"
 import useModalContext from "hooks/useModalContext"
-import AlertModal from "components/generic/modals/AlertModal"
 import PATHS from "constants/PATHS"
+import CourseTemplate from "components/templates/CourseTemplate"
 
 function CoursePage() {
     const { translate } = useLocaleContext()
@@ -42,10 +40,13 @@ function CoursePage() {
         go(PATHS.COURSE_NEW_STUDENT)
     }
     return (
-        <PublicTemplate title={course?.name} type={TEMPLATE_TYPES.COURSE} loading={loading}>
-            <Button {...buttonProps} startIcon={<Add></Add>} onClick={handleClickNewClass}>{translate(TEXTS.NEW_CLASS_BUTTON)}</Button>
-            <Button {...buttonProps} size="large" startIcon={<Face></Face>} onClick={handleClickNewStudent}>{translate(TEXTS.NEW_STUDENT_BUTTON)}</Button>
-        </PublicTemplate>
+        <CourseTemplate title={course?.name} loading={loading}>
+            <Stack spacing={2} width={'100%'}>
+                <Button {...buttonProps} startIcon={<Add></Add>} onClick={handleClickNewClass}>{translate(TEXTS.NEW_CLASS_BUTTON)}</Button>
+                <Button {...buttonProps} size="large" startIcon={<Face></Face>} onClick={handleClickNewStudent}>{translate(TEXTS.NEW_STUDENT_BUTTON)}</Button>
+            </Stack>
+
+        </CourseTemplate>
     )
 }
 

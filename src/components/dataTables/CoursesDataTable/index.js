@@ -103,12 +103,13 @@ function CoursesDataTable({ courses = [], onDelete, onEdit }) {
                         }}><ArrowForward fontSize="inherit"></ArrowForward>
                         </IconButton>,
                     ]
-                }
+                },
+                filterable: false,
             }
         ]
     }, [translate, navigateToCourse, handleClickDeleteCourse, navigateToEditCourse])
 
-    return <CustomDataGrid rows={courses} columns={columns} onClickEditSelection={handleEditSelection} onClickDeleteSelection={handleDeleteSelection} checkboxSelection rowSelection ></CustomDataGrid>
+    return <CustomDataGrid rows={courses} columns={columns} onClickEditSelection={handleEditSelection} onClickDeleteSelection={handleDeleteSelection} checkboxSelection rowSelection></CustomDataGrid>
 }
 
 export default CoursesDataTable

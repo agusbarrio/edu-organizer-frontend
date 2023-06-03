@@ -32,8 +32,6 @@ function useLocalMachine(edit = false) {
                         },
                     },
                 },
-
-                //EN el next se decide si va a createCourse o editCourse
                 setCourseStudentAttendanceFormData: {
                     on: {
                         NEXT: {

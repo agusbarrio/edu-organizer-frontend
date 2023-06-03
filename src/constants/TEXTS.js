@@ -110,6 +110,9 @@ const TEXTS = {
     FORBIDDEN_PAGE_DESCRIPTION: { es: 'No tiene permiso para acceder a este recurso', en: 'You do not have permission to access this resource' },
     NOT_FOUND_PAGE_TITLE: { es: 'No encontrado', en: 'Not found' },
     NOT_FOUND_PAGE_DESCRIPTION: { es: 'Esta página no existe', en: 'This page does not exist' },
+    SELECT_PRESENT_STUDENTS_TITLE: { es: 'Asistencia', en: 'Attendance' },
+    GO_BACK_COURSE: { es: 'Volver al curso', en: 'Go back course' },
+    STUDENT_AVATAR_LABEL: { es: 'Foto', en: 'Photo' },
 }
 
 export default TEXTS

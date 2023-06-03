@@ -6,11 +6,11 @@ import DrawerMenuButton from './components/DrawerMenuButton';
 import useDevice from 'hooks/useDevice';
 import HomeLinkIcon from 'components/navigation/HomeLinkIcon';
 
-import { useMemo } from 'react';
+import { forwardRef, useMemo } from 'react';
 import TEMPLATE_TYPES from 'constants/TEMPLATE_TYPES';
 import { Box } from '@mui/material';
 
-function Header({ innerRef, onClickDrawerButton, type = TEMPLATE_TYPES.USER }) {
+const Header = forwardRef(function Header({ onClickDrawerButton, type = TEMPLATE_TYPES.USER }, ref) {
     const { user: { logged }, course: { logged: courseLogged } } = useSessionContext()
     const { lessThanSm } = useDevice()
     const showHomeLink = useMemo(() => {
@@ -40,7 +40,7 @@ function Header({ innerRef, onClickDrawerButton, type = TEMPLATE_TYPES.USER }) {
     }, [type, logged, courseLogged])
 
     return (
-        <AppBar position="static" ref={innerRef}>
+        <AppBar position="static" ref={ref}>
             <Toolbar sx={{ justifyContent: 'space-between' }}>
                 <Box>
                     {showHomeLink && <HomeLinkIcon sx={{ color: 'inherit' }} type={type}></HomeLinkIcon>}
@@ -52,6 +52,6 @@ function Header({ innerRef, onClickDrawerButton, type = TEMPLATE_TYPES.USER }) {
             </Toolbar>
         </AppBar>
     );
-}
+})
 
 export default Header;

@@ -16,7 +16,7 @@ function useDecoredFetch() {
     useSnackbar();
   const { userLogout, courseLogout } = useSessionContext()
   const { translate } = useLocaleContext();
-  const { go } = useNavigate()
+
   const defaultConfig = useMemo(
     () => ({
       successMessage: translate(CORE_TEXTS.GENERIC_SUCCESS),
@@ -49,9 +49,6 @@ function useDecoredFetch() {
                 userLogout()
                 courseLogout()
               }
-              if (status === 404 && resultConfig.navigate404) {
-                go(PATHS.NOT_FOUND)
-              }
               const errorCode = _.get(error, 'response.data.errorCode');
               if (!!CORE_TEXTS.SERVER_ERRORS[errorCode])
                 resultErrorMessage = translate(
@@ -71,7 +68,7 @@ function useDecoredFetch() {
       successNotification,
       translate,
       userLogout,
-      courseLogout
+      courseLogout,
     ]
   );
 

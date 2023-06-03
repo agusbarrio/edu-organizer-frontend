@@ -1,4 +1,4 @@
-import PublicTemplate from "components/templates/PublicTemplate"
+import CourseTemplate from "components/templates/CourseTemplate"
 import TEMPLATE_TYPES from "constants/TEMPLATE_TYPES"
 
 import CoomingSoon from "components/dataDisplay/CoomingSoon"
@@ -13,11 +13,11 @@ function CourseNewStudentPage() {
     const { translate } = useLocaleContext()
     const { go } = useNavigate()
     return (
-        <PublicTemplate title={translate(TEXTS.COURSE_NEW_STUDENT_PAGE_TITLE)} type={TEMPLATE_TYPES.COURSE}>
+        <CourseTemplate title={translate(TEXTS.COURSE_NEW_STUDENT_PAGE_TITLE)} >
             <CoomingSoon></CoomingSoon>
             <Button onClick={() => go(PATHS.COURSE)}>{translate(CORE_TEXTS.GENERIC_BACK)}</Button>
 
-        </PublicTemplate>
+        </CourseTemplate>
     )
 }
 

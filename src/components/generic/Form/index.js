@@ -4,9 +4,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import _ from 'lodash';
 import FormTemplate from 'components/templates/FormTemplate';
 import style from './style.module.css'
-import { useImperativeHandle } from 'react';
+import { forwardRef, useImperativeHandle } from 'react';
 
-function Form({ children, onSubmit, schema, defaultValues, config, template: Template = FormTemplate, templateProps = {}, innerRef, ...props }) {
+const Form = forwardRef(function Form({ children, onSubmit, schema, defaultValues, config, template: Template = FormTemplate, templateProps = {}, ...props }, ref) {
     const methods = useForm({
         resolver: !!schema ? yupResolver(schema) : undefined,
         defaultValues,
@@ -20,7 +20,7 @@ function Form({ children, onSubmit, schema, defaultValues, config, template: Tem
     });
 
 
-    useImperativeHandle(innerRef, () => ({ ...methods, submit: methods.handleSubmit(onSubmit) }), [methods, onSubmit]);
+    useImperativeHandle(ref, () => ({ ...methods, submit: methods.handleSubmit(onSubmit) }), [methods, onSubmit]);
 
     return (
         <FormProvider {...methods} >
@@ -32,5 +32,5 @@ function Form({ children, onSubmit, schema, defaultValues, config, template: Tem
         </FormProvider>
 
     )
-}
+})
 export default Form

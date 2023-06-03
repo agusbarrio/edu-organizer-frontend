@@ -16,7 +16,7 @@ function NewInputCard({ onSubmit }) {
 
     return (
         <Card title={translate(TEXTS.NEW_INPUT_CARD_TITLE)}>
-            <InputForm onSubmit={handleSubmitInput} size="small" templateProps={{ submitButtonProps: { children: translate(CORE_TEXTS.GENERIC_ADD) } }} innerRef={formRef}></InputForm>
+            <InputForm onSubmit={handleSubmitInput} size="small" templateProps={{ submitButtonProps: { children: translate(CORE_TEXTS.GENERIC_ADD) } }} ref={formRef}></InputForm>
         </Card>
     );
 }

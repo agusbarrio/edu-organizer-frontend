@@ -33,7 +33,7 @@ function StepTemplate({ children, onClickBack, onClickNext, onClickCancel, onCli
                     {!!subtitle && <Truncate line={2} element={'h4'} variant={'subtitle2'} sx={{ pl: 2, fontWeight: 'bold' }}>{subtitle}</Truncate>}
                     <Divider></Divider>
                 </Stack>}
-            <Box height={`calc(100% - ${buttonsHeight + titleHeight}px)`}>
+            <Box height={`calc(100% - ${buttonsHeight + titleHeight}px)`} sx={{ overflowY: 'auto' }}>
                 {children}
             </Box>
             <Stack direction={'row'} spacing={1} ref={buttonsRef} width={'100%'} justifyContent={'space-between'} pt={2}>

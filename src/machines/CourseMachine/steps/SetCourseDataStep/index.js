@@ -19,7 +19,7 @@ function SetCourseDataStep({ state, send }) {
 
     return (
         <StepTemplate onClickNext={handleClickNext} title={translate(TEXTS.SET_COURSE_DATA_TITLE)}>
-            <CourseForm onSubmit={handleSubmit} templateProps={{ showSubmitButton: false }} innerRef={formRef} defaultValues={{ name: state.context.name, accessPin: state.context.accessPin }}></CourseForm>
+            <CourseForm onSubmit={handleSubmit} templateProps={{ showSubmitButton: false }} ref={formRef} defaultValues={{ name: state.context.name, accessPin: state.context.accessPin }}></CourseForm>
         </StepTemplate>)
 }
 

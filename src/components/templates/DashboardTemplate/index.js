@@ -37,9 +37,9 @@ function DashboardTemplate({ children, title, subtitle, backButtonProps, rightBu
 
     return (
         <Stack height={'100dvh'} width={'100vw'} >
-            <Header onClickDrawerButton={handleOpenDrawer} innerRef={headerRef}></Header>
+            <Header onClickDrawerButton={handleOpenDrawer} ref={headerRef}></Header>
             <Stack direction={'row'} height={`calc(100% - ${headerHeight}px)`}>
-                <DrawerMenu drawerWidth={drawerWidth} innerRef={drawerRef}></DrawerMenu>
+                <DrawerMenu drawerWidth={drawerWidth} ref={drawerRef}></DrawerMenu>
                 <Box sx={{ flexGrow: 1, width: { xs: '100%', sm: `calc(100% - ${drawerWidth}px)` } }}>
                     {(!!title || !!subtitle || !!backButtonProps) &&
                         <Stack width={'100%'} padding={1} pb={0} ref={titleRef}>

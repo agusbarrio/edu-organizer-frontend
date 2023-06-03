@@ -34,7 +34,7 @@ function CreateStudentPage() {
                 onClick: () => go(renderText(PATHS.DASHBOARD_STUDENTS))
             }}>
             <Container maxWidth={'md'}>
-                <StudentForm onSubmit={handleSubmit} innerRef={formRef}></StudentForm>
+                <StudentForm onSubmit={handleSubmit} ref={formRef}></StudentForm>
             </Container>
         </DashboardTemplate>
 

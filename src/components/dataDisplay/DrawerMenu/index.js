@@ -5,12 +5,12 @@ import AdminMenu from "./components/AdminMenu"
 import OwnerMenu from "./components/OwnerMenu"
 import SuperAdminMenu from "./components/SuperAdminMenu"
 import TeacherMenu from "./components/TeacherMenu"
-import { useCallback, useEffect, useImperativeHandle, useMemo, useState } from "react"
+import { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useState } from "react"
 import useDevice from "hooks/useDevice"
 import HomeLinkIcon from "components/navigation/HomeLinkIcon"
 import DrawerHeader from "./components/DrawerHeader"
 
-function DrawerMenu({ drawerWidth = 240, innerRef }) {
+const DrawerMenu = forwardRef(function DrawerMenu({ drawerWidth = 240 }, ref) {
     const { user: { permissions } } = useSessionContext();
     const isTeacher = useMemo(() => permissions.includes(USER_PERMISSIONS.TEACHER), [permissions])
     const isOwner = useMemo(() => permissions.includes(USER_PERMISSIONS.OWNER), [permissions])
@@ -28,7 +28,7 @@ function DrawerMenu({ drawerWidth = 240, innerRef }) {
         setMobileOpen(false)
     }, [])
 
-    useImperativeHandle(innerRef, () => ({
+    useImperativeHandle(ref, () => ({
         openMobile,
         closeMobile
     }), [openMobile, closeMobile])
@@ -89,6 +89,6 @@ function DrawerMenu({ drawerWidth = 240, innerRef }) {
             )}
         </Drawer>
     )
-}
+})
 
 export default DrawerMenu
