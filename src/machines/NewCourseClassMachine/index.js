@@ -9,13 +9,13 @@ import SelectPresentStudentsStep from "./steps/SelectPresentStudentsStep";
 import SetPresentStudentsDataStep from "./steps/SetPresentStudentsDataStep";
 
 
-function NewCourseClassMachine({ onFinish, courseId }) {
+function NewCourseClassMachine({ onFinish, course }) {
     const { getCourseStudents } = useGetCourseStudentsService();
     const { createNewCourseClass } = useCreateNewCourseClassService();
     const machine = useLocalMachine()
     const [state, send] = useMachine(machine, {
         context: {
-            courseId: courseId,
+            course: course,
             students: [],
             presentStudentsIds: [],
             presentStudentsData: [],
@@ -31,7 +31,7 @@ function NewCourseClassMachine({ onFinish, courseId }) {
                 if (!result) throw new Error('Error al obtener los estudiantes');
                 return result;
             },
-            createNewClass: async (context, event) => {
+            createNewCourseClass: async (context, event) => {
                 const presentStudentsData = context.presentStudentsData
                 const result = await createNewCourseClass({ presentStudentsData });
                 if (!result) throw new Error('Error al guardar la clase');

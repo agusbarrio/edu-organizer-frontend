@@ -23,7 +23,7 @@ function CourseNewClassPage() {
             onClick: () => go(PATHS.COURSE)
         }}>
             <Box sx={{ height: '100%' }}>
-                <NewCourseClassMachine courseId={course.id} onFinish={() => go(PATHS.COURSE)}></NewCourseClassMachine>
+                <NewCourseClassMachine course={course} onFinish={() => go(PATHS.COURSE)}></NewCourseClassMachine>
             </Box>
         </CourseTemplate>
     )

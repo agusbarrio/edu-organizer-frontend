@@ -262,6 +262,7 @@ function useValidator() {
         },
         [number]
     );
+
     const array = useCallback((_config = {}) => {
         const yupArray = Yup.array();
         return yupArray;
@@ -274,6 +275,29 @@ function useValidator() {
         },
         [array, id]
     );
+
+    const boolean = useCallback((config = {}) => {
+        let yupBoolean = Yup.boolean();
+        if (config?.required?.value) {
+            yupBoolean = yupBoolean.required(translate(config.required.message));
+        } else {
+            yupBoolean = yupBoolean.nullable();
+        }
+    }, [translate])
+
+
+    const checkbox = useCallback(
+        (config) => {
+            const configResult = _.merge(
+                _.cloneDeep(DEFAULT_VALIDATIONS.CHECKBOX),
+                config
+            );
+            const yupTitle = boolean(configResult);
+            return yupTitle;
+        },
+        [boolean]
+    );
+
 
     return {
         form,
@@ -288,6 +312,8 @@ function useValidator() {
         url,
         id,
         ids,
+        checkbox,
+        boolean
     };
 }
 

@@ -16,16 +16,16 @@ const InputForm = forwardRef(function InputForm({ onSubmit, size, templateProps 
     const schema = useMemo(() => form({
         name: text({ required: { value: true } }),
         type: oneOf(_.values(INPUT_TYPES), { required: { value: true }, }),
-        label: text({ required: { value: false } }),
-        placeholder: text({ required: { value: false } }),
+        // label: text({ required: { value: false } }),
+        // placeholder: text({ required: { value: false } }),
     }), [text, form, oneOf])
 
     return (
         <Form schema={schema} onSubmit={onSubmit} ref={ref} templateProps={templateProps}>
             <ControllerInput render={TextInput} size={size} name={"name"} label={translate(TEXTS.NAME_FIELD_LABEL)} placeholder={translate(TEXTS.NAME_FIELD_PLACEHOLDER)} />
             <ControllerInput render={InputTypeSelect} size={size} name={"type"} label={translate(TEXTS.TYPE_FIELD_LABEL)} placeholder={translate(TEXTS.TYPE_FIELD_PLACEHOLDER)} />
-            <ControllerInput render={TextInput} size={size} name={"label"} label={translate(TEXTS.LABEL_FIELD_LABEL)} placeholder={translate(TEXTS.LABEL_FIELD_PLACEHOLDER)} />
-            <ControllerInput render={TextInput} size={size} name={"placeholder"} label={translate(TEXTS.PLACEHOLDER_FIELD_LABEL)} placeholder={translate(TEXTS.PLACEHOLDER_FIELD_PLACEHOLDER)} />
+            {/* <ControllerInput render={TextInput} size={size} name={"label"} label={translate(TEXTS.LABEL_FIELD_LABEL)} placeholder={translate(TEXTS.LABEL_FIELD_PLACEHOLDER)} /> */}
+            {/* <ControllerInput render={TextInput} size={size} name={"placeholder"} label={translate(TEXTS.PLACEHOLDER_FIELD_LABEL)} placeholder={translate(TEXTS.PLACEHOLDER_FIELD_PLACEHOLDER)} /> */}
         </Form >
     )
 })

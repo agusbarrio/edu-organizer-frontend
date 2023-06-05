@@ -75,6 +75,9 @@ const DEFAULT_VALIDATIONS = {
   ONE_OF: {
     oneOf: { value: [], message: CORE_TEXTS.VALIDATIONS_ONE_OF },
     required: { value: false, message: CORE_TEXTS.VALIDATIONS_REQUIRED },
+  },
+  CHECKBOX: {
+    required: { value: true, message: CORE_TEXTS.VALIDATIONS_REQUIRED },
   }
 };
 
