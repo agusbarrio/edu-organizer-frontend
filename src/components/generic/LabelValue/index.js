@@ -1,8 +1,13 @@
-import { Typography } from "@mui/material"
+import { Stack, Typography } from "@mui/material"
+import Truncate from "../Truncate"
 
-function LabelValue({ label, value }) {
+function LabelValue({ label, value, variant = "h5", labelProps = {}, valueProps = {} }) {
+
     return (
-        <Typography variant="h5"> <span style={{ fontWeight: 'bold' }}>{label}:</span> {value}</Typography>
+        <Stack>
+            <Typography variant={variant} sx={{ fontWeight: 'bold' }} {...labelProps}>{label}:</Typography>
+            <Typography {...valueProps}>{value}</Typography>
+        </Stack>
     )
 }
 

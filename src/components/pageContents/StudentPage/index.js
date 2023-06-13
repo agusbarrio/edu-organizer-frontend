@@ -1,5 +1,6 @@
 import LabelValue from "components/generic/LabelValue"
 import DashboardTemplate from "components/templates/DashboardTemplate"
+import CORE_TEXTS from "constants/CORE_TEXTS"
 import PATHS from "constants/PATHS"
 import TEXTS from "constants/TEXTS"
 import useLocaleContext from "hooks/useLocaleContext"
@@ -12,7 +13,7 @@ import { renderText } from "utils/text"
 function StudentPage() {
     const { getStudent } = useGetStudentService()
     const { runService, loading, value: student } = useService({ service: getStudent, defaultValue: {} })
-    const { go, params } = useNavigate()
+    const { goBack, params } = useNavigate()
 
     useEffect(() => {
         if (params.studentId) runService(params.studentId)
@@ -23,8 +24,8 @@ function StudentPage() {
             title={translate(TEXTS.STUDENT_PAGE_TITLE)}
             subtitle={translate(TEXTS.STUDENT_PAGE_SUBTITLE)}
             backButtonProps={{
-                children: translate(TEXTS.GO_BACK_STUDENTS),
-                onClick: () => go(renderText(PATHS.DASHBOARD_STUDENTS))
+                children: translate(CORE_TEXTS.GENERIC_BACK),
+                onClick: goBack
             }}
             loading={loading}
         >

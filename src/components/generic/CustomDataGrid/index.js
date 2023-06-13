@@ -2,7 +2,7 @@ import { DataGrid } from "@mui/x-data-grid"
 import Toolbar from "./components/Toolbar"
 import { useState } from "react";
 
-function CustomDataGrid({ rows, columns, slots, rowSelection, onClickEditSelection, onClickDeleteSelection, ...props }) {
+function CustomDataGrid({ rows = [], columns, slots, rowSelection, onClickEditSelection, onClickDeleteSelection, ...props }) {
     const [rowSelectionModel, setRowSelectionModel] = useState([]);
 
 

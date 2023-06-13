@@ -5,11 +5,16 @@ function useNavigate() {
     const go = useCallback((url, as, options) => {
         router.push(url, as, options)
     }, [router])
+
+    const goBack = useCallback(() => {
+        router.back()
+    }, [router])
+
     const params = useMemo(() => {
         return router.query
     }, [router.query])
 
-    return { go, params }
+    return { go, params, goBack }
 }
 
 export default useNavigate;

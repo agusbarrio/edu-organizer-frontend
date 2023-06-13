@@ -8,6 +8,11 @@ import { renderText } from "utils/text"
 import useService from "hooks/useService"
 import useGetCourseService from "services/courses/useGetCourseService"
 import { useEffect } from "react"
+import { Grid } from "@mui/material"
+import CourseDataCard from "components/dataDisplay/CourseDataCard"
+import StudentsDataTable from "components/dataTables/StudentsDataTable"
+import InputsList from "components/dataDisplay/InputsList"
+import Card from "components/generic/Card"
 
 function CourseDetailsPage() {
     const { getCourse } = useGetCourseService()
@@ -30,10 +35,20 @@ function CourseDetailsPage() {
                 onClick: () => go(renderText(PATHS.DASHBOARD_COURSES))
             }}
         >
-            <LabelValue label={translate(TEXTS.COURSE_NAME_LABEL)} value={course?.name}></LabelValue>
-            <LabelValue label={translate(TEXTS.COURSE_ID_LABEL)} value={course?.id}></LabelValue>
-            <LabelValue label={translate(TEXTS.COURSE_SHORT_ID_LABEL)} value={course?.shortId}></LabelValue>
-        </DashboardTemplate>
+            <Grid container spacing={2} sx={{ overflowY: 'auto', height: '100%' }}>
+                <Grid item xs={12} md={6}>
+                    <CourseDataCard course={course}></CourseDataCard>
+                </Grid>
+                <Grid item xs={12} md={6} >
+                    <InputsList inputs={course?.studentAttendanceFormData} cardTitle={translate(TEXTS.STUDENT_ATTENDANCE_FORM_LABEL)}></InputsList>
+                </Grid>
+                <Grid item sx={{ height: '100%' }} xs={12}>
+                    <Card title={translate(TEXTS.COURSE_STUDENTS_LIST_CARD_TITLE)}>
+                        <StudentsDataTable students={course?.students}></StudentsDataTable>
+                    </Card>
+                </Grid>
+            </Grid>
+        </DashboardTemplate >
 
     )
 }

@@ -113,6 +113,9 @@ const TEXTS = {
     SELECT_PRESENT_STUDENTS_TITLE: { es: 'Asistencia', en: 'Attendance' },
     GO_BACK_COURSE: { es: 'Volver al curso', en: 'Go back course' },
     STUDENT_AVATAR_LABEL: { es: 'Foto', en: 'Photo' },
+    COURSE_DATA_CARD_TITLE: { es: 'Datos del curso', en: 'Course data' },
+    COURSE_URL_LABEL: { es: 'URL del curso', en: 'Course URL' },
+    STUDENT_ATTENDANCE_FORM_LABEL: { es: 'Formulario de asistencia', en: 'Attendance form' },
 }
 
 export default TEXTS

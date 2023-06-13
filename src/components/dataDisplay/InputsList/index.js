@@ -5,7 +5,7 @@ import List from "components/generic/List"
 import { Divider } from "@mui/material"
 import { Fragment } from "react"
 
-function InputsList({ onClickItem, inputs, itemIconProps, cardTitle, help }) {
+function InputsList({ onClickItem, inputs = [], itemIconProps, cardTitle, help }) {
     return (
         <Card title={cardTitle} help={help}>
             <List >
