@@ -1,3 +1,4 @@
+import _ from "lodash";
 import { useMemo } from "react"
 import { assign, createMachine } from 'xstate';
 
@@ -24,13 +25,25 @@ function useLocalMachine() {
                 },
                 selectPresentStudents: {
                     on: {
-                        NEXT: {
-                            target: 'setPresentStudentsData',
+                        NEXT:
+                        {
+                            target: 'evaluateEmpty',
                             actions: [assign({
                                 presentStudentsIds: (context, event) => event.presentStudentsIds,
-                            })],
-                        }
+                            })]
+                        },
                     }
+                },
+                evaluateEmpty: {
+                    always: [
+                        {
+                            target: 'createNewCourseClass',
+                            cond: (context) => _.isEmpty(context.presentStudentsIds),
+                        },
+                        {
+                            target: 'setPresentStudentsData',
+                        },
+                    ],
                 },
                 setPresentStudentsData: {
                     on: {

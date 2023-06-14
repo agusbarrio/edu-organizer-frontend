@@ -116,6 +116,8 @@ const TEXTS = {
     COURSE_DATA_CARD_TITLE: { es: 'Datos del curso', en: 'Course data' },
     COURSE_URL_LABEL: { es: 'URL del curso', en: 'Course URL' },
     STUDENT_ATTENDANCE_FORM_LABEL: { es: 'Formulario de asistencia', en: 'Attendance form' },
+    NO_PRESENT_STUDENTS_CONFIRM_TITLE: { es: 'Sin estudiantes presentes', en: 'No present students' },
+    NO_PRESENT_STUDENTS_CONFIRM_DESCRIPTION: { es: 'No seleccionaste ningún estudiante como presente. ¿Seguro que querés continuar?', en: 'You did not select any student as present. Are you sure you want to continue?' },
 }
 
 export default TEXTS

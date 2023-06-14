@@ -46,6 +46,8 @@ function NewCourseClassMachine({ onFinish, course }) {
                 return LoadingBox
             case 'selectPresentStudents':
                 return SelectPresentStudentsStep
+            case 'evaluateEmpty':
+                return LoadingBox
             case 'setPresentStudentsData':
                 return SetPresentStudentsDataStep
             case 'createNewCourseClass':

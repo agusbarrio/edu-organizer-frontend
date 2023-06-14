@@ -68,7 +68,7 @@ function SetPresentStudentsDataStep({ state, send }) {
 
 
     return (
-        <StepTemplate onClickNext={handleClickNext} onClickBack={handleClickBack} title={translate(TEXTS.SELECT_PRESENT_STUDENTS_TITLE)}>
+        <StepTemplate onClickFinish={handleClickNext} onClickBack={handleClickBack} title={translate(TEXTS.SELECT_PRESENT_STUDENTS_TITLE)}>
             <CardsContainer columnWidth="minmax(15rem, 1fr)">
                 {presentStudents.map(student => (
                     <Card
