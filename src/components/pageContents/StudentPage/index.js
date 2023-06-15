@@ -1,3 +1,7 @@
+import { Grid } from "@mui/material"
+import StudentDataCard from "components/dataDisplay/StudentDataCard"
+import ClassSessionsStudentTable from "components/dataTables/ClassSessionsStudentTable"
+import Card from "components/generic/Card"
 import LabelValue from "components/generic/LabelValue"
 import DashboardTemplate from "components/templates/DashboardTemplate"
 import CORE_TEXTS from "constants/CORE_TEXTS"
@@ -29,9 +33,16 @@ function StudentPage() {
             }}
             loading={loading}
         >
-            <LabelValue label={translate(TEXTS.STUDENT_ID_LABEL)} value={student.id}></LabelValue>
-            <LabelValue label={translate(TEXTS.STUDENT_FIRST_NAME_LABEL)} value={student.firstName}></LabelValue>
-            <LabelValue label={translate(TEXTS.STUDENT_LAST_NAME_LABEL)} value={student.lastName}></LabelValue>
+            <Grid container spacing={2} overflowY="auto" height={'100%'}>
+                <Grid item xs={12} md={4} maxHeight={'100%'}>
+                    <StudentDataCard student={student}></StudentDataCard>
+                </Grid>
+                <Grid item xs={12} md={8} maxHeight={'100%'}>
+                    <Card title={translate(TEXTS.STUDENT_ATTENDANCE_CARD_TITLE)}>
+                        <ClassSessionsStudentTable classSessionsStudent={student?.classSessionsStudent}></ClassSessionsStudentTable>
+                    </Card>
+                </Grid>
+            </Grid>
         </DashboardTemplate>
 
     )
