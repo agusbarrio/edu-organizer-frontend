@@ -33,11 +33,11 @@ function StudentPage() {
             }}
             loading={loading}
         >
-            <Grid container spacing={2} overflowY="auto" height={'100%'}>
+            <Grid container spacing={2} sx={{ overflowY: 'auto', height: '100%' }}>
                 <Grid item xs={12} md={4} maxHeight={'100%'}>
                     <StudentDataCard student={student}></StudentDataCard>
                 </Grid>
-                <Grid item xs={12} md={8} maxHeight={'100%'}>
+                <Grid item xs={12} md={8} height={'100%'}>
                     <Card title={translate(TEXTS.STUDENT_ATTENDANCE_CARD_TITLE)}>
                         <ClassSessionsStudentTable classSessionsStudent={student?.classSessionsStudent}></ClassSessionsStudentTable>
                     </Card>

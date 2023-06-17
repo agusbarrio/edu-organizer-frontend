@@ -3,11 +3,14 @@ import useLocaleContext from "hooks/useLocaleContext"
 import { useMemo } from "react"
 import CustomDataGrid from "components/generic/CustomDataGrid"
 import _ from "lodash"
+import TotalPoints from "./components/TotalPoints"
+import useGetPoints from "./hooks/useGetPoints"
 
 
 function ClassSessionsStudentTable({ classSessionsStudent = [] }) {
     const { translate } = useLocaleContext()
 
+    const { getPoints } = useGetPoints()
     const columns = useMemo(() => {
         return [
             {
@@ -35,27 +38,20 @@ function ClassSessionsStudentTable({ classSessionsStudent = [] }) {
                 flex: 1,
                 type: 'number',
                 headerName: translate(TEXTS.CLASS_SESSION_STUDENT_POINTS_ACUMULATED_LABEL),
-                valueGetter: ({ row }) => {
-                    let count = 0
-                    if (!_.isEmpty(row?.metadata)) {
-                        _.forEach(row?.metadata, (value) => {
-                            if (value === true) {
-                                count++
-                            }
-                        })
-                    }
-                    return count
-                },
+                valueGetter: ({ row }) => getPoints(row),
             },
 
         ]
-    }, [translate])
-
-
+    }, [translate, getPoints])
 
     return <CustomDataGrid
         rows={classSessionsStudent}
         columns={columns}
+        slotProps={{
+            footer: {
+                components: [TotalPoints]
+            }
+        }}
     ></CustomDataGrid>
 }
 

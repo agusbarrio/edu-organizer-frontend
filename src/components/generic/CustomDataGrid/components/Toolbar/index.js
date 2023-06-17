@@ -20,12 +20,10 @@ function Toolbar({ onClickEditSelection, onClickDeleteSelection, rowSelectionMod
         onClickDeleteSelection(rowsSelected)
     }, [onClickDeleteSelection, rowsSelected])
 
-    const { greaterThanMd } = useDevice()
-
     return (
         <GridToolbarContainer {...props}>
             <Stack direction={'row'} spacing={1} width={'100%'}>
-                {greaterThanMd && <Stack direction={'row'} spacing={1} flexGrow={1}>
+                {<Stack direction={'row'} spacing={1} flexGrow={1}>
                     <GridToolbarFilterButton />
                 </Stack>}
                 {onClickDeleteSelection && showMultipleSelectionButtons && <Button startIcon={<Delete></Delete>} color="error" size="small" onClick={handleClickDeleteSelection}>{translate(CORE_TEXTS.GENERIC_DELETE_SELECTION)}</Button>}

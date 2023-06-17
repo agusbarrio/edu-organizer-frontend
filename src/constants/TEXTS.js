@@ -122,6 +122,8 @@ const TEXTS = {
     CLASS_SESSION_DATE_LABEL: { es: 'Fecha', en: 'Date' },
     CLASS_SESSION_STUDENT_IS_PRESENT_LABEL: { es: '¿Asistió?', en: 'Did he attend?' },
     CLASS_SESSION_STUDENT_POINTS_ACUMULATED_LABEL: { es: 'Puntos', en: 'Points' },
+    CLASS_SESSION_STUDENT_TOTAL_POINTS_ACUMULATED_LABEL: { es: 'Puntos totales', en: 'Total points' },
+    STUDENT_DATA_CARD_TITLE: { es: 'Datos del estudiante', en: 'Student data' },
 }
 
 export default TEXTS
