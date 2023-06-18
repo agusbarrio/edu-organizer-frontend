@@ -1,9 +1,7 @@
 
 import { Stack } from "@mui/material"
 import CourseLoginForm from "components/forms/CourseLoginForm"
-import Link from "components/generic/Link"
 import PublicTemplate from "components/templates/PublicTemplate"
-import PATHS from "constants/PATHS"
 import TEMPLATE_TYPES from "constants/TEMPLATE_TYPES"
 import TEXTS from "constants/TEXTS"
 import useLocaleContext from "hooks/useLocaleContext"

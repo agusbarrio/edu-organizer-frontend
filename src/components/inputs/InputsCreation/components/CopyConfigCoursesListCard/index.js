@@ -1,6 +1,5 @@
 import { ContentCopyOutlined, } from "@mui/icons-material"
 import CoursesList from "components/dataDisplay/CoursesList"
-import Card from "components/generic/Card"
 import FullSkeleton from "components/generic/FullSkeleton"
 import TEXTS from "constants/TEXTS"
 import useLocaleContext from "hooks/useLocaleContext"

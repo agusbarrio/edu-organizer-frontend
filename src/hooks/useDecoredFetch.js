@@ -8,8 +8,6 @@ import CORE_TEXTS from 'constants/CORE_TEXTS';
 import useFetch from './useFetch';
 import useSnackbar from './useSnackbar';
 import useSessionContext from './useSessionContext';
-import useNavigate from './useNavigate';
-import PATHS from 'constants/PATHS';
 
 function useDecoredFetch() {
   const { success: successNotification, error: errorNotification } =

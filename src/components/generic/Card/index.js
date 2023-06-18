@@ -4,7 +4,6 @@ import {
   CardContent,
   Divider,
   Stack,
-  Tooltip,
 } from '@mui/material';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Truncate from '../Truncate';

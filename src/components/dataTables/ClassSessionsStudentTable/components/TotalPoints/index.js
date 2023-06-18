@@ -1,7 +1,6 @@
 import { Box } from '@mui/material';
 import TEXTS from 'constants/TEXTS';
 import useLocaleContext from 'hooks/useLocaleContext';
-import _ from 'lodash';
 import { useMemo, } from 'react';
 import useGetPoints from '../../hooks/useGetPoints';
 

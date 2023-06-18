@@ -5,7 +5,7 @@ import { COURSE_ACCESS_ENDPOINTS } from 'constants/ENDPOINTS';
 function useGetCourseService() {
     const { get } = useDecoredFetch();
     const getCourse = useCallback(
-        async (id) => {
+        async () => {
             const result = await get(
                 COURSE_ACCESS_ENDPOINTS.COURSE,
                 null,

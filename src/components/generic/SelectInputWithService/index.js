@@ -10,7 +10,7 @@ function SelectInputWithService({
   service,
   ...props
 }) {
-  const { value, runService, loading } = useService({
+  const { value, runService } = useService({
     service,
     defaultValue: [],
   });

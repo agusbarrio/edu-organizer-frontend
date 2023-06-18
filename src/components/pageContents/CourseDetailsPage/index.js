@@ -1,4 +1,3 @@
-import LabelValue from "components/generic/LabelValue"
 import DashboardTemplate from "components/templates/DashboardTemplate"
 import PATHS from "constants/PATHS"
 import TEXTS from "constants/TEXTS"

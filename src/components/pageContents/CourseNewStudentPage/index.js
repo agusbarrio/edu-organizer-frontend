@@ -1,11 +1,7 @@
 import CourseTemplate from "components/templates/CourseTemplate"
-import TEMPLATE_TYPES from "constants/TEMPLATE_TYPES"
-
-import CoomingSoon from "components/dataDisplay/CoomingSoon"
 import useLocaleContext from "hooks/useLocaleContext"
 import TEXTS from "constants/TEXTS"
 import useNavigate from "hooks/useNavigate"
-import { Button } from "@mui/material"
 import CORE_TEXTS from "constants/CORE_TEXTS"
 import PATHS from "constants/PATHS"
 import StudentForm from "components/forms/StudentForm"

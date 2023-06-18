@@ -1,5 +1,5 @@
 import { useMachine } from "@xstate/react";
-import { Fragment, useMemo } from "react";
+import { useMemo } from "react";
 import SetCourseDataStep from "./steps/SetCourseDataStep";
 import SetCourseStudentsStep from "./steps/SetCourseStudentsStep";
 import LoadingBox from "components/dataDisplay/LoadingBox";
@@ -27,7 +27,7 @@ function CourseMachine({ onFinish, initialContext, edit }) {
             },
         },
         services: {
-            createCourse: async (context, event) => {
+            createCourse: async (context) => {
                 const result = await createCourse({
                     name: context.name,
                     accessPin: context.accessPin,
@@ -41,7 +41,7 @@ function CourseMachine({ onFinish, initialContext, edit }) {
                 })
                 if (!result) throw new Error('Error creating course')
             },
-            editCourse: async (context, event) => {
+            editCourse: async (context) => {
                 const result = await editCourse(context.id
                     , {
                         name: context.name,

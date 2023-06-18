@@ -9,6 +9,7 @@ function useGetInputValidator() {
         if (inputData?.type === INPUT_TYPES.CHECKBOX) {
             result = checkbox(inputData.config)
         }
+        return result
     }, [checkbox])
 
     return getInputValidator

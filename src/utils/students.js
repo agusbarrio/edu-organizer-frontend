@@ -2,7 +2,6 @@
 import PATHS from "constants/PATHS";
 import { STUDENTS_ENDPOINTS } from "constants/ENDPOINTS";
 import { get } from 'utils/fetch'
-import _ from "lodash";
 import COOKIES from "constants/COOKIES";
 import { renderText } from "./text";
 

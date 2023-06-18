@@ -2,7 +2,6 @@ import TEXTS from "constants/TEXTS"
 import useLocaleContext from "hooks/useLocaleContext"
 import { useMemo } from "react"
 import CustomDataGrid from "components/generic/CustomDataGrid"
-import _ from "lodash"
 import TotalPoints from "./components/TotalPoints"
 import useGetPoints from "./hooks/useGetPoints"
 

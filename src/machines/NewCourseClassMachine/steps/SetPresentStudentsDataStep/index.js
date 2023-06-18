@@ -1,4 +1,3 @@
-import StudentsDataTable from "components/dataTables/StudentsDataTable";
 import AttendanceCourseForm from "components/forms/AttendanceCourseForm";
 import Card from "components/generic/Card";
 import CardsContainer from "components/generic/CardsContainer";

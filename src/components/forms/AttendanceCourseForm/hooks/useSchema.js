@@ -1,4 +1,3 @@
-import INPUT_TYPES from "constants/INPUT_TYPES"
 import useValidator from "hooks/useValidator"
 import { useMemo } from "react"
 import useGetInputValidator from "./useGetInputValidator"

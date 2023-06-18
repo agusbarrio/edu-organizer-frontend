@@ -1,4 +1,4 @@
-import { Box, Divider, Drawer, Stack } from "@mui/material"
+import { Divider, Drawer } from "@mui/material"
 import USER_PERMISSIONS from "constants/USER_PERMISSIONS"
 import useSessionContext from "hooks/useSessionContext"
 import AdminMenu from "./components/AdminMenu"
@@ -7,7 +7,6 @@ import SuperAdminMenu from "./components/SuperAdminMenu"
 import TeacherMenu from "./components/TeacherMenu"
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useState } from "react"
 import useDevice from "hooks/useDevice"
-import HomeLinkIcon from "components/navigation/HomeLinkIcon"
 import DrawerHeader from "./components/DrawerHeader"
 
 const DrawerMenu = forwardRef(function DrawerMenu({ drawerWidth = 240 }, ref) {

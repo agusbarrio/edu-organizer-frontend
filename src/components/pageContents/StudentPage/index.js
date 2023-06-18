@@ -2,17 +2,14 @@ import { Grid } from "@mui/material"
 import StudentDataCard from "components/dataDisplay/StudentDataCard"
 import ClassSessionsStudentTable from "components/dataTables/ClassSessionsStudentTable"
 import Card from "components/generic/Card"
-import LabelValue from "components/generic/LabelValue"
 import DashboardTemplate from "components/templates/DashboardTemplate"
 import CORE_TEXTS from "constants/CORE_TEXTS"
-import PATHS from "constants/PATHS"
 import TEXTS from "constants/TEXTS"
 import useLocaleContext from "hooks/useLocaleContext"
 import useNavigate from "hooks/useNavigate"
 import useService from "hooks/useService"
 import { useEffect } from "react"
 import useGetStudentService from "services/students/useGetStudentService"
-import { renderText } from "utils/text"
 
 function StudentPage() {
     const { getStudent } = useGetStudentService()

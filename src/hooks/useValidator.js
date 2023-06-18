@@ -263,13 +263,13 @@ function useValidator() {
         [number]
     );
 
-    const array = useCallback((_config = {}) => {
+    const array = useCallback(() => {
         const yupArray = Yup.array();
         return yupArray;
     }, []);
 
     const ids = useCallback(
-        (config = {}) => {
+        () => {
             const yupIds = array().of(id());
             return yupIds;
         },
@@ -283,6 +283,7 @@ function useValidator() {
         } else {
             yupBoolean = yupBoolean.nullable();
         }
+        return yupBoolean;
     }, [translate])
 
 

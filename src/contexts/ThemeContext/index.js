@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import { ThemeProvider, createTheme } from '@mui/material';
 import { esES as dataGridEsES } from '@mui/x-data-grid';
 import { esES as pickersEsEs } from '@mui/x-date-pickers/locales';

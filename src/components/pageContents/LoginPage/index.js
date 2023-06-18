@@ -6,9 +6,7 @@ import PATHS from "constants/PATHS"
 import TEXTS from "constants/TEXTS"
 import Link from "components/generic/Link"
 import useLocaleContext from "hooks/useLocaleContext"
-import useNavigate from "hooks/useNavigate"
 import useLoginService from "services/auth/useLoginService"
-import { renderText } from "utils/text"
 import useSessionContext from "hooks/useSessionContext"
 
 function LoginPage() {

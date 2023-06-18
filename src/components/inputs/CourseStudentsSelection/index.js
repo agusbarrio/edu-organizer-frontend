@@ -4,9 +4,8 @@ import StudentsListCard from "./components/StudentsListCard"
 import AvaibleStudentsListCard from "./components/AvaibleStudentsListCard"
 import useService from "hooks/useService"
 import useGetAllStudentsService from "services/students/useGetAllStudentsService"
-import { useCallback, useEffect, useMemo, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { v4 as uuidv4 } from 'uuid';
-import _ from "lodash"
 import NewStudentCard from "./components/NewStudentCard"
 import FullSkeleton from "components/generic/FullSkeleton"
 

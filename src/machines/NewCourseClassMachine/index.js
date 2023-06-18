@@ -1,5 +1,5 @@
 import { useMachine } from "@xstate/react";
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 
 import useLocalMachine from "./hooks/useLocalMachine";
 import useGetCourseStudentsService from "services/courseAccess/useGetCourseStudentsService";
@@ -26,12 +26,12 @@ function NewCourseClassMachine({ onFinish, course }) {
             },
         },
         services: {
-            getStudents: async (context, event) => {
+            getStudents: async () => {
                 const result = await getCourseStudents();
                 if (!result) throw new Error('Error al obtener los estudiantes');
                 return result;
             },
-            createNewCourseClass: async (context, event) => {
+            createNewCourseClass: async (context) => {
                 const presentStudentsData = context.presentStudentsData
                 const result = await createNewCourseClass({ presentStudentsData });
                 if (!result) throw new Error('Error al guardar la clase');

@@ -1,4 +1,3 @@
-import { Divider, Stack } from "@mui/material"
 import HomeLinkIcon from "components/navigation/HomeLinkIcon"
 
 function DrawerHeader() {

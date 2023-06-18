@@ -2,7 +2,7 @@ import TextField from '@mui/material/TextField';
 import _ from 'lodash';
 import { useCallback, useEffect, useState } from 'react';
 
-function TextInput({ value: valueProp = '', defaultValue = '', onChange, ...props }) {
+function TextInput({ value: valueProp = '', onChange, ...props }) {
     const [value, setValue] = useState(valueProp)
 
     useEffect(() => {

@@ -1,10 +1,9 @@
-import { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from "react"
+import { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from "react"
 import { Grid } from "@mui/material"
 import { v4 as uuidv4 } from 'uuid';
 import InputsListCard from "./components/InputsListCard"
 import NewInputCard from "./components/NewInputCard"
 import CopyConfigCoursesListCard from "./components/CopyConfigCoursesListCard";
-import _ from "lodash";
 
 const InputsCreation = forwardRef(({ onChange, initialInputs = [] }, ref) => {
     const [inputs, setInputs] = useState(initialInputs)

@@ -1,5 +1,5 @@
 import _ from "lodash"
-import { useCallback, useMemo } from "react"
+import { useCallback } from "react"
 
 function useGetPoints() {
 

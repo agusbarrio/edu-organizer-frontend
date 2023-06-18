@@ -6,7 +6,6 @@ import TEXTS from "constants/TEXTS"
 
 import useLocaleContext from "hooks/useLocaleContext"
 import useSessionContext from "hooks/useSessionContext"
-import { useMemo } from "react"
 import { renderText } from "utils/text"
 
 function AdminMenu() {

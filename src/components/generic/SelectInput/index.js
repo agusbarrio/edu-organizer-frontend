@@ -1,5 +1,5 @@
 import { Select, MenuItem, FormControl, InputLabel, FormHelperText, } from '@mui/material';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import _ from 'lodash';
 
 /**
@@ -8,12 +8,10 @@ import _ from 'lodash';
  * @returns
  */
 function SelectInput({
-  children,
   variant = 'outlined',
   renderValue,
   label,
   inputProps = {},
-  sx,
   list = [],
   helperText,
   onChange,

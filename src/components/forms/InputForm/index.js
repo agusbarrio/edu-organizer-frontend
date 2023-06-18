@@ -1,6 +1,5 @@
 import ControllerInput from "components/generic/ControllerInput"
 import Form from "components/generic/Form"
-import SelectInput from "components/generic/SelectInput"
 import TextInput from "components/generic/TextInput"
 import InputTypeSelect from "components/inputs/InputTypeSelect"
 import INPUT_TYPES from "constants/INPUT_TYPES"

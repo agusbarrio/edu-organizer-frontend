@@ -8,7 +8,7 @@ import { Button, Stack } from "@mui/material"
 import { Add, Face } from "@mui/icons-material"
 import TEXTS from "constants/TEXTS"
 import useNavigate from "hooks/useNavigate"
-import useModalContext from "hooks/useModalContext"
+
 import PATHS from "constants/PATHS"
 import CourseTemplate from "components/templates/CourseTemplate"
 
@@ -18,7 +18,7 @@ function CoursePage() {
     const { getCourse } = useGetCourseService()
     const { value: course, runService, loading } = useService({ service: getCourse, defaultValue: {} })
     const { go } = useNavigate()
-    const { openModal } = useModalContext()
+
     useEffect(() => {
         runService(courseSession.id)
     }, [runService, courseSession.id])

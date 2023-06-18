@@ -1,5 +1,4 @@
 import { Stack, Typography } from "@mui/material"
-import Truncate from "../Truncate"
 
 function LabelValue({ label, value, variant = "body1", labelProps = {}, valueProps = {} }) {
 

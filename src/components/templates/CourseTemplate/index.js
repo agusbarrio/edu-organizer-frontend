@@ -1,5 +1,5 @@
 import { ArrowBack } from "@mui/icons-material";
-import { Box, Button, Container, Divider, Stack, Typography } from "@mui/material";
+import { Box, Button, Container, Divider, Stack, } from "@mui/material";
 import Header from "components/dataDisplay/Header";
 import LoadingBox from "components/dataDisplay/LoadingBox";
 import Truncate from "components/generic/Truncate";

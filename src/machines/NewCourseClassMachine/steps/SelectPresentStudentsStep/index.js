@@ -1,12 +1,10 @@
 import AttendanceStudentsTable from "components/dataTables/AttendanceStudentsTable";
-import StudentsDataTable from "components/dataTables/StudentsDataTable";
-import CourseForm from "components/forms/CourseForm";
 import StepTemplate from "components/templates/StepTemplate";
 import TEXTS from "constants/TEXTS";
 import useLocaleContext from "hooks/useLocaleContext";
 import useModalContext from "hooks/useModalContext";
 import _ from "lodash";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 function SelectPresentStudentsStep({ state, send }) {
     const { translate } = useLocaleContext()
