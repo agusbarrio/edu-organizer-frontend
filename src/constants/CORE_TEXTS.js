@@ -8,6 +8,7 @@ const CORE_TEXTS = {
         //403
         E403: { es: 'Prohibido', en: 'Forbidden' },
         E403_1: { es: 'No tiene permiso para acceder a este recurso', en: 'You do not have permission to access this resource' },
+        E403_2: { es: 'Usuario inactivo', en: 'Inactive user' },
         //404
         E404: { es: 'No encontrado.', en: 'Not found.' },
         E404_1: { es: 'Usuario no encontrado.', en: 'User not found.' },

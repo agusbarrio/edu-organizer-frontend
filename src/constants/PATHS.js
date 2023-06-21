@@ -18,6 +18,7 @@ const PATHS = {
     DASHBOARD_CLASS_SESSIONS: '/dashboard/class-sessions',
     DASHBOARD_COURSE_CREATE: '/dashboard/courses/create',
     DASHBOARD_STUDENT_CREATE: '/dashboard/students/create',
+    DASHBOARD_USERS: '/dashboard/users',
     NOT_FOUND: '/404',
     FORBIDDEN: '/403',
 }

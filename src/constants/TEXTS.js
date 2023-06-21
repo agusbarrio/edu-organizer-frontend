@@ -124,6 +124,19 @@ const TEXTS = {
     CLASS_SESSION_STUDENT_POINTS_ACUMULATED_LABEL: { es: 'Puntos', en: 'Points' },
     CLASS_SESSION_STUDENT_TOTAL_POINTS_ACUMULATED_LABEL: { es: 'Puntos totales', en: 'Total points' },
     STUDENT_DATA_CARD_TITLE: { es: 'Datos del estudiante', en: 'Student data' },
+    SUPERADMIN_MENU_BUTTON_USERS: { es: 'Usuarios', en: 'Users' },
+    USERS_PAGE_TITLE: { es: 'Usuarios', en: 'Users' },
+    USERS_PAGE_SUBTITLE: { es: 'Acá podés administrar los usuarios de la plataforma', en: 'Here you can manage the platform users' },
+    ALLOW_REGISTRATION: { es: 'Permitir registro', en: 'Allow registration' },
+    DENY_REGISTRATION: { es: 'Denegar registro', en: 'Deny registration' },
+    USER_FIRST_NAME_LABEL: { es: 'Nombre', en: 'First name' },
+    USER_LAST_NAME_LABEL: { es: 'Apellido', en: 'Last name' },
+    USER_EMAIL_LABEL: { es: 'Correo electrónico', en: 'Email' },
+    USER_STATUS_LABEL: { es: 'Estado', en: 'Status' },
+    USER_STATUS_ACTIVE: { es: 'Activo', en: 'Active' },
+    USER_STATUS_PENDING: { es: 'Pendiente', en: 'Pending' },
+    USER_ORGANIZATION_LABEL: { es: 'Organización', en: 'Organization' },
+
 }
 
 export default TEXTS
