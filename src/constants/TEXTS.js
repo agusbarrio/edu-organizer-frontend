@@ -20,7 +20,7 @@ const TEXTS = {
     REGISTER_BUTTON: { es: 'Registrarse', en: 'Register' },
     LOGIN_PAGE_RECOVER_PASSWORD_LINK: { es: '¿Olvidaste tu contraseña?', en: 'Forgot your password?' },
     LOGIN_PAGE_REGISTER_LINK: { es: '¿No tenés una cuenta? Registrate', en: 'Don\'t have an account? Register' },
-    REGISTER_PAGE_LOGIN_LINK: { es: '¿Ya tenés una cuenta? Inicia sesión', en: 'Already have an account? Login' },
+    REGISTER_PAGE_LOGIN_LINK: { es: 'Ir al inicio de sesión', en: 'Go to login' },
     MY_ACCOUNT_PAGE_TITLE: { es: 'Mi cuenta', en: 'My account' },
     LOGOUT_BUTTON: { es: 'Cerrar sesión', en: 'Logout' },
     ACCOUNT_BUTTON_TOOLTIP: { es: 'Mi cuenta', en: 'My account' },
@@ -149,6 +149,10 @@ const TEXTS = {
     DELETE_STUDENT_MODAL_TITLE: { es: 'Eliminar estudiante', en: 'Delete student' },
     DELETE_STUDENT_MODAL_CONTENT: { es: '¿Estás seguro que querés eliminar este estudiante?', en: 'Are you sure you want to delete this student?' },
     EDIT_STUDENT_PAGE_TITLE: { es: 'Editar estudiante', en: 'Edit student' },
+    VERIFY_ACCOUNT_PAGE_TITLE: { es: 'Verificar cuenta', en: 'Verify account' },
+    VERIFY_ACCOUNT_BUTTON: { es: 'Verificar', en: 'Verify' },
+    REGITER_PAGE_SUCCESS_MESSAGE: { es: 'Gracias por registrarte. Te enviamos un correo electrónico para que verifiques tu cuenta.', en: 'Thanks for registering. We sent you an email to verify your account.' },
 }
+
 
 export default TEXTS

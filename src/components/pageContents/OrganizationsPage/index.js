@@ -19,7 +19,7 @@ function OrganizationsPage() {
             title={translate(TEXTS.ORGANIZATIONS_PAGE_TITLE)}
             subtitle={translate(TEXTS.ORGANIZATIONS_PAGE_SUBTITLE)}
         >
-            <OrganizationsDataTable organizations={organizations}></OrganizationsDataTable>
+            <OrganizationsDataTable organizations={organizations} onDelete={runService}></OrganizationsDataTable>
         </DashboardTemplate>
     )
 }

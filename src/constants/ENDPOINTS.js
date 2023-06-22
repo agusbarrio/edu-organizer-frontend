@@ -17,6 +17,7 @@ export const AUTH_ENDPOINTS = {
     RESET_PASSWORD: `${authBaseUrl}/resetPassword`,
     VERIFY_SESSION: `${authBaseUrl}/verifySession`,
     VERIFY_SESSION_COURSE: `${authBaseUrl}/verifySessionCourse`,
+    VERIFY_ACCOUNT: `${authBaseUrl}/verifyAccount`,
 };
 
 export const COURSES_ENDPOINTS = {
