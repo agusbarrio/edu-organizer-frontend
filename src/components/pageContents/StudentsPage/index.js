@@ -31,7 +31,7 @@ function StudentsPage() {
                 }
             }}
         >
-            <StudentsDataTable students={students}></StudentsDataTable>
+            <StudentsDataTable students={students} onDelete={runService} onEdit={runService}></StudentsDataTable>
         </DashboardTemplate>
     )
 }

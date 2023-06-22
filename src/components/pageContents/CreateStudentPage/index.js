@@ -26,7 +26,6 @@ function CreateStudentPage() {
     return (
         <DashboardTemplate
             title={translate(TEXTS.CREATE_STUDENT_PAGE_TITLE)}
-            subtitle={translate(TEXTS.CREATE_STUDENT_PAGE_SUBTITLE)}
             backButtonProps={{
                 children: translate(TEXTS.GO_BACK_STUDENTS),
                 onClick: () => go(renderText(PATHS.DASHBOARD_STUDENTS))

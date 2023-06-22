@@ -1,4 +1,4 @@
-import { Group } from "@mui/icons-material"
+import { Apartment, Group } from "@mui/icons-material"
 import { List } from "@mui/material"
 import NavListButton from "components/navigation/NavListButton"
 import PATHS from "constants/PATHS"
@@ -10,6 +10,7 @@ function SuperAdminMenu() {
     return (
         <List>
             <NavListButton linkProps={{ href: PATHS.DASHBOARD_USERS }} iconProps={{ children: <Group></Group> }} text={translate(TEXTS.SUPERADMIN_MENU_BUTTON_USERS)}></NavListButton>
+            <NavListButton linkProps={{ href: PATHS.DASHBOARD_ORGANIZATIONS }} iconProps={{ children: <Apartment></Apartment> }} text={translate(TEXTS.SUPERADMIN_MENU_BUTTON_ORGANIZATIONS)}></NavListButton>
         </List>
     )
 }

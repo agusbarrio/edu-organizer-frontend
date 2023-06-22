@@ -18,7 +18,11 @@ const PATHS = {
     DASHBOARD_CLASS_SESSIONS: '/dashboard/class-sessions',
     DASHBOARD_COURSE_CREATE: '/dashboard/courses/create',
     DASHBOARD_STUDENT_CREATE: '/dashboard/students/create',
+    DASHBOARD_EDIT_STUDENT: '/dashboard/students/{{studentId}}/edit',
     DASHBOARD_USERS: '/dashboard/users',
+    DASHBOARD_ORGANIZATIONS: '/dashboard/organizations',
+    DASHBOARD_MY_ORGANIZATION: '/dashboard/organization',
+    EDIT_ORGANIZATION: '/dashboard/organization/edit',
     NOT_FOUND: '/404',
     FORBIDDEN: '/403',
 }

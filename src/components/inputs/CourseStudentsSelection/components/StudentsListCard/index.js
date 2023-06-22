@@ -3,8 +3,6 @@ import StudentsList from "components/dataDisplay/StudentsList";
 import TEXTS from "constants/TEXTS";
 import useLocaleContext from "hooks/useLocaleContext";
 
-
-
 function StudentsListCard({ students, onClickDrop }) {
     const { translate } = useLocaleContext()
     return <StudentsList

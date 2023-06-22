@@ -8,10 +8,10 @@ function StudentDataCard({ student }) {
     const { translate } = useLocaleContext()
 
     return (
-        <Card title={translate(TEXTS.STUDENT_DATA_CARD_TITLE)} >
-            <LabelValue label={translate(TEXTS.STUDENT_ID_LABEL)} value={student.id}></LabelValue>
-            <LabelValue label={translate(TEXTS.STUDENT_FIRST_NAME_LABEL)} value={student.firstName}></LabelValue>
-            <LabelValue label={translate(TEXTS.STUDENT_LAST_NAME_LABEL)} value={student.lastName}></LabelValue>
+        <Card title={translate(TEXTS.STUDENT_DATA_CARD_TITLE)}>
+            <LabelValue label={translate(TEXTS.STUDENT_FIRST_NAME_LABEL)} value={student?.firstName}></LabelValue>
+            <LabelValue label={translate(TEXTS.STUDENT_LAST_NAME_LABEL)} value={student?.lastName}></LabelValue>
+            {student?.course?.name && <LabelValue label={translate(TEXTS.STUDENT_COURSE_NAME_LABEL)} value={student?.course?.name}></LabelValue>}
         </Card >
     )
 }
