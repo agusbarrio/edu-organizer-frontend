@@ -152,7 +152,7 @@ const TEXTS = {
     VERIFY_ACCOUNT_PAGE_TITLE: { es: 'Verificar cuenta', en: 'Verify account' },
     VERIFY_ACCOUNT_BUTTON: { es: 'Verificar', en: 'Verify' },
     REGITER_PAGE_SUCCESS_MESSAGE: { es: 'Gracias por registrarte. Te enviamos un correo electrónico para que verifiques tu cuenta.', en: 'Thanks for registering. We sent you an email to verify your account.' },
+    RECOVER_PAGE_SUCCESS: { es: 'Te hemos enviado un correo electrónico para que puedas reiniciar tu contraseña.', en: 'We sent you an email to reset your password.' }
 }
-
 
 export default TEXTS

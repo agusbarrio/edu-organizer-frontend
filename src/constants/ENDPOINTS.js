@@ -18,6 +18,7 @@ export const AUTH_ENDPOINTS = {
     VERIFY_SESSION: `${authBaseUrl}/verifySession`,
     VERIFY_SESSION_COURSE: `${authBaseUrl}/verifySessionCourse`,
     VERIFY_ACCOUNT: `${authBaseUrl}/verifyAccount`,
+    RECOVER_PASSWORD: `${authBaseUrl}/recoverPassword`,
 };
 
 export const COURSES_ENDPOINTS = {
