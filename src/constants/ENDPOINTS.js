@@ -5,6 +5,7 @@ const coursesBaseUrl = `${ENV_CONFIG.NEXT_PUBLIC_API_URL}/courses`;
 const courseAccessBaseUrl = `${ENV_CONFIG.NEXT_PUBLIC_API_URL}/course`;
 const studentsBaseUrl = `${ENV_CONFIG.NEXT_PUBLIC_API_URL}/students`;
 const usersBaseUrl = `${ENV_CONFIG.NEXT_PUBLIC_API_URL}/users`;
+const userBaseUrl = `${ENV_CONFIG.NEXT_PUBLIC_API_URL}/user`;
 const organizationsBaseUrl = `${ENV_CONFIG.NEXT_PUBLIC_API_URL}/organizations`;
 const organizationBaseUrl = `${ENV_CONFIG.NEXT_PUBLIC_API_URL}/organization`;
 
@@ -42,4 +43,8 @@ export const ORGANIZATIONS_ENDPOINTS = {
 
 export const ORGANIZATION_ENDPOINTS = {
     ORGANIZATION: `${organizationBaseUrl}`,
+};
+
+export const USER_ENDPOINTS = {
+    USER: `${userBaseUrl}`,
 };
