@@ -5,6 +5,7 @@ import useLocaleContext from 'hooks/useLocaleContext';
 import TEXTS from 'constants/TEXTS';
 import LogoutMenuButton from '../LogoutMenuButton';
 import IconButton from 'components/generic/IconButton';
+import MyAccountMenuButton from '../MyAccountMenuButton';
 
 function AccountMenuButton() {
     const { translate } = useLocaleContext()
@@ -39,6 +40,7 @@ function AccountMenuButton() {
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
                 <LogoutMenuButton></LogoutMenuButton>
+                <MyAccountMenuButton></MyAccountMenuButton>
             </Menu>
         </>
     );

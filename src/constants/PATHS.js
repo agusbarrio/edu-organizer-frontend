@@ -3,6 +3,7 @@ const PATHS = {
     LOGIN: '/auth/login',
     REGISTER: '/auth/register',
     MY_ACCOUNT: '/my-account',
+    EDIT_MY_ACCOUNT: '/my-account/edit',
     DASHBOARD: '/dashboard',
     COURSE: '/course',
     COURSE_NEW_CLASS: '/course/new-class',

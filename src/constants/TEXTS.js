@@ -152,7 +152,11 @@ const TEXTS = {
     VERIFY_ACCOUNT_PAGE_TITLE: { es: 'Verificar cuenta', en: 'Verify account' },
     VERIFY_ACCOUNT_BUTTON: { es: 'Verificar', en: 'Verify' },
     REGITER_PAGE_SUCCESS_MESSAGE: { es: 'Gracias por registrarte. Te enviamos un correo electrónico para que verifiques tu cuenta.', en: 'Thanks for registering. We sent you an email to verify your account.' },
-    RECOVER_PAGE_SUCCESS: { es: 'Te hemos enviado un correo electrónico para que puedas reiniciar tu contraseña.', en: 'We sent you an email to reset your password.' }
+    RECOVER_PAGE_SUCCESS: { es: 'Te hemos enviado un correo electrónico para que puedas reiniciar tu contraseña.', en: 'We sent you an email to reset your password.' },
+    USER_DATA_CARD_TITLE: { es: 'Datos del usuario', en: 'User data' },
+    MY_ACCOUNT_PAGE_SUBTITLE: { es: 'Acá podés ver la información de tu cuenta', en: 'Here you can see your account information' },
+    EDIT_MY_ACCOUNT_PAGE_TITLE: { es: 'Editar cuenta', en: 'Edit account' },
+    EDIT_MY_ACCOUNT_PAGE_SUBTITLE: { es: 'Acá podés editar la información de tu cuenta', en: 'Here you can edit your account information' },
 }
 
 export default TEXTS
