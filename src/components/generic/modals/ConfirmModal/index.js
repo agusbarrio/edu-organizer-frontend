@@ -19,6 +19,7 @@ function ConfirmModal({
   children,
   onClose,
   onConfirm,
+  preventCloseOnConfirm = false,
   confirmButtonProps,
   closeButtonProps,
   textContent,
@@ -34,10 +35,10 @@ function ConfirmModal({
     closeModal();
   }, [closeModal, onClose]);
 
-  const handleConfirm = useCallback(() => {
+  const handleConfirm = useCallback(async () => {
     if (_.isFunction(onConfirm)) onConfirm();
-    closeModal();
-  }, [onConfirm, closeModal]);
+    if (!preventCloseOnConfirm) closeModal();
+  }, [onConfirm, closeModal, preventCloseOnConfirm]);
 
   return (
     <DialogMaterial

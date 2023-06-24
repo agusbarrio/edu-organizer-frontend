@@ -39,8 +39,8 @@ function AccountMenuButton() {
                 transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
-                <LogoutMenuButton></LogoutMenuButton>
                 <MyAccountMenuButton></MyAccountMenuButton>
+                <LogoutMenuButton></LogoutMenuButton>
             </Menu>
         </>
     );

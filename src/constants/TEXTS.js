@@ -157,6 +157,8 @@ const TEXTS = {
     MY_ACCOUNT_PAGE_SUBTITLE: { es: 'Acá podés ver la información de tu cuenta', en: 'Here you can see your account information' },
     EDIT_MY_ACCOUNT_PAGE_TITLE: { es: 'Editar cuenta', en: 'Edit account' },
     EDIT_MY_ACCOUNT_PAGE_SUBTITLE: { es: 'Acá podés editar la información de tu cuenta', en: 'Here you can edit your account information' },
+    CHANGE_PASSWORD_MODAL_TITLE: { es: 'Cambiar contraseña', en: 'Change password' },
+    CHANGE_PASSWORD_BUTTON: { es: 'Cambiar contraseña', en: 'Change password' },
 }
 
 export default TEXTS
