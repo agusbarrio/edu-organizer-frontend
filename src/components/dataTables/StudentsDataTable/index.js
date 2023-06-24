@@ -77,7 +77,7 @@ function StudentsDataTable({ students = [], onDelete }) {
                 }
             }
         ]
-    }, [translate, navigateToStudent])
+    }, [translate, navigateToStudent, handleClickDeleteStudent, navigateToEditStudent])
 
     return <CustomDataGrid rows={students} columns={columns}></CustomDataGrid>
 }
