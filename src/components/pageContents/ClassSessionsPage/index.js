@@ -1,4 +1,3 @@
-import CoomingSoon from "components/dataDisplay/CoomingSoon"
 import ClassSessionsTable from "components/dataTables/ClassSessionsTable"
 import DashboardTemplate from "components/templates/DashboardTemplate"
 import TEXTS from "constants/TEXTS"
