@@ -6,8 +6,9 @@ import TEXTS from 'constants/TEXTS';
 import LogoutMenuButton from '../LogoutMenuButton';
 import IconButton from 'components/generic/IconButton';
 import MyAccountMenuButton from '../MyAccountMenuButton';
+import TEMPLATE_TYPES from 'constants/TEMPLATE_TYPES';
 
-function AccountMenuButton() {
+function AccountMenuButton({ type }) {
     const { translate } = useLocaleContext()
     const [anchorEl, setAnchorEl] = useState(null);
     const open = useMemo(() => Boolean(anchorEl), [anchorEl])
@@ -39,7 +40,7 @@ function AccountMenuButton() {
                 transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
-                <MyAccountMenuButton></MyAccountMenuButton>
+                {type === TEMPLATE_TYPES.USER && <MyAccountMenuButton></MyAccountMenuButton>}
                 <LogoutMenuButton></LogoutMenuButton>
             </Menu>
         </>

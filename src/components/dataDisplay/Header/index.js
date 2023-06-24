@@ -47,7 +47,7 @@ const Header = forwardRef(function Header({ onClickDrawerButton, type = TEMPLATE
                     {showDrawerButton && <DrawerMenuButton onClick={onClickDrawerButton}></DrawerMenuButton>}
                 </Box>
                 <Box>
-                    {showAccountMenuButton && (<AccountMenuButton></AccountMenuButton>)}
+                    {showAccountMenuButton && (<AccountMenuButton type={type}></AccountMenuButton>)}
                 </Box>
             </Toolbar>
         </AppBar>
