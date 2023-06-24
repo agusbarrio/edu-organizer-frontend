@@ -58,7 +58,7 @@ const TEXTS = {
     STUDENTS_PAGE_TITLE: { es: 'Estudiantes', en: 'Students' },
     STUDENTS_PAGE_SUBTITLE: { es: 'Acá podés ver todos los estudiantes', en: 'Here you can see all the students' },
     TEACHERS_PAGE_SUBTITLE: { es: 'Acá podés ver todos los profesores', en: 'Here you can see all the teachers' },
-    STUDENT_COURSE_LABEL: { es: 'Curso', en: 'Course' },
+    COURSE_LABEL: { es: 'Curso', en: 'Course' },
     AVAIBLE_STUDENTS_LIST_CARD_TITLE: { es: 'Estudiantes disponibles', en: 'Avaible students' },
     COURSE_STUDENTS_LIST_CARD_TITLE: { es: 'Estudiantes del curso', en: 'Course students' },
     COURSE_CREATE_STUDENT_CARD_TITLE: { es: 'Nuevo estudiante', en: 'New student' },

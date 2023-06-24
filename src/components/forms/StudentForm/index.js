@@ -30,7 +30,7 @@ const StudentForm = forwardRef(function StudentForm({ onSubmit, defaultValues, w
                 render={CoursesSelect}
                 size={size}
                 name="courseId"
-                label={translate(TEXTS.STUDENT_COURSE_LABEL)}
+                label={translate(TEXTS.COURSE_LABEL)}
             ></ControllerInput>}
         </Form>
     )

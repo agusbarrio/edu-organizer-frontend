@@ -15,7 +15,7 @@ function ClassSessionsStudentTable({ classSessionsStudent = [] }) {
             {
                 field: 'course',
                 flex: 1,
-                headerName: translate(TEXTS.STUDENT_COURSE_LABEL),
+                headerName: translate(TEXTS.COURSE_LABEL),
                 valueGetter: ({ row }) => row?.classSession?.course?.name
             },
             {
