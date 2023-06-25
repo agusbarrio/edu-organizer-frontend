@@ -1,4 +1,3 @@
-import { ArrowForward, Delete, Edit, } from "@mui/icons-material"
 import CORE_TEXTS from "constants/CORE_TEXTS"
 import PATHS from "constants/PATHS"
 import TEXTS from "constants/TEXTS"
@@ -7,7 +6,6 @@ import useNavigate from "hooks/useNavigate"
 import { useCallback, useMemo, useRef } from "react"
 import { renderText } from "utils/text"
 import CustomDataGrid from "components/generic/CustomDataGrid"
-import TableActionButton from "components/generic/TableActionButton"
 import useModalContext from "hooks/useModalContext"
 import ConfirmModal from "components/generic/modals/ConfirmModal"
 import useDeleteCourseService from "services/courses/useDeleteCourseService"
@@ -15,6 +13,9 @@ import _ from "lodash"
 import InputsCreation from "components/inputs/InputsCreation"
 import useDeleteCoursesService from "services/courses/useDeleteCoursesService"
 import useEditCoursesService from "services/courses/useEditCoursesService"
+import DeleteIconButton from "components/generic/DeleteIconButton"
+import EditIconButton from "components/generic/EditIconButton"
+import ViewDetailsIconButton from "components/generic/ViewDetailsIconButton"
 
 
 function CoursesDataTable({ courses = [], onDelete, onEdit }) {
@@ -90,31 +91,9 @@ function CoursesDataTable({ courses = [], onDelete, onEdit }) {
                 headerName: translate(CORE_TEXTS.GENERIC_ACTIONS),
                 getActions: (data) => {
                     return [
-                        <TableActionButton
-                            color="error"
-                            tooltip={translate(TEXTS.DELETE_COURSE_TOOLTIP)}
-                            key={`delete-course-${data.id}`}
-                            iconComponent={Delete}
-                            onClick={() => {
-                                handleClickDeleteCourse(data.id)
-                            }} />,
-                        <TableActionButton
-                            tooltip={translate(TEXTS.GO_EDIT_COURSE)}
-                            key={`go-edit-${data.id}`}
-                            onClick={() => {
-                                navigateToEditCourse(data.id)
-                            }}
-                            iconComponent={Edit}
-                        />,
-                        <TableActionButton
-                            color="primary"
-                            tooltip={translate(TEXTS.GO_COURSE)}
-                            key={`go-course-${data.id}`}
-                            onClick={() => {
-                                navigateToCourse(data.id)
-                            }}
-                            iconComponent={ArrowForward}
-                        />,
+                        <DeleteIconButton key={`delete-${data.id}`} onClick={() => { handleClickDeleteCourse(data.id) }} />,
+                        <EditIconButton key={`edit-${data.id}`} onClick={() => { navigateToEditCourse(data.id) }} />,
+                        <ViewDetailsIconButton key={`details-${data.id}`} onClick={() => { navigateToCourse(data.id) }} />,
                     ]
                 },
                 filterable: false,

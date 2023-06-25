@@ -1,5 +1,6 @@
 import StudentForm from "components/forms/StudentForm"
 import DashboardTemplate from "components/templates/DashboardTemplate"
+import CORE_TEXTS from "constants/CORE_TEXTS"
 import PATHS from "constants/PATHS"
 import TEXTS from "constants/TEXTS"
 import useLocaleContext from "hooks/useLocaleContext"
@@ -13,7 +14,7 @@ import { renderText } from "utils/text"
 
 function EditStudentPage() {
     const { translate } = useLocaleContext()
-    const { go } = useNavigate()
+    const { go, goBack } = useNavigate()
 
     const goStudents = useCallback(() => {
         go(renderText(PATHS.DASHBOARD_STUDENTS))
@@ -37,8 +38,8 @@ function EditStudentPage() {
         <DashboardTemplate
             title={translate(TEXTS.EDIT_STUDENT_PAGE_TITLE)}
             backButtonProps={{
-                children: translate(TEXTS.GO_BACK_STUDENTS),
-                onClick: goStudents
+                children: translate(CORE_TEXTS.GENERIC_BACK),
+                onClick: goBack
             }}
             loading={loading}
         >

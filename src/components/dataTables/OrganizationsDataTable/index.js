@@ -1,4 +1,3 @@
-import { Delete, } from "@mui/icons-material"
 import CORE_TEXTS from "constants/CORE_TEXTS"
 
 import TEXTS from "constants/TEXTS"
@@ -10,7 +9,7 @@ import _ from "lodash"
 import useDeleteOrganizationService from "services/organizations/useDeleteOrganizationService"
 import useModalContext from "hooks/useModalContext"
 import ConfirmModal from "components/generic/modals/ConfirmModal"
-import TableActionButton from "components/generic/TableActionButton"
+import DeleteIconButton from "components/generic/DeleteIconButton"
 
 function OrganizationsDataTable({ organizations = [], onDelete }) {
     const { translate } = useLocaleContext()
@@ -39,14 +38,8 @@ function OrganizationsDataTable({ organizations = [], onDelete }) {
                 field: 'actions',
                 type: 'actions',
                 headerName: translate(CORE_TEXTS.GENERIC_ACTIONS),
-                getActions: ({ row }) => ([
-                    <TableActionButton
-                        color="error"
-                        tooltip={translate(CORE_TEXTS.GENERIC_DELETE)}
-                        key={`delete-${row.id}`}
-                        onClick={() => handleClickDeleteOrganization(row.id)}
-                        iconComponent={Delete}
-                    />
+                getActions: (data) => ([
+                    <DeleteIconButton key={`delete-${data.id}`} onClick={() => { handleClickDeleteOrganization(data.id) }} />,
                 ])
             }
         ]

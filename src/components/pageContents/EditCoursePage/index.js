@@ -1,4 +1,5 @@
 import DashboardTemplate from "components/templates/DashboardTemplate"
+import CORE_TEXTS from "constants/CORE_TEXTS"
 import PATHS from "constants/PATHS"
 import TEXTS from "constants/TEXTS"
 import useLocaleContext from "hooks/useLocaleContext"
@@ -13,7 +14,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 function EditCoursePage() {
     const { translate } = useLocaleContext()
-    const { go } = useNavigate()
+    const { go, goBack } = useNavigate()
 
     const goCourses = useCallback(() => {
         go(renderText(PATHS.DASHBOARD_COURSES))
@@ -39,8 +40,8 @@ function EditCoursePage() {
         <DashboardTemplate
             title={translate(TEXTS.EDIT_COURSE_PAGE_TITLE)}
             backButtonProps={{
-                children: translate(TEXTS.GO_BACK_COURSES),
-                onClick: () => go(renderText(PATHS.DASHBOARD_COURSES))
+                children: translate(CORE_TEXTS.GENERIC_BACK),
+                onClick: goBack
             }}
             loading={loading}
         >

@@ -1,9 +1,7 @@
 import DashboardTemplate from "components/templates/DashboardTemplate"
-import PATHS from "constants/PATHS"
 import TEXTS from "constants/TEXTS"
 import useLocaleContext from "hooks/useLocaleContext"
 import useNavigate from "hooks/useNavigate"
-import { renderText } from "utils/text"
 import useService from "hooks/useService"
 import useGetCourseService from "services/courses/useGetCourseService"
 import { useEffect } from "react"
@@ -12,26 +10,27 @@ import CourseDataCard from "components/dataDisplay/CourseDataCard"
 import StudentsDataTable from "components/dataTables/StudentsDataTable"
 import InputsList from "components/dataDisplay/InputsList"
 import Card from "components/generic/Card"
+import CORE_TEXTS from "constants/CORE_TEXTS"
 
 function CourseDetailsPage() {
     const { getCourse } = useGetCourseService()
     const { runService, loading, value: course } = useService({ service: getCourse, defaultValue: {} })
-    const { params } = useNavigate()
+    const { params, goBack } = useNavigate()
+
 
     useEffect(() => {
         if (params.courseId) runService(params.courseId)
     }, [runService, params.courseId])
 
     const { translate } = useLocaleContext()
-    const { go } = useNavigate()
     return (
         <DashboardTemplate
             title={translate(TEXTS.COURSE_PAGE_TITLE)}
             subtitle={translate(TEXTS.COURSE_PAGE_SUBTITLE)}
             loading={loading}
             backButtonProps={{
-                children: translate(TEXTS.GO_BACK_COURSES),
-                onClick: () => go(renderText(PATHS.DASHBOARD_COURSES))
+                children: translate(CORE_TEXTS.GENERIC_BACK),
+                onClick: goBack
             }}
         >
             <Grid container spacing={2} sx={{ overflowY: 'auto', height: '100%' }}>

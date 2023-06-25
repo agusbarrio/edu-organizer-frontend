@@ -47,6 +47,7 @@ const CORE_TEXTS = {
     GENERIC_CLOSE: { es: 'Cerrar', en: 'Close' },
     GENERIC_CONFIRM: { es: 'Confirmar', en: 'Confirm' },
     GENERIC_EDIT: { es: 'Editar', en: 'Edit' },
+    GENERIC_VIEW_DETAILS: { es: 'Ver detalles', en: 'View details' },
     GENERIC_DELETE: { es: 'Eliminar', en: 'Delete' },
     GENERIC_MORE_INFO: { es: 'Mas información', en: 'More info' },
     GENERIC_DELETE_DESCRIPTION_CONFIRM: { es: '¿Estas seguro de que deseas eliminar esto?', en: 'Are you sure you want to delete this?' },

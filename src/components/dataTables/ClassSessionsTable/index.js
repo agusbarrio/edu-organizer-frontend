@@ -2,6 +2,10 @@ import TEXTS from "constants/TEXTS"
 import useLocaleContext from "hooks/useLocaleContext"
 import { useMemo } from "react"
 import CustomDataGrid from "components/generic/CustomDataGrid"
+import CORE_TEXTS from "constants/CORE_TEXTS"
+import DeleteIconButton from "components/generic/DeleteIconButton"
+import EditIconButton from "components/generic/EditIconButton"
+import ViewDetailsIconButton from "components/generic/ViewDetailsIconButton"
 
 
 function ClassSessionsTable({ classSessions = [] }) {
@@ -22,6 +26,19 @@ function ClassSessionsTable({ classSessions = [] }) {
                 headerName: translate(TEXTS.CLASS_SESSION_DATE_LABEL),
                 valueGetter: ({ row }) => new Date(row?.date)
             },
+            {
+                field: 'actions',
+                type: 'actions',
+                headerName: translate(CORE_TEXTS.GENERIC_ACTIONS),
+                getActions: (data) => {
+                    return [
+                        <DeleteIconButton key={`delete-${data.id}`} />,
+                        <EditIconButton key={`edit-${data.id}`} />,
+                        <ViewDetailsIconButton key={`details-${data.id}`} />,
+                    ]
+                },
+                filterable: false,
+            }
         ]
     }, [translate])
 

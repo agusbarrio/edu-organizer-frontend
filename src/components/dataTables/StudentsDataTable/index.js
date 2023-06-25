@@ -1,4 +1,3 @@
-import { ArrowForward, Delete, Edit, } from "@mui/icons-material"
 import CORE_TEXTS from "constants/CORE_TEXTS"
 import PATHS from "constants/PATHS"
 import TEXTS from "constants/TEXTS"
@@ -7,10 +6,12 @@ import useNavigate from "hooks/useNavigate"
 import { useCallback, useMemo } from "react"
 import { renderText } from "utils/text"
 import CustomDataGrid from "components/generic/CustomDataGrid"
-import TableActionButton from "components/generic/TableActionButton"
 import ConfirmModal from "components/generic/modals/ConfirmModal"
 import useModalContext from "hooks/useModalContext"
 import useDeleteStudentService from "services/students/useDeleteStudentService"
+import DeleteIconButton from "components/generic/DeleteIconButton"
+import EditIconButton from "components/generic/EditIconButton"
+import ViewDetailsIconButton from "components/generic/ViewDetailsIconButton"
 
 function StudentsDataTable({ students = [], onDelete }) {
     const { translate } = useLocaleContext()
@@ -50,29 +51,9 @@ function StudentsDataTable({ students = [], onDelete }) {
                 headerName: translate(CORE_TEXTS.GENERIC_ACTIONS),
                 getActions: (data) => {
                     return [
-                        <TableActionButton
-                            color="error"
-                            tooltip={translate(CORE_TEXTS.GENERIC_DELETE)}
-                            key={`delete-student-${data.id}`}
-                            iconComponent={Delete}
-                            onClick={() => {
-                                handleClickDeleteStudent(data.id)
-                            }} />,
-                        <TableActionButton
-                            tooltip={translate(TEXTS.GO_EDIT_COURSE)}
-                            key={`go-edit-${data.id}`}
-                            onClick={() => {
-                                navigateToEditStudent(data.id)
-                            }}
-                            iconComponent={Edit}
-                        />,
-                        <TableActionButton
-                            color="primary"
-                            tooltip={translate(TEXTS.GO_STUDENT)}
-                            key={`go-student-${data.id}`}
-                            iconComponent={ArrowForward}
-                            onClick={() => { navigateToStudent(data.id) }}
-                        />
+                        <DeleteIconButton key={`delete-${data.id}`} onClick={() => { handleClickDeleteStudent(data.id) }} />,
+                        <EditIconButton key={`edit-${data.id}`} onClick={() => { navigateToEditStudent(data.id) }} />,
+                        <ViewDetailsIconButton key={`details-${data.id}`} onClick={() => { navigateToStudent(data.id) }} />,
                     ]
                 }
             }
