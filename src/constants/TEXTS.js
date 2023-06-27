@@ -164,6 +164,8 @@ const TEXTS = {
     CLASS_SESSION_PAGE_TITLE: { es: 'Detalles de la clase', en: 'Class details' },
     CLASS_SESSION_PAGE_SUBTITLE: { es: 'Acá podes ver los detalles de la clase', en: 'Here you can see the class details' },
     CLASS_SESSION_STUDENTS_CARD_TITLE: { es: 'Asistencia', en: 'Attendance' },
-    CLASS_SESSION_DATA_CARD_TITLE: { es: 'Datos de la clase', en: 'Class data' }
+    CLASS_SESSION_DATA_CARD_TITLE: { es: 'Datos de la clase', en: 'Class data' },
+    DELETE_CLASS_SESSION_MODAL_TITLE: { es: "Eliminar clase", en: "Delete class" },
+    DELETE_CLASS_SESSION_MODAL_CONTENT: { es: '¿Estás seguro que querés eliminar esta clase?', en: 'Are you sure you want to delete this class?' },
 }
 export default TEXTS

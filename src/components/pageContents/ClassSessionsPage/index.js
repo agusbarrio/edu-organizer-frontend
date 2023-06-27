@@ -19,7 +19,7 @@ function ClassSessionsPage() {
             subtitle={translate(TEXTS.CLASS_SESSIONS_PAGE_SUBTITLE)}
             loading={loading}
         >
-            <ClassSessionsTable classSessions={classSessions}></ClassSessionsTable>
+            <ClassSessionsTable classSessions={classSessions} onDelete={runService}></ClassSessionsTable>
         </DashboardTemplate>
     )
 }

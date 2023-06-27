@@ -31,6 +31,7 @@ function ClassSessionStudentsTable({ classSessionStudents = [] }) {
             {
                 field: 'actions',
                 type: 'actions',
+                flex: 1,
                 headerName: translate(CORE_TEXTS.GENERIC_ACTIONS),
                 getActions: (data) => {
                     return [

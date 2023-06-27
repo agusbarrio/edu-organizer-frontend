@@ -9,11 +9,31 @@ import ViewDetailsIconButton from "components/generic/ViewDetailsIconButton"
 import useNavigate from "hooks/useNavigate"
 import PATHS from "constants/PATHS"
 import { renderText } from "utils/text"
+import { useCallback } from "react"
+import useModalContext from "hooks/useModalContext"
+import ConfirmModal from "components/generic/modals/ConfirmModal"
+import useDeleteClassSessionService from "services/classSessions/useDeleteClassSessionService"
 
 
-function ClassSessionsTable({ classSessions = [] }) {
+function ClassSessionsTable({ classSessions = [], onDelete }) {
     const { translate } = useLocaleContext()
     const { go } = useNavigate()
+    const { openModal } = useModalContext()
+    const { deleteClassSession } = useDeleteClassSessionService()
+    const handleClickDelete = useCallback((classSessionId) => {
+        openModal(ConfirmModal, {
+            title: translate(TEXTS.DELETE_CLASS_SESSION_MODAL_TITLE),
+            textContent: translate(TEXTS.DELETE_CLASS_SESSION_MODAL_CONTENT),
+            onConfirm: async () => {
+                const result = await deleteClassSession(classSessionId)
+                if (result && _.isFunction(onDelete)) {
+                    onDelete()
+                }
+            }
+
+        })
+    }, [onDelete, openModal, translate, deleteClassSession])
+
     const columns = useMemo(() => {
         return [
             {
@@ -35,7 +55,7 @@ function ClassSessionsTable({ classSessions = [] }) {
                 headerName: translate(CORE_TEXTS.GENERIC_ACTIONS),
                 getActions: (data) => {
                     return [
-                        <DeleteIconButton key={`delete-${data.id}`} />,
+                        <DeleteIconButton key={`delete-${data.id}`} onClick={() => handleClickDelete(data.id)} />,
                         <EditIconButton key={`edit-${data.id}`} />,
                         <ViewDetailsIconButton key={`details-${data.id}`} onClick={() => go(renderText(PATHS.DASHBOARD_CLASS_SESSION, { classSessionId: data.id }))} />,
                     ]
@@ -43,7 +63,7 @@ function ClassSessionsTable({ classSessions = [] }) {
                 filterable: false,
             }
         ]
-    }, [translate, go])
+    }, [translate, go, handleClickDelete])
 
     return <CustomDataGrid
         rows={classSessions}
