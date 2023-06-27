@@ -120,6 +120,7 @@ const TEXTS = {
     STUDENT_ATTENDANCE_CARD_TITLE: { es: 'Asistencia', en: 'Attendance' },
     CLASS_SESSION_DATE_LABEL: { es: 'Fecha', en: 'Date' },
     CLASS_SESSION_STUDENT_IS_PRESENT_LABEL: { es: '¿Asistió?', en: 'Did he attend?' },
+    CLASS_SESSION_STUDENT_STUDENT_LABEL: { es: 'Estudiante', en: 'Student' },
     CLASS_SESSION_STUDENT_POINTS_ACUMULATED_LABEL: { es: 'Puntos', en: 'Points' },
     CLASS_SESSION_STUDENT_TOTAL_POINTS_ACUMULATED_LABEL: { es: 'Puntos totales', en: 'Total points' },
     STUDENT_DATA_CARD_TITLE: { es: 'Datos del estudiante', en: 'Student data' },
@@ -159,6 +160,10 @@ const TEXTS = {
     EDIT_MY_ACCOUNT_PAGE_SUBTITLE: { es: 'Acá podés editar la información de tu cuenta', en: 'Here you can edit your account information' },
     CHANGE_PASSWORD_MODAL_TITLE: { es: 'Cambiar contraseña', en: 'Change password' },
     CHANGE_PASSWORD_BUTTON: { es: 'Cambiar contraseña', en: 'Change password' },
+    CLASS_SESSION_STUDENT_VIEW_METADATA: { es: 'Ver datos de asistencia', en: 'View attendance data' },
+    CLASS_SESSION_PAGE_TITLE: { es: 'Detalles de la clase', en: 'Class details' },
+    CLASS_SESSION_PAGE_SUBTITLE: { es: 'Acá podes ver los detalles de la clase', en: 'Here you can see the class details' },
+    CLASS_SESSION_STUDENTS_CARD_TITLE: { es: 'Asistencia', en: 'Attendance' },
+    CLASS_SESSION_DATA_CARD_TITLE: { es: 'Datos de la clase', en: 'Class data' }
 }
-
 export default TEXTS

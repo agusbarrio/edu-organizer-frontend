@@ -6,11 +6,14 @@ import CORE_TEXTS from "constants/CORE_TEXTS"
 import DeleteIconButton from "components/generic/DeleteIconButton"
 import EditIconButton from "components/generic/EditIconButton"
 import ViewDetailsIconButton from "components/generic/ViewDetailsIconButton"
+import useNavigate from "hooks/useNavigate"
+import PATHS from "constants/PATHS"
+import { renderText } from "utils/text"
 
 
 function ClassSessionsTable({ classSessions = [] }) {
     const { translate } = useLocaleContext()
-
+    const { go } = useNavigate()
     const columns = useMemo(() => {
         return [
             {
@@ -34,13 +37,13 @@ function ClassSessionsTable({ classSessions = [] }) {
                     return [
                         <DeleteIconButton key={`delete-${data.id}`} />,
                         <EditIconButton key={`edit-${data.id}`} />,
-                        <ViewDetailsIconButton key={`details-${data.id}`} />,
+                        <ViewDetailsIconButton key={`details-${data.id}`} onClick={() => go(renderText(PATHS.DASHBOARD_CLASS_SESSION, { classSessionId: data.id }))} />,
                     ]
                 },
                 filterable: false,
             }
         ]
-    }, [translate])
+    }, [translate, go])
 
     return <CustomDataGrid
         rows={classSessions}

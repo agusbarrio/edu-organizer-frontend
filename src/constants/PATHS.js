@@ -17,6 +17,7 @@ const PATHS = {
     DASHBOARD_STUDENT: '/dashboard/students/{{studentId}}',
     DASHBOARD_TEACHERS: '/dashboard/teachers',
     DASHBOARD_CLASS_SESSIONS: '/dashboard/class-sessions',
+    DASHBOARD_CLASS_SESSION: '/dashboard/class-sessions/{{classSessionId}}',
     DASHBOARD_COURSE_CREATE: '/dashboard/courses/create',
     DASHBOARD_STUDENT_CREATE: '/dashboard/students/create',
     DASHBOARD_EDIT_STUDENT: '/dashboard/students/{{studentId}}/edit',
