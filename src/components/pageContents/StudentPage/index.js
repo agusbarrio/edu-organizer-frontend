@@ -1,6 +1,6 @@
 import { Grid } from "@mui/material"
 import StudentDataCard from "components/dataDisplay/StudentDataCard"
-import ClassSessionsStudentTable from "components/dataTables/ClassSessionsStudentTable"
+import ClassSessionsStudentsTable from "components/dataTables/ClassSessionsStudentsTable"
 import Card from "components/generic/Card"
 import DashboardTemplate from "components/templates/DashboardTemplate"
 import CORE_TEXTS from "constants/CORE_TEXTS"
@@ -36,7 +36,7 @@ function StudentPage() {
                 </Grid>
                 <Grid item xs={12} md={8} height={'100%'}>
                     <Card title={translate(TEXTS.STUDENT_ATTENDANCE_CARD_TITLE)}>
-                        <ClassSessionsStudentTable classSessionsStudent={student?.classSessionsStudent}></ClassSessionsStudentTable>
+                        <ClassSessionsStudentsTable classSessionsStudents={student?.classSessionsStudent} showStudent={false}></ClassSessionsStudentsTable>
                     </Card>
                 </Grid>
             </Grid>

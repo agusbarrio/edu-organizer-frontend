@@ -42,7 +42,7 @@ function CourseDetailsPage() {
                 </Grid>
                 <Grid item sx={{ height: '100%' }} xs={12}>
                     <Card title={translate(TEXTS.COURSE_STUDENTS_LIST_CARD_TITLE)}>
-                        <StudentsDataTable students={course?.students}></StudentsDataTable>
+                        <StudentsDataTable students={course?.students} editAllowed={false} deleteAllowed={false}></StudentsDataTable>
                     </Card>
                 </Grid>
             </Grid>

@@ -13,7 +13,7 @@ import DeleteIconButton from "components/generic/DeleteIconButton"
 import EditIconButton from "components/generic/EditIconButton"
 import ViewDetailsIconButton from "components/generic/ViewDetailsIconButton"
 
-function StudentsDataTable({ students = [], onDelete }) {
+function StudentsDataTable({ students = [], onDelete, deleteAllowed = true, editAllowed = true }) {
     const { translate } = useLocaleContext()
     const { go } = useNavigate()
     const { openModal } = useModalContext()
@@ -50,15 +50,18 @@ function StudentsDataTable({ students = [], onDelete }) {
                 type: 'actions',
                 headerName: translate(CORE_TEXTS.GENERIC_ACTIONS),
                 getActions: (data) => {
-                    return [
-                        <DeleteIconButton key={`delete-${data.id}`} onClick={() => { handleClickDeleteStudent(data.id) }} />,
-                        <EditIconButton key={`edit-${data.id}`} onClick={() => { navigateToEditStudent(data.id) }} />,
-                        <ViewDetailsIconButton key={`details-${data.id}`} onClick={() => { navigateToStudent(data.id) }} />,
-                    ]
+                    const actions = [<ViewDetailsIconButton key={`details-${data.id}`} onClick={() => { navigateToStudent(data.id) }} />]
+                    if (editAllowed) {
+                        actions.unshift(<EditIconButton key={`edit-${data.id}`} onClick={() => { navigateToEditStudent(data.id) }} />)
+                    }
+                    if (deleteAllowed) {
+                        actions.unshift(<DeleteIconButton key={`delete-${data.id}`} onClick={() => { handleClickDeleteStudent(data.id) }} />)
+                    }
+                    return actions
                 }
             }
         ]
-    }, [translate, navigateToStudent, handleClickDeleteStudent, navigateToEditStudent])
+    }, [translate, navigateToStudent, handleClickDeleteStudent, navigateToEditStudent, deleteAllowed, editAllowed])
 
     return <CustomDataGrid rows={students} columns={columns}></CustomDataGrid>
 }
