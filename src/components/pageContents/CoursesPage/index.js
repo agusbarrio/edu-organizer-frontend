@@ -14,7 +14,7 @@ function CoursesPage() {
     const { getAllCourses } = useGetAllCoursesService()
     const { translate } = useLocaleContext()
     const { go } = useNavigate()
-    const { value: courses, runService } = useService({ service: getAllCourses, defaultValue: [] })
+    const { value: courses, runService, loading } = useService({ service: getAllCourses, defaultValue: [] })
     useEffect(() => {
         runService()
     }, [runService])
@@ -30,6 +30,7 @@ function CoursesPage() {
                     go(PATHS.DASHBOARD_COURSE_CREATE)
                 }
             }}
+            loading={loading}
         >
             <CoursesDataTable courses={courses} onDelete={runService} onEdit={runService}></CoursesDataTable>
         </DashboardTemplate>
