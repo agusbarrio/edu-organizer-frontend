@@ -40,6 +40,8 @@ const CORE_TEXTS = {
     VALIDATIONS_MORE_THAN_NUMBER: { es: 'El valor debe ser mayor que {{moreThan}}', en: 'The value must be greater than {{moreThan}}' },
     VALIDATIONS_LESS_THAN_NUMBER: { es: 'El valor debe ser menor que {{lessThan}}', en: 'The value must be less than {{lessThan}}' },
     VALIDATIONS_INTEGER: { es: 'El valor debe ser un número entero', en: 'The value must be an integer' },
+    VALIDATIONS_MIN_DATE: { es: 'La fecha mínima es {{min}}', en: 'The minimum date is {{min}}' },
+    VALIDATIONS_MAX_DATE: { es: 'La fecha máxima es {{max}}', en: 'The maximum date is {{max}}' },
     GENERIC_ERROR: { es: 'Ha ocurrido un error', en: 'An error has occurred' },
     GENERIC_SUCCESS: { es: 'Operación exitosa', en: 'Successful operation' },
     GENERIC_CREATE: { es: 'Crear', en: 'Create' },

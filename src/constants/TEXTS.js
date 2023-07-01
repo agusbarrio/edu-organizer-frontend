@@ -168,6 +168,7 @@ const TEXTS = {
     DELETE_CLASS_SESSION_MODAL_TITLE: { es: "Eliminar clase", en: "Delete class" },
     DELETE_CLASS_SESSION_MODAL_CONTENT: { es: '¿Estás seguro que querés eliminar esta clase?', en: 'Are you sure you want to delete this class?' },
     STUDENT_ATTENDANCE_DATA_MODAL_TITLE: { es: 'Datos de asistencia', en: 'Attendance data' },
-    STUDENT_ATTENDANCE_DATA_MODAL_EMPTY_CONTENT: { es: 'Sin datos de asistencia', en: 'Without attendance data' }
+    STUDENT_ATTENDANCE_DATA_MODAL_EMPTY_CONTENT: { es: 'Sin datos de asistencia', en: 'Without attendance data' },
+    CLASS_SESSION_DATE_PLACEHOLDER: { es: 'Ingresá la fecha de la clase', en: 'Enter the class date' },
 }
 export default TEXTS

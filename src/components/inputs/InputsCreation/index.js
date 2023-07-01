@@ -1,9 +1,10 @@
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from "react"
 import { Grid } from "@mui/material"
 import { v4 as uuidv4 } from 'uuid';
-import InputsListCard from "./components/InputsListCard"
 import NewInputCard from "./components/NewInputCard"
 import CopyConfigCoursesListCard from "./components/CopyConfigCoursesListCard";
+import InputsList from "components/dataDisplay/InputsList";
+import { RemoveCircleOutline } from "@mui/icons-material";
 
 const InputsCreation = forwardRef(({ onChange, initialInputs = [] }, ref) => {
     const [inputs, setInputs] = useState(initialInputs)
@@ -40,7 +41,13 @@ const InputsCreation = forwardRef(({ onChange, initialInputs = [] }, ref) => {
                 <CopyConfigCoursesListCard onClickCourse={handleClickCourse} ></CopyConfigCoursesListCard>
             </Grid>
             <Grid item xs={12} md={4} height={'100%'}>
-                <InputsListCard inputs={inputs} onClickDrop={handleRemoveInput} ></InputsListCard>
+                <InputsList
+                    onClickItem={handleRemoveInput}
+                    cardTitle={translate(TEXTS.INPUTS_LIST_CARD_TITLE)}
+                    help={translate(TEXTS.INPUTS_LIST_CARD_HELP)}
+                    inputs={inputs}
+                    itemIconProps={{ children: <RemoveCircleOutline color="error" /> }}
+                ></InputsList>
             </Grid>
         </Grid>
     )

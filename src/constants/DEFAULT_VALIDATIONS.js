@@ -52,6 +52,8 @@ const DEFAULT_VALIDATIONS = {
   DATE: {
     date: { value: true, message: CORE_TEXTS.VALIDATIONS_DATE },
     required: { value: false, message: CORE_TEXTS.VALIDATIONS_REQUIRED },
+    min: { message: CORE_TEXTS.VALIDATIONS_MIN_DATE },
+    max: { message: CORE_TEXTS.VALIDATIONS_MAX_DATE },
   },
   URL: {
     url: { value: true, message: CORE_TEXTS.VALIDATIONS_URL },

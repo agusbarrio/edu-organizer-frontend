@@ -7,15 +7,18 @@ import useCreateNewCourseClassService from "services/courseAccess/useCreateNewCo
 import LoadingBox from "components/dataDisplay/LoadingBox";
 import SelectPresentStudentsStep from "./steps/SelectPresentStudentsStep";
 import SetPresentStudentsDataStep from "./steps/SetPresentStudentsDataStep";
+import useDate from "hooks/useDate";
 
 
 function NewCourseClassMachine({ onFinish, course }) {
     const { getCourseStudents } = useGetCourseStudentsService();
     const { createNewCourseClass } = useCreateNewCourseClassService();
+    const { getNow } = useDate()
     const machine = useLocalMachine()
     const [state, send] = useMachine(machine, {
         context: {
             course: course,
+            date: getNow(),
             students: [],
             presentStudentsIds: [],
             presentStudentsData: [],
@@ -33,7 +36,8 @@ function NewCourseClassMachine({ onFinish, course }) {
             },
             createNewCourseClass: async (context) => {
                 const presentStudentsData = context.presentStudentsData
-                const result = await createNewCourseClass({ presentStudentsData });
+                const date = context.date
+                const result = await createNewCourseClass({ presentStudentsData, date });
                 if (!result) throw new Error('Error al guardar la clase');
                 return result;
             },

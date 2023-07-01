@@ -7,9 +7,7 @@ import useLocaleContext from 'hooks/useLocaleContext';
 YupPassword(Yup);
 
 function useValidator() {
-
-    const { translate } = useLocaleContext()
-
+    const { translate, dateFormat } = useLocaleContext()
     const form = useCallback((schema) => Yup.object(schema), []);
 
     const string = useCallback(
@@ -149,29 +147,30 @@ function useValidator() {
                 _.cloneDeep(DEFAULT_VALIDATIONS.DATE),
                 config
             );
-
             let yupDate = Yup.date().typeError(translate(configResult.date.message));
             if (configResult.required && configResult.required.value) {
                 yupDate = yupDate.required(translate(configResult.required.message));
             }
             yupDate = yupDate.nullable();
+
             if (configResult.min && configResult.min.value) {
                 const min = configResult.min.value;
                 yupDate = yupDate.min(
                     min,
-                    translate(configResult.min.message, { min })
+                    translate(configResult.min.message, { min: min.format(dateFormat) })
                 );
             }
             if (configResult.max && configResult.max.value) {
                 const max = configResult.max.value;
-                yupDate = yupDate.min(
+                console.log(max.format(dateFormat))
+                yupDate = yupDate.max(
                     max,
-                    translate(configResult.max.message, { max })
+                    translate(configResult.max.message, { max: max.format(dateFormat) })
                 );
             }
             return yupDate;
         },
-        [translate]
+        [translate, dateFormat]
     );
 
     const oneOf = useCallback(

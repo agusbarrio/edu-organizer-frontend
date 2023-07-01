@@ -1,4 +1,5 @@
 import _ from "lodash";
+import moment from "moment";
 import { useMemo } from "react"
 import { assign, createMachine } from 'xstate';
 
@@ -30,6 +31,7 @@ function useLocalMachine() {
                             target: 'evaluateEmpty',
                             actions: [assign({
                                 presentStudentsIds: (context, event) => event.presentStudentsIds,
+                                date: (context, event) => moment(event.date)
                             })]
                         },
                     }

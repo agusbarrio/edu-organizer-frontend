@@ -16,7 +16,7 @@ import useDeleteClassSessionService from "services/classSessions/useDeleteClassS
 
 
 function ClassSessionsTable({ classSessions = [], onDelete }) {
-    const { translate } = useLocaleContext()
+    const { translate, formatDate } = useLocaleContext()
     const { go } = useNavigate()
     const { openModal } = useModalContext()
     const { deleteClassSession } = useDeleteClassSessionService()
@@ -47,7 +47,9 @@ function ClassSessionsTable({ classSessions = [], onDelete }) {
                 flex: 1,
                 type: 'date',
                 headerName: translate(TEXTS.CLASS_SESSION_DATE_LABEL),
-                valueGetter: ({ row }) => new Date(row?.date)
+                valueGetter: ({ row }) => new Date(row?.date),
+                valueFormatter: ({ value }) => formatDate(value)
+
             },
             {
                 field: 'actions',
@@ -63,7 +65,7 @@ function ClassSessionsTable({ classSessions = [], onDelete }) {
                 filterable: false,
             }
         ]
-    }, [translate, go, handleClickDelete])
+    }, [translate, go, handleClickDelete, formatDate])
 
     return <CustomDataGrid
         rows={classSessions}

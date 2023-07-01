@@ -14,7 +14,7 @@ import AttendanceStudentData from "components/dataDisplay/AttendanceStudentData"
 
 
 function ClassSessionsStudentsTable({ classSessionsStudents = [], showCourse = true, showStudent = true, showTotalPoints = true, showDate = true }) {
-    const { translate } = useLocaleContext()
+    const { translate, formatDate } = useLocaleContext()
     const { getPoints } = useGetPoints()
     const { openModal } = useModalContext()
 
@@ -69,7 +69,8 @@ function ClassSessionsStudentsTable({ classSessionsStudents = [], showCourse = t
                 flex: 1,
                 type: 'date',
                 headerName: translate(TEXTS.CLASS_SESSION_DATE_LABEL),
-                valueGetter: ({ row }) => new Date(row?.classSession?.date)
+                valueGetter: ({ row }) => new Date(row?.classSession?.date),
+                valueFormatter: ({ value }) => formatDate(value)
             })
         }
         if (showCourse) {
@@ -89,7 +90,7 @@ function ClassSessionsStudentsTable({ classSessionsStudents = [], showCourse = t
             })
         }
         return result
-    }, [translate, getPoints, showCourse, showStudent, handleClickMetadata, showDate])
+    }, [translate, getPoints, showCourse, showStudent, handleClickMetadata, formatDate, showDate])
 
     const slotProps = useMemo(() => {
         const result = {}

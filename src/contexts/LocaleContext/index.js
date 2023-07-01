@@ -3,6 +3,7 @@ import _ from 'lodash';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { renderText } from 'utils/text';
+import moment from 'moment';
 export const LocaleContext = createContext();
 
 function LocaleContextProvider({
@@ -10,7 +11,7 @@ function LocaleContextProvider({
   lang,
   defaultLang = 'es',
   dateFormat,
-  defaultDateFormat = 'DD/MM/YYYY',
+  defaultDateFormat = 'DD-MM-YYYY',
 }) {
   const currentLang = useMemo(() => lang || defaultLang, [defaultLang, lang])
   const translate = useCallback(
@@ -31,8 +32,12 @@ function LocaleContextProvider({
     [dateFormat, defaultDateFormat]
   );
 
+  const formatDate = useCallback((date, format = resultDateFormat) => {
+    return moment(date).format(format);
+  }, [resultDateFormat])
+
   return (
-    <LocaleContext.Provider value={{ translate, dateFormat: resultDateFormat, lang: currentLang }}>
+    <LocaleContext.Provider value={{ translate, dateFormat: resultDateFormat, formatDate, lang: currentLang }}>
       <LocalizationProvider
         dateAdapter={AdapterMoment}
         dateFormats={{ fullDate: resultDateFormat }}
