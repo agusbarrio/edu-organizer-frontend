@@ -5,7 +5,7 @@ import TEXTS from "constants/TEXTS"
 import useLocaleContext from "hooks/useLocaleContext"
 import useNavigate from "hooks/useNavigate"
 import useSessionContext from "hooks/useSessionContext"
-import NewCourseClassMachine from "machines/NewCourseClassMachine"
+import ClassSessionMachine from "machines/ClassSessionMachine"
 
 
 function CourseNewClassPage() {
@@ -19,7 +19,7 @@ function CourseNewClassPage() {
             onClick: () => go(PATHS.COURSE)
         }}>
             <Box sx={{ height: '100%' }}>
-                <NewCourseClassMachine course={course} onFinish={() => go(PATHS.COURSE)}></NewCourseClassMachine>
+                <ClassSessionMachine course={course} onFinish={() => go(PATHS.COURSE)}></ClassSessionMachine>
             </Box>
         </CourseTemplate>
     )

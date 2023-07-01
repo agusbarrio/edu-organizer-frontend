@@ -10,18 +10,20 @@ import SetPresentStudentsDataStep from "./steps/SetPresentStudentsDataStep";
 import useDate from "hooks/useDate";
 
 
-function NewCourseClassMachine({ onFinish, course }) {
+function ClassSessionMachine({ onFinish, initialContext, course, edit }) {
     const { getCourseStudents } = useGetCourseStudentsService();
     const { createNewCourseClass } = useCreateNewCourseClassService();
+    const { editClassSession } = useEditClassSessionService();
     const { getNow } = useDate()
-    const machine = useLocalMachine()
+    const machine = useLocalMachine(edit)
     const [state, send] = useMachine(machine, {
         context: {
-            course: course,
-            date: getNow(),
-            students: [],
-            presentStudentsIds: [],
-            presentStudentsData: [],
+            course: initialContext?.course || course,
+            date: initialContext?.date || getNow(),
+            students: initialContext?.students || [],
+            presentStudentsIds: initialContext?.presentStudentsIds || [],
+            presentStudentsData: initialContext?.presentStudentsData || [],
+            id: initialContext?.id || null,
         },
         actions: {
             finish: (context, event) => {
@@ -41,6 +43,13 @@ function NewCourseClassMachine({ onFinish, course }) {
                 if (!result) throw new Error('Error al guardar la clase');
                 return result;
             },
+            editClassSession: async (context) => {
+                const presentStudentsData = context.presentStudentsData
+                const date = context.date
+                const result = await editClassSession({ presentStudentsData, date });
+                if (!result) throw new Error('Error al guardar la clase');
+                return result;
+            }
         }
     });
 
@@ -72,4 +81,4 @@ function NewCourseClassMachine({ onFinish, course }) {
 
 }
 
-export default NewCourseClassMachine;
+export default ClassSessionMachine;
