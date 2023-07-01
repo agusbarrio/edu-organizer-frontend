@@ -11,6 +11,7 @@ import useModalContext from "hooks/useModalContext"
 import AlertModal from "components/generic/modals/AlertModal"
 import _ from "lodash"
 import AttendanceStudentData from "components/dataDisplay/AttendanceStudentData"
+import moment from "moment"
 
 
 function ClassSessionsStudentsTable({ classSessionsStudents = [], showCourse = true, showStudent = true, showTotalPoints = true, showDate = true }) {
@@ -69,7 +70,7 @@ function ClassSessionsStudentsTable({ classSessionsStudents = [], showCourse = t
                 flex: 1,
                 type: 'date',
                 headerName: translate(TEXTS.CLASS_SESSION_DATE_LABEL),
-                valueGetter: ({ row }) => new Date(row?.classSession?.date),
+                valueGetter: ({ row }) => moment(row?.classSession?.date),
                 valueFormatter: ({ value }) => formatDate(value)
             })
         }

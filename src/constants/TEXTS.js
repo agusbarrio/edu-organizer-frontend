@@ -170,5 +170,6 @@ const TEXTS = {
     STUDENT_ATTENDANCE_DATA_MODAL_TITLE: { es: 'Datos de asistencia', en: 'Attendance data' },
     STUDENT_ATTENDANCE_DATA_MODAL_EMPTY_CONTENT: { es: 'Sin datos de asistencia', en: 'Without attendance data' },
     CLASS_SESSION_DATE_PLACEHOLDER: { es: 'Ingresá la fecha de la clase', en: 'Enter the class date' },
+    EDIT_CLASS_SESSION_PAGE_TITLE: { es: 'Editar clase', en: 'Edit class' },
 }
 export default TEXTS

@@ -162,7 +162,6 @@ function useValidator() {
             }
             if (configResult.max && configResult.max.value) {
                 const max = configResult.max.value;
-                console.log(max.format(dateFormat))
                 yupDate = yupDate.max(
                     max,
                     translate(configResult.max.message, { max: max.format(dateFormat) })

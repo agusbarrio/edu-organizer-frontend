@@ -12,7 +12,6 @@ function useGetAllStudentsService() {
                 { showSuccessMessage: false },
             );
             return result;
-
         }, [get])
 
     return { getAllStudents };

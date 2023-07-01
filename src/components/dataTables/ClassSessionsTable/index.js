@@ -13,6 +13,7 @@ import { useCallback } from "react"
 import useModalContext from "hooks/useModalContext"
 import ConfirmModal from "components/generic/modals/ConfirmModal"
 import useDeleteClassSessionService from "services/classSessions/useDeleteClassSessionService"
+import moment from "moment"
 
 
 function ClassSessionsTable({ classSessions = [], onDelete }) {
@@ -47,7 +48,7 @@ function ClassSessionsTable({ classSessions = [], onDelete }) {
                 flex: 1,
                 type: 'date',
                 headerName: translate(TEXTS.CLASS_SESSION_DATE_LABEL),
-                valueGetter: ({ row }) => new Date(row?.date),
+                valueGetter: ({ row }) => moment(row?.date),
                 valueFormatter: ({ value }) => formatDate(value)
 
             },
@@ -58,7 +59,7 @@ function ClassSessionsTable({ classSessions = [], onDelete }) {
                 getActions: (data) => {
                     return [
                         <DeleteIconButton key={`delete-${data.id}`} onClick={() => handleClickDelete(data.id)} />,
-                        <EditIconButton key={`edit-${data.id}`} />,
+                        <EditIconButton key={`edit-${data.id}`} onClick={() => go(renderText(PATHS.DASHBOARD_EDIT_CLASS_SESSION, { classSessionId: data.id }))} />,
                         <ViewDetailsIconButton key={`details-${data.id}`} onClick={() => go(renderText(PATHS.DASHBOARD_CLASS_SESSION, { classSessionId: data.id }))} />,
                     ]
                 },
