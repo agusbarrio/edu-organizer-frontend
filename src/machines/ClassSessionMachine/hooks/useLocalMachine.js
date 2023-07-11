@@ -56,7 +56,7 @@ function useLocalMachine(edit) {
                             target: 'evaluateEmpty',
                             actions: [assign({
                                 presentStudentsIds: (context, event) => event.presentStudentsIds,
-                                presentStudentsData: (context, event) => context.presentStudentsData.filter(studentData => event.presentStudentsIds.includes(studentData.id)),
+                                presentStudentsData: (context, event) => context.presentStudentsData.filter(studentData => event.presentStudentsIds.includes(studentData._id)),
                                 date: (context, event) => moment(event.date)
                             })]
                         },

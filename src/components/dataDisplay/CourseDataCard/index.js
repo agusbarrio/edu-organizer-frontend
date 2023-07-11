@@ -4,13 +4,13 @@ import Link from "components/generic/Link"
 import PATHS from "constants/PATHS"
 import TEXTS from "constants/TEXTS"
 import useLocaleContext from "hooks/useLocaleContext"
+import { useMemo } from "react"
 
 import { renderText } from "utils/text"
 
 function CourseDataCard({ course }) {
     const { translate } = useLocaleContext()
-    const url = `${window.location.origin}${renderText(PATHS.COURSE_LOGIN, { shortId: course?.shortId })}`
-
+    const url = useMemo(() => `${window.location.origin}${renderText(PATHS.COURSE_LOGIN, { _id: course?._id })}`, [course?._id])
     return (
         <Card title={translate(TEXTS.COURSE_DATA_CARD_TITLE)} >
             <LabelValue label={translate(TEXTS.COURSE_NAME_LABEL)} value={course?.name}></LabelValue>

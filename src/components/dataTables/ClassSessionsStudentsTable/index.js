@@ -55,7 +55,7 @@ function ClassSessionsStudentsTable({ classSessionsStudents = [], showCourse = t
                     return [
                         <TableActionButton
                             color="primary"
-                            key={`metadata-${row?.id}`}
+                            key={`metadata-${row?._id}`}
                             tooltip={translate(TEXTS.CLASS_SESSION_STUDENT_VIEW_METADATA)}
                             onClick={() => handleClickMetadata(row?.metadata)}
                             iconComponent={Search}

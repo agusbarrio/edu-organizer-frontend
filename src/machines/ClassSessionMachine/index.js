@@ -26,7 +26,7 @@ function ClassSessionMachine({ onFinish, initialContext, course, edit }) {
             students: initialContext?.students || [],
             presentStudentsIds: initialContext?.presentStudentsIds || [],
             presentStudentsData: initialContext?.presentStudentsData || [],
-            id: initialContext?.id || null,
+            _id: initialContext?._id || null,
         },
         actions: {
             finish: (context, event) => {
@@ -40,7 +40,7 @@ function ClassSessionMachine({ onFinish, initialContext, course, edit }) {
                 return result;
             },
             getStudentsForAdmin: async (context) => {
-                const result = await getAllStudents({ params: { courseId: context?.course?.id } });
+                const result = await getAllStudents({ params: { courseId: context?.course?._id } });
                 if (!result) throw new Error('Error al obtener los estudiantes');
                 return result;
             },
@@ -54,7 +54,7 @@ function ClassSessionMachine({ onFinish, initialContext, course, edit }) {
             editClassSession: async (context) => {
                 const presentStudentsData = context.presentStudentsData
                 const date = context.date
-                const result = await editClassSession(context.id, { presentStudentsData, date });
+                const result = await editClassSession(context._id, { presentStudentsData, date });
                 if (!result) throw new Error('Error al guardar la clase');
                 return result;
             }

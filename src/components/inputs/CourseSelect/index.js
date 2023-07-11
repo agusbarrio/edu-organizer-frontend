@@ -5,7 +5,7 @@ function CoursesSelect({ ...props }) {
     const { getAllCourses } = useGetAllCoursesService();
     return (
         <SelectInputWithService
-            itemValueGetter={(course) => course.id}
+            itemValueGetter={(course) => course._id}
             itemLabelGetter={(course) => course.name}
             service={getAllCourses}
             {...props}

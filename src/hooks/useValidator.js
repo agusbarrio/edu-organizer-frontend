@@ -250,7 +250,7 @@ function useValidator() {
         [translate]
     );
 
-    const id = useCallback(
+    const _id = useCallback(
         (config = {}) => {
             const resultConfig = _.merge(_.cloneDeep(DEFAULT_VALIDATIONS.ID), config);
             const yupId = number(resultConfig).transform((value) =>
@@ -268,10 +268,10 @@ function useValidator() {
 
     const ids = useCallback(
         () => {
-            const yupIds = array().of(id());
+            const yupIds = array().of(_id());
             return yupIds;
         },
-        [array, id]
+        [array, _id]
     );
 
     const boolean = useCallback((config = {}) => {
@@ -309,7 +309,7 @@ function useValidator() {
         date,
         oneOf,
         url,
-        id,
+        _id,
         ids,
         checkbox,
         boolean

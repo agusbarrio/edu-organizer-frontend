@@ -8,7 +8,7 @@ function StudentsList({ onClickItem, students, itemIconProps, cardTitle, help })
     return (
         <Card title={cardTitle} help={help}>
             <List>
-                {students.map(student => <Fragment key={student.id || student.key}>
+                {students.map(student => <Fragment key={student._id || student.key}>
                     <ListItemButton
                         iconProps={itemIconProps}
                         buttonProps={{ onClick: () => { if (onClickItem) onClickItem(student) } }}

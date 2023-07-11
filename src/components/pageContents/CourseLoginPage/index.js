@@ -15,13 +15,13 @@ function CourseLoginPage() {
     const { courseLogin: courseLoginContext } = useSessionContext()
     const { courseLogin } = useCourseLoginService()
     const { params } = useNavigate()
-    const shortId = useMemo(() => params.shortId, [params.shortId])
+    const _id = useMemo(() => params._id, [params._id])
 
     return (
         <PublicTemplate title={translate(TEXTS.COURSE_LOGIN_PAGE_TITLE)} type={TEMPLATE_TYPES.COURSE}>
             <Stack spacing={2} width={'100%'}>
                 <CourseLoginForm onSubmit={async ({ accessPin }) => {
-                    const result = await courseLogin({ accessPin, shortId })
+                    const result = await courseLogin({ accessPin, _id })
                     if (result) {
                         courseLoginContext(result)
                     }

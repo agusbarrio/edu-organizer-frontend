@@ -26,7 +26,7 @@ function StepTemplate({ children, onClickBack, onClickNext, onClickCancel, onCli
 
 
     return (
-        <Stack width={'100%'} height={'100%'} id="lero">
+        <Stack width={'100%'} height={'100%'} >
             {(!!title || !!subtitle) &&
                 <Stack width={'100%'} pb={1} ref={titleRef}>
                     {!!title && <Truncate line={1} element={'h3'} variant={'h6'} sx={{ fontWeight: 'bold' }}>{title}</Truncate>}

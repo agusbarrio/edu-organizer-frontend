@@ -50,17 +50,16 @@ function ClassSessionsTable({ classSessions = [], onDelete }) {
                 headerName: translate(TEXTS.CLASS_SESSION_DATE_LABEL),
                 valueGetter: ({ row }) => moment(row?.date),
                 valueFormatter: ({ value }) => formatDate(value)
-
             },
             {
                 field: 'actions',
                 type: 'actions',
                 headerName: translate(CORE_TEXTS.GENERIC_ACTIONS),
-                getActions: (data) => {
+                getActions: ({ row }) => {
                     return [
-                        <DeleteIconButton key={`delete-${data.id}`} onClick={() => handleClickDelete(data.id)} />,
-                        <EditIconButton key={`edit-${data.id}`} onClick={() => go(renderText(PATHS.DASHBOARD_EDIT_CLASS_SESSION, { classSessionId: data.id }))} />,
-                        <ViewDetailsIconButton key={`details-${data.id}`} onClick={() => go(renderText(PATHS.DASHBOARD_CLASS_SESSION, { classSessionId: data.id }))} />,
+                        <DeleteIconButton key={`delete-${row._id}`} onClick={() => handleClickDelete(row._id)} />,
+                        <EditIconButton key={`edit-${row._id}`} onClick={() => go(renderText(PATHS.DASHBOARD_EDIT_CLASS_SESSION, { classSessionId: row._id }))} />,
+                        <ViewDetailsIconButton key={`details-${row._id}`} onClick={() => go(renderText(PATHS.DASHBOARD_CLASS_SESSION, { classSessionId: row._id }))} />,
                     ]
                 },
                 filterable: false,

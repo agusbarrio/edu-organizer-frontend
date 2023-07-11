@@ -70,9 +70,7 @@ const DEFAULT_VALIDATIONS = {
     lessThan: { message: CORE_TEXTS.VALIDATIONS_LESS_THAN_NUMBER },
   },
   ID: {
-    integer: { value: true, message: CORE_TEXTS.VALIDATIONS_INTEGER },
     required: { value: true, message: CORE_TEXTS.VALIDATIONS_REQUIRED },
-    moreThan: { value: 0, message: CORE_TEXTS.VALIDATIONS_MIN_NUMBER },
   },
   ONE_OF: {
     oneOf: { value: [], message: CORE_TEXTS.VALIDATIONS_ONE_OF },

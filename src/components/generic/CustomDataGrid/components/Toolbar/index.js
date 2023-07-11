@@ -9,7 +9,7 @@ import { useCallback, useMemo } from "react"
 function Toolbar({ onClickEditSelection, onClickDeleteSelection, rowSelectionModel = [], rows = [], ...props }) {
     const { translate } = useLocaleContext()
     const showMultipleSelectionButtons = useMemo(() => !_.isEmpty(rowSelectionModel), [rowSelectionModel])
-    const rowsSelected = useMemo(() => rows.filter(row => rowSelectionModel.includes(row.id))
+    const rowsSelected = useMemo(() => rows.filter(row => rowSelectionModel.includes(row._id))
         , [rowSelectionModel, rows])
     const handleClickEditSelection = useCallback(() => {
         onClickEditSelection(rowsSelected)

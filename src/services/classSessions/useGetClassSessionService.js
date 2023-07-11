@@ -5,9 +5,9 @@ import { CLASS_SESSIONS_ENDPOINTS } from 'constants/ENDPOINTS';
 function useGetClassSessionService() {
     const { get } = useDecoredFetch();
     const getClassSession = useCallback(
-        async (id) => {
+        async (_id) => {
             const result = await get(
-                `${CLASS_SESSIONS_ENDPOINTS.CLASS_SESSIONS}/${id}`,
+                `${CLASS_SESSIONS_ENDPOINTS.CLASS_SESSIONS}/${_id}`,
                 null,
                 { showSuccessMessage: false },
             );

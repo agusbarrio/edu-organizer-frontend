@@ -57,7 +57,7 @@ function CoursesDataTable({ courses = [], onDelete, onEdit }) {
             children: <InputsCreation ref={inputsCreationRef}></InputsCreation>,
             onConfirm: async () => {
                 if (inputsCreationRef.current) {
-                    const ids = rowsSelected.map((row) => row.id)
+                    const ids = rowsSelected.map((row) => row._id)
                     const studentAttendanceFormData = inputsCreationRef.current.getValue()
                     const result = await editCourses({ ids, studentAttendanceFormData })
                     if (result && _.isFunction(onEdit)) {
@@ -73,7 +73,7 @@ function CoursesDataTable({ courses = [], onDelete, onEdit }) {
             title: translate(TEXTS.DELETE_COURSES_SELECTION_MODAL_TITLE),
             textContent: translate(TEXTS.DELETE_COURSES_SELECTION_MODAL_CONTENT),
             onConfirm: async () => {
-                const ids = rowsSelected.map((row) => row.id)
+                const ids = rowsSelected.map((row) => row._id)
                 const result = await deleteCourses(ids)
                 if (result && _.isFunction(onDelete)) {
                     onDelete()
@@ -89,11 +89,11 @@ function CoursesDataTable({ courses = [], onDelete, onEdit }) {
                 field: 'actions',
                 type: 'actions',
                 headerName: translate(CORE_TEXTS.GENERIC_ACTIONS),
-                getActions: (data) => {
+                getActions: ({ row }) => {
                     return [
-                        <DeleteIconButton key={`delete-${data.id}`} onClick={() => { handleClickDeleteCourse(data.id) }} />,
-                        <EditIconButton key={`edit-${data.id}`} onClick={() => { navigateToEditCourse(data.id) }} />,
-                        <ViewDetailsIconButton key={`details-${data.id}`} onClick={() => { navigateToCourse(data.id) }} />,
+                        <DeleteIconButton key={`delete-${row._id}`} onClick={() => { handleClickDeleteCourse(row._id) }} />,
+                        <EditIconButton key={`edit-${row._id}`} onClick={() => { navigateToEditCourse(row._id) }} />,
+                        <ViewDetailsIconButton key={`details-${row._id}`} onClick={() => { navigateToCourse(row._id) }} />,
                     ]
                 },
                 filterable: false,

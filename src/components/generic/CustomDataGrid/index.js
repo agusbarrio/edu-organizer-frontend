@@ -32,6 +32,7 @@ function CustomDataGrid({
         onStateChange={handleStateChange}
         apiRef={apiRef}
         rows={rows}
+        getRowId={(row) => row._id}
         columns={columns}
         slotProps={{
             ...slotProps,

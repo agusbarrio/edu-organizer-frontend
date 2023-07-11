@@ -8,7 +8,7 @@ const PATHS = {
     COURSE: '/course',
     COURSE_NEW_CLASS: '/course/new-class',
     COURSE_NEW_STUDENT: '/course/new-student',
-    COURSE_LOGIN: '/auth/course/{{shortId}}/login',
+    COURSE_LOGIN: '/auth/course/{{_id}}/login',
     RECOVER_PASSWORD: '/auth/recover',
     DASHBOARD_COURSES: '/dashboard/courses',
     DASHBOARD_COURSE: '/dashboard/courses/{{courseId}}',

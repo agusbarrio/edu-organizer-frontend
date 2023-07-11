@@ -19,7 +19,7 @@ function CourseMachine({ onFinish, initialContext, edit }) {
             accessPin: initialContext?.accessPin || '',
             students: initialContext?.students || [],
             studentAttendanceFormData: initialContext?.studentAttendanceFormData || [],
-            id: initialContext?.id || null,
+            _id: initialContext?._id || null,
         },
         actions: {
             finish: (context, event) => {
@@ -35,14 +35,14 @@ function CourseMachine({ onFinish, initialContext, edit }) {
                         if (student.isNew) {
                             return { studentData: student, isNew: true }
                         }
-                        return { id: student.id, isNew: false }
+                        return { _id: student._id, isNew: false }
                     }),
                     studentAttendanceFormData: context.studentAttendanceFormData
                 })
                 if (!result) throw new Error('Error creating course')
             },
             editCourse: async (context) => {
-                const result = await editCourse(context.id
+                const result = await editCourse(context._id
                     , {
                         name: context.name,
                         accessPin: context.accessPin,
@@ -50,7 +50,7 @@ function CourseMachine({ onFinish, initialContext, edit }) {
                             if (student.isNew) {
                                 return { studentData: student, isNew: true }
                             }
-                            return { id: student.id, isNew: false }
+                            return { _id: student._id, isNew: false }
                         }),
                         studentAttendanceFormData: context.studentAttendanceFormData
                     })

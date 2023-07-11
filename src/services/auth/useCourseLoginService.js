@@ -10,7 +10,7 @@ function useCourseLoginService() {
   const courseLogin = useCallback(
     async (values) => {
       const result = await post(
-        renderText(AUTH_ENDPOINTS.COURSE_LOGIN, { shortId: values.shortId }),
+        renderText(AUTH_ENDPOINTS.COURSE_LOGIN, { _id: values._id }),
         values,
         {},
         { showSuccessMessage: false },

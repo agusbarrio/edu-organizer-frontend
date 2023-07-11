@@ -5,9 +5,9 @@ import { STUDENTS_ENDPOINTS } from 'constants/ENDPOINTS';
 function useGetStudentService() {
     const { get } = useDecoredFetch();
     const getStudent = useCallback(
-        async (id) => {
+        async (_id) => {
             const result = await get(
-                `${STUDENTS_ENDPOINTS.STUDENTS}/${id}`,
+                `${STUDENTS_ENDPOINTS.STUDENTS}/${_id}`,
                 null,
                 { showSuccessMessage: false },
             );

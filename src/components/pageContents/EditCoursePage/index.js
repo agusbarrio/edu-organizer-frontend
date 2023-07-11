@@ -32,7 +32,7 @@ function EditCoursePage() {
         accessPin: course?.accessPin,
         students: course?.students?.map((student) => ({ ...student, isNew: false })),
         studentAttendanceFormData: course?.studentAttendanceFormData?.map(input => ({ ...input, key: uuidv4() })),
-        id: course?.id,
+        _id: course?._id,
     }), [course])
 
 

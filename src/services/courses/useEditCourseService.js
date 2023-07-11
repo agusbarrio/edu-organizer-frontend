@@ -5,9 +5,9 @@ import { COURSES_ENDPOINTS } from 'constants/ENDPOINTS';
 function useEditCourseService() {
     const { put } = useDecoredFetch();
     const editCourse = useCallback(
-        async (id, values) => {
+        async (_id, values) => {
             const result = await put(
-                `${COURSES_ENDPOINTS.COURSES}/${id}`,
+                `${COURSES_ENDPOINTS.COURSES}/${_id}`,
                 values
             );
             return result;

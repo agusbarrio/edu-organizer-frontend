@@ -14,14 +14,8 @@ import CourseTemplate from "components/templates/CourseTemplate"
 
 function CoursePage() {
     const { translate } = useLocaleContext()
-    const { course: courseSession } = useSessionContext()
-    const { getCourse } = useGetCourseService()
-    const { value: course, runService, loading } = useService({ service: getCourse, defaultValue: {} })
+    const { course } = useSessionContext()
     const { go } = useNavigate()
-
-    useEffect(() => {
-        runService(courseSession.id)
-    }, [runService, courseSession.id])
 
     const buttonProps = useMemo(() => ({
         variant: 'outlined',
@@ -40,7 +34,7 @@ function CoursePage() {
         go(PATHS.COURSE_NEW_STUDENT)
     }
     return (
-        <CourseTemplate title={course?.name} loading={loading}>
+        <CourseTemplate title={course?.name} >
             <Stack spacing={2} width={'100%'}>
                 <Button {...buttonProps} startIcon={<Add></Add>} onClick={handleClickNewClass}>{translate(TEXTS.NEW_CLASS_BUTTON)}</Button>
                 <Button {...buttonProps} size="large" startIcon={<Face></Face>} onClick={handleClickNewStudent}>{translate(TEXTS.NEW_STUDENT_BUTTON)}</Button>

@@ -25,8 +25,8 @@ function ProtectedPage({ children, needUserSession, userPermissionsAllowed, need
         }
         if (needCourseSession != undefined) {
             if (needCourseSession && !course.logged) {
-                if (course?.lastCourseLoggedShortId) {
-                    redirectPath = renderText(PATHS.COURSE_LOGIN, { shortId: course?.lastCourseLoggedShortId })
+                if (course?.lastCourseLoggedId) {
+                    redirectPath = renderText(PATHS.COURSE_LOGIN, { _id: course?.lastCourseLoggedId })
                 } else {
                     redirectPath = PATHS.FORBIDDEN
                 }

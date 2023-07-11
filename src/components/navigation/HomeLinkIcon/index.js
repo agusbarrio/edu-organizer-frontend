@@ -15,10 +15,10 @@ function HomeLinkIcon({ iconProps, type = TEMPLATE_TYPES.USER, ...props }) {
         }
         if (type === TEMPLATE_TYPES.COURSE) {
             if (courseLogged) return PATHS.COURSE
-            return renderText(PATHS.COURSE_LOGIN, { shortId: params?.shortId })
+            return renderText(PATHS.COURSE_LOGIN, { _id: params?._id })
         }
         return PATHS.HOME
-    }, [type, courseLogged, params?.shortId])
+    }, [type, courseLogged, params?._id])
     return <Link href={href} {...props}><School {...iconProps} /></Link>
 }
 

@@ -12,7 +12,7 @@ const classSessionsBaseUrl = `${ENV_CONFIG.NEXT_PUBLIC_API_URL}/classSessions`;
 
 export const AUTH_ENDPOINTS = {
     LOGIN: `${authBaseUrl}/login`,
-    COURSE_LOGIN: `${authBaseUrl}/course/{{shortId}}/login`,
+    COURSE_LOGIN: `${authBaseUrl}/course/{{_id}}/login`,
     REGISTER: `${authBaseUrl}/register`,
     LOGOUT: `${authBaseUrl}/logout`,
     REQUEST_PASSWORD_RECOVERY: `${authBaseUrl}/requestPasswordRecovery`,

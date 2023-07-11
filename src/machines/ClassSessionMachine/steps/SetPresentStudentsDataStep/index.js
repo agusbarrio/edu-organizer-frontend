@@ -12,17 +12,17 @@ function SetPresentStudentsDataStep({ state, send }) {
 
     const formRefs = useRef({})
 
-    const presentStudents = useMemo(() => state.context.students.filter(student => state.context.presentStudentsIds.includes(student.id)), [state.context.students, state.context.presentStudentsIds])
+    const presentStudents = useMemo(() => state.context.students.filter(student => state.context.presentStudentsIds.includes(student._id)), [state.context.students, state.context.presentStudentsIds])
 
     const [presentStudentsData, setPresentStudentsData] = useState(() => presentStudents.map(student => {
         return {
             ...student,
-            metadata: state.context.presentStudentsData.find((studentData) => studentData.id === student.id)?.metadata || {}
+            metadata: state.context.presentStudentsData.find((studentData) => studentData._id === student._id)?.metadata || {}
         }
     }))
     const [formStates, setFormStates] = useState(() => {
         return presentStudents.reduce((acc, student) => {
-            acc[student.id] = {
+            acc[student._id] = {
                 submitted: false,
             }
             return acc
@@ -58,32 +58,32 @@ function SetPresentStudentsDataStep({ state, send }) {
         const newPresentStudentsData = _.map(presentStudentsData, (studentData) => {
             return {
                 ...studentData,
-                metadata: values[studentData.id]
+                metadata: values[studentData._id]
             }
         })
 
         send('PREV', { presentStudentsData: newPresentStudentsData })
     }, [send, presentStudentsData])
 
-
+    console.log(state?.context)
     return (
         <StepTemplate onClickFinish={handleClickNext} onClickBack={handleClickBack} title={translate(TEXTS.SELECT_PRESENT_STUDENTS_TITLE)}>
             <CardsContainer columnWidth="minmax(15rem, 1fr)">
                 {presentStudents.map(student => (
                     <Card
-                        key={student.id}
+                        key={student._id}
                         title={`${student.firstName} ${student.lastName}`}
                         sx={{ height: 'auto' }}>
                         <AttendanceCourseForm
                             studentAttendanceFormData={state?.context?.course?.studentAttendanceFormData}
                             defaultValues={presentStudentsData.find((studentData) => {
-                                return studentData.id === student.id
+                                return studentData._id === student._id
                             }).metadata}
                             templateProps={{ showSubmitButton: false }}
                             onSubmit={async (values) => {
                                 setPresentStudentsData((prevPresentStudentsData) => {
                                     const result = [...prevPresentStudentsData]
-                                    const index = result.findIndex((studentData) => studentData.id === student.id)
+                                    const index = result.findIndex((studentData) => studentData._id === student._id)
                                     result[index] = {
                                         ...student,
                                         metadata: values
@@ -93,7 +93,7 @@ function SetPresentStudentsDataStep({ state, send }) {
                                 setFormStates((prevFormStates) => {
                                     return {
                                         ...prevFormStates,
-                                        [student.id]: {
+                                        [student._id]: {
                                             submitted: true
                                         }
                                     }
@@ -101,7 +101,7 @@ function SetPresentStudentsDataStep({ state, send }) {
                                 )
                             }}
                             ref={(ref) => {
-                                if (formRefs?.current) formRefs.current[student.id] = ref
+                                if (formRefs?.current) formRefs.current[student._id] = ref
                                 return null
                             }}
                         ></AttendanceCourseForm>

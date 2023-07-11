@@ -49,13 +49,13 @@ function StudentsDataTable({ students = [], onDelete, deleteAllowed = true, edit
                 field: 'actions',
                 type: 'actions',
                 headerName: translate(CORE_TEXTS.GENERIC_ACTIONS),
-                getActions: (data) => {
-                    const actions = [<ViewDetailsIconButton key={`details-${data.id}`} onClick={() => { navigateToStudent(data.id) }} />]
+                getActions: ({ row }) => {
+                    const actions = [<ViewDetailsIconButton key={`details-${row._id}`} onClick={() => { navigateToStudent(row._id) }} />]
                     if (editAllowed) {
-                        actions.unshift(<EditIconButton key={`edit-${data.id}`} onClick={() => { navigateToEditStudent(data.id) }} />)
+                        actions.unshift(<EditIconButton key={`edit-${row._id}`} onClick={() => { navigateToEditStudent(row._id) }} />)
                     }
                     if (deleteAllowed) {
-                        actions.unshift(<DeleteIconButton key={`delete-${data.id}`} onClick={() => { handleClickDeleteStudent(data.id) }} />)
+                        actions.unshift(<DeleteIconButton key={`delete-${row._id}`} onClick={() => { handleClickDeleteStudent(row._id) }} />)
                     }
                     return actions
                 }

@@ -5,9 +5,9 @@ import { STUDENTS_ENDPOINTS } from 'constants/ENDPOINTS';
 function useDeleteStudentService() {
     const { del } = useDecoredFetch();
     const deleteStudent = useCallback(
-        async (id) => {
+        async (_id) => {
             const result = await del(
-                `${STUDENTS_ENDPOINTS.STUDENTS}/${id}`
+                `${STUDENTS_ENDPOINTS.STUDENTS}/${_id}`
             );
             return result;
         },

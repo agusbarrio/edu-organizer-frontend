@@ -8,7 +8,7 @@ import TextInput from "components/generic/TextInput"
 import CoursesSelect from "components/inputs/CourseSelect"
 
 const StudentForm = forwardRef(function StudentForm({ onSubmit, defaultValues, withCourse = true, templateProps, size }, ref) {
-    const { form, text, id } = useValidator()
+    const { form, text, _id } = useValidator()
     const { translate } = useLocaleContext()
     const schema = useMemo(() => {
         const baseSchema = {
@@ -16,11 +16,11 @@ const StudentForm = forwardRef(function StudentForm({ onSubmit, defaultValues, w
             lastName: text({ required: { value: true } }),
         }
         if (withCourse) {
-            baseSchema.courseId = id()
+            baseSchema.courseId = _id()
         }
 
         return form(baseSchema)
-    }, [form, text, id, withCourse])
+    }, [form, text, _id, withCourse])
 
     return (
         <Form schema={schema} defaultValues={defaultValues} onSubmit={onSubmit} ref={ref} templateProps={templateProps}>

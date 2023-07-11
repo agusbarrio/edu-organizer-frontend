@@ -18,7 +18,7 @@ function CourseStudentsSelection({ onChange, initialStudents = [] }) {
 
     useEffect(() => {
         if (onChange) onChange(students.map((student) => {
-            if (student.id) {
+            if (student._id) {
                 student.isNew = false
             } else {
                 student.isNew = true
@@ -40,13 +40,13 @@ function CourseStudentsSelection({ onChange, initialStudents = [] }) {
 
     const handleAddStudent = useCallback((student) => {
         setStudents((prevStudents) => [...prevStudents, student])
-        setStudentsToSelect((prevStudents) => [...prevStudents].filter(prevStudent => prevStudent.id !== student.id))
+        setStudentsToSelect((prevStudents) => [...prevStudents].filter(prevStudent => prevStudent._id !== student._id))
     }, [])
 
     const handleDropStudent = useCallback((student) => {
-        if (student.id) {
+        if (student._id) {
             setStudentsToSelect((prevStudents) => [...prevStudents, student])
-            setStudents((prevStudents) => [...prevStudents].filter(prevStudent => prevStudent.id !== student.id))
+            setStudents((prevStudents) => [...prevStudents].filter(prevStudent => prevStudent._id !== student._id))
         } else {
             setStudents((prevStudents) => [...prevStudents].filter(prevStudent => prevStudent.key !== student.key))
         }

@@ -5,9 +5,9 @@ import { STUDENTS_ENDPOINTS } from 'constants/ENDPOINTS';
 function useEditStudentService() {
     const { put } = useDecoredFetch();
     const editStudent = useCallback(
-        async (id, values) => {
+        async (_id, values) => {
             const result = await put(
-                `${STUDENTS_ENDPOINTS.STUDENTS}/${id}`,
+                `${STUDENTS_ENDPOINTS.STUDENTS}/${_id}`,
                 values
             );
             return result;

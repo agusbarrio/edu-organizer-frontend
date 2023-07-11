@@ -31,9 +31,9 @@ function EditClassSessionPage() {
     const initialContext = useMemo(() => ({
         course: classSession?.course,
         date: moment(classSession?.date),
-        id: classSession?.id,
-        presentStudentsIds: classSession?.classSessionStudents?.filter(classSessionStudent => classSessionStudent.isPresent).map(classSessionStudent => classSessionStudent.studentId),
-        presentStudentsData: classSession?.classSessionStudents.filter(classSessionStudent => classSessionStudent.isPresent).map(classSessionStudent => ({ ...classSessionStudent, metadata: classSessionStudent.metadata, id: classSessionStudent.studentId })),
+        _id: classSession?._id,
+        presentStudentsIds: classSession?.classSessionStudents?.filter(classSessionStudent => classSessionStudent.isPresent).map(classSessionStudent => classSessionStudent.student._id),
+        presentStudentsData: classSession?.classSessionStudents.filter(classSessionStudent => classSessionStudent.isPresent).map(classSessionStudent => ({ ...classSessionStudent, metadata: classSessionStudent.metadata, _id: classSessionStudent.student._id })),
     }), [classSession])
 
     return (

@@ -38,8 +38,8 @@ function OrganizationsDataTable({ organizations = [], onDelete }) {
                 field: 'actions',
                 type: 'actions',
                 headerName: translate(CORE_TEXTS.GENERIC_ACTIONS),
-                getActions: (data) => ([
-                    <DeleteIconButton key={`delete-${data.id}`} onClick={() => { handleClickDeleteOrganization(data.id) }} />,
+                getActions: ({ row }) => ([
+                    <DeleteIconButton key={`delete-${row._id}`} onClick={() => { handleClickDeleteOrganization(row._id) }} />,
                 ])
             }
         ]

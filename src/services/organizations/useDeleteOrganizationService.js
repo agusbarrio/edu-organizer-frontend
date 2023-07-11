@@ -5,9 +5,9 @@ import { ORGANIZATIONS_ENDPOINTS } from 'constants/ENDPOINTS';
 function useDeleteOrganizationService() {
     const { del } = useDecoredFetch();
     const deleteOrganization = useCallback(
-        async (id) => {
+        async (_id) => {
             const result = await del(
-                `${ORGANIZATIONS_ENDPOINTS.ORGANIZATIONS}/${id}`,
+                `${ORGANIZATIONS_ENDPOINTS.ORGANIZATIONS}/${_id}`,
             );
             return result;
         },
