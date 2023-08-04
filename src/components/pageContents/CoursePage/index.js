@@ -2,7 +2,6 @@ import useLocaleContext from "hooks/useLocaleContext"
 import useSessionContext from "hooks/useSessionContext"
 import { useEffect, useMemo } from "react"
 import useService from "hooks/useService"
-
 import useGetCourseService from "services/courseAccess/useGetCourseService"
 import { Button, Stack } from "@mui/material"
 import { Add, Face } from "@mui/icons-material"
