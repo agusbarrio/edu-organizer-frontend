@@ -15,7 +15,7 @@ function AttendanceStudentsTable({ students = [], ...props }) {
                 flex: 1,
                 headerName: translate(TEXTS.STUDENT_AVATAR_LABEL),
                 renderCell: ({ row }) => {
-                    return <Avatar src={row.avatar} alt={`${row.firstName} ${row.lastName}`}></Avatar>
+                    return <Avatar src={row.avatar?.file} alt={`${row.firstName} ${row.lastName}`}></Avatar>
                 },
                 filterable: false,
             },
