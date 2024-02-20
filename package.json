@@ -26,11 +26,16 @@
     "next": "13.3.1",
     "notistack": "^3.0.1",
     "react": "18.2.0",
+    "react-avatar-editor": "^13.0.2",
     "react-dom": "18.2.0",
+    "react-dropzone": "^14.2.3",
     "react-hook-form": "^7.43.9",
     "uuid": "^9.0.0",
     "xstate": "^4.37.2",
     "yup": "^1.1.1",
     "yup-password": "^0.2.2"
+  },
+  "devDependencies": {
+    "@hookform/devtools": "^4.3.1"
   }
 }

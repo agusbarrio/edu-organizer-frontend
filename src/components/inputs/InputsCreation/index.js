@@ -5,10 +5,12 @@ import NewInputCard from "./components/NewInputCard"
 import CopyConfigCoursesListCard from "./components/CopyConfigCoursesListCard";
 import InputsList from "components/dataDisplay/InputsList";
 import { RemoveCircleOutline } from "@mui/icons-material";
+import useLocaleContext from "hooks/useLocaleContext";
+import TEXTS from "constants/TEXTS";
 
 const InputsCreation = forwardRef(({ onChange, initialInputs = [] }, ref) => {
     const [inputs, setInputs] = useState(initialInputs)
-
+    const { translate } = useLocaleContext()
     useEffect(() => {
         if (onChange) onChange(inputs)
     }, [inputs, onChange])

@@ -65,6 +65,9 @@ const CORE_TEXTS = {
     GENERIC_EDIT_SELECTION: { es: 'Editar selección', en: 'Edit selection' },
     GENERIC_DELETE_SELECTION: { es: 'Eliminar selección', en: 'Delete selection' },
     VALIDATIONS_ONE_OF: { es: 'Debe ser uno de los siguientes valores: {{oneOf}}', en: 'Must be one of the following values: {{oneOf}}' },
+    GENERIC_ZOOM_OUT: { es: 'Alejar', en: 'Zoom out' },
+    GENERIC_ZOOM_IN: { es: 'Acercar', en: 'Zoom in' },
+    GENERIC_AVATAR_EDITOR_TITLE: { es: 'Foto de perfil', en: 'Profile picture' },
 };
 
 export default CORE_TEXTS;

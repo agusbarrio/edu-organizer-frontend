@@ -6,6 +6,7 @@ import TEXTS from "constants/TEXTS"
 import { forwardRef, useMemo } from "react"
 import TextInput from "components/generic/TextInput"
 import CoursesSelect from "components/inputs/CourseSelect"
+import AvatarInput from "components/generic/AvatarInput"
 
 const StudentForm = forwardRef(function StudentForm({ onSubmit, defaultValues, withCourse = true, templateProps, size }, ref) {
     const { form, text, id } = useValidator()
@@ -14,9 +15,10 @@ const StudentForm = forwardRef(function StudentForm({ onSubmit, defaultValues, w
         const baseSchema = {
             firstName: text({ required: { value: true } }),
             lastName: text({ required: { value: true } }),
+            //TODO add avatar validation
         }
         if (withCourse) {
-            baseSchema.courseId = id()
+            baseSchema.courseId = id({ required: { value: false } })
         }
 
         return form(baseSchema)
@@ -24,6 +26,7 @@ const StudentForm = forwardRef(function StudentForm({ onSubmit, defaultValues, w
 
     return (
         <Form schema={schema} defaultValues={defaultValues} onSubmit={onSubmit} ref={ref} templateProps={templateProps}>
+            <ControllerInput render={AvatarInput} name={"avatar"} size={size} />
             <ControllerInput render={TextInput} size={size} name={"firstName"} label={translate(TEXTS.STUDENT_FIRST_NAME_LABEL)} placeholder={translate(TEXTS.STUDENT_FIRST_NAME_PLACEHOLDER)} />
             <ControllerInput render={TextInput} size={size} name={"lastName"} label={translate(TEXTS.STUDENT_LAST_NAME_LABEL)} placeholder={translate(TEXTS.STUDENT_LAST_NAME_PLACEHOLDER)} />
             {withCourse && <ControllerInput

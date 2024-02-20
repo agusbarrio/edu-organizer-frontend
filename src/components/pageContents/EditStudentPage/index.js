@@ -26,7 +26,12 @@ function EditStudentPage() {
     const { value: student, loading, runService } = useService({ service: getStudent, defaultValue: {} })
 
     const handleSubmit = useCallback(async (data) => {
-        const result = await editStudent(student?.id, data)
+        const result = await editStudent(student?.id, {
+            firstName: data.firstName,
+            lastName: data.lastName,
+            courseId: data.courseId,
+            avatarFileId: data.avatar?.id || null
+        })
         if (result) goStudents()
     }, [editStudent, goStudents, student])
 

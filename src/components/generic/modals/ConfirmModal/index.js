@@ -8,7 +8,7 @@ import {
   Divider,
 } from '@mui/material';
 import PropTypes from 'prop-types';
-import { useCallback, } from 'react';
+import { useCallback, useState, } from 'react';
 
 import _ from 'lodash';
 import useModalContext from 'hooks/useModalContext';
@@ -30,13 +30,16 @@ function ConfirmModal({
 }) {
   const { closeModal } = useModalContext();
   const { translate } = useLocaleContext()
+  const [loading, setLoading] = useState(false)
   const handleClose = useCallback(() => {
     if (_.isFunction(onClose)) onClose();
     closeModal();
   }, [closeModal, onClose]);
 
   const handleConfirm = useCallback(async () => {
-    if (_.isFunction(onConfirm)) onConfirm();
+    setLoading(true)
+    if (_.isFunction(onConfirm)) await onConfirm();
+    setLoading(false)
     if (!preventCloseOnConfirm) closeModal();
   }, [onConfirm, closeModal, preventCloseOnConfirm]);
 
@@ -56,12 +59,13 @@ function ConfirmModal({
       </DialogContent>
       <Divider></Divider>
       <DialogActions>
-        <Button onClick={handleClose} {...closeButtonProps}>
+        <Button onClick={handleClose} {...closeButtonProps} disabled={loading}>
           {closeButtonProps?.children || translate(CORE_TEXTS.GENERIC_CLOSE)}
         </Button>
         <Button
           onClick={handleConfirm}
           variant="contained"
+          disabled={loading}
           {...confirmButtonProps}
         >
           {confirmButtonProps?.children || translate(CORE_TEXTS.GENERIC_CONFIRM)}

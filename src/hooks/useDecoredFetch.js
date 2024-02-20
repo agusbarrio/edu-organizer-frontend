@@ -34,9 +34,10 @@ function useDecoredFetch() {
     (config = {}) => {
       const resultConfig = _.merge(defaultConfig, config);
       return {
-        successHandler: () => {
+        successHandler: (res) => {
           if (resultConfig?.showSuccessMessage)
             successNotification(resultConfig?.successMessage);
+          if (resultConfig?.onSuccess) resultConfig.onSuccess(res?.data);
         },
         errorHandler: ({ error, type }) => {
           if (resultConfig?.showErrorMessage) {
@@ -57,6 +58,7 @@ function useDecoredFetch() {
               resultErrorMessage = resultConfig.errorMessage;
             errorNotification(resultErrorMessage);
           }
+          if (resultConfig?.onError) resultConfig.onError({ error, type });
         },
       };
     },

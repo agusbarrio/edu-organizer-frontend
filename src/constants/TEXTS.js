@@ -39,6 +39,7 @@ const TEXTS = {
     COURSE_PAGE_TITLE: { es: 'Detalles del curso', en: 'Course details' },
     COURSE_ID_LABEL: { es: 'ID del curso', en: 'Course ID' },
     COURSE_SHORT_ID_LABEL: { es: 'Identificador del curso', en: 'Course short ID' },
+    STUDENT_AVATAR_LABEL: { es: 'Foto', en: 'Photo' },
     STUDENT_FIRST_NAME_LABEL: { es: 'Nombre', en: 'First name' },
     STUDENT_LAST_NAME_LABEL: { es: 'Apellido', en: 'Last name' },
     GO_STUDENT: { es: 'Ver estudiante', en: 'Go student' },

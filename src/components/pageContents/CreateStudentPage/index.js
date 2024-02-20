@@ -17,7 +17,12 @@ function CreateStudentPage() {
     const formRef = useRef(null)
 
     const handleSubmit = useCallback(async (data) => {
-        const result = await createStudent(data)
+        const result = await createStudent({
+            firstName: data.firstName,
+            lastName: data.lastName,
+            courseId: data.courseId,
+            avatarFileId: data.avatar?.id || null
+        })
         if (result && formRef?.current) {
             formRef.current.reset()
         }

@@ -9,6 +9,7 @@ const userBaseUrl = `${ENV_CONFIG.NEXT_PUBLIC_API_URL}/user`;
 const organizationsBaseUrl = `${ENV_CONFIG.NEXT_PUBLIC_API_URL}/organizations`;
 const organizationBaseUrl = `${ENV_CONFIG.NEXT_PUBLIC_API_URL}/organization`;
 const classSessionsBaseUrl = `${ENV_CONFIG.NEXT_PUBLIC_API_URL}/classSessions`;
+const filesBaseUrl = `${ENV_CONFIG.NEXT_PUBLIC_API_URL}/files`;
 
 export const AUTH_ENDPOINTS = {
     LOGIN: `${authBaseUrl}/login`,
@@ -52,4 +53,8 @@ export const USER_ENDPOINTS = {
 
 export const CLASS_SESSIONS_ENDPOINTS = {
     CLASS_SESSIONS: `${classSessionsBaseUrl}`,
+};
+
+export const FILES_ENDPOINTS = {
+    SINGLE_IMAGE: `${filesBaseUrl}/singleImage`,
 };
