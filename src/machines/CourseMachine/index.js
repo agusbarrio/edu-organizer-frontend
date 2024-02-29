@@ -33,7 +33,13 @@ function CourseMachine({ onFinish, initialContext, edit }) {
                     accessPin: context.accessPin,
                     students: context.students.map((student) => {
                         if (student.isNew) {
-                            return { studentData: student, isNew: true }
+                            return {
+                                studentData: {
+                                    firstName: student.firstName,
+                                    lastName: student.lastName,
+                                    avatarFileId: student.avatar?.id || null,
+                                }, isNew: true
+                            }
                         }
                         return { id: student.id, isNew: false }
                     }),
@@ -48,7 +54,13 @@ function CourseMachine({ onFinish, initialContext, edit }) {
                         accessPin: context.accessPin,
                         students: context.students.map((student) => {
                             if (student.isNew) {
-                                return { studentData: student, isNew: true }
+                                return {
+                                    studentData: {
+                                        firstName: student.firstName,
+                                        lastName: student.lastName,
+                                        avatarFileId: student.avatar?.id || null,
+                                    }, isNew: true
+                                }
                             }
                             return { id: student.id, isNew: false }
                         }),
