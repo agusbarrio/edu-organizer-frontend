@@ -37,7 +37,7 @@ function ClassSessionPage() {
                 </Grid>
                 <Grid item xs={12} md={8} height={'100%'}>
                     <Card title={translate(TEXTS.CLASS_SESSION_STUDENTS_CARD_TITLE)}>
-                        <ClassSessionsStudentsTable classSessionsStudents={classSession?.classSessionStudents} showCourse={false} showDate={false} showTotalPoints={false}></ClassSessionsStudentsTable>
+                        <ClassSessionsStudentsTable classSessionsStudents={classSession?.classSessionStudents} showCourse={false} showDate={false} showTotalPoints={false} showMonth={false}></ClassSessionsStudentsTable>
                     </Card>
                 </Grid>
             </Grid>

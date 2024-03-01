@@ -1,4 +1,4 @@
-import { createContext, useCallback, useMemo } from 'react';
+import { createContext, useCallback, useEffect, useMemo } from 'react';
 import _ from 'lodash';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -14,6 +14,13 @@ function LocaleContextProvider({
   defaultDateFormat = 'DD-MM-YYYY',
 }) {
   const currentLang = useMemo(() => lang || defaultLang, [defaultLang, lang])
+
+  useEffect(() => {
+    import(`moment/locale/${currentLang}`).then(() => {
+      moment.locale(currentLang);
+    })
+  }, [currentLang])
+
   const translate = useCallback(
     (translation, params = {}) => {
       if (_.isString(translation)) return translation;
