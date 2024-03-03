@@ -40,7 +40,7 @@ function EditMyAccountPage() {
         >
             <Grid container spacing={2} sx={{ overflowY: 'auto', maxHeight: '100%' }}>
                 <Grid item xs={12} md={6} >
-                    <MyAccountForm onSubmit={handleSubmit} templateProps={{ submitButtonProps: { disabled: loading } }} defaultValues={user}></MyAccountForm>
+                    <MyAccountForm onSubmit={handleSubmit} templateProps={{ submitButtonProps: { disabled: loading, children: translate(CORE_TEXTS.GENERIC_EDIT) } }} defaultValues={user}></MyAccountForm>
                 </Grid>
             </Grid>
         </DashboardTemplate >

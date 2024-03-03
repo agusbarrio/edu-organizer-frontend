@@ -39,7 +39,7 @@ function EditMyOrganizationPage() {
             loading={loading}
         >
             <Container maxWidth={'md'}>
-                <OrganizationForm onSubmit={handleSubmit} defaultValues={organization}></OrganizationForm>
+                <OrganizationForm onSubmit={handleSubmit} defaultValues={organization} templateProps={{ submitButtonProps: { children: translate(CORE_TEXTS.GENERIC_EDIT) } }}></OrganizationForm>
             </Container>
         </DashboardTemplate >
 
