@@ -10,7 +10,12 @@ function NewStudentCard({ onSubmit }) {
     const formRef = useRef(null)
     const { translate } = useLocaleContext()
     const handleSubmitStudent = useCallback((data) => {
-        if (onSubmit) onSubmit(data)
+        if (onSubmit) onSubmit({
+            firstName: data.firstName,
+            lastName: data.lastName,
+            courseId: data.courseId,
+            avatarFileId: data.avatar?.id || null
+        })
         if (formRef.current) formRef.current.reset()
     }, [onSubmit, formRef])
 

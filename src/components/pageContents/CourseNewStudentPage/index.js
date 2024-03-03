@@ -13,7 +13,12 @@ function CourseNewStudentPage() {
     const { go } = useNavigate()
     const { createNewStudent } = useCreateNewStudentService()
     const handleSubmit = useCallback(async (data) => {
-        const result = await createNewStudent(data)
+        const result = await createNewStudent({
+            firstName: data.firstName,
+            lastName: data.lastName,
+            courseId: data.courseId,
+            avatarFileId: data.avatar?.id || null
+        })
         if (result) go(PATHS.COURSE)
     }, [createNewStudent, go])
     return (
