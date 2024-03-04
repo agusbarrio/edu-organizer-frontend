@@ -37,7 +37,7 @@ function CreateStudentPage() {
                 onClick: () => go(renderText(PATHS.DASHBOARD_STUDENTS))
             }}>
             <Container maxWidth={'md'}>
-                <StudentForm onSubmit={handleSubmit} ref={formRef} templateProps={{ submitButtonProps: { children: translate(CORE_TEXTS.GENERIC_ADD) } }}></StudentForm>
+                <StudentForm onSubmit={handleSubmit} ref={formRef} templateProps={{ submitButtonProps: { children: translate(CORE_TEXTS.GENERIC_CREATE) } }}></StudentForm>
             </Container>
         </DashboardTemplate>
 
