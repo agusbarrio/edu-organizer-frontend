@@ -11,7 +11,7 @@ function UsersDataTable({ users = [] }) {
         return [
             { field: 'firstName', flex: 1, headerName: translate(TEXTS.USER_FIRST_NAME_LABEL) },
             { field: 'lastName', flex: 1, headerName: translate(TEXTS.USER_LAST_NAME_LABEL) },
-            { field: 'email', flex: 1, headerName: translate(TEXTS.USER_EMAIL_LABEL) },
+            { field: 'email', flex: 1, headerName: translate(TEXTS.USER_EMAIL_LABEL), hideable: false },
             { field: 'status', flex: 1, headerName: translate(TEXTS.USER_STATUS_LABEL), valueGetter: ({ row }) => translate(TEXTS[`USER_STATUS_${row.status}`]) },
             { field: 'organization', flex: 1, headerName: translate(TEXTS.USER_ORGANIZATION_LABEL), valueGetter: ({ row }) => row.organization.name },
         ]

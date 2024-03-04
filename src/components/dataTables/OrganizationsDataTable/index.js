@@ -33,14 +33,15 @@ function OrganizationsDataTable({ organizations = [], onDelete }) {
 
     const columns = useMemo(() => {
         return [
-            { field: 'name', flex: 1, headerName: translate(TEXTS.ORGANIZATION_NAME_LABEL) },
+            { field: 'name', flex: 1, headerName: translate(TEXTS.ORGANIZATION_NAME_LABEL), hideable: false },
             {
                 field: 'actions',
                 type: 'actions',
                 headerName: translate(CORE_TEXTS.GENERIC_ACTIONS),
                 getActions: (data) => ([
                     <DeleteIconButton key={`delete-${data.id}`} onClick={() => { handleClickDeleteOrganization(data.id) }} />,
-                ])
+                ]),
+                hideable: false
             }
         ]
     }, [translate, handleClickDeleteOrganization])

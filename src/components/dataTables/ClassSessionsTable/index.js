@@ -41,7 +41,8 @@ function ClassSessionsTable({ classSessions = [], onDelete }) {
                 field: 'course',
                 flex: 1,
                 headerName: translate(TEXTS.COURSE_LABEL),
-                valueGetter: ({ row }) => row?.course?.name
+                valueGetter: ({ row }) => row?.course?.name,
+                hideable: false
             },
             {
                 field: 'date',
@@ -49,8 +50,8 @@ function ClassSessionsTable({ classSessions = [], onDelete }) {
                 type: 'date',
                 headerName: translate(TEXTS.CLASS_SESSION_DATE_LABEL),
                 valueGetter: ({ row }) => moment(row?.date),
-                valueFormatter: ({ value }) => formatDate(value)
-
+                valueFormatter: ({ value }) => formatDate(value),
+                hideable: false
             },
             {
                 field: 'actions',
@@ -64,6 +65,7 @@ function ClassSessionsTable({ classSessions = [], onDelete }) {
                     ]
                 },
                 filterable: false,
+                hideable: false
             }
         ]
     }, [translate, go, handleClickDelete, formatDate])

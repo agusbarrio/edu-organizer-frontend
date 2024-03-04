@@ -84,7 +84,7 @@ function CoursesDataTable({ courses = [], onDelete, onEdit }) {
 
     const columns = useMemo(() => {
         return [
-            { field: 'name', flex: 1, headerName: translate(TEXTS.COURSE_NAME_LABEL) },
+            { field: 'name', flex: 1, headerName: translate(TEXTS.COURSE_NAME_LABEL), hideable: false },
             {
                 field: 'actions',
                 type: 'actions',
@@ -97,6 +97,7 @@ function CoursesDataTable({ courses = [], onDelete, onEdit }) {
                     ]
                 },
                 filterable: false,
+                hideable: false
             }
         ]
     }, [translate, navigateToCourse, handleClickDeleteCourse, navigateToEditCourse])

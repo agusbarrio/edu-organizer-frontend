@@ -43,8 +43,8 @@ function StudentsDataTable({ students = [], onDelete, deleteAllowed = true, edit
 
     const columns = useMemo(() => {
         return [
-            { field: 'firstName', flex: 1, headerName: translate(TEXTS.STUDENT_FIRST_NAME_LABEL) },
-            { field: 'lastName', flex: 1, headerName: translate(TEXTS.STUDENT_LAST_NAME_LABEL) },
+            { field: 'firstName', flex: 1, headerName: translate(TEXTS.STUDENT_FIRST_NAME_LABEL), hideable: false },
+            { field: 'lastName', flex: 1, headerName: translate(TEXTS.STUDENT_LAST_NAME_LABEL), hideable: false },
             {
                 field: 'actions',
                 type: 'actions',
@@ -58,7 +58,8 @@ function StudentsDataTable({ students = [], onDelete, deleteAllowed = true, edit
                         actions.unshift(<DeleteIconButton key={`delete-${data.id}`} onClick={() => { handleClickDeleteStudent(data.id) }} />)
                     }
                     return actions
-                }
+                },
+                hideable: false
             }
         ]
     }, [translate, navigateToStudent, handleClickDeleteStudent, navigateToEditStudent, deleteAllowed, editAllowed])
