@@ -1,6 +1,7 @@
 import { Container } from "@mui/material"
 import StudentForm from "components/forms/StudentForm"
 import DashboardTemplate from "components/templates/DashboardTemplate"
+import CORE_TEXTS from "constants/CORE_TEXTS"
 import PATHS from "constants/PATHS"
 import TEXTS from "constants/TEXTS"
 import useLocaleContext from "hooks/useLocaleContext"
@@ -36,7 +37,7 @@ function CreateStudentPage() {
                 onClick: () => go(renderText(PATHS.DASHBOARD_STUDENTS))
             }}>
             <Container maxWidth={'md'}>
-                <StudentForm onSubmit={handleSubmit} ref={formRef}></StudentForm>
+                <StudentForm onSubmit={handleSubmit} ref={formRef} templateProps={{ submitButtonProps: { children: translate(CORE_TEXTS.GENERIC_ADD) } }}></StudentForm>
             </Container>
         </DashboardTemplate>
 
