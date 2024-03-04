@@ -2,7 +2,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import TextInput from '../TextInput';
 /**
  * Componente de password
@@ -11,19 +11,24 @@ import TextInput from '../TextInput';
 function PasswordInput(props) {
     const [showPassword, setShowPassword] = useState(false);
 
-    /**
-     * Funcion para mostrar u ocultar el password
-     */
+    const handleMouseDownPassword = (e) => {
+        e.preventDefault();
+    };
+
     const handleClickShowPassword = () => {
         setShowPassword(!showPassword);
     };
+
+    const handleMouseUp = (e) => {
+        e.preventDefault();
+    }
 
     return (
         <TextInput
             InputProps={{
                 endAdornment: (
                     <InputAdornment position="end">
-                        <IconButton onClick={handleClickShowPassword}>{showPassword ? <VisibilityOff /> : <Visibility />}</IconButton>
+                        <IconButton onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword} onMouseUp={handleMouseUp}>{showPassword ? <VisibilityOff /> : <Visibility />}</IconButton>
                     </InputAdornment>
                 )
             }}
