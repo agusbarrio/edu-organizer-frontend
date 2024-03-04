@@ -16,7 +16,7 @@ function SetPresentStudentsDataStep({ state, send }) {
 
     const [presentStudentsData, setPresentStudentsData] = useState(() => presentStudents.map(student => {
         return {
-            ...student,
+            id: student.id,
             metadata: state.context.presentStudentsData.find((studentData) => studentData.id === student.id)?.metadata || {}
         }
     }))
@@ -85,7 +85,7 @@ function SetPresentStudentsDataStep({ state, send }) {
                                     const result = [...prevPresentStudentsData]
                                     const index = result.findIndex((studentData) => studentData.id === student.id)
                                     result[index] = {
-                                        ...student,
+                                        id: student.id,
                                         metadata: values
                                     }
                                     return result
