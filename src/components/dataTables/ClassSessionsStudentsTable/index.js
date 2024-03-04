@@ -37,7 +37,8 @@ function ClassSessionsStudentsTable({ classSessionsStudents = [], showCourse = t
                 type: 'boolean',
                 headerName: translate(TEXTS.CLASS_SESSION_STUDENT_IS_PRESENT_LABEL),
                 valueGetter: ({ row }) => row?.isPresent,
-                renderCell: ({ row }) => row?.isPresent ? <Check color={'success'}></Check> : <Close color={'error'}></Close>
+                renderCell: ({ row }) => row?.isPresent ? <Check color={'success'}></Check> : <Close color={'error'}></Close>,
+                hideable: false
             },
             {
                 field: 'pointsAcumulated',
@@ -61,7 +62,8 @@ function ClassSessionsStudentsTable({ classSessionsStudents = [], showCourse = t
                             iconComponent={Search}
                         />
                     ]
-                }
+                },
+                hideable: false
             }
         ]
         if (showMonth) {
@@ -98,7 +100,8 @@ function ClassSessionsStudentsTable({ classSessionsStudents = [], showCourse = t
                 type: 'date',
                 headerName: translate(TEXTS.CLASS_SESSION_DATE_LABEL),
                 valueGetter: ({ row }) => moment(row?.classSession?.date),
-                valueFormatter: ({ value }) => formatDate(value)
+                valueFormatter: ({ value }) => formatDate(value),
+                hideable: false
             })
         }
         if (showCourse) {
@@ -106,7 +109,8 @@ function ClassSessionsStudentsTable({ classSessionsStudents = [], showCourse = t
                 field: 'course',
                 flex: 1,
                 headerName: translate(TEXTS.COURSE_LABEL),
-                valueGetter: ({ row }) => row?.classSession?.course?.name
+                valueGetter: ({ row }) => row?.classSession?.course?.name,
+                hideable: false
             })
         }
         if (showStudent) {
@@ -114,7 +118,8 @@ function ClassSessionsStudentsTable({ classSessionsStudents = [], showCourse = t
                 field: 'student',
                 flex: 1,
                 headerName: translate(TEXTS.CLASS_SESSION_STUDENT_STUDENT_LABEL),
-                valueGetter: ({ row }) => `${row?.student?.firstName} ${row?.student?.lastName}`
+                valueGetter: ({ row }) => `${row?.student?.firstName} ${row?.student?.lastName}`,
+                hideable: false
             })
         }
         return result
