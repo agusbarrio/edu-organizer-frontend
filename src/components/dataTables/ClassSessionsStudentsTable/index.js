@@ -75,7 +75,8 @@ function ClassSessionsStudentsTable({ classSessionsStudents = [], showCourse = t
                     return month
                 },
                 valueFormatter: ({ value }) => {
-                    const formatted = formatDate(value, 'MMMM')
+                    const date = moment().month(value)
+                    const formatted = formatDate(date, 'MMMM')
                     return formatted.charAt(0).toUpperCase() + formatted.slice(1)
                 },
                 valueOptions: Array.from({ length: 12 }, (v, i) => i).map((month) => {
