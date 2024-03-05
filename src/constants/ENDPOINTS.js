@@ -57,4 +57,5 @@ export const CLASS_SESSIONS_ENDPOINTS = {
 
 export const FILES_ENDPOINTS = {
     SINGLE_IMAGE: `${filesBaseUrl}/singleImage`,
+    CLEAR_UNUSED: `${filesBaseUrl}/clearUnused`,
 };

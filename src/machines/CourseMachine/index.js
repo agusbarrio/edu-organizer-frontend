@@ -37,7 +37,7 @@ function CourseMachine({ onFinish, initialContext, edit }) {
                                 studentData: {
                                     firstName: student.firstName,
                                     lastName: student.lastName,
-                                    avatarFileId: student.avatar?.id || null,
+                                    avatarFileId: student.avatarFileId || null,
                                 }, isNew: true
                             }
                         }
@@ -58,7 +58,7 @@ function CourseMachine({ onFinish, initialContext, edit }) {
                                     studentData: {
                                         firstName: student.firstName,
                                         lastName: student.lastName,
-                                        avatarFileId: student.avatar?.id || null,
+                                        avatarFileId: student.avatarFileId || null,
                                     }, isNew: true
                                 }
                             }

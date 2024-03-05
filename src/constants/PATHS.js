@@ -28,6 +28,8 @@ const PATHS = {
     EDIT_ORGANIZATION: '/dashboard/organization/edit',
     NOT_FOUND: '/404',
     FORBIDDEN: '/403',
+    DASHBOARD_CONTROLS: '/dashboard/controls',
+
 }
 
 export default PATHS;

@@ -48,7 +48,7 @@ function EditStudentPage() {
             }}
             loading={loading}
         >
-            <StudentForm defaultValues={student} onSubmit={handleSubmit}></StudentForm>
+            <StudentForm defaultValues={student} onSubmit={handleSubmit} templateProps={{ submitButtonProps: { children: translate(CORE_TEXTS.GENERIC_EDIT) } }}></StudentForm>
         </DashboardTemplate>
 
     )

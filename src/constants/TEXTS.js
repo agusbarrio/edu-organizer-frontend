@@ -173,5 +173,9 @@ const TEXTS = {
     CLASS_SESSION_DATE_PLACEHOLDER: { es: 'Ingresá la fecha de la clase', en: 'Enter the class date' },
     EDIT_CLASS_SESSION_PAGE_TITLE: { es: 'Editar clase', en: 'Edit class' },
     CLASS_SESSION_MONTH_LABEL: { es: 'Mes', en: 'Month' },
+    SUPERADMIN_MENU_BUTTON_CONTROLS: { es: 'Controles', en: 'Controls' },
+    CONTROLS_PAGE_TITLE: { es: 'Controles', en: 'Controls' },
+    CONTROLS_PAGE_SUBTITLE: { es: 'Acá podés ver los controles de la plataforma', en: 'Here you can see the platform controls' },
+    CONTROLS_CLEAR_UNUSED_FILES: { es: 'Eliminar archivos no utilizados', en: 'Clear unused files' },
 }
 export default TEXTS
