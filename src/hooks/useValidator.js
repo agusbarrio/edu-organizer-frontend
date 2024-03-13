@@ -36,7 +36,10 @@ function useValidator() {
                 const oneOf = config.oneOf.value;
                 yupString = yupString.oneOf(oneOf, translate(config.oneOf.message, { oneOf }));
             }
-
+            if (config?.matches?.value) {
+                const matches = config.matches.value;
+                yupString = yupString.matches(matches, translate(config.matches.message, { matches }));
+            }
             return yupString;
         },
         [translate]
@@ -297,6 +300,18 @@ function useValidator() {
         [boolean]
     );
 
+    const name = useCallback(
+        (config) => {
+            const configResult = _.merge(
+                _.cloneDeep(DEFAULT_VALIDATIONS.NAME),
+                config
+            );
+            const yupTitle = string(configResult).trim();
+            return yupTitle;
+        },
+        [string]
+    );
+
 
     return {
         form,
@@ -312,7 +327,8 @@ function useValidator() {
         id,
         ids,
         checkbox,
-        boolean
+        boolean,
+        name,
     };
 }
 

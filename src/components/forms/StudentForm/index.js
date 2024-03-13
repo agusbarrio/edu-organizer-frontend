@@ -9,12 +9,12 @@ import CoursesSelect from "components/inputs/CourseSelect"
 import AvatarInput from "components/generic/AvatarInput"
 
 const StudentForm = forwardRef(function StudentForm({ onSubmit, defaultValues, withCourse = true, templateProps, size }, ref) {
-    const { form, text, id } = useValidator()
+    const { form, name, id } = useValidator()
     const { translate } = useLocaleContext()
     const schema = useMemo(() => {
         const baseSchema = {
-            firstName: text({ required: { value: true } }),
-            lastName: text({ required: { value: true } }),
+            firstName: name({ required: { value: true } }),
+            lastName: name({ required: { value: true } }),
             //TODO add avatar validation
         }
         if (withCourse) {
@@ -22,7 +22,7 @@ const StudentForm = forwardRef(function StudentForm({ onSubmit, defaultValues, w
         }
 
         return form(baseSchema)
-    }, [form, text, id, withCourse])
+    }, [form, id, withCourse, name])
 
     return (
         <Form schema={schema} defaultValues={defaultValues} onSubmit={onSubmit} ref={ref} templateProps={templateProps}>

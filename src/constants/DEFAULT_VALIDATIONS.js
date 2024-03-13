@@ -80,6 +80,14 @@ const DEFAULT_VALIDATIONS = {
   },
   CHECKBOX: {
     required: { value: true, message: CORE_TEXTS.VALIDATIONS_REQUIRED },
+  },
+  NAME: {
+    required: { value: false, message: CORE_TEXTS.VALIDATIONS_REQUIRED },
+    max: { value: 255, message: CORE_TEXTS.VALIDATIONS_MAX },
+    matches: {
+      value: /^[a-zA-Z\s]*$/,
+      message: CORE_TEXTS.VALIDATIONS_NAME,
+    },
   }
 };
 

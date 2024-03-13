@@ -68,6 +68,7 @@ const CORE_TEXTS = {
     GENERIC_ZOOM_OUT: { es: 'Alejar', en: 'Zoom out' },
     GENERIC_ZOOM_IN: { es: 'Acercar', en: 'Zoom in' },
     GENERIC_AVATAR_EDITOR_TITLE: { es: 'Foto de perfil', en: 'Profile picture' },
+    VALIDATIONS_NAME: { es: 'Solo se permiten letras y espacios', en: 'Only letters and spaces are allowed' },
 };
 
 export default CORE_TEXTS;
