@@ -16,7 +16,7 @@ function SetCourseStudentAttendanceFormDataStep({ state, send }) {
         }
     }, [inputsRef, send])
 
-    const handleFinish = useCallback(() => {
+    const handleNext = useCallback(() => {
         if (inputsRef?.current) {
             const studentAttendanceFormData = inputsRef.current.getValue()
             send('NEXT', { studentAttendanceFormData })
@@ -26,10 +26,10 @@ function SetCourseStudentAttendanceFormDataStep({ state, send }) {
     return (
         <StepTemplate
             onClickBack={handleBack}
-            onClickFinish={handleFinish}
+            onClickNext={handleNext}
             title={translate(TEXTS.SET_COURSE_CLASS_SESSIONS_CONFIG_TITLE)}
         >
-            <InputsCreation initialInputs={state.context.studentAttendanceFormData} ref={inputsRef}></InputsCreation>
+            <InputsCreation initialInputs={state.context.studentAttendanceFormData} ref={inputsRef} allowPoints={true}></InputsCreation>
         </StepTemplate>)
 }
 

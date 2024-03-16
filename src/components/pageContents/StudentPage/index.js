@@ -36,7 +36,7 @@ function StudentPage() {
                 </Grid>
                 <Grid item xs={12} md={8} height={'100%'}>
                     <Card title={translate(TEXTS.STUDENT_ATTENDANCE_CARD_TITLE)}>
-                        <ClassSessionsStudentsTable classSessionsStudents={student?.classSessionsStudent} showStudent={false}></ClassSessionsStudentsTable>
+                        <ClassSessionsStudentsTable classSessionsStudents={student?.classSessionsStudent} showStudent={false} course={student?.course}></ClassSessionsStudentsTable>
                     </Card>
                 </Grid>
             </Grid>

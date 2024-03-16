@@ -88,7 +88,10 @@ const DEFAULT_VALIDATIONS = {
       value: /^[a-zA-Z\s]*$/,
       message: CORE_TEXTS.VALIDATIONS_NAME,
     },
-  }
+  },
+  OBJECT: {
+    required: { value: false, message: CORE_TEXTS.VALIDATIONS_REQUIRED },
+  },
 };
 
 export default DEFAULT_VALIDATIONS;

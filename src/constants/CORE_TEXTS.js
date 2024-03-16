@@ -69,6 +69,17 @@ const CORE_TEXTS = {
     GENERIC_ZOOM_IN: { es: 'Acercar', en: 'Zoom in' },
     GENERIC_AVATAR_EDITOR_TITLE: { es: 'Foto de perfil', en: 'Profile picture' },
     VALIDATIONS_NAME: { es: 'Solo se permiten letras y espacios', en: 'Only letters and spaces are allowed' },
+    GENERIC_DATE: { es: 'Fecha', en: 'Date' },
+    GENERIC_LABEL_LABEL: { es: 'Etiqueta', en: 'Label' },
+    GENERIC_LABEL_PLACEHOLDER: { es: 'Ingrese una etiqueta', en: 'Enter a label' },
+    GENERIC_PLACEHOLDER_LABEL: { es: 'Placeholder', en: 'Placeholder' },
+    GENERIC_PLACEHOLDER_PLACEHOLDER: { es: 'Ingrese un placeholder', en: 'Enter a placeholder' },
+    GENERIC_DEFAULT_VALUE: { es: 'Valor por defecto', en: 'Default value' },
+    GENERIC_DEFAULT_VALUE_PLACEHOLDER: { es: 'Ingrese un valor por defecto', en: 'Enter a default value' },
+    GENERIC_POINTS_TO_ADD_LABEL: { es: 'Puntos a agregar', en: 'Points to add' },
+    GENERIC_POINTS_TO_ADD_PLACEHOLDER: { es: 'Ingrese la cantidad de puntos a agregar', en: 'Enter the amount of points to add' },
+    GENERIC_MIN_LABEL: { es: 'Mínimo', en: 'Minimum' },
+    GENERIC_MAX_LABEL: { es: 'Máximo', en: 'Maximum' },
 };
 
 export default CORE_TEXTS;

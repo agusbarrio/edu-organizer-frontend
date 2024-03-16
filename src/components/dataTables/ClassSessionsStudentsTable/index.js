@@ -14,20 +14,20 @@ import AttendanceStudentData from "components/dataDisplay/AttendanceStudentData"
 import moment from "moment"
 
 
-function ClassSessionsStudentsTable({ classSessionsStudents = [], showCourse = true, showStudent = true, showTotalPoints = true, showDate = true, showMonth = true }) {
+function ClassSessionsStudentsTable({ classSessionsStudents = [], showCourse = true, showStudent = true, showTotalPoints = true, showDate = true, showMonth = true, course }) {
     const { translate, formatDate } = useLocaleContext()
-    const { getPoints } = useGetPoints()
+    const { getPoints } = useGetPoints(course)
     const { openModal } = useModalContext()
 
-    const handleClickMetadata = useCallback((metadata) => {
-        const empty = _.isEmpty(metadata)
+    const handleClickMetadata = useCallback((row) => {
+        const empty = _.isEmpty(row)
         openModal(AlertModal, {
             title: translate(TEXTS.STUDENT_ATTENDANCE_DATA_MODAL_TITLE),
-            children: <>{!empty && <AttendanceStudentData data={metadata}></AttendanceStudentData>}</>,
+            children: <>{!empty && <AttendanceStudentData {...row} course={course}></AttendanceStudentData>}</>,
             textContent: empty ? translate(TEXTS.STUDENT_ATTENDANCE_DATA_MODAL_EMPTY_CONTENT) : null,
         }
         )
-    }, [openModal, translate])
+    }, [openModal, translate, course])
 
     const columns = useMemo(() => {
         const result = [
@@ -46,6 +46,7 @@ function ClassSessionsStudentsTable({ classSessionsStudents = [], showCourse = t
                 type: 'number',
                 headerName: translate(TEXTS.CLASS_SESSION_STUDENT_POINTS_ACUMULATED_LABEL),
                 valueGetter: ({ row }) => getPoints(row),
+                renderCell: ({ value }) => value,
             },
             {
                 field: 'actions',
@@ -58,7 +59,7 @@ function ClassSessionsStudentsTable({ classSessionsStudents = [], showCourse = t
                             color="primary"
                             key={`metadata-${row?.id}`}
                             tooltip={translate(TEXTS.CLASS_SESSION_STUDENT_VIEW_METADATA)}
-                            onClick={() => handleClickMetadata(row?.metadata)}
+                            onClick={() => handleClickMetadata(row)}
                             iconComponent={Search}
                         />
                     ]
@@ -129,11 +130,15 @@ function ClassSessionsStudentsTable({ classSessionsStudents = [], showCourse = t
         const result = {}
         if (showTotalPoints) {
             result.footer = {
-                components: [TotalPoints]
+                components: [{
+                    render: TotalPoints,
+                    props: { course }
+                }],
+
             }
         }
         return result
-    }, [showTotalPoints])
+    }, [showTotalPoints, course])
 
     return <CustomDataGrid
         rows={classSessionsStudents}

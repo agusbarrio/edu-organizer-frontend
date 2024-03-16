@@ -6,15 +6,20 @@ function useSchema({ studentAttendanceFormData = [] }) {
     const { form } = useValidator()
     const getInputValidator = useGetInputValidator()
 
-    const schema = useMemo(() => {
+    const schemaObj = useMemo(() => {
         const aux = {}
         studentAttendanceFormData.forEach((inputData) => {
             aux[inputData.name] = getInputValidator(inputData)
         })
-        return form(aux)
-    }, [studentAttendanceFormData, getInputValidator, form])
+        return aux
+    }, [studentAttendanceFormData, getInputValidator])
 
-    return schema
+
+    const schema = useMemo(() => {
+        return form(schemaObj)
+    }, [schemaObj, form])
+
+    return { schema, schemaObj }
 }
 
 export default useSchema

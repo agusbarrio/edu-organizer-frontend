@@ -22,10 +22,20 @@ function CreateStudentPage() {
             firstName: data.firstName,
             lastName: data.lastName,
             courseId: data.courseId,
-            avatarFileId: data.avatar?.id || null
+            avatarFileId: data.avatar?.id || null,
+            birthDate: data.birthDate,
+            additionalInfo: data.additionalInfo
         })
         if (result && formRef?.current) {
-            formRef.current.reset()
+            formRef.current.reset({
+                firstName: '',
+                lastName: '',
+                courseId: null,
+                avatar: null,
+                birthDate: null,
+                additionalInfo: {}
+            })
+            formRef.current.handleChangeCourse(null)
         }
     }, [createStudent, formRef])
 

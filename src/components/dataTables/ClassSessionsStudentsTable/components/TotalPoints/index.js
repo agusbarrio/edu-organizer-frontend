@@ -4,9 +4,9 @@ import useLocaleContext from 'hooks/useLocaleContext';
 import { useMemo, } from 'react';
 import useGetPoints from '../../hooks/useGetPoints';
 
-function TotalPoints({ filteredRows = [] }) {
+function TotalPoints({ filteredRows = [], course }) {
     const { translate, } = useLocaleContext();
-    const { getPoints } = useGetPoints();
+    const { getPoints } = useGetPoints(course);
 
     const totalPoints = useMemo(
         () => {

@@ -16,6 +16,7 @@ function useLocalMachine(edit = false) {
                             actions: [assign({
                                 name: (context, event) => event.name,
                                 accessPin: (context, event) => event.accessPin,
+                                pointsPerAttendance: (context, event) => event.pointsPerAttendance
                             })],
                         },
                     },
@@ -35,12 +36,24 @@ function useLocalMachine(edit = false) {
                 setCourseStudentAttendanceFormData: {
                     on: {
                         NEXT: {
-                            target: edit ? 'editCourse' : 'createCourse',
+                            target: 'setCourseStudentAdditionalInfoFormData',
                             actions: [assign({ studentAttendanceFormData: (context, event) => event.studentAttendanceFormData })],
                         },
                         PREV: {
                             target: 'setCourseStudents',
                             actions: [assign({ studentAttendanceFormData: (context, event) => event.studentAttendanceFormData })],
+                        },
+                    },
+                },
+                setCourseStudentAdditionalInfoFormData: {
+                    on: {
+                        NEXT: {
+                            target: edit ? 'editCourse' : 'createCourse',
+                            actions: [assign({ studentAdditionalInfoFormData: (context, event) => event.studentAdditionalInfoFormData })],
+                        },
+                        PREV: {
+                            target: 'setCourseStudentAttendanceFormData',
+                            actions: [assign({ studentAdditionalInfoFormData: (context, event) => event.studentAdditionalInfoFormData })],
                         },
                     },
                 },

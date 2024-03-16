@@ -177,5 +177,17 @@ const TEXTS = {
     CONTROLS_PAGE_TITLE: { es: 'Controles', en: 'Controls' },
     CONTROLS_PAGE_SUBTITLE: { es: 'Acá podés ver los controles de la plataforma', en: 'Here you can see the platform controls' },
     CONTROLS_CLEAR_UNUSED_FILES: { es: 'Eliminar archivos no utilizados', en: 'Clear unused files' },
+    SET_STUDENT_ADDITIONAL_INFORMATION_TITLE: { es: 'Información adicional del estudiante', en: 'Student additional information' },
+    STUDENT_ADDITIONAL_INFORMATION_INPUTS_LIST_CARD_HELP: { es: 'Estos son los campos que se van a mostrar en el formulario de información adicional de cada estudiante.', en: 'These are the fields that will be shown in the additional information form of each student.' },
+    STUDENT_BIRTH_DATE_LABEL: { es: 'Fecha de nacimiento', en: 'Birth date' },
+    STUDENT_ADDITIONAL_INFO_LABEL: { es: 'Información adicional', en: 'Additional information' },
+    CHECKBOX_FIELD_POINTS_TO_ADD_LABEL: { es: 'Puntos a agregar', en: 'Points to add' },
+    CHECKBOX_FIELD_POINTS_TO_ADD_PLACEHOLDER: { es: 'Ingresá los puntos a agregar', en: 'Enter the points to add' },
+    CHECKBOX_FIELD_DEFAULT_VALUE_LABEL: { es: 'Valor por defecto', en: 'Default value' },
+    COURSE_POINTS_PER_ATTENDANCE_LABEL: { es: 'Puntos por asistencia', en: 'Points per attendance' },
+    COURSE_POINTS_PER_ATTENDANCE_PLACEHOLDER: { es: 'Ingresá los puntos por asistencia', en: 'Enter the points per attendance' },
+    DECIMAL_SCALE_FIELD_LABEL: { es: 'Escala decimal', en: 'Decimal scale' },
+    ALLOW_NEGATIVE_FIELD_LABEL: { es: 'Permitir negativos', en: 'Allow negatives' },
+    SHOULD_AFFECT_POINTS_FIELD_LABEL: { es: '¿Se suma a los puntos del estudiante?', en: 'Is it added to the student\'s points?' },
 }
 export default TEXTS

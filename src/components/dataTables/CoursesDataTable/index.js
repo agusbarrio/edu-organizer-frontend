@@ -54,7 +54,7 @@ function CoursesDataTable({ courses = [], onDelete, onEdit }) {
             PaperProps: { sx: { height: '100%' } },
             maxWidth: false,
             title: translate(TEXTS.EDIT_COURSES_SELECTION_MODAL_TITLE),
-            children: <InputsCreation ref={inputsCreationRef}></InputsCreation>,
+            children: <InputsCreation ref={inputsCreationRef} allowPoints={true}></InputsCreation>,
             onConfirm: async () => {
                 if (inputsCreationRef.current) {
                     const ids = rowsSelected.map((row) => row.id)

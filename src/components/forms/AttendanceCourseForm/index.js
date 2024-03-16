@@ -1,11 +1,11 @@
 import Form from "components/generic/Form"
 import { forwardRef } from "react"
-import useSchema from "./hooks/useSchema"
-import useGetInputComponent from "./hooks/useGetControllerInputProps"
+import useSchema from "../../../hooks/dynamicForms/useSchema"
+import useGetInputComponent from "../../../hooks/dynamicForms/useGetControllerInputProps"
 import ControllerInput from "components/generic/ControllerInput"
 
 const AttendanceCourseForm = forwardRef(function AttendanceCourseForm({ studentAttendanceFormData = [], onSubmit, template, templateProps, defaultValues }, ref) {
-    const schema = useSchema({ studentAttendanceFormData })
+    const { schema } = useSchema({ studentAttendanceFormData })
     const getControllerInputProps = useGetInputComponent()
 
     return (

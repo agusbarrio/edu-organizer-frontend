@@ -45,6 +45,7 @@ function StudentsDataTable({ students = [], onDelete, deleteAllowed = true, edit
         return [
             { field: 'firstName', flex: 1, headerName: translate(TEXTS.STUDENT_FIRST_NAME_LABEL), hideable: false },
             { field: 'lastName', flex: 1, headerName: translate(TEXTS.STUDENT_LAST_NAME_LABEL), hideable: false },
+            { field: 'birthDate', flex: 1, headerName: translate(TEXTS.STUDENT_BIRTH_DATE_LABEL) },
             {
                 field: 'actions',
                 type: 'actions',

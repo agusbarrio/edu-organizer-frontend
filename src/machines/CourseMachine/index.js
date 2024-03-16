@@ -7,6 +7,7 @@ import useCreateCourseService from "services/courses/useCreateCourseService";
 import SetCourseStudentAttendanceFormDataStep from "./steps/SetCourseStudentAttendanceFormDataStep";
 import useEditCourseService from "services/courses/useEditCourseService";
 import useLocalMachine from "./hooks/useLocalMachine";
+import SetCourseStudentAdditionalInfoFormData from "./steps/SetCourseStudentAdditionalInfoFormData";
 
 
 function CourseMachine({ onFinish, initialContext, edit }) {
@@ -19,7 +20,9 @@ function CourseMachine({ onFinish, initialContext, edit }) {
             accessPin: initialContext?.accessPin || '',
             students: initialContext?.students || [],
             studentAttendanceFormData: initialContext?.studentAttendanceFormData || [],
+            studentAdditionalInfoFormData: initialContext?.studentAdditionalInfoFormData || [],
             id: initialContext?.id || null,
+            pointsPerAttendance: initialContext?.pointsPerAttendance || null
         },
         actions: {
             finish: (context, event) => {
@@ -43,7 +46,11 @@ function CourseMachine({ onFinish, initialContext, edit }) {
                         }
                         return { id: student.id, isNew: false }
                     }),
-                    studentAttendanceFormData: context.studentAttendanceFormData
+                    studentAttendanceFormData: context.studentAttendanceFormData,
+                    studentAdditionalInfoFormData: context.studentAdditionalInfoFormData,
+                    metadata: {
+                        pointsPerAttendance: context.pointsPerAttendance
+                    }
                 })
                 if (!result) throw new Error('Error creating course')
             },
@@ -64,7 +71,11 @@ function CourseMachine({ onFinish, initialContext, edit }) {
                             }
                             return { id: student.id, isNew: false }
                         }),
-                        studentAttendanceFormData: context.studentAttendanceFormData
+                        studentAttendanceFormData: context.studentAttendanceFormData,
+                        studentAdditionalInfoFormData: context.studentAdditionalInfoFormData,
+                        metadata: {
+                            pointsPerAttendance: context.pointsPerAttendance
+                        }
                     })
                 if (!result) throw new Error('Error editing course')
             }
@@ -79,6 +90,8 @@ function CourseMachine({ onFinish, initialContext, edit }) {
                 return SetCourseStudentsStep
             case 'setCourseStudentAttendanceFormData':
                 return SetCourseStudentAttendanceFormDataStep
+            case 'setCourseStudentAdditionalInfoFormData':
+                return SetCourseStudentAdditionalInfoFormData
             case 'createCourse':
                 return LoadingBox
             case 'editCourse':

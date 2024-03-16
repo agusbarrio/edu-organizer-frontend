@@ -8,7 +8,7 @@ import { RemoveCircleOutline } from "@mui/icons-material";
 import useLocaleContext from "hooks/useLocaleContext";
 import TEXTS from "constants/TEXTS";
 
-const InputsCreation = forwardRef(({ onChange, initialInputs = [] }, ref) => {
+const InputsCreation = forwardRef(({ onChange, initialInputs = [], field = 'studentAttendanceFormData', inputsListHelp, allowPoints = true }, ref) => {
     const [inputs, setInputs] = useState(initialInputs)
     const { translate } = useLocaleContext()
     useEffect(() => {
@@ -31,13 +31,14 @@ const InputsCreation = forwardRef(({ onChange, initialInputs = [] }, ref) => {
     }, [])
 
     const handleClickCourse = useCallback((course) => {
-        setInputs(course.studentAttendanceFormData.map((input) => ({ key: uuidv4(), ...input })))
-    }, [])
+        const formData = course[field]
+        setInputs(formData ? formData.map((input) => ({ key: uuidv4(), ...input })) : [])
+    }, [field])
 
     return (
         <Grid container spacing={2} sx={{ overflowY: 'auto', height: '100%' }}>
             <Grid item xs={12} md={4} maxHeight={'100%'} >
-                <NewInputCard onSubmit={handleSubmitInput}></NewInputCard>
+                <NewInputCard onSubmit={handleSubmitInput} allowPoints={allowPoints}></NewInputCard>
             </Grid>
             <Grid item xs={12} md={4} height={'100%'} >
                 <CopyConfigCoursesListCard onClickCourse={handleClickCourse} ></CopyConfigCoursesListCard>
@@ -46,7 +47,7 @@ const InputsCreation = forwardRef(({ onChange, initialInputs = [] }, ref) => {
                 <InputsList
                     onClickItem={handleRemoveInput}
                     cardTitle={translate(TEXTS.INPUTS_LIST_CARD_TITLE)}
-                    help={translate(TEXTS.INPUTS_LIST_CARD_HELP)}
+                    help={inputsListHelp || translate(TEXTS.INPUTS_LIST_CARD_HELP)}
                     inputs={inputs}
                     itemIconProps={{ children: <RemoveCircleOutline color="error" /> }}
                 ></InputsList>

@@ -14,7 +14,9 @@ function NewStudentCard({ onSubmit }) {
             firstName: data.firstName,
             lastName: data.lastName,
             courseId: data.courseId,
-            avatarFileId: data.avatar?.id || null
+            avatarFileId: data.avatar?.id || null,
+            birthDate: data.birthDate,
+            additionalInfo: data.additionalInfo
         })
         if (formRef.current) formRef.current.reset()
     }, [onSubmit, formRef])

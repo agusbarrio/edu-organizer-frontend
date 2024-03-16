@@ -33,6 +33,8 @@ function EditCoursePage() {
         students: course?.students?.map((student) => ({ ...student, isNew: false })),
         studentAttendanceFormData: course?.studentAttendanceFormData?.map(input => ({ ...input, key: uuidv4() })),
         id: course?.id,
+        studentAdditionalInfoFormData: course?.studentAdditionalInfoFormData?.map(input => ({ ...input, key: uuidv4() })),
+        pointsPerAttendance: course?.metadata?.pointsPerAttendance || null
     }), [course])
 
 

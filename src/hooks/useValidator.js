@@ -312,6 +312,19 @@ function useValidator() {
         [string]
     );
 
+    const object = useCallback((config = {}, obj) => {
+        const configResult = _.merge(
+            _.cloneDeep(DEFAULT_VALIDATIONS.OBJECT),
+            config
+        );
+        let yupObject = Yup.object(obj);
+        if (config.required && config.required?.value) {
+            yupObject = yupObject.required(translate(configResult.required.message));
+        } else {
+            yupObject = yupObject.default(null).nullable();
+        }
+        return yupObject;
+    }, [translate]);
 
     return {
         form,
@@ -329,6 +342,8 @@ function useValidator() {
         checkbox,
         boolean,
         name,
+        object,
+        number
     };
 }
 

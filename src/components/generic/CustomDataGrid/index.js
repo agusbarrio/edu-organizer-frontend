@@ -45,7 +45,7 @@ function CustomDataGrid({
             footer: {
                 rows,
                 filteredRows,
-                ...slotProps?.footer
+                ...slotProps?.footer,
             },
             filterPanel: {
                 filterFormProps: {
