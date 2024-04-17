@@ -29,7 +29,7 @@ const PATHS = {
     NOT_FOUND: '/404',
     FORBIDDEN: '/403',
     DASHBOARD_CONTROLS: '/dashboard/controls',
-
+    COURSE_DETAILS: '/course/details',
 }
 
 export default PATHS;

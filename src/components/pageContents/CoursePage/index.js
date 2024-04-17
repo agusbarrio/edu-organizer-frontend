@@ -4,7 +4,7 @@ import { useEffect, useMemo } from "react"
 import useService from "hooks/useService"
 import useGetCourseService from "services/courseAccess/useGetCourseService"
 import { Button, Stack } from "@mui/material"
-import { Add, Face } from "@mui/icons-material"
+import { Add, Face, Search } from "@mui/icons-material"
 import TEXTS from "constants/TEXTS"
 import useNavigate from "hooks/useNavigate"
 
@@ -38,11 +38,16 @@ function CoursePage() {
     const handleClickNewStudent = () => {
         go(PATHS.COURSE_NEW_STUDENT)
     }
+
+    const handleClickCourseDetails = () => {
+        go(PATHS.COURSE_DETAILS)
+    }
     return (
         <CourseTemplate title={course?.name} loading={loading}>
             <Stack spacing={2} width={'100%'}>
                 <Button {...buttonProps} startIcon={<Add></Add>} onClick={handleClickNewClass}>{translate(TEXTS.NEW_CLASS_BUTTON)}</Button>
-                <Button {...buttonProps} size="large" startIcon={<Face></Face>} onClick={handleClickNewStudent}>{translate(TEXTS.NEW_STUDENT_BUTTON)}</Button>
+                <Button {...buttonProps} startIcon={<Face></Face>} onClick={handleClickNewStudent}>{translate(TEXTS.NEW_STUDENT_BUTTON)}</Button>
+                <Button {...buttonProps} startIcon={<Search></Search>} onClick={handleClickCourseDetails}>{translate(TEXTS.COURSE_DETAILS_BUTTON)}</Button>
             </Stack>
 
         </CourseTemplate>

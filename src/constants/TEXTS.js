@@ -189,5 +189,6 @@ const TEXTS = {
     DECIMAL_SCALE_FIELD_LABEL: { es: 'Escala decimal', en: 'Decimal scale' },
     ALLOW_NEGATIVE_FIELD_LABEL: { es: 'Permitir negativos', en: 'Allow negatives' },
     SHOULD_AFFECT_POINTS_FIELD_LABEL: { es: '¿Se suma a los puntos del estudiante?', en: 'Is it added to the student\'s points?' },
+    COURSE_DETAILS_BUTTON: { es: 'Detalles del curso', en: 'Course details' }
 }
 export default TEXTS
