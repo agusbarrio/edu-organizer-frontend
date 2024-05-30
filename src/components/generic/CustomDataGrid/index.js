@@ -13,7 +13,7 @@ function CustomDataGrid({
     onClickDeleteSelection,
     initialPaginationModel = {
         page: 0,
-        pageSize: 10,
+        pageSize: 50,
     },
     ...props }) {
     const [rowSelectionModel, setRowSelectionModel] = useState([]);
@@ -82,7 +82,7 @@ function CustomDataGrid({
         onRowSelectionModelChange={(newRowSelectionModel) => {
             setRowSelectionModel(newRowSelectionModel);
         }}
-        pageSizeOptions={[10]}
+        pageSizeOptions={[50]}
         paginationModel={paginationModel}
         onPaginationModelChange={setPaginationModel}
         {...props} />

@@ -1,3 +1,4 @@
+import { Typography } from "@mui/material";
 import AttendanceCourseForm from "components/forms/AttendanceCourseForm";
 import Card from "components/generic/Card";
 import CardsContainer from "components/generic/CardsContainer";
@@ -68,6 +69,7 @@ function SetPresentStudentsDataStep({ state, send }) {
 
     return (
         <StepTemplate onClickFinish={handleClickNext} onClickBack={handleClickBack} title={translate(TEXTS.SELECT_PRESENT_STUDENTS_TITLE)}>
+            <Typography variant="h6">{translate(TEXTS.PRESENT_STUDENTS_NUMBER_LABEL)}: {presentStudents?.length}</Typography>
             <CardsContainer columnWidth="minmax(15rem, 1fr)">
                 {presentStudents.map(student => (
                     <Card
