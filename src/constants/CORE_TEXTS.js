@@ -80,6 +80,7 @@ const CORE_TEXTS = {
     GENERIC_POINTS_TO_ADD_PLACEHOLDER: { es: 'Ingrese la cantidad de puntos a agregar', en: 'Enter the amount of points to add' },
     GENERIC_MIN_LABEL: { es: 'Mínimo', en: 'Minimum' },
     GENERIC_MAX_LABEL: { es: 'Máximo', en: 'Maximum' },
+    DOWNLOAD_XLSX: { es: 'Descargar excel', en: 'Download excel' },
 };
 
 export default CORE_TEXTS;

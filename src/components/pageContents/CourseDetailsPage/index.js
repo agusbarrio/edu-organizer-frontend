@@ -11,11 +11,25 @@ import StudentsDataTable from "components/dataTables/StudentsDataTable"
 import InputsList from "components/dataDisplay/InputsList"
 import Card from "components/generic/Card"
 import CORE_TEXTS from "constants/CORE_TEXTS"
+import { Download } from "@mui/icons-material"
 
 function CourseDetailsPage() {
     const { getCourse } = useGetCourseService()
     const { runService, loading, value: course } = useService({ service: getCourse, defaultValue: {} })
     const { params, goBack } = useNavigate()
+
+    const handleClickDownloadXlsx = () => {
+        fetch(`/api/courses/${params.courseId}/xlsx`).then(response => {
+            response.blob().then(blob => {
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `${course.name}.xlsx`;
+                a.click();
+            });
+        }
+        )
+    }
 
 
     useEffect(() => {
@@ -31,6 +45,12 @@ function CourseDetailsPage() {
             backButtonProps={{
                 children: translate(CORE_TEXTS.GENERIC_BACK),
                 onClick: goBack
+            }}
+            rightButtonProps={{
+                children: translate(CORE_TEXTS.DOWNLOAD_XLSX),
+                onClick: handleClickDownloadXlsx,
+                startIcon: <Download />,
+                disabled: !course
             }}
         >
             <Grid container spacing={2} sx={{ overflowY: 'auto', height: '100%' }}>
