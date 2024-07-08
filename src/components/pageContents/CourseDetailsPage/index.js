@@ -14,21 +14,20 @@ import CORE_TEXTS from "constants/CORE_TEXTS"
 import { Download } from "@mui/icons-material"
 
 function CourseDetailsPage() {
-    const { getCourse } = useGetCourseService()
+    const { getCourse, getCourseXlsx } = useGetCourseService()
     const { runService, loading, value: course } = useService({ service: getCourse, defaultValue: {} })
+    const { runService: getXlsx, loading: loadingXlsx } = useService({ service: getCourseXlsx, defaultValue: {} })
     const { params, goBack } = useNavigate()
 
-    const handleClickDownloadXlsx = () => {
-        fetch(`/api/courses/${params.courseId}/xlsx`).then(response => {
-            response.blob().then(blob => {
-                const url = window.URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = `${course.name}.xlsx`;
-                a.click();
-            });
+    const handleClickDownloadXlsx = async () => {
+        const file = await getXlsx(course.id)
+        if (file) {
+            const url = window.URL.createObjectURL(file)
+            const a = document.createElement('a')
+            a.href = url
+            a.download = `${course.name}.xlsx`
+            a.click()
         }
-        )
     }
 
 
@@ -50,7 +49,7 @@ function CourseDetailsPage() {
                 children: translate(CORE_TEXTS.DOWNLOAD_XLSX),
                 onClick: handleClickDownloadXlsx,
                 startIcon: <Download />,
-                disabled: !course
+                disabled: !course || loadingXlsx
             }}
         >
             <Grid container spacing={2} sx={{ overflowY: 'auto', height: '100%' }}>

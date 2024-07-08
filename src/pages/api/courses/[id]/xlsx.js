@@ -3,13 +3,8 @@ import * as xlsx from 'xlsx-js-style';
 import moment from 'moment';
 export default async function handler(req, res) {
     const { id } = req.query;
-    //token from cookies
-    const token = req.cookies.SESSION_TOKEN
-    //redirigir al backend NEXT_PUBLIC_API_URL
     await fetch(`${process.env.NEXT_PUBLIC_API_URL}/courses/${id}?variant=REPORT`, {
-        headers: {
-            cookie: `SESSION_TOKEN=${token}`
-        }
+        headers: req.headers
     })
         .then(async response => {
             const data = await response.json()
