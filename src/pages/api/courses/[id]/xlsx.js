@@ -6,8 +6,9 @@ export default async function handler(req, res) {
 
     await fetch(`${process.env.NEXT_PUBLIC_API_URL}/courses/${id}?variant=REPORT`, {
         headers: {
-            ...req.headers.cookie && { 'Cookie': req.headers.cookie }
-        }
+            ...req.headers,
+        },
+        credentials: 'include',
     })
         .then(async response => {
             const data = await response.json()
