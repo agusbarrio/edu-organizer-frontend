@@ -1,13 +1,14 @@
 import _ from 'lodash';
 import * as xlsx from 'xlsx-js-style';
 import moment from 'moment';
+
 export default async function handler(req, res) {
     const { id } = req.query;
-
+    const headers = {
+        cookie: req.headers.cookie,
+    }
     await fetch(`${process.env.NEXT_PUBLIC_API_URL}/courses/${id}?variant=REPORT`, {
-        headers: {
-            ...req.headers,
-        },
+        headers,
         credentials: 'include',
     })
         .then(async response => {
