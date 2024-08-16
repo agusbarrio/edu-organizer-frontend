@@ -19,7 +19,7 @@ function useGetCourseService() {
     const getCourseXlsx = useCallback(
         async (id) => {
             const result = await get(
-                `/api/courses/${id}/xlsx`,
+                `${COURSES_ENDPOINTS.COURSES}/${id}/xlsx`,
                 { responseType: 'blob', },
                 { showSuccessMessage: false },
             );
