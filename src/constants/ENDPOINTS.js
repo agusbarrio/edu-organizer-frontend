@@ -18,8 +18,6 @@ export const AUTH_ENDPOINTS = {
     LOGOUT: `${authBaseUrl}/logout`,
     REQUEST_PASSWORD_RECOVERY: `${authBaseUrl}/requestPasswordRecovery`,
     RESET_PASSWORD: `${authBaseUrl}/resetPassword`,
-    VERIFY_SESSION: `${authBaseUrl}/verifySession`,
-    VERIFY_SESSION_COURSE: `${authBaseUrl}/verifySessionCourse`,
     VERIFY_ACCOUNT: `${authBaseUrl}/verifyAccount`,
     RECOVER_PASSWORD: `${authBaseUrl}/recoverPassword`,
 };
