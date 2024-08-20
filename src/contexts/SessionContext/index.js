@@ -6,13 +6,13 @@ const SessionContext = createContext();
 export default SessionContext;
 
 const initialState = {
-    user: {
-        logged: false,
-        permissions: [],
-        organization: {},
+    userSession: {
+        user: null,
+        token: null,
     },
-    course: {
-        logged: false,
+    courseSession: {
+        course: null,
+        token: null,
     }
 }
 
@@ -24,43 +24,43 @@ export function SessionContextProvider({ children }) {
         let result = {}
         switch (action.type) {
             case 'SET_SESSION':
-                result = {
-                    ...action.payload
-                }
+                result = action.payload
                 break;
             case 'USER_LOGIN':
                 result = {
                     ...state,
-                    user: {
-                        logged: true,
-                        ...action.payload
+                    userSession: {
+                        user: action.payload.user,
+                        token: action.payload.token,
                     }
                 }
                 break;
             case 'USER_LOGOUT':
                 result = {
                     ...state,
-                    user: {
-                        logged: false,
+                    userSession: {
+                        user: null,
+                        token: null,
                     }
                 }
                 break;
             case 'COURSE_LOGIN':
                 result = {
                     ...state,
-                    course: {
-                        logged: true,
-                        lastCourseLoggedShortId: action?.payload?.shortId,
-                        ...action.payload
+                    courseSession: {
+                        course: action?.payload?.course,
+                        lastCourseLoggedShortId: action?.payload?.course?.shortId,
+                        token: action?.payload?.token,
                     }
                 }
                 break;
             case 'COURSE_LOGOUT':
                 result = {
                     ...state,
-                    course: {
-                        logged: false,
-                        lastCourseLoggedShortId: state?.course?.lastCourseLoggedShortId,
+                    courseSession: {
+                        course: null,
+                        lastCourseLoggedShortId: state?.courseSession?.lastCourseLoggedShortId,
+                        token: null,
                     }
                 }
                 break;
@@ -75,10 +75,10 @@ export function SessionContextProvider({ children }) {
     const [session, dispatch] = useReducer(reducer, initialState);
 
 
-    const userLogin = useCallback((user) => {
+    const userLogin = useCallback((data) => {
         dispatch({
             type: 'USER_LOGIN',
-            payload: user
+            payload: data
         })
     }, [dispatch])
 
@@ -88,10 +88,10 @@ export function SessionContextProvider({ children }) {
         })
     }, [dispatch])
 
-    const courseLogin = useCallback((course) => {
+    const courseLogin = useCallback((data) => {
         dispatch({
             type: 'COURSE_LOGIN',
-            payload: course
+            payload: data
         })
     }, [dispatch])
 

@@ -1,6 +1,0 @@
-const COOKIES = {
-    SESSION: 'SESSION_TOKEN',
-    COURSE: 'COURSE_SESSION_TOKEN'
-}
-
-export default COOKIES

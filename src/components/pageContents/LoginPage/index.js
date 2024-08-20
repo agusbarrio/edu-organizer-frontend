@@ -19,7 +19,13 @@ function LoginPage() {
                 <LoginForm onSubmit={async ({ email, password }) => {
                     const result = await login({ email, password })
                     if (result) {
-                        userLogin({ ...result, permissions: result.permissions.map(({ permission }) => permission) })
+                        userLogin({
+                            ...result,
+                            user: {
+                                ...result.user,
+                                permissions: result.user.permissions.map(({ permission }) => permission)
+                            }
+                        })
                     }
                 }}></LoginForm>
                 <Link href={PATHS.RECOVER_PASSWORD}>{translate(TEXTS.LOGIN_PAGE_RECOVER_PASSWORD_LINK)}</Link>

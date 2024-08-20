@@ -10,7 +10,7 @@ import useDevice from "hooks/useDevice"
 import DrawerHeader from "./components/DrawerHeader"
 
 const DrawerMenu = forwardRef(function DrawerMenu({ drawerWidth = 240 }, ref) {
-    const { user: { permissions } } = useSessionContext();
+    const { userSession: { user: { permissions } } } = useSessionContext();
     //const isTeacher = useMemo(() => permissions.includes(USER_PERMISSIONS.TEACHER), [permissions])
     const isOwner = useMemo(() => permissions.includes(USER_PERMISSIONS.OWNER), [permissions])
     const isAdmin = useMemo(() => permissions.includes(USER_PERMISSIONS.ADMIN), [permissions])

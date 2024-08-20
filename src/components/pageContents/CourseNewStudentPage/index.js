@@ -13,7 +13,7 @@ function CourseNewStudentPage() {
     const { translate } = useLocaleContext()
     const { go } = useNavigate()
     const { createNewStudent } = useCreateNewStudentService()
-    const { course: courseSession } = useSessionContext()
+    const { courseSession: { course } } = useSessionContext()
 
     const handleSubmit = useCallback(async (data) => {
         const result = await createNewStudent({
@@ -28,7 +28,7 @@ function CourseNewStudentPage() {
     }, [createNewStudent, go])
     return (
         <CourseTemplate title={translate(TEXTS.COURSE_NEW_STUDENT_PAGE_TITLE)} backButtonProps={{ onClick: () => go(PATHS.COURSE), children: translate(CORE_TEXTS.GENERIC_BACK) }}>
-            <StudentForm withCourse={false} onSubmit={handleSubmit} templateProps={{ submitButtonProps: { children: translate(CORE_TEXTS.GENERIC_ADD) } }} defaultValues={{ course: courseSession }}></StudentForm>
+            <StudentForm withCourse={false} onSubmit={handleSubmit} templateProps={{ submitButtonProps: { children: translate(CORE_TEXTS.GENERIC_ADD) } }} defaultValues={{ course }}></StudentForm>
         </CourseTemplate>
     )
 }

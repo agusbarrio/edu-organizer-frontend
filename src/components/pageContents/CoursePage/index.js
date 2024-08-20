@@ -13,14 +13,14 @@ import CourseTemplate from "components/templates/CourseTemplate"
 
 function CoursePage() {
     const { translate } = useLocaleContext()
-    const { course: courseSession } = useSessionContext()
+    const { courseSession: { course: courseDataSession } } = useSessionContext()
     const { getCourse } = useGetCourseService()
     const { value: course, runService, loading } = useService({ service: getCourse, defaultValue: {} })
     const { go } = useNavigate()
 
     useEffect(() => {
-        runService(courseSession.id)
-    }, [runService, courseSession.id])
+        runService(courseDataSession.id)
+    }, [runService, courseDataSession.id])
 
     const buttonProps = useMemo(() => ({
         variant: 'outlined',

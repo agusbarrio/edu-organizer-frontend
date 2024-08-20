@@ -7,7 +7,7 @@ import useSessionContext from "hooks/useSessionContext"
 import useNavigate from "hooks/useNavigate"
 import { renderText } from "utils/text"
 function HomeLinkIcon({ iconProps, type = TEMPLATE_TYPES.USER, ...props }) {
-    const { course: { logged: courseLogged } } = useSessionContext()
+    const { courseSession: { token: courseLogged } } = useSessionContext()
     const { params } = useNavigate()
     const href = useMemo(() => {
         if (type === TEMPLATE_TYPES.USER) {

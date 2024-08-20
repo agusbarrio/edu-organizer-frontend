@@ -8,35 +8,35 @@ import { Box } from "@mui/material";
 import { renderText } from "utils/text";
 
 function ProtectedPage({ children, needUserSession, userPermissionsAllowed, needCourseSession }) {
-    const { user, course, loading } = useSessionContext();
+    const { userSession, courseSession, loading } = useSessionContext();
 
     const redirectPath = useMemo(() => {
         let redirectPath = null
         if (needUserSession != undefined) {
-            if (needUserSession && !user.logged) {
+            if (needUserSession && !userSession.token) {
                 redirectPath = PATHS.LOGIN
             }
-            if (!needUserSession && user.logged) {
+            if (!needUserSession && userSession.token) {
                 redirectPath = PATHS.DASHBOARD
             }
-            if (!_.isEmpty(userPermissionsAllowed) && userPermissionsAllowed.some((permission) => !user.permissions?.includes(permission))) {
+            if (!_.isEmpty(userPermissionsAllowed) && userPermissionsAllowed.some((permission) => !userSession?.user?.permissions?.includes(permission))) {
                 redirectPath = PATHS.LOGIN
             }
         }
         if (needCourseSession != undefined) {
-            if (needCourseSession && !course.logged) {
-                if (course?.lastCourseLoggedShortId) {
-                    redirectPath = renderText(PATHS.COURSE_LOGIN, { shortId: course?.lastCourseLoggedShortId })
+            if (needCourseSession && !courseSession.token) {
+                if (courseSession?.lastCourseLoggedShortId) {
+                    redirectPath = renderText(PATHS.COURSE_LOGIN, { shortId: courseSession?.lastCourseLoggedShortId })
                 } else {
                     redirectPath = PATHS.FORBIDDEN
                 }
             }
-            if (!needCourseSession && course.logged) {
+            if (!needCourseSession && courseSession.token) {
                 redirectPath = PATHS.COURSE
             }
         }
         return redirectPath
-    }, [user, course, needUserSession, needCourseSession, userPermissionsAllowed])
+    }, [userSession, courseSession, needUserSession, needCourseSession, userPermissionsAllowed])
 
 
     return (

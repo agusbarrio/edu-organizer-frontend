@@ -11,33 +11,33 @@ import TEMPLATE_TYPES from 'constants/TEMPLATE_TYPES';
 import { Box } from '@mui/material';
 
 const Header = forwardRef(function Header({ onClickDrawerButton, type = TEMPLATE_TYPES.USER }, ref) {
-    const { user: { logged }, course: { logged: courseLogged } } = useSessionContext()
+    const { userSession: { token }, courseSession: { token: courseToken } } = useSessionContext()
     const { lessThanSm } = useDevice()
     const showHomeLink = useMemo(() => {
         if (type === TEMPLATE_TYPES.USER) {
-            return !(lessThanSm && logged)
+            return !(lessThanSm && token)
         }
         if (type === TEMPLATE_TYPES.COURSE) {
             return true
         }
         return false
-    }, [type, logged, lessThanSm])
+    }, [type, token, lessThanSm])
     const showDrawerButton = useMemo(() => {
         if (type === TEMPLATE_TYPES.USER) {
-            return lessThanSm && logged
+            return lessThanSm && token
         }
         return false
-    }, [type, logged, lessThanSm])
+    }, [type, token, lessThanSm])
 
     const showAccountMenuButton = useMemo(() => {
         if (type === TEMPLATE_TYPES.USER) {
-            return logged
+            return !!token
         }
         if (type === TEMPLATE_TYPES.COURSE) {
-            return courseLogged
+            return !!courseToken
         }
         return false
-    }, [type, logged, courseLogged])
+    }, [type, token, courseToken])
 
     return (
         <AppBar position="static" ref={ref}>

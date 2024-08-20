@@ -10,7 +10,7 @@ import ClassSessionMachine from "machines/ClassSessionMachine"
 
 function CourseNewClassPage() {
     const { translate } = useLocaleContext()
-    const { course } = useSessionContext()
+    const { courseSession: { course } } = useSessionContext()
     const { go } = useNavigate()
 
     return (

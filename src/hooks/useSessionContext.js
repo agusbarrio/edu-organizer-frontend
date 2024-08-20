@@ -4,15 +4,19 @@ import SessionContext from "contexts/SessionContext";
 function useSessionContext() {
     const { session, userLogin, userLogout, courseLogin, courseLogout, loading } = useContext(SessionContext);
 
-    const user = useMemo(() => ({
-        ...session?.user,
-        logged: session?.user?.logged ?? false,
-        permissions: session?.user?.permissions ?? [],
+    const userSession = useMemo(() => ({
+        ...session?.userSession,
+        user: {
+            ...session?.userSession?.user,
+            permissions: session?.userSession?.user?.permissions ?? [],
+        },
+        token: session?.userSession?.token ?? null,
     }), [session])
 
-    const course = useMemo(() => ({
-        ...session?.course,
-        logged: session?.course?.logged ?? false,
+    const courseSession = useMemo(() => ({
+        course: session?.courseSession?.course ?? null,
+        lastCourseLoggedShortId: session?.courseSession?.lastCourseLoggedShortId ?? null,
+        token: session?.courseSession?.token ?? null,
     }), [session])
 
 
@@ -22,8 +26,8 @@ function useSessionContext() {
         userLogout,
         courseLogin,
         courseLogout,
-        user,
-        course,
+        userSession,
+        courseSession,
         loading,
     }
 }

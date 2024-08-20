@@ -5,10 +5,11 @@ import { useCallback, useEffect, useState } from 'react';
 
 function NumberInput({ value: valueProp, onChange, ...props }) {
     const [value, setValue] = useState(valueProp)
+
     useEffect(() => {
         setValue(valueProp)
     }, [valueProp])
-    console.log(value)
+
     const handleValueChange = useCallback((values) => {
         onChange({
             target: {

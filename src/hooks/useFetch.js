@@ -3,6 +3,8 @@ import { useCallback } from 'react';
 import _ from 'lodash';
 import FETCH_ERROR_TYPES from 'constants/FETCH_ERROR_TYPES';
 
+import useSessionContext from './useSessionContext';
+
 function useFetch() {
   const axiosHandler = useCallback(
     async (axiosFunction, successHandler, errorHandler) => {
@@ -32,48 +34,66 @@ function useFetch() {
     []
   );
 
+  const { userSession: { token }, courseSession: { token: courseToken } } = useSessionContext()
+
+  const appendTokensToConfig = useCallback((config) => {
+    if (token) {
+      config.headers = {
+        ...config.headers,
+        'user-authorization': `Bearer ${token}`
+      }
+    }
+    if (courseToken) {
+      config.headers = {
+        ...config.headers,
+        'course-authorization': `Bearer ${courseToken}`
+      }
+    }
+    return config
+  }, [token, courseToken])
+
   const get = useCallback(
     async (url, config, handlers) => {
       return await axiosHandler(
-        async () => await axios.get(url, config),
+        async () => await axios.get(url, appendTokensToConfig(config)),
         handlers?.successHandler,
         handlers?.errorHandler
       );
     },
-    [axiosHandler]
+    [axiosHandler, appendTokensToConfig]
   );
 
   const post = useCallback(
     async (url, data, config, handlers) => {
       return await axiosHandler(
-        async () => await axios.post(url, data, config),
+        async () => await axios.post(url, data, appendTokensToConfig(config)),
         handlers?.successHandler,
         handlers?.errorHandler
       );
     },
-    [axiosHandler]
+    [axiosHandler, appendTokensToConfig]
   );
 
   const put = useCallback(
     async (url, data, config, handlers) => {
       return await axiosHandler(
-        async () => await axios.put(url, data, config),
+        async () => await axios.put(url, data, appendTokensToConfig(config)),
         handlers?.successHandler,
         handlers?.errorHandler
       );
     },
-    [axiosHandler]
+    [axiosHandler, appendTokensToConfig]
   );
 
   const del = useCallback(
     async (url, config, handlers) => {
       return await axiosHandler(
-        async () => await axios.delete(url, config),
+        async () => await axios.delete(url, appendTokensToConfig(config)),
         handlers?.successHandler,
         handlers?.errorHandler
       );
     },
-    [axiosHandler]
+    [axiosHandler, appendTokensToConfig]
   );
 
   return { get, post, put, del };
