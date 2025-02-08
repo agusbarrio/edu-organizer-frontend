@@ -11,13 +11,13 @@ function HomeLinkIcon({ iconProps, type = TEMPLATE_TYPES.USER, ...props }) {
     const { params } = useNavigate()
     const href = useMemo(() => {
         if (type === TEMPLATE_TYPES.USER) {
-            return PATHS.HOME
+            return PATHS.AUTH_REDIRECT
         }
         if (type === TEMPLATE_TYPES.COURSE) {
             if (courseLogged) return PATHS.COURSE
             return renderText(PATHS.COURSE_LOGIN, { shortId: params?.shortId })
         }
-        return PATHS.HOME
+        return PATHS.AUTH_REDIRECT
     }, [type, courseLogged, params?.shortId])
     return <Link href={href} {...props}><School {...iconProps} /></Link>
 }

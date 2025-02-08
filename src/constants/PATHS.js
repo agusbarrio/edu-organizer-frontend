@@ -1,5 +1,6 @@
 const PATHS = {
     HOME: '/',
+    AUTH_REDIRECT: '/auth/redirect',
     LOGIN: '/auth/login',
     REGISTER: '/auth/register',
     MY_ACCOUNT: '/my-account',
