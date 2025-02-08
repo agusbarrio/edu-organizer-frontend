@@ -190,5 +190,21 @@ const TEXTS = {
     ALLOW_NEGATIVE_FIELD_LABEL: { es: 'Permitir negativos', en: 'Allow negatives' },
     SHOULD_AFFECT_POINTS_FIELD_LABEL: { es: '¿Se suma a los puntos del estudiante?', en: 'Is it added to the student\'s points?' },
     PRESENT_STUDENTS_NUMBER_LABEL: { es: 'Estudiantes presentes', en: 'Present students' },
+    LANDING_PAGE_TITLE: { es: 'Organiza la información de tus clases de forma fácil y eficiente', en: 'Organize your class information in an easy and efficient way' },
+    LANDING_PAGE_BENEFITS_BUTTON: { es: 'Beneficios', en: 'Benefits' },
+    LANDING_PAGE_ABOUT_US_BUTTON: { es: 'Sobre nosotros', en: 'About us' },
+    LANDING_PAGE_PLATFORM_BUTTON: { es: 'Plataforma', en: 'Platform' },
+    LANDING_PAGE_DESCRIPTION: { es: 'Crea tus cursos, agrega estudiantes, registra asistencia y gestiona tus clases de forma fácil y eficiente', en: 'Create your courses, add students, register attendance and manage your classes easily and efficiently' },
+    LANDING_PAGE_BENEFITS_TITLE: { es: 'Beneficios clave', en: 'Key benefits' },
+    LANDING_PAGE_BENEFITS_TITLE_1: { es: 'Gestión de información', en: 'Information management' },
+    LANDING_PAGE_BENEFITS_DESCRIPTION_1: { es: 'Crea tus cursos, agrega estudiantes, registra asistencia y gestiona tus clases de forma fácil y eficiente', en: 'Create your courses, add students, register attendance and manage your classes easily and efficiently' },
+    LANDING_PAGE_BENEFITS_TITLE_2: { es: 'Generación de informes', en: 'Report generation' },
+    LANDING_PAGE_BENEFITS_DESCRIPTION_2: { es: 'Genera informes de tus clases, estudiantes y asistencia', en: 'Generate reports of your classes, students and attendance' },
+    LANDING_PAGE_BENEFITS_TITLE_3: { es: 'Colaboración en Grupo', en: 'Group collaboration' },
+    LANDING_PAGE_BENEFITS_DESCRIPTION_3: { es: 'Trabaja con tu equipo de profesores para desarrollar tus clases de forma colaborativa', en: 'Work with your teacher team to develop your classes in a collaborative way' },
+    LANDING_PAGE_ABOUT_US_TITLE: { es: 'Sobre nosotros', en: 'About us' },
+    LANDING_PAGE_ABOUT_US_DESCRIPTION: { es: 'Nuestra aplicación está diseñada para organizaciones educativas que buscan una forma efectiva de administrar la información de sus estudiantes y profesores y llevar un control de la asistencia de sus estudiantes', en: 'Our application is designed for educational organizations that seek an effective way to manage the information of their students and teachers and keep track of their attendance' },
+    LANDING_PAGE_FOOTER_DEVELOPER: { es: 'Desarrollo de', en: 'Development of' },
+
 }
 export default TEXTS

@@ -6,20 +6,23 @@ import {
   CardContent,
   AppBar,
   Toolbar,
-  Box,
   Stack,
   Grid,
 } from "@mui/material";
 
 
-import { School, LinkedIn } from "@mui/icons-material";
+import { School } from "@mui/icons-material";
 import Link from "next/link";
 import LinkMui from "@mui/material/Link";
 import Image from "next/image";
 import PATHS from "constants/PATHS";
 import Redirect from "components/navigation/Redirect";
+import useLocaleContext from "hooks/useLocaleContext";
+import TEXTS from "constants/TEXTS";
 
 export default function LandingPage() {
+  const { translate } = useLocaleContext()
+
 
   if (process.env.NEXT_PUBLIC_SHOW_LANDING_PAGE === "true") return (
     <>
@@ -29,10 +32,10 @@ export default function LandingPage() {
           <Stack direction={"row"} spacing={2} alignItems={"center"}>
             <School />
             <Button color="inherit" component={Link} href="#features">
-              Beneficios
+              {translate(TEXTS.LANDING_PAGE_BENEFITS_BUTTON)}
             </Button>
             <Button color="inherit" component={Link} href="#about">
-              Sobre Nosotros
+              {translate(TEXTS.LANDING_PAGE_ABOUT_US_BUTTON)}
             </Button>
           </Stack>
           <Stack direction={"row"} spacing={2}>
@@ -42,7 +45,7 @@ export default function LandingPage() {
               href={PATHS.AUTH_REDIRECT}
               variant="outlined"
             >
-              Plataforma
+              {translate(TEXTS.LANDING_PAGE_PLATFORM_BUTTON)}
             </Button>
           </Stack>
         </Toolbar>
@@ -51,10 +54,10 @@ export default function LandingPage() {
       {/* Hero Section */}
       <Container sx={{ textAlign: "center", py: 8 }}>
         <Typography variant="h3" gutterBottom>
-          Organiza tu Aprendizaje de Forma Eficiente
+          {translate(TEXTS.LANDING_PAGE_TITLE)}
         </Typography>
         <Typography variant="h6" color="textSecondary">
-          Planifica tareas, establece objetivos y mejora tu rendimiento académico.
+          {translate(TEXTS.LANDING_PAGE_DESCRIPTION)}
         </Typography>
         <br />
       </Container>
@@ -62,21 +65,21 @@ export default function LandingPage() {
       {/* Features Section */}
       <Container id="features" sx={{ py: 8 }}>
         <Typography variant="h4" align="center" gutterBottom>
-          Beneficios Clave
+          {translate(TEXTS.LANDING_PAGE_BENEFITS_TITLE)}
         </Typography>
         <Grid container spacing={4} justifyContent="center">
           {[
             {
-              title: "Gestión de Tareas",
-              description: "Organiza y prioriza tus tareas para mantenerte al día con tus estudios.",
+              title: translate(TEXTS.LANDING_PAGE_BENEFITS_TITLE_1),
+              description: translate(TEXTS.LANDING_PAGE_BENEFITS_DESCRIPTION_1),
             },
             {
-              title: "Recordatorios y Notificaciones",
-              description: "Recibe alertas para nunca olvidar entregas o exámenes importantes.",
+              title: translate(TEXTS.LANDING_PAGE_BENEFITS_TITLE_2),
+              description: translate(TEXTS.LANDING_PAGE_BENEFITS_DESCRIPTION_2),
             },
             {
-              title: "Colaboración en Grupo",
-              description: "Trabaja en equipo con compañeros en proyectos y asignaciones.",
+              title: translate(TEXTS.LANDING_PAGE_BENEFITS_TITLE_3),
+              description: translate(TEXTS.LANDING_PAGE_BENEFITS_DESCRIPTION_3),
             },
           ].map((feature, index) => (
             <Grid item xs={12} sm={4} key={index}>
@@ -99,7 +102,7 @@ export default function LandingPage() {
           Sobre Nosotros
         </Typography>
         <Typography variant="body1" color="textSecondary" component={"p"}>
-          Nuestra aplicación está diseñada para estudiantes y profesionales que buscan una forma efectiva de administrar su aprendizaje y optimizar su tiempo.
+          {translate(TEXTS.LANDING_PAGE_ABOUT_US_DESCRIPTION)}
         </Typography>
       </Container>
 
@@ -107,7 +110,7 @@ export default function LandingPage() {
       <AppBar position="static" color="primary" component={"footer"}>
         <Toolbar sx={{ justifyContent: "center", alignItems: "center", gap: 1, py: 1 }}>
           <Typography variant="body2" color="white">
-            Desarrollo de
+            {translate(TEXTS.LANDING_PAGE_FOOTER_DEVELOPER)}
           </Typography>
           <LinkMui
             href={process.env.NEXT_PUBLIC_DEVELOPER_URL}
