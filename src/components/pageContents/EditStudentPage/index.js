@@ -33,7 +33,8 @@ function EditStudentPage() {
             courseId: data.courseId,
             avatarFileId: data.avatar?.id || null,
             birthDate: data.birthDate,
-            additionalInfo: data.additionalInfo
+            additionalInfo: data.additionalInfo,
+            filesIds: data.files.map((file) => file.id)
         })
         if (result) goStudents()
     }, [editStudent, goStudents, student])

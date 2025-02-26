@@ -23,7 +23,7 @@ function NewStudentCard({ onSubmit }) {
 
     return (
         <Card title={translate(TEXTS.COURSE_CREATE_STUDENT_CARD_TITLE)} help={translate(TEXTS.COURSE_CREATE_STUDENT_CARD_HELP)}>
-            <StudentForm withCourse={false} onSubmit={handleSubmitStudent} templateProps={{ submitButtonProps: { children: translate(CORE_TEXTS.GENERIC_ADD) } }} size={"small"} ref={formRef}></StudentForm>
+            <StudentForm withCourse={false} onSubmit={handleSubmitStudent} templateProps={{ submitButtonProps: { children: translate(CORE_TEXTS.GENERIC_ADD) } }} size={"small"} ref={formRef} showFilesInput={false}></StudentForm>
         </Card>
     );
 }

@@ -24,7 +24,8 @@ function CreateStudentPage() {
             courseId: data.courseId,
             avatarFileId: data.avatar?.id || null,
             birthDate: data.birthDate,
-            additionalInfo: data.additionalInfo
+            additionalInfo: data.additionalInfo,
+            filesIds: data.files?.map((file) => file.id) || []
         })
         if (result && formRef?.current) {
             formRef.current.reset({
@@ -33,7 +34,8 @@ function CreateStudentPage() {
                 courseId: null,
                 avatar: null,
                 birthDate: null,
-                additionalInfo: {}
+                additionalInfo: {},
+                files: []
             })
             formRef.current.handleChangeCourse(null)
         }

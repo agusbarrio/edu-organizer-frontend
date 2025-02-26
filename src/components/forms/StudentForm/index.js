@@ -14,8 +14,9 @@ import AdditionalInformationFields from "./components/AdditionalInformationField
 import useGetCourseService from "services/courses/useGetCourseService"
 import _ from "lodash"
 import useGetControllerInputProps from "hooks/dynamicForms/useGetControllerInputProps"
+import FilesInput from "components/generic/FilesInput"
 
-const StudentForm = forwardRef(function StudentForm({ onSubmit, defaultValues, withCourse = true, templateProps, size }, refProp) {
+const StudentForm = forwardRef(function StudentForm({ onSubmit, defaultValues, withCourse = true, templateProps, size, showFilesInput = true }, refProp) {
     const { form, name, id, date, object } = useValidator()
     const { translate } = useLocaleContext()
     const { getCourse } = useGetCourseService()
@@ -90,6 +91,7 @@ const StudentForm = forwardRef(function StudentForm({ onSubmit, defaultValues, w
                 name="courseId"
                 label={translate(TEXTS.COURSE_LABEL)}
             ></ControllerInput>}
+            {showFilesInput && <ControllerInput render={FilesInput} size={size} name={"files"} label={translate(TEXTS.STUDENT_FILES_LABEL)}></ControllerInput>}
             {!_.isEmpty(currentCourse?.studentAdditionalInfoFormData) && (
                 <>
                     <Divider></Divider>

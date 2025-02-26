@@ -28,7 +28,7 @@ function CourseNewStudentPage() {
     }, [createNewStudent, go])
     return (
         <CourseTemplate title={translate(TEXTS.COURSE_NEW_STUDENT_PAGE_TITLE)} backButtonProps={{ onClick: () => go(PATHS.COURSE), children: translate(CORE_TEXTS.GENERIC_BACK) }}>
-            <StudentForm withCourse={false} onSubmit={handleSubmit} templateProps={{ submitButtonProps: { children: translate(CORE_TEXTS.GENERIC_ADD) } }} defaultValues={{ course }}></StudentForm>
+            <StudentForm withCourse={false} onSubmit={handleSubmit} templateProps={{ submitButtonProps: { children: translate(CORE_TEXTS.GENERIC_ADD) } }} defaultValues={{ course }} showFilesInput={false}></StudentForm>
         </CourseTemplate>
     )
 }

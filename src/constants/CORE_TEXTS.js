@@ -81,6 +81,8 @@ const CORE_TEXTS = {
     GENERIC_MIN_LABEL: { es: 'Mínimo', en: 'Minimum' },
     GENERIC_MAX_LABEL: { es: 'Máximo', en: 'Maximum' },
     DOWNLOAD_XLSX: { es: 'Descargar excel', en: 'Download excel' },
+    FILES_INPUT_MAX_FILES_REACHED: { es: 'Archivos restantes: {{maxFiles}}', en: 'Remaining files: {{maxFiles}}' },
 };
+
 
 export default CORE_TEXTS;

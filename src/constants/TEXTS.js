@@ -42,6 +42,7 @@ const TEXTS = {
     STUDENT_AVATAR_LABEL: { es: 'Foto', en: 'Photo' },
     STUDENT_FIRST_NAME_LABEL: { es: 'Nombre', en: 'First name' },
     STUDENT_LAST_NAME_LABEL: { es: 'Apellido', en: 'Last name' },
+    STUDENT_FILES_LABEL: { es: 'Archivos', en: 'Files' },
     GO_STUDENT: { es: 'Ver estudiante', en: 'Go student' },
     CREATE_COURSE_PAGE_TITLE: { es: 'Crear curso', en: 'Create course' },
     CREATE_COURSE_PAGE_SUBTITLE: { es: 'Acá podés crear un nuevo curso', en: 'Here you can create a new course' },
