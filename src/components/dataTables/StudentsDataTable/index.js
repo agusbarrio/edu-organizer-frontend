@@ -13,7 +13,7 @@ import DeleteIconButton from "components/generic/DeleteIconButton"
 import EditIconButton from "components/generic/EditIconButton"
 import ViewDetailsIconButton from "components/generic/ViewDetailsIconButton"
 
-function StudentsDataTable({ students = [], onDelete, deleteAllowed = true, editAllowed = true }) {
+function StudentsDataTable({ students = [], onDelete, deleteAllowed = true, editAllowed = true, showCourse = false }) {
     const { translate } = useLocaleContext()
     const { go } = useNavigate()
     const { openModal } = useModalContext()
@@ -42,7 +42,7 @@ function StudentsDataTable({ students = [], onDelete, deleteAllowed = true, edit
     }, [openModal, translate, deleteStudent, onDelete])
 
     const columns = useMemo(() => {
-        return [
+        const columns = [
             { field: 'firstName', flex: 1, headerName: translate(TEXTS.STUDENT_FIRST_NAME_LABEL), hideable: false },
             { field: 'lastName', flex: 1, headerName: translate(TEXTS.STUDENT_LAST_NAME_LABEL), hideable: false },
             { field: 'birthDate', flex: 1, headerName: translate(TEXTS.STUDENT_BIRTH_DATE_LABEL) },
@@ -63,7 +63,16 @@ function StudentsDataTable({ students = [], onDelete, deleteAllowed = true, edit
                 hideable: false
             }
         ]
-    }, [translate, navigateToStudent, handleClickDeleteStudent, navigateToEditStudent, deleteAllowed, editAllowed])
+        if (showCourse) {
+            columns.splice(-1, 0, {
+                field: 'course', flex: 1, headerName: translate(TEXTS.STUDENT_COURSE_LABEL),
+                valueGetter: ({ row }) => {
+                    return row?.course?.name
+                }
+            })
+        }
+        return columns
+    }, [translate, navigateToStudent, handleClickDeleteStudent, navigateToEditStudent, deleteAllowed, editAllowed, showCourse])
 
     return <CustomDataGrid rows={students} columns={columns}></CustomDataGrid>
 }

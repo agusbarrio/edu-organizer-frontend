@@ -32,7 +32,7 @@ function StudentsPage() {
             }}
             loading={loading}
         >
-            <StudentsDataTable students={students} onDelete={runService} onEdit={runService}></StudentsDataTable>
+            <StudentsDataTable students={students} onDelete={runService} onEdit={runService} showCourse={true}></StudentsDataTable>
         </DashboardTemplate>
     )
 }

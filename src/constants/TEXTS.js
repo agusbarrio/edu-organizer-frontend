@@ -183,6 +183,7 @@ const TEXTS = {
     SET_STUDENT_ADDITIONAL_INFORMATION_TITLE: { es: 'Información adicional del estudiante', en: 'Student additional information' },
     STUDENT_ADDITIONAL_INFORMATION_INPUTS_LIST_CARD_HELP: { es: 'Estos son los campos que se van a mostrar en el formulario de información adicional de cada estudiante.', en: 'These are the fields that will be shown in the additional information form of each student.' },
     STUDENT_BIRTH_DATE_LABEL: { es: 'Fecha de nacimiento', en: 'Birth date' },
+    STUDENT_COURSE_LABEL: { es: 'Curso', en: 'Course' },
     STUDENT_ADDITIONAL_INFO_LABEL: { es: 'Información adicional', en: 'Additional information' },
     CHECKBOX_FIELD_POINTS_TO_ADD_LABEL: { es: 'Puntos a agregar', en: 'Points to add' },
     CHECKBOX_FIELD_POINTS_TO_ADD_PLACEHOLDER: { es: 'Ingresá los puntos a agregar', en: 'Enter the points to add' },
