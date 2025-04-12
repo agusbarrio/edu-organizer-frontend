@@ -19,7 +19,7 @@ function CourseNewClassPage() {
             onClick: () => go(PATHS.COURSE)
         }}>
             <Box sx={{ height: '100%' }}>
-                <ClassSessionMachine course={course} onFinish={() => go(PATHS.COURSE)}></ClassSessionMachine>
+                <ClassSessionMachine course={course} onFinish={() => go(PATHS.COURSE)} forTeacher={true}></ClassSessionMachine>
             </Box>
         </CourseTemplate>
     )

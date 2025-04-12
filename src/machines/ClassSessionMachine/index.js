@@ -10,15 +10,17 @@ import SetPresentStudentsDataStep from "./steps/SetPresentStudentsDataStep";
 import useDate from "hooks/useDate";
 import useEditClassSessionService from "services/classSessions/useEditClassSession";
 import useGetAllStudentsService from "services/students/useGetAllStudentsService";
+import useEditClassSessionCourse from "services/courseAccess/useEditClassSessionCourse";
 
 
-function ClassSessionMachine({ onFinish, initialContext, course, edit }) {
+function ClassSessionMachine({ onFinish, initialContext, course, edit, forTeacher = false }) {
     const { getCourseStudents } = useGetCourseStudentsService();
     const { getAllStudents } = useGetAllStudentsService();
     const { editClassSession } = useEditClassSessionService();
+    const { editClassSessionCourse } = useEditClassSessionCourse();
     const { createNewCourseClass } = useCreateNewCourseClassService()
     const { getNow } = useDate()
-    const machine = useLocalMachine(edit)
+    const machine = useLocalMachine(edit, forTeacher)
     const [state, send] = useMachine(machine, {
         context: {
             course: initialContext?.course || course,
@@ -54,7 +56,13 @@ function ClassSessionMachine({ onFinish, initialContext, course, edit }) {
             editClassSession: async (context) => {
                 const presentStudentsData = context.presentStudentsData
                 const date = context.date
-                const result = await editClassSession(context.id, { presentStudentsData, date });
+                let result
+                if (forTeacher) {
+                    result = await editClassSessionCourse(context.id, { presentStudentsData, date });
+                } else {
+
+                    result = await editClassSession(context.id, { presentStudentsData, date });
+                }
                 if (!result) throw new Error('Error al guardar la clase');
                 return result;
             }

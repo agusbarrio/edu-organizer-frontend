@@ -105,6 +105,8 @@ const TEXTS = {
     COURSE_LOGIN_BUTTON: { es: 'Acceder', en: 'Access' },
     NEW_CLASS_BUTTON: { es: 'Nueva clase', en: 'New class' },
     NEW_STUDENT_BUTTON: { es: 'Agregar un estudiante', en: 'Add a student' },
+    COURSE_CLASS_SESSIONS_BUTTON: { es: 'Clases', en: 'Classes' },
+    COURSE_CLASS_SESSIONS_PAGE_TITLE: { es: 'Clases', en: 'Classes' },
     COURSE_NEW_CLASS_PAGE_TITLE: { es: 'Nueva clase', en: 'New class' },
     COURSE_NEW_STUDENT_PAGE_TITLE: { es: 'Agregar un estudiante', en: 'Add a student' },
     FORBIDDEN_PAGE_TITLE: { es: 'Prohibido', en: 'Forbidden' },
