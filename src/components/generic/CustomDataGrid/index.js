@@ -40,6 +40,7 @@ function CustomDataGrid({
                 onClickDeleteSelection: onClickDeleteSelection,
                 onClickEditSelection: onClickEditSelection,
                 rowSelectionModel: rowSelectionModel,
+                children: slotProps?.toolbar?.children,
                 ...slotProps?.toolbar
             },
             footer: {

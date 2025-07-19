@@ -6,7 +6,7 @@ import useLocaleContext from "hooks/useLocaleContext"
 import _ from "lodash"
 import { useCallback, useMemo } from "react"
 
-function Toolbar({ onClickEditSelection, onClickDeleteSelection, rowSelectionModel = [], rows = [], ...props }) {
+function Toolbar({ onClickEditSelection, onClickDeleteSelection, rowSelectionModel = [], rows = [], children, ...props }) {
     const { translate } = useLocaleContext()
     const showMultipleSelectionButtons = useMemo(() => !_.isEmpty(rowSelectionModel), [rowSelectionModel])
     const rowsSelected = useMemo(() => rows.filter(row => rowSelectionModel.includes(row.id))
@@ -27,6 +27,7 @@ function Toolbar({ onClickEditSelection, onClickDeleteSelection, rowSelectionMod
                 </Stack>}
                 {onClickDeleteSelection && showMultipleSelectionButtons && <Button startIcon={<Delete></Delete>} color="error" size="small" onClick={handleClickDeleteSelection}>{translate(CORE_TEXTS.GENERIC_DELETE_SELECTION)}</Button>}
                 {onClickEditSelection && showMultipleSelectionButtons && <Button startIcon={<Edit></Edit>} size="small" onClick={handleClickEditSelection}>{translate(CORE_TEXTS.GENERIC_EDIT_SELECTION)}</Button>}
+                {children}
             </Stack>
         </GridToolbarContainer>)
 }

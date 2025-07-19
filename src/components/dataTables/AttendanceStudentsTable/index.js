@@ -3,6 +3,8 @@ import useLocaleContext from "hooks/useLocaleContext"
 import { useMemo } from "react"
 import CustomDataGrid from "components/generic/CustomDataGrid"
 import Avatar from "components/dataDisplay/Avatar"
+import { Stack, Typography } from "@mui/material"
+import { Check, CheckCircle } from "@mui/icons-material"
 
 
 function AttendanceStudentsTable({ students = [], ...props }) {
@@ -24,7 +26,23 @@ function AttendanceStudentsTable({ students = [], ...props }) {
         ]
     }, [translate])
 
-    return <CustomDataGrid rows={students} columns={columns} checkboxSelection rowSelection density="comfortable" {...props}></CustomDataGrid>
+    return <CustomDataGrid rows={students} columns={columns} checkboxSelection rowSelection density="comfortable" slotProps={{
+        toolbar: {
+            children: (
+                <Stack direction={'row'} spacing={1} alignItems={'center'} sx={{
+                    px: 1,
+                }}>
+                    <Check color="primary" />
+                    <Typography variant="body2" fontWeight={'bold'} color="primary">
+                        {props.rowSelectionModel.length}
+                    </Typography>
+                </Stack>
+            )
+
+        }
+    }} {...props}
+
+    ></CustomDataGrid>
 }
 
 export default AttendanceStudentsTable
