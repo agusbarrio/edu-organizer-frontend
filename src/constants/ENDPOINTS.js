@@ -13,8 +13,10 @@ const filesBaseUrl = `${ENV_CONFIG.NEXT_PUBLIC_API_URL}/files`;
 
 export const AUTH_ENDPOINTS = {
     LOGIN: `${authBaseUrl}/login`,
+    OAUTH_GOOGLE: `${authBaseUrl}/google`,
+    OAUTH_MICROSOFT: `${authBaseUrl}/microsoft`,
+    OAUTH_SESSION: `${authBaseUrl}/oauth/session`,
     COURSE_LOGIN: `${authBaseUrl}/course/{{shortId}}/login`,
-    REGISTER: `${authBaseUrl}/register`,
     LOGOUT: `${authBaseUrl}/logout`,
     REQUEST_PASSWORD_RECOVERY: `${authBaseUrl}/requestPasswordRecovery`,
     RESET_PASSWORD: `${authBaseUrl}/resetPassword`,

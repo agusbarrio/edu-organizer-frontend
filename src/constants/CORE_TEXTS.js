@@ -5,6 +5,7 @@ const CORE_TEXTS = {
         //401
         E401: { es: 'No autorizado', en: 'Unauthorized' },
         E401_1: { es: 'Credenciales inválidas', en: 'Invalid credentials' },
+        E503_1: { es: 'Inicio de sesión social no disponible en el servidor', en: 'Social sign-in is not available on the server' },
         //403
         E403: { es: 'Prohibido', en: 'Forbidden' },
         E403_1: { es: 'No tiene permiso para acceder a este recurso', en: 'You do not have permission to access this resource' },

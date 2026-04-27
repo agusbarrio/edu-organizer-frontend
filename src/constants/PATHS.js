@@ -2,7 +2,7 @@ const PATHS = {
     HOME: '/',
     AUTH_REDIRECT: '/auth/redirect',
     LOGIN: '/auth/login',
-    REGISTER: '/auth/register',
+    OAUTH_SUCCESS: '/auth/oauth-success',
     MY_ACCOUNT: '/my-account',
     EDIT_MY_ACCOUNT: '/my-account/edit',
     DASHBOARD: '/dashboard',
