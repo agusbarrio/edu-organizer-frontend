@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect } from 'react';
 import useNavigate from 'hooks/useNavigate';
 function Redirect({ url, as, options }) {

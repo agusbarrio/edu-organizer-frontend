@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import axios from "axios";
 import { Stack, Typography } from "@mui/material";
 import PublicTemplate from "components/templates/PublicTemplate";
@@ -23,7 +23,9 @@ function OAuthSuccessPage() {
     useEffect(() => {
         const token = parseAccessTokenFromHash();
         if (!token) {
-            router.replace(`${PATHS.LOGIN}?error=oauth_unauthorized`);
+            router.replace(
+              `${PATHS.LOGIN}?error=oauth_unauthorized`
+            );
             return;
         }
         let cancelled = false;
@@ -45,7 +47,9 @@ function OAuthSuccessPage() {
                 router.replace(PATHS.DASHBOARD);
             } catch {
                 if (!cancelled) {
-                    router.replace(`${PATHS.LOGIN}?error=oauth_unauthorized`);
+                    router.replace(
+              `${PATHS.LOGIN}?error=oauth_unauthorized`
+            );
                 }
             }
         })();

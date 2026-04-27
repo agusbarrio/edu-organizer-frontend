@@ -5,8 +5,6 @@ import _ from 'lodash';
 import FormTemplate from 'components/templates/FormTemplate';
 import style from './style.module.css'
 import { forwardRef, useImperativeHandle } from 'react';
-import { DevTool } from "@hookform/devtools";
-import ENV_CONFIG from 'constants/ENV_CONFIG';
 const Form = forwardRef(function Form({ children, onSubmit, schema, defaultValues, config, template: Template = FormTemplate, templateProps = {}, ...props }, ref) {
     const methods = useForm({
         resolver: !!schema ? yupResolver(schema) : undefined,
@@ -24,18 +22,13 @@ const Form = forwardRef(function Form({ children, onSubmit, schema, defaultValue
     useImperativeHandle(ref, () => ({ ...methods, submit: methods.handleSubmit(onSubmit) }), [methods, onSubmit]);
 
     return (
-        <>
-            {ENV_CONFIG.NEXT_PUBLIC_HOOK_FORM_DEVTOOLS === 'true' && <DevTool control={methods.control} />}
-            <FormProvider {...methods} >
-                <form className={style.Form} onSubmit={onSubmit && methods.handleSubmit(onSubmit)} {...props} noValidate>
-                    <Template {...templateProps}>
-                        {children}
-                    </Template>
-                </form>
-            </FormProvider>
-        </>
-
-
+        <FormProvider {...methods} >
+            <form className={style.Form} onSubmit={onSubmit && methods.handleSubmit(onSubmit)} {...props} noValidate>
+                <Template {...templateProps}>
+                    {children}
+                </Template>
+            </form>
+        </FormProvider>
     )
 })
 export default Form

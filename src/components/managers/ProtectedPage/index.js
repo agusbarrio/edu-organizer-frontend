@@ -1,3 +1,5 @@
+"use client";
+
 import Redirect from "components/navigation/Redirect";
 import PATHS from "constants/PATHS";
 import useSessionContext from "hooks/useSessionContext";

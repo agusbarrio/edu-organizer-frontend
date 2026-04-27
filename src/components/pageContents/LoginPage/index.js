@@ -1,6 +1,5 @@
-
 import { useEffect, useState } from "react"
-import { useRouter } from "next/router"
+import { useRouter, useSearchParams } from "next/navigation"
 import { Alert, Button, Divider, Stack } from "@mui/material"
 import LoginForm from "components/forms/LoginForm"
 import PublicTemplate from "components/templates/PublicTemplate"
@@ -15,16 +14,18 @@ import useSessionContext from "hooks/useSessionContext"
 function LoginPage() {
     const { translate } = useLocaleContext()
     const router = useRouter()
+    const searchParams = useSearchParams()
     const { userLogin } = useSessionContext()
     const { login } = useLoginService()
     const [oauthErrorBanner, setOauthErrorBanner] = useState(false)
 
+    const oauthError = searchParams.get("error")
+
     useEffect(() => {
-        if (!router.isReady) return
-        if (router.query?.error !== "oauth_unauthorized") return
+        if (oauthError !== "oauth_unauthorized") return
         setOauthErrorBanner(true)
-        router.replace(PATHS.LOGIN, undefined, { shallow: true })
-    }, [router.isReady, router.query?.error, router])
+        router.replace(PATHS.LOGIN)
+    }, [oauthError, router])
 
     return (
         <PublicTemplate title={translate(TEXTS.LOGIN_PAGE_TITLE)}>
