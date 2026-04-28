@@ -1,12 +1,12 @@
 "use client"
 
 import ProtectedPage from "components/managers/ProtectedPage";
-import VerifyAccountPage from "components/pageContents/VerifyAccountPage";
+import CompleteAccountPage from "components/pageContents/CompleteAccountPage";
 
-export default function AuthVerifyAccountPage() {
+export default function AuthCompleteAccountPage() {
   return (
     <ProtectedPage needUserSession={false}>
-      <VerifyAccountPage />
+      <CompleteAccountPage />
     </ProtectedPage>
   );
 }

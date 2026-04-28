@@ -20,7 +20,7 @@ export const AUTH_ENDPOINTS = {
     LOGOUT: `${authBaseUrl}/logout`,
     REQUEST_PASSWORD_RECOVERY: `${authBaseUrl}/requestPasswordRecovery`,
     RESET_PASSWORD: `${authBaseUrl}/resetPassword`,
-    VERIFY_ACCOUNT: `${authBaseUrl}/verifyAccount`,
+    COMPLETE_ACCOUNT: `${authBaseUrl}/completeAccount`,
     RECOVER_PASSWORD: `${authBaseUrl}/recoverPassword`,
 };
 
@@ -37,6 +37,9 @@ export const STUDENTS_ENDPOINTS = {
 
 export const USERS_ENDPOINTS = {
     USERS: `${usersBaseUrl}`,
+    ORGANIZATION_USERS: `${usersBaseUrl}/organization`,
+    ORGANIZATION_USER: `${usersBaseUrl}/{{userId}}/organization`,
+    ORGANIZATION_USER_RESEND_INVITATION: `${usersBaseUrl}/{{userId}}/organization/resendInvitation`,
 };
 
 export const ORGANIZATIONS_ENDPOINTS = {

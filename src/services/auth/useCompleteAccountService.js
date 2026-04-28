@@ -2,16 +2,16 @@ import useDecoredFetch from 'hooks/useDecoredFetch';
 import { AUTH_ENDPOINTS } from 'constants/ENDPOINTS';
 import { useCallback } from 'react';
 
-function useVerifyAccountService() {
+function useCompleteAccountService() {
   const { put } = useDecoredFetch();
-  const verifyAccount = useCallback(
+  const completeAccount = useCallback(
     async (values) => {
-      const result = await put(AUTH_ENDPOINTS.VERIFY_ACCOUNT, values);
+      const result = await put(AUTH_ENDPOINTS.COMPLETE_ACCOUNT, values);
       return result
     },
     [put]
   );
-  return { verifyAccount };
+  return { completeAccount };
 }
 
-export default useVerifyAccountService;
+export default useCompleteAccountService;

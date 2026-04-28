@@ -10,6 +10,7 @@ const CORE_TEXTS = {
         E403: { es: 'Prohibido', en: 'Forbidden' },
         E403_1: { es: 'No tiene permiso para acceder a este recurso', en: 'You do not have permission to access this resource' },
         E403_2: { es: 'Cuenta no verificada', en: 'Account not verified' },
+        E403_3: { es: 'No se puede eliminar al owner de la organización', en: 'Organization owner cannot be deleted' },
         //404
         E404: { es: 'No encontrado.', en: 'Not found.' },
         E404_1: { es: 'Usuario no encontrado.', en: 'User not found.' },
@@ -18,6 +19,9 @@ const CORE_TEXTS = {
         //409
         E409: { es: 'Conflicto', en: 'Conflict' },
         E409_1: { es: 'Email no disponible', en: 'Email not available' },
+        E409_2: { es: 'El usuario no está pendiente de activación', en: 'User is not pending activation' },
+        E409_3: { es: 'La invitación solo se puede reenviar a usuarios inactivos', en: 'Invitation can only be resent to inactive users' },
+        E409_4: { es: 'La recuperación de contraseña solo está disponible para usuarios activos', en: 'Password reset is only available for active users' },
         //422
         E422: { es: 'Entidad no procesable', en: 'Unprocessable entity' },
         //500
@@ -52,6 +56,7 @@ const CORE_TEXTS = {
     GENERIC_EDIT: { es: 'Editar', en: 'Edit' },
     GENERIC_VIEW_DETAILS: { es: 'Ver detalles', en: 'View details' },
     GENERIC_DELETE: { es: 'Eliminar', en: 'Delete' },
+    GENERIC_RESEND_INVITATION: { es: 'Reenviar invitación', en: 'Resend invitation' },
     GENERIC_MORE_INFO: { es: 'Mas información', en: 'More info' },
     GENERIC_DELETE_DESCRIPTION_CONFIRM: { es: '¿Estas seguro de que deseas eliminar esto?', en: 'Are you sure you want to delete this?' },
     GENERIC_DELETE_ALL_DESCRIPTION_CONFIRM: { es: '¿Estas seguro de que deseas eliminar todo?', en: 'Are you sure you want to delete all?' },

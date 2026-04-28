@@ -343,7 +343,8 @@ function useValidator() {
         boolean,
         name,
         object,
-        number
+        number,
+        array
     };
 }
 
