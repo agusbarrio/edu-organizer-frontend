@@ -10,6 +10,7 @@ import TEXTS from "constants/TEXTS"
 import useLocaleContext from "hooks/useLocaleContext"
 import EditIconButton from "components/generic/EditIconButton"
 import EditOrganizationUserPermissionsModal from "components/generic/modals/EditOrganizationUserPermissionsModal"
+import USER_PERMISSIONS from "constants/USER_PERMISSIONS"
 
 function OrganizationUsersDataTable({
     users = [],
@@ -38,7 +39,7 @@ function OrganizationUsersDataTable({
     const handleEditPermissions = useCallback((row) => {
         const defaultPermissions = (row.permissions || [])
             .map((permission) => permission.permission)
-            .filter((permission) => permission !== 'OWNER')
+            .filter((permission) => permission !== USER_PERMISSIONS.OWNER && permission !== USER_PERMISSIONS.SUPERADMIN)
         openModal(EditOrganizationUserPermissionsModal, {
             defaultPermissions,
             onConfirm: async ({ permissions }) => {
