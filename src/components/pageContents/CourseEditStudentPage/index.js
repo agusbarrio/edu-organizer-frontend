@@ -10,6 +10,7 @@ import useSessionContext from "hooks/useSessionContext"
 import useGetCourseStudentService from "services/courseAccess/useGetCourseStudentService"
 import useService from "hooks/useService"
 import useEditCourseStudentService from "services/courseAccess/useEditCourseStudentService"
+import moment from "moment"
 
 function CourseEditStudentPage() {
     const { translate } = useLocaleContext()
@@ -39,6 +40,7 @@ function CourseEditStudentPage() {
         if (!currentStudent) return undefined
         return {
             ...currentStudent,
+            birthDate: currentStudent.birthDate ? moment(currentStudent.birthDate) : null,
             avatar: currentStudent.avatar || null,
             course
         }
