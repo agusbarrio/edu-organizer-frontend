@@ -42,7 +42,7 @@ function DashboardTemplate({ children, title, subtitle, backButtonProps, rightBu
                 <DrawerMenu drawerWidth={drawerWidth} ref={drawerRef}></DrawerMenu>
                 <Box sx={{ flexGrow: 1, width: { xs: '100%', sm: `calc(100% - ${drawerWidth}px)` } }}>
                     {(!!title || !!subtitle || !!backButtonProps) &&
-                        <Stack width={'100%'} padding={1} pb={0} ref={titleRef}>
+                        <Stack width={'100%'} padding={2} pb={0} ref={titleRef}>
                             <Stack direction={'row'} justifyContent={'space-between'}>
                                 <Stack>
                                     {!!backButtonProps && <Button size="small" startIcon={<ArrowBack></ArrowBack>} {...backButtonProps} sx={{ width: 'max-content', ...backButtonProps?.sx }}></Button>}
@@ -53,7 +53,6 @@ function DashboardTemplate({ children, title, subtitle, backButtonProps, rightBu
                                     {!!rightButtonProps && <Button variant="contained" size="small"{...rightButtonProps}></Button>}
                                 </Stack>
                             </Stack>
-                            <Divider></Divider>
                         </Stack>}
                     {
                         loading
