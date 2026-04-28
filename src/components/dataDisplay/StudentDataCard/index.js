@@ -5,6 +5,7 @@ import LabelValue from "components/generic/LabelValue"
 import TEXTS from "constants/TEXTS"
 import useLocaleContext from "hooks/useLocaleContext"
 import { useCallback } from "react"
+import _ from "lodash"
 
 
 function StudentDataCard({ student }) {

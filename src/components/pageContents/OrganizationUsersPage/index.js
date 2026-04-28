@@ -68,15 +68,7 @@ function OrganizationUsersPage() {
                 onResendInvitation={handleResendInvitation}
                 canResendInvitation={(user) => user.status !== 'ACTIVE'}
                 onEditPermissions={handleEditPermissions}
-                canEditPermissions={(user) => {
-                    const isTargetOwner = (user.permissions || []).some((permission) => permission.permission === USER_PERMISSIONS.OWNER)
-                    const isCurrentOwner = (currentUser?.permissions || []).includes(USER_PERMISSIONS.OWNER)
-                    const isSelf = user.id === currentUser?.id
-                    if (isTargetOwner) {
-                        return isCurrentOwner && isSelf
-                    }
-                    return true
-                }}
+                canEditPermissions={() => (currentUser?.permissions || []).includes(USER_PERMISSIONS.OWNER)}
             />
         </DashboardTemplate>
     )

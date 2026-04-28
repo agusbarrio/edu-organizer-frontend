@@ -9,6 +9,8 @@ const PATHS = {
     COURSE: '/course',
     COURSE_NEW_CLASS: '/course/new-class',
     COURSE_NEW_STUDENT: '/course/new-student',
+    COURSE_STUDENTS: '/course/students',
+    COURSE_EDIT_STUDENT: '/course/students/{{studentId}}/edit',
     COURSE_CLASS_SESSIONS: '/course/class-sessions',
     COURSE_CLASS_SESSION: '/course/class-sessions/{{classSessionId}}',
     COURSE_CLASS_SESSION_EDIT: '/course/class-sessions/{{classSessionId}}/edit',

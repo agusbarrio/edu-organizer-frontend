@@ -12,6 +12,7 @@ import useDeleteStudentService from "services/students/useDeleteStudentService"
 import DeleteIconButton from "components/generic/DeleteIconButton"
 import EditIconButton from "components/generic/EditIconButton"
 import ViewDetailsIconButton from "components/generic/ViewDetailsIconButton"
+import _ from "lodash"
 
 function StudentsDataTable({ students = [], onDelete, deleteAllowed = true, editAllowed = true, showCourse = false }) {
     const { translate } = useLocaleContext()

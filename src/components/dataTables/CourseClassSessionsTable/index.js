@@ -14,6 +14,7 @@ import useModalContext from "hooks/useModalContext"
 import ConfirmModal from "components/generic/modals/ConfirmModal"
 import useDeleteClassSessionService from "services/classSessions/useDeleteClassSessionService"
 import moment from "moment"
+import _ from "lodash"
 
 
 function CourseClassSessionsTable({ classSessions = [], onDelete }) {

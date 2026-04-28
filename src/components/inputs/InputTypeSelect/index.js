@@ -3,6 +3,7 @@ import INPUT_TYPES from "constants/INPUT_TYPES";
 import TEXTS from "constants/TEXTS";
 import useLocaleContext from "hooks/useLocaleContext";
 import { useMemo } from "react";
+import _ from "lodash";
 
 function InputTypeSelect({ ...props }) {
     const { translate } = useLocaleContext()
