@@ -8,13 +8,17 @@ import _ from "lodash"
 import ResendInvitationIconButton from "components/generic/ResendInvitationIconButton"
 import TEXTS from "constants/TEXTS"
 import useLocaleContext from "hooks/useLocaleContext"
+import EditIconButton from "components/generic/EditIconButton"
+import EditOrganizationUserPermissionsModal from "components/generic/modals/EditOrganizationUserPermissionsModal"
 
 function OrganizationUsersDataTable({
     users = [],
     onDeleteUser,
     canDeleteUser = () => true,
     onResendInvitation,
-    canResendInvitation = () => false
+    canResendInvitation = () => false,
+    onEditPermissions,
+    canEditPermissions = () => false
 }) {
     const { translate } = useLocaleContext()
     const { openModal } = useModalContext()
@@ -30,6 +34,20 @@ function OrganizationUsersDataTable({
             }
         })
     }, [onDeleteUser, openModal, translate])
+
+    const handleEditPermissions = useCallback((row) => {
+        const defaultPermissions = (row.permissions || [])
+            .map((permission) => permission.permission)
+            .filter((permission) => permission !== 'OWNER')
+        openModal(EditOrganizationUserPermissionsModal, {
+            defaultPermissions,
+            onConfirm: async ({ permissions }) => {
+                if (_.isFunction(onEditPermissions)) {
+                    await onEditPermissions({ userId: row.id, permissions })
+                }
+            }
+        })
+    }, [onEditPermissions, openModal])
 
     const columns = useMemo(() => {
         return [
@@ -54,6 +72,9 @@ function OrganizationUsersDataTable({
                 hideable: false,
                 renderCell: (data) => {
                     const actions = []
+                    if (canEditPermissions(data.row)) {
+                        actions.push(<EditIconButton key={`edit-permissions-${data.id}`} onClick={() => { handleEditPermissions(data.row) }} />)
+                    }
                     if (canResendInvitation(data.row) && _.isFunction(onResendInvitation)) {
                         actions.push(<ResendInvitationIconButton key={`resend-${data.id}`} onClick={() => { onResendInvitation(data.id) }} />)
                     }
@@ -64,7 +85,7 @@ function OrganizationUsersDataTable({
                 },
             }
         ]
-    }, [canDeleteUser, canResendInvitation, handleDeleteUser, onResendInvitation, translate])
+    }, [canDeleteUser, canEditPermissions, canResendInvitation, handleDeleteUser, handleEditPermissions, onResendInvitation, translate])
 
     return <CustomDataGrid rows={users} columns={columns}></CustomDataGrid>
 }

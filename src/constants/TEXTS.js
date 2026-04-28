@@ -161,6 +161,7 @@ const TEXTS = {
     GO_BACK_ORGANIZATION_USERS: { es: 'Volver a usuarios', en: 'Back to users' },
     DELETE_ORGANIZATION_USER_MODAL_TITLE: { es: 'Eliminar usuario', en: 'Delete user' },
     DELETE_ORGANIZATION_USER_MODAL_CONTENT: { es: '¿Estás seguro que querés eliminar este usuario?', en: 'Are you sure you want to delete this user?' },
+    EDIT_ORGANIZATION_USER_PERMISSIONS_MODAL_TITLE: { es: 'Editar permisos', en: 'Edit permissions' },
     STUDENT_COURSE_NAME_LABEL: { es: 'Curso actual', 'en': 'Current course' },
     DELETE_STUDENT_MODAL_TITLE: { es: 'Eliminar estudiante', en: 'Delete student' },
     DELETE_STUDENT_MODAL_CONTENT: { es: '¿Estás seguro que querés eliminar este estudiante?', en: 'Are you sure you want to delete this student?' },

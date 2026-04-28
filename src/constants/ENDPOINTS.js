@@ -40,6 +40,7 @@ export const USERS_ENDPOINTS = {
     ORGANIZATION_USERS: `${usersBaseUrl}/organization`,
     ORGANIZATION_USER: `${usersBaseUrl}/{{userId}}/organization`,
     ORGANIZATION_USER_RESEND_INVITATION: `${usersBaseUrl}/{{userId}}/organization/resendInvitation`,
+    ORGANIZATION_USER_PERMISSIONS: `${usersBaseUrl}/{{userId}}/organization/permissions`,
 };
 
 export const ORGANIZATIONS_ENDPOINTS = {

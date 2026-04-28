@@ -11,6 +11,8 @@ const CORE_TEXTS = {
         E403_1: { es: 'No tiene permiso para acceder a este recurso', en: 'You do not have permission to access this resource' },
         E403_2: { es: 'Cuenta no verificada', en: 'Account not verified' },
         E403_3: { es: 'No se puede eliminar al owner de la organización', en: 'Organization owner cannot be deleted' },
+        E403_4: { es: 'Solo el owner puede editar sus propios permisos', en: 'Only the owner can edit its own permissions' },
+        E403_5: { es: 'El permiso owner no es editable', en: 'Owner permission is not editable' },
         //404
         E404: { es: 'No encontrado.', en: 'Not found.' },
         E404_1: { es: 'Usuario no encontrado.', en: 'User not found.' },
