@@ -85,7 +85,7 @@ const DEFAULT_VALIDATIONS = {
     required: { value: false, message: CORE_TEXTS.VALIDATIONS_REQUIRED },
     max: { value: 255, message: CORE_TEXTS.VALIDATIONS_MAX },
     matches: {
-      value: /^[a-zA-Z\s]*$/,
+      value: /^[\p{L}\s]*$/u,
       message: CORE_TEXTS.VALIDATIONS_NAME,
     },
   },

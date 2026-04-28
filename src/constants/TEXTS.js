@@ -21,6 +21,8 @@ const TEXTS = {
     LOGIN_PAGE_OAUTH_ERROR: { es: 'No pudimos iniciar sesión con tu cuenta. Verificá que tu correo esté registrado y activo, o contactá a un administrador.', en: 'We could not sign you in. Make sure your email is registered and active, or contact an administrator.' },
     OAUTH_SUCCESS_PAGE_TITLE: { es: 'Iniciando sesión', en: 'Signing you in' },
     OAUTH_SUCCESS_PAGE_PENDING: { es: 'Completando inicio de sesión…', en: 'Completing sign-in…' },
+    DASHBOARD_WELCOME_TITLE: { es: 'Te damos la bienvenida', en: 'Welcome' },
+    DASHBOARD_WELCOME_SUBTITLE: { es: 'Estamos listos para organizar tus clases.', en: 'We are ready to organize your classes.' },
     MY_ACCOUNT_PAGE_TITLE: { es: 'Mi cuenta', en: 'My account' },
     LOGOUT_BUTTON: { es: 'Cerrar sesión', en: 'Logout' },
     ACCOUNT_BUTTON_TOOLTIP: { es: 'Mi cuenta', en: 'My account' },
