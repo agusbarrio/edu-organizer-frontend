@@ -7,7 +7,7 @@ import TEXTS from "constants/TEXTS"
 import { useMemo } from "react"
 import TextInput from "components/generic/TextInput"
 
-function LoginForm({ onSubmit }) {
+function LoginForm({ onSubmit, submitRowStart }) {
     const { form, email, password } = useValidator()
     const { translate } = useLocaleContext()
     const schema = useMemo(() => form({
@@ -16,7 +16,7 @@ function LoginForm({ onSubmit }) {
     }), [email, form, password])
 
     return (
-        <Form schema={schema} onSubmit={onSubmit} templateProps={{ submitButtonProps: { children: translate(TEXTS.LOGIN_BUTTON) } }}>
+        <Form schema={schema} onSubmit={onSubmit} templateProps={{ submitButtonProps: { children: translate(TEXTS.LOGIN_BUTTON) }, submitRowStart }}>
             <ControllerInput render={TextInput} name={"email"} label={translate(TEXTS.EMAIL_LABEL)} placeholder={translate(TEXTS.EMAIL_PLACEHOLDER)} />
             <ControllerInput render={PasswordInput} name={"password"} label={translate(TEXTS.PASSWORD_LABEL)} placeholder={translate(TEXTS.PASSWORD_PLACEHOLDER)} />
         </Form>

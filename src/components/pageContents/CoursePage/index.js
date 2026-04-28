@@ -48,11 +48,22 @@ function CoursePage() {
     }
     return (
         <CourseTemplate title={course?.name} loading={loading}>
-            <Stack spacing={2} width={'100%'}>
-                <Button {...buttonProps} startIcon={<Add></Add>} onClick={handleClickNewClass}>{translate(TEXTS.NEW_CLASS_BUTTON)}</Button>
-                <Button {...buttonProps} size="large" startIcon={<Face></Face>} onClick={handleClickNewStudent}>{translate(TEXTS.NEW_STUDENT_BUTTON)}</Button>
-                <Button {...buttonProps} size="large" startIcon={<Group></Group>} onClick={handleClickCourseStudents}>{translate(TEXTS.COURSE_STUDENTS_BUTTON)}</Button>
-                <Button {...buttonProps} size="large" startIcon={<HistoryEdu></HistoryEdu>} onClick={handleClickLastClassSessions}>{translate(TEXTS.COURSE_CLASS_SESSIONS_BUTTON)}</Button>
+            <Stack
+                spacing={2}
+                alignItems="center"
+                justifyContent="center"
+                sx={{
+                    width: '100%',
+                    minHeight: '100%',
+                    py: 1,
+                }}
+            >
+                <Stack spacing={2} sx={{ width: '100%', maxWidth: 420 }}>
+                    <Button {...buttonProps} startIcon={<Add></Add>} onClick={handleClickNewClass}>{translate(TEXTS.NEW_CLASS_BUTTON)}</Button>
+                    <Button {...buttonProps} size="large" startIcon={<Face></Face>} onClick={handleClickNewStudent}>{translate(TEXTS.NEW_STUDENT_BUTTON)}</Button>
+                    <Button {...buttonProps} size="large" startIcon={<Group></Group>} onClick={handleClickCourseStudents}>{translate(TEXTS.COURSE_STUDENTS_BUTTON)}</Button>
+                    <Button {...buttonProps} size="large" startIcon={<HistoryEdu></HistoryEdu>} onClick={handleClickLastClassSessions}>{translate(TEXTS.COURSE_CLASS_SESSIONS_BUTTON)}</Button>
+                </Stack>
             </Stack>
 
         </CourseTemplate>
