@@ -48,12 +48,23 @@ function useLocalMachine(edit = false) {
                 setCourseStudentAdditionalInfoFormData: {
                     on: {
                         NEXT: {
-                            target: edit ? 'editCourse' : 'createCourse',
+                            target: 'setCourseTeachers',
                             actions: [assign({ studentAdditionalInfoFormData: (context, event) => event.studentAdditionalInfoFormData })],
                         },
                         PREV: {
                             target: 'setCourseStudentAttendanceFormData',
                             actions: [assign({ studentAdditionalInfoFormData: (context, event) => event.studentAdditionalInfoFormData })],
+                        },
+                    },
+                },
+                setCourseTeachers: {
+                    on: {
+                        NEXT: {
+                            target: edit ? 'editCourse' : 'createCourse',
+                            actions: [assign({ teacherIds: (context, event) => event.teacherIds ?? [] })],
+                        },
+                        PREV: {
+                            target: 'setCourseStudentAdditionalInfoFormData',
                         },
                     },
                 },
@@ -64,7 +75,7 @@ function useLocalMachine(edit = false) {
                             target: 'finish',
                         },
                         onError: {
-                            target: 'setCourseStudentAttendanceFormData',
+                            target: 'setCourseTeachers',
                         },
                     },
                 },
@@ -75,7 +86,7 @@ function useLocalMachine(edit = false) {
                             target: 'finish',
                         },
                         onError: {
-                            target: 'setCourseStudentAttendanceFormData',
+                            target: 'setCourseTeachers',
                         },
                     },
                 },

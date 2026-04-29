@@ -7,6 +7,10 @@ import useLocaleContext from "hooks/useLocaleContext"
 
 import { renderText } from "utils/text"
 
+/**
+ * @deprecated Course PIN login URLs are being superseded by the teacher portal (dashboard, TEACHER role).
+ * This card and link remain for backward compatibility until the migration is finished.
+ */
 function CourseDataCard({ course }) {
     const { translate } = useLocaleContext()
     const url = `${window.location.origin}${renderText(PATHS.COURSE_LOGIN, { shortId: course?.shortId })}`

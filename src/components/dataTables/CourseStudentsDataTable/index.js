@@ -8,9 +8,14 @@ import EditIconButton from "components/generic/EditIconButton"
 import PATHS from "constants/PATHS"
 import { renderText } from "utils/text"
 
-function CourseStudentsDataTable({ students = [] }) {
+function CourseStudentsDataTable({ students = [], getEditStudentPath }) {
     const { translate } = useLocaleContext()
     const { go } = useNavigate()
+
+    const resolveEditPath = useMemo(
+        () => getEditStudentPath ?? ((studentId) => renderText(PATHS.COURSE_EDIT_STUDENT, { studentId })),
+        [getEditStudentPath]
+    )
 
     const columns = useMemo(() => {
         return [
@@ -22,12 +27,12 @@ function CourseStudentsDataTable({ students = [] }) {
                 type: 'actions',
                 headerName: translate(CORE_TEXTS.GENERIC_ACTIONS),
                 getActions: ({ id }) => ([
-                    <EditIconButton key={`edit-${id}`} onClick={() => { go(renderText(PATHS.COURSE_EDIT_STUDENT, { studentId: id })) }} />
+                    <EditIconButton key={`edit-${id}`} onClick={() => { go(resolveEditPath(id)) }} />
                 ]),
                 hideable: false
             }
         ]
-    }, [go, translate])
+    }, [go, translate, resolveEditPath])
 
     return <CustomDataGrid rows={students} columns={columns}></CustomDataGrid>
 }

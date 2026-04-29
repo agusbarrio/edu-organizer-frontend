@@ -8,6 +8,7 @@ import CourseClassSessionsTable from "components/dataTables/CourseClassSessionsT
 import useService from "hooks/useService"
 import useGetClassSessionsCourse from "services/courseAccess/useGetClassSessionsCourse"
 import { useEffect } from "react"
+import useDeleteCourseClassSessionService from "services/courseAccess/useDeleteCourseClassSessionService"
 
 function CourseClassSessionsPage() {
     const { translate } = useLocaleContext()
@@ -15,6 +16,7 @@ function CourseClassSessionsPage() {
 
 
     const { getClassSessionsCourse } = useGetClassSessionsCourse()
+    const { deleteCourseClassSession } = useDeleteCourseClassSessionService()
     const { value: classSessions, runService, loading } = useService({ service: getClassSessionsCourse, defaultValue: [] })
     useEffect(() => {
         runService()
@@ -23,7 +25,7 @@ function CourseClassSessionsPage() {
 
     return (
         <CourseTemplate title={translate(TEXTS.COURSE_CLASS_SESSIONS_PAGE_TITLE)} backButtonProps={{ onClick: () => go(PATHS.COURSE), children: translate(CORE_TEXTS.GENERIC_BACK) }} loading={loading}>
-            <CourseClassSessionsTable classSessions={classSessions} onDelete={runService}></CourseClassSessionsTable>
+            <CourseClassSessionsTable classSessions={classSessions} onDelete={runService} deleteClassSession={deleteCourseClassSession}></CourseClassSessionsTable>
         </CourseTemplate>
     )
 }

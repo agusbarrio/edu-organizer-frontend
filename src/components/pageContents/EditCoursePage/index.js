@@ -34,7 +34,8 @@ function EditCoursePage() {
         studentAttendanceFormData: course?.studentAttendanceFormData?.map(input => ({ ...input, key: uuidv4() })),
         id: course?.id,
         studentAdditionalInfoFormData: course?.studentAdditionalInfoFormData?.map(input => ({ ...input, key: uuidv4() })),
-        pointsPerAttendance: course?.metadata?.pointsPerAttendance || null
+        pointsPerAttendance: course?.metadata?.pointsPerAttendance || null,
+        teacherIds: (course?.teachers || []).map((t) => t.id),
     }), [course])
 
 

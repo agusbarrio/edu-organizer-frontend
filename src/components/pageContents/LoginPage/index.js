@@ -38,6 +38,7 @@ function LoginPage() {
             borderColor: "action.hover",
             boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
         },
+        justifyContent: "center",
     }), [])
 
     const oauthError = searchParams.get("error")

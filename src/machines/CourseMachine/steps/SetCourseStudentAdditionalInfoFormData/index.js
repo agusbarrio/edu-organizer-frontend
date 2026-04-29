@@ -16,7 +16,7 @@ function SetCourseStudentAdditionalInfoFormData({ state, send }) {
         }
     }, [inputsRef, send])
 
-    const handleFinish = useCallback(() => {
+    const handleNext = useCallback(() => {
         if (inputsRef?.current) {
             const studentAdditionalInfoFormData = inputsRef.current.getValue()
             send('NEXT', { studentAdditionalInfoFormData })
@@ -26,7 +26,7 @@ function SetCourseStudentAdditionalInfoFormData({ state, send }) {
     return (
         <StepTemplate
             onClickBack={handleBack}
-            onClickFinish={handleFinish}
+            onClickNext={handleNext}
             title={translate(TEXTS.SET_STUDENT_ADDITIONAL_INFORMATION_TITLE)}
         >
             <InputsCreation initialInputs={state.context.studentAdditionalInfoFormData} ref={inputsRef} field={'studentAdditionalInfoFormData'} inputsListHelp={translate(TEXTS.STUDENT_ADDITIONAL_INFORMATION_INPUTS_LIST_CARD_HELP)} allowPoints={false}></InputsCreation>

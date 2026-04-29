@@ -8,6 +8,7 @@ import SetCourseStudentAttendanceFormDataStep from "./steps/SetCourseStudentAtte
 import useEditCourseService from "services/courses/useEditCourseService";
 import useLocalMachine from "./hooks/useLocalMachine";
 import SetCourseStudentAdditionalInfoFormData from "./steps/SetCourseStudentAdditionalInfoFormData";
+import SetCourseTeachersStep from "./steps/SetCourseTeachersStep";
 
 
 function CourseMachine({ onFinish, initialContext, edit }) {
@@ -22,7 +23,8 @@ function CourseMachine({ onFinish, initialContext, edit }) {
             studentAttendanceFormData: initialContext?.studentAttendanceFormData || [],
             studentAdditionalInfoFormData: initialContext?.studentAdditionalInfoFormData || [],
             id: initialContext?.id || null,
-            pointsPerAttendance: initialContext?.pointsPerAttendance || null
+            pointsPerAttendance: initialContext?.pointsPerAttendance || null,
+            teacherIds: initialContext?.teacherIds || [],
         },
         actions: {
             finish: (context, event) => {
@@ -48,6 +50,7 @@ function CourseMachine({ onFinish, initialContext, edit }) {
                     }),
                     studentAttendanceFormData: context.studentAttendanceFormData,
                     studentAdditionalInfoFormData: context.studentAdditionalInfoFormData,
+                    teacherIds: context.teacherIds || [],
                     metadata: {
                         pointsPerAttendance: context.pointsPerAttendance
                     }
@@ -73,6 +76,7 @@ function CourseMachine({ onFinish, initialContext, edit }) {
                         }),
                         studentAttendanceFormData: context.studentAttendanceFormData,
                         studentAdditionalInfoFormData: context.studentAdditionalInfoFormData,
+                        teacherIds: context.teacherIds || [],
                         metadata: {
                             pointsPerAttendance: context.pointsPerAttendance
                         }
@@ -92,6 +96,8 @@ function CourseMachine({ onFinish, initialContext, edit }) {
                 return SetCourseStudentAttendanceFormDataStep
             case 'setCourseStudentAdditionalInfoFormData':
                 return SetCourseStudentAdditionalInfoFormData
+            case 'setCourseTeachers':
+                return SetCourseTeachersStep
             case 'createCourse':
                 return LoadingBox
             case 'editCourse':

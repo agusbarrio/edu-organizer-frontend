@@ -3,6 +3,7 @@ import ENV_CONFIG from "./ENV_CONFIG";
 const authBaseUrl = `${ENV_CONFIG.NEXT_PUBLIC_API_URL}/auth`;
 const coursesBaseUrl = `${ENV_CONFIG.NEXT_PUBLIC_API_URL}/courses`;
 const courseAccessBaseUrl = `${ENV_CONFIG.NEXT_PUBLIC_API_URL}/course`;
+const teacherCoursesBaseUrl = `${ENV_CONFIG.NEXT_PUBLIC_API_URL}/teacher/courses`;
 const studentsBaseUrl = `${ENV_CONFIG.NEXT_PUBLIC_API_URL}/students`;
 const usersBaseUrl = `${ENV_CONFIG.NEXT_PUBLIC_API_URL}/users`;
 const userBaseUrl = `${ENV_CONFIG.NEXT_PUBLIC_API_URL}/user`;
@@ -29,6 +30,16 @@ export const COURSES_ENDPOINTS = {
 };
 export const COURSE_ACCESS_ENDPOINTS = {
     COURSE: `${courseAccessBaseUrl}`,
+};
+
+export const TEACHER_COURSE_ENDPOINTS = {
+    COURSES: `${teacherCoursesBaseUrl}`,
+    COURSE: `${teacherCoursesBaseUrl}/{{courseId}}`,
+    STUDENTS: `${teacherCoursesBaseUrl}/{{courseId}}/students`,
+    STUDENT: `${teacherCoursesBaseUrl}/{{courseId}}/students/{{studentId}}`,
+    NEW_CLASS: `${teacherCoursesBaseUrl}/{{courseId}}/newClass`,
+    CLASS_SESSIONS: `${teacherCoursesBaseUrl}/{{courseId}}/classSessions`,
+    CLASS_SESSION: `${teacherCoursesBaseUrl}/{{courseId}}/classSessions/{{classSessionId}}`,
 };
 
 export const STUDENTS_ENDPOINTS = {

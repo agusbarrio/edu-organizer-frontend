@@ -10,6 +10,9 @@ import useSessionContext from "hooks/useSessionContext"
 import { useMemo } from "react"
 import useCourseLoginService from "services/auth/useCourseLoginService"
 
+/**
+ * @deprecated PIN-based course login is being superseded by the teacher portal (logged-in users with TEACHER). Kept until migration is complete.
+ */
 function CourseLoginPage() {
     const { translate } = useLocaleContext()
     const { courseLogin: courseLoginContext } = useSessionContext()

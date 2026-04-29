@@ -11,15 +11,22 @@ import useDate from "hooks/useDate";
 import useEditClassSessionService from "services/classSessions/useEditClassSession";
 import useGetAllStudentsService from "services/students/useGetAllStudentsService";
 import useEditClassSessionCourse from "services/courseAccess/useEditClassSessionCourse";
+import useGetTeacherCourseStudentsService from "services/teacherCourse/useGetTeacherCourseStudentsService";
+import useTeacherNewClassService from "services/teacherCourse/useTeacherNewClassService";
+import useEditTeacherClassSessionService from "services/teacherCourse/useEditTeacherClassSessionService";
 
 
-function ClassSessionMachine({ onFinish, initialContext, course, edit, forTeacher = false }) {
+function ClassSessionMachine({ onFinish, initialContext, course, edit, forTeacher = false, dashboardTeacher = false }) {
     const { getCourseStudents } = useGetCourseStudentsService();
+    const { getTeacherCourseStudents } = useGetTeacherCourseStudentsService();
     const { getAllStudents } = useGetAllStudentsService();
     const { editClassSession } = useEditClassSessionService();
     const { editClassSessionCourse } = useEditClassSessionCourse();
+    const { editTeacherClassSession } = useEditTeacherClassSessionService();
     const { createNewCourseClass } = useCreateNewCourseClassService()
+    const { createTeacherNewClass } = useTeacherNewClassService()
     const { getNow } = useDate()
+    const resolvedCourse = initialContext?.course || course
     const machine = useLocalMachine(edit, forTeacher)
     const [state, send] = useMachine(machine, {
         context: {
@@ -37,7 +44,12 @@ function ClassSessionMachine({ onFinish, initialContext, course, edit, forTeache
         },
         services: {
             getStudents: async () => {
-                const result = await getCourseStudents();
+                let result;
+                if (dashboardTeacher) {
+                    result = await getTeacherCourseStudents(resolvedCourse?.id);
+                } else {
+                    result = await getCourseStudents();
+                }
                 if (!result) throw new Error('Error al obtener los estudiantes');
                 return result;
             },
@@ -49,7 +61,12 @@ function ClassSessionMachine({ onFinish, initialContext, course, edit, forTeache
             createNewCourseClass: async (context) => {
                 const presentStudentsData = context.presentStudentsData
                 const date = context.date
-                const result = await createNewCourseClass({ presentStudentsData, date });
+                let result
+                if (dashboardTeacher) {
+                    result = await createTeacherNewClass(context.course.id, { presentStudentsData, date });
+                } else {
+                    result = await createNewCourseClass({ presentStudentsData, date });
+                }
                 if (!result) throw new Error('Error al guardar la clase');
                 return result;
             },
@@ -57,10 +74,11 @@ function ClassSessionMachine({ onFinish, initialContext, course, edit, forTeache
                 const presentStudentsData = context.presentStudentsData
                 const date = context.date
                 let result
-                if (forTeacher) {
+                if (dashboardTeacher) {
+                    result = await editTeacherClassSession(context.course.id, context.id, { presentStudentsData, date });
+                } else if (forTeacher) {
                     result = await editClassSessionCourse(context.id, { presentStudentsData, date });
                 } else {
-
                     result = await editClassSession(context.id, { presentStudentsData, date });
                 }
                 if (!result) throw new Error('Error al guardar la clase');
