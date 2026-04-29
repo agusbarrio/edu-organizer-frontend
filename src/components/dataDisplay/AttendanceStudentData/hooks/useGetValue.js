@@ -19,6 +19,7 @@ function useGetValue(studentAttendanceFormData) {
         if (input?.type === INPUT_TYPES.TEXT) {
             return value
         }
+        return typeof value === 'string' ? value : JSON.stringify(value)
 
     }, [studentAttendanceFormData])
 

@@ -16,6 +16,7 @@ function useGetPoints(course) {
                 //si es un checkbox
                 const studentAttendanceFormData = course?.studentAttendanceFormData
                 const fieldConfig = studentAttendanceFormData?.find((field) => field.name === key)
+                if (!fieldConfig) return
                 if (fieldConfig.type === INPUT_TYPES.CHECKBOX) {
                     if (value === true) {
                         const pointsToAdd = fieldConfig?.metadata?.pointsToAdd || 0
