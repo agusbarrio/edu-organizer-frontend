@@ -1,5 +1,5 @@
 import { ArrowBack, ArrowForward, Check, Close } from "@mui/icons-material";
-import { Box, Button, Divider, Stack } from "@mui/material";
+import { Box, Button, Stack } from "@mui/material";
 import Truncate from "components/generic/Truncate";
 import CORE_TEXTS from "constants/CORE_TEXTS";
 import useLocaleContext from "hooks/useLocaleContext";
@@ -28,10 +28,9 @@ function StepTemplate({ children, onClickBack, onClickNext, onClickCancel, onCli
     return (
         <Stack width={'100%'} height={'100%'} id="lero">
             {(!!title || !!subtitle) &&
-                <Stack width={'100%'} pb={1} ref={titleRef}>
+                <Stack width={'100%'} pb={2} ref={titleRef}>
                     {!!title && <Truncate line={1} element={'h3'} variant={'h6'} sx={{ fontWeight: 'bold' }}>{title}</Truncate>}
                     {!!subtitle && <Truncate line={2} element={'h4'} variant={'subtitle2'} sx={{ pl: 2, fontWeight: 'bold' }}>{subtitle}</Truncate>}
-                    <Divider></Divider>
                 </Stack>}
             <Box height={`calc(100% - ${buttonsHeight + titleHeight}px)`} sx={{ overflowY: 'auto' }}>
                 {children}

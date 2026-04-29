@@ -7,8 +7,8 @@ import useLocaleContext from "hooks/useLocaleContext";
 import useNavigate from "hooks/useNavigate";
 import useService from "hooks/useService";
 import ClassSessionMachine from "machines/ClassSessionMachine";
-import moment from "moment";
 import { useCallback, useEffect, useMemo } from "react";
+import { parseCalendarDateForForm } from "utils/calendarDate";
 import useGetTeacherClassSessionService from "services/teacherCourse/useGetTeacherClassSessionService";
 import { renderText } from "utils/text";
 
@@ -41,7 +41,7 @@ function TeacherCourseEditClassSessionPage() {
             classSession
                 ? {
                     course: classSession?.course,
-                    date: moment(classSession?.date),
+                    date: parseCalendarDateForForm(classSession?.date),
                     id: classSession?.id,
                     presentStudentsIds: classSession?.classSessionStudents
                         ?.filter((row) => row.isPresent)

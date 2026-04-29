@@ -12,10 +12,11 @@ import AlertModal from "components/generic/modals/AlertModal"
 import _ from "lodash"
 import AttendanceStudentData from "components/dataDisplay/AttendanceStudentData"
 import moment from "moment"
+import { calendarMoment } from "utils/calendarDate"
 
 
 function ClassSessionsStudentsTable({ classSessionsStudents = [], showCourse = true, showStudent = true, showTotalPoints = true, showDate = true, showMonth = true, course }) {
-    const { translate, formatDate } = useLocaleContext()
+    const { translate, formatDate, formatCalendarDate } = useLocaleContext()
     const { getPoints } = useGetPoints(course)
     const { openModal } = useModalContext()
 
@@ -74,7 +75,7 @@ function ClassSessionsStudentsTable({ classSessionsStudents = [], showCourse = t
                 type: 'singleSelect',
                 headerName: translate(TEXTS.CLASS_SESSION_MONTH_LABEL),
                 valueGetter: ({ row }) => {
-                    const month = moment(row?.classSession?.date).month()
+                    const month = calendarMoment(row?.classSession?.date).month()
                     return month
                 },
                 valueFormatter: ({ value }) => {
@@ -98,10 +99,9 @@ function ClassSessionsStudentsTable({ classSessionsStudents = [], showCourse = t
             result.unshift({
                 field: 'date',
                 flex: 1,
-                type: 'date',
                 headerName: translate(TEXTS.CLASS_SESSION_DATE_LABEL),
-                valueGetter: ({ row }) => moment(row?.classSession?.date),
-                valueFormatter: ({ value }) => formatDate(value),
+                valueGetter: ({ row }) => row?.classSession?.date,
+                valueFormatter: ({ value }) => formatCalendarDate(value),
                 hideable: false
             })
         }
@@ -124,7 +124,7 @@ function ClassSessionsStudentsTable({ classSessionsStudents = [], showCourse = t
             })
         }
         return result
-    }, [translate, getPoints, showCourse, showStudent, handleClickMetadata, formatDate, showDate, showMonth])
+    }, [translate, getPoints, showCourse, showStudent, handleClickMetadata, formatDate, formatCalendarDate, showDate, showMonth])
 
     const slotProps = useMemo(() => {
         const result = {}

@@ -50,7 +50,6 @@ function SetCourseTeachersStep({ state, send }) {
     return (
         <StepTemplate
             title={translate(TEXTS.SET_COURSE_TEACHERS_TITLE)}
-            subtitle={translate(TEXTS.SET_COURSE_TEACHERS_HELP)}
             onClickBack={handleBack}
             onClickFinish={handleFinish}
         >

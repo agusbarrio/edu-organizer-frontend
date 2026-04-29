@@ -8,6 +8,7 @@ import StudentForm from "components/forms/StudentForm"
 import { useCallback } from "react"
 import useCreateNewStudentService from "services/courseAccess/useCreateNewStudent"
 import useSessionContext from "hooks/useSessionContext"
+import { serializeOptionalDateOnlyForApi } from "utils/calendarDate"
 
 function CourseNewStudentPage() {
     const { translate } = useLocaleContext()
@@ -21,7 +22,7 @@ function CourseNewStudentPage() {
             lastName: data.lastName,
             courseId: data.courseId,
             avatarFileId: data.avatar?.id || null,
-            birthDate: data.birthDate,
+            birthDate: serializeOptionalDateOnlyForApi(data.birthDate),
             additionalInfo: data.additionalInfo
         })
         if (result) go(PATHS.COURSE)

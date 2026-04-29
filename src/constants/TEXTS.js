@@ -79,10 +79,6 @@ const TEXTS = {
     SET_COURSE_DATA_TITLE: { es: 'Datos del curso', en: 'Course data' },
     SET_COURSE_STUDENTS_TITLE: { es: 'Selección de estudiantes', en: 'Students selection' },
     SET_COURSE_TEACHERS_TITLE: { es: 'Profesores del curso', en: 'Course teachers' },
-    SET_COURSE_TEACHERS_HELP: {
-        es: 'Elegí qué usuarios con permiso de profesor pueden gestionar este curso desde el panel (nueva clase, estudiantes, clases).',
-        en: 'Choose which users with the teacher role can manage this course from the dashboard (new class, students, classes).',
-    },
     SET_COURSE_TEACHERS_LABEL: { es: 'Profesores asignados', en: 'Assigned teachers' },
     SET_COURSE_CLASS_SESSIONS_CONFIG_TITLE: { es: 'Configuración de clases', en: 'Class sessions config' },
     RECOVER_PAGE_TITLE: { es: 'Recuperar contraseña', en: 'Recover password' },

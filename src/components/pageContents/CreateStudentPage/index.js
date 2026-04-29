@@ -9,6 +9,7 @@ import useNavigate from "hooks/useNavigate"
 import { useCallback, useRef } from "react"
 import useCreateStudentService from "services/students/useCreateStudentService"
 import { renderText } from "utils/text"
+import { serializeOptionalDateOnlyForApi } from "utils/calendarDate"
 
 function CreateStudentPage() {
     const { translate } = useLocaleContext()
@@ -23,7 +24,7 @@ function CreateStudentPage() {
             lastName: data.lastName,
             courseId: data.courseId,
             avatarFileId: data.avatar?.id || null,
-            birthDate: data.birthDate,
+            birthDate: serializeOptionalDateOnlyForApi(data.birthDate),
             additionalInfo: data.additionalInfo,
             filesIds: data.files?.map((file) => file.id) || []
         })

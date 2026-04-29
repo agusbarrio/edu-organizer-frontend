@@ -4,6 +4,7 @@ import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { renderText } from 'utils/text';
 import moment from 'moment';
+import { formatCalendarDateValue } from 'utils/calendarDate';
 export const LocaleContext = createContext();
 
 function LocaleContextProvider({
@@ -43,8 +44,15 @@ function LocaleContextProvider({
     return moment(date).format(format);
   }, [resultDateFormat])
 
+  const formatCalendarDate = useCallback(
+    (date, format = resultDateFormat) => formatCalendarDateValue(date, format),
+    [resultDateFormat]
+  );
+
   return (
-    <LocaleContext.Provider value={{ translate, dateFormat: resultDateFormat, formatDate, lang: currentLang }}>
+    <LocaleContext.Provider
+      value={{ translate, dateFormat: resultDateFormat, formatDate, formatCalendarDate, lang: currentLang }}
+    >
       <LocalizationProvider
         dateAdapter={AdapterMoment}
         dateFormats={{ fullDate: resultDateFormat }}

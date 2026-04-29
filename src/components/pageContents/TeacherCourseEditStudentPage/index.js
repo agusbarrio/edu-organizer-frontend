@@ -10,8 +10,8 @@ import { useCallback, useEffect, useMemo } from "react";
 import useEditTeacherCourseStudentService from "services/teacherCourse/useEditTeacherCourseStudentService";
 import useGetTeacherCourseStudentService from "services/teacherCourse/useGetTeacherCourseStudentService";
 import useGetTeacherCourseService from "services/teacherCourse/useGetTeacherCourseService";
-import moment from "moment";
 import { renderText } from "utils/text";
+import { parseOptionalCalendarDateForForm, serializeOptionalDateOnlyForApi } from "utils/calendarDate";
 
 function TeacherCourseEditStudentPage() {
     const { translate } = useLocaleContext();
@@ -49,7 +49,7 @@ function TeacherCourseEditStudentPage() {
                 firstName: data.firstName,
                 lastName: data.lastName,
                 avatarFileId: data.avatar?.id || null,
-                birthDate: data.birthDate,
+                birthDate: serializeOptionalDateOnlyForApi(data.birthDate),
                 additionalInfo: data.additionalInfo,
             });
             if (result) {
@@ -63,7 +63,7 @@ function TeacherCourseEditStudentPage() {
         if (!currentStudent) return undefined;
         return {
             ...currentStudent,
-            birthDate: currentStudent.birthDate ? moment(currentStudent.birthDate) : null,
+            birthDate: parseOptionalCalendarDateForForm(currentStudent.birthDate),
             avatar: currentStudent.avatar || null,
             course,
         };

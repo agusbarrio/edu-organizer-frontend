@@ -9,7 +9,7 @@ import PATHS from "constants/PATHS"
 import { renderText } from "utils/text"
 
 function CourseStudentsDataTable({ students = [], getEditStudentPath }) {
-    const { translate } = useLocaleContext()
+    const { translate, formatCalendarDate } = useLocaleContext()
     const { go } = useNavigate()
 
     const resolveEditPath = useMemo(
@@ -21,7 +21,13 @@ function CourseStudentsDataTable({ students = [], getEditStudentPath }) {
         return [
             { field: 'firstName', flex: 1, headerName: translate(TEXTS.STUDENT_FIRST_NAME_LABEL), hideable: false },
             { field: 'lastName', flex: 1, headerName: translate(TEXTS.STUDENT_LAST_NAME_LABEL), hideable: false },
-            { field: 'birthDate', flex: 1, headerName: translate(TEXTS.STUDENT_BIRTH_DATE_LABEL) },
+            {
+                field: 'birthDate',
+                flex: 1,
+                headerName: translate(TEXTS.STUDENT_BIRTH_DATE_LABEL),
+                valueGetter: ({ row }) => row?.birthDate,
+                valueFormatter: ({ value }) => formatCalendarDate(value),
+            },
             {
                 field: 'actions',
                 type: 'actions',
@@ -32,7 +38,7 @@ function CourseStudentsDataTable({ students = [], getEditStudentPath }) {
                 hideable: false
             }
         ]
-    }, [go, translate, resolveEditPath])
+    }, [go, translate, formatCalendarDate, resolveEditPath])
 
     return <CustomDataGrid rows={students} columns={columns}></CustomDataGrid>
 }

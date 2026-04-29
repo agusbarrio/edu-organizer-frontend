@@ -6,8 +6,8 @@ import useLocaleContext from "hooks/useLocaleContext"
 import useNavigate from "hooks/useNavigate"
 import useService from "hooks/useService"
 import ClassSessionMachine from "machines/ClassSessionMachine"
-import moment from "moment"
 import { useCallback, useEffect, useMemo } from "react"
+import { parseCalendarDateForForm } from "utils/calendarDate"
 import useGetClassSessionService from "services/classSessions/useGetClassSessionService"
 import { renderText } from "utils/text"
 
@@ -30,7 +30,7 @@ function EditClassSessionPage() {
 
     const initialContext = useMemo(() => ({
         course: classSession?.course,
-        date: moment(classSession?.date),
+        date: parseCalendarDateForForm(classSession?.date),
         id: classSession?.id,
         presentStudentsIds: classSession?.classSessionStudents?.filter(classSessionStudent => classSessionStudent.isPresent).map(classSessionStudent => classSessionStudent.studentId),
         presentStudentsData: classSession?.classSessionStudents.filter(classSessionStudent => classSessionStudent.isPresent).map(classSessionStudent => ({ ...classSessionStudent, metadata: classSessionStudent.metadata, id: classSessionStudent.studentId })),

@@ -13,12 +13,11 @@ import { useCallback } from "react"
 import useModalContext from "hooks/useModalContext"
 import ConfirmModal from "components/generic/modals/ConfirmModal"
 import useDeleteClassSessionService from "services/classSessions/useDeleteClassSessionService"
-import moment from "moment"
 import _ from "lodash"
 
 
 function ClassSessionsTable({ classSessions = [], onDelete }) {
-    const { translate, formatDate } = useLocaleContext()
+    const { translate, formatCalendarDate } = useLocaleContext()
     const { go } = useNavigate()
     const { openModal } = useModalContext()
     const { deleteClassSession } = useDeleteClassSessionService()
@@ -48,10 +47,9 @@ function ClassSessionsTable({ classSessions = [], onDelete }) {
             {
                 field: 'date',
                 flex: 1,
-                type: 'date',
                 headerName: translate(TEXTS.CLASS_SESSION_DATE_LABEL),
-                valueGetter: ({ row }) => moment(row?.date),
-                valueFormatter: ({ value }) => formatDate(value),
+                valueGetter: ({ row }) => row?.date,
+                valueFormatter: ({ value }) => formatCalendarDate(value),
                 hideable: false
             },
             {
@@ -69,7 +67,7 @@ function ClassSessionsTable({ classSessions = [], onDelete }) {
                 hideable: false
             }
         ]
-    }, [translate, go, handleClickDelete, formatDate])
+    }, [translate, go, handleClickDelete, formatCalendarDate])
 
     return <CustomDataGrid
         rows={classSessions}

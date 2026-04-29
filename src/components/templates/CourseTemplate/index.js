@@ -30,7 +30,7 @@ function CourseTemplate({ children, title, loading, backButtonProps }) {
                             {title &&
                                 <Stack padding={1} pb={0} flexShrink={0}>
                                     {!!backButtonProps && <Button size="small" startIcon={<ArrowBack></ArrowBack>} {...backButtonProps} sx={{ width: 'max-content', ...backButtonProps?.sx }}></Button>}
-                                    {!!title && <Truncate line={1} element={'h1'} variant={'h4'} sx={{ pl: 2, fontWeight: 'bold', alignSelf: 'center' }}>{title}</Truncate>}
+                                    {!!title && <Truncate line={1} element={'h1'} variant={'h4'} sx={{ pl: 2, pt: 2, fontWeight: 'bold', alignSelf: 'center' }}>{title}</Truncate>}
                                 </Stack>}
                             <Box sx={{
                                 flex: 1,

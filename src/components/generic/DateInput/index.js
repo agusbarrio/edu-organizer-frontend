@@ -3,7 +3,7 @@ import { DateField } from '@mui/x-date-pickers';
 
 import useLocaleContext from 'hooks/useLocaleContext';
 import _ from 'lodash';
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 
 
 /**
@@ -13,18 +13,14 @@ import { useCallback, useState } from 'react';
  */
 function DateInput({ onChange, size, error, helperText, value: valueProp = null, ...props }) {
   const { dateFormat } = useLocaleContext();
-  const [value, setValue] = useState(valueProp)
-
-
 
   const handleChange = useCallback((newValue) => {
-    setValue(newValue)
     if (_.isFunction(onChange)) onChange(newValue)
   }, [onChange])
   return (
     <FormControl error={error} size={size}>
       <DateField
-        value={value}
+        value={valueProp}
         onChange={handleChange}
         format={dateFormat}
         size={size}

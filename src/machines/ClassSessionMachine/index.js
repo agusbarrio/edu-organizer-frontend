@@ -14,6 +14,7 @@ import useEditClassSessionCourse from "services/courseAccess/useEditClassSession
 import useGetTeacherCourseStudentsService from "services/teacherCourse/useGetTeacherCourseStudentsService";
 import useTeacherNewClassService from "services/teacherCourse/useTeacherNewClassService";
 import useEditTeacherClassSessionService from "services/teacherCourse/useEditTeacherClassSessionService";
+import { serializeDateOnlyForApi } from "utils/calendarDate";
 
 
 function ClassSessionMachine({ onFinish, initialContext, course, edit, forTeacher = false, dashboardTeacher = false }) {
@@ -60,7 +61,7 @@ function ClassSessionMachine({ onFinish, initialContext, course, edit, forTeache
             },
             createNewCourseClass: async (context) => {
                 const presentStudentsData = context.presentStudentsData
-                const date = context.date
+                const date = serializeDateOnlyForApi(context.date)
                 let result
                 if (dashboardTeacher) {
                     result = await createTeacherNewClass(context.course.id, { presentStudentsData, date });
@@ -72,7 +73,7 @@ function ClassSessionMachine({ onFinish, initialContext, course, edit, forTeache
             },
             editClassSession: async (context) => {
                 const presentStudentsData = context.presentStudentsData
-                const date = context.date
+                const date = serializeDateOnlyForApi(context.date)
                 let result
                 if (dashboardTeacher) {
                     result = await editTeacherClassSession(context.course.id, context.id, { presentStudentsData, date });

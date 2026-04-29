@@ -15,7 +15,7 @@ import ViewDetailsIconButton from "components/generic/ViewDetailsIconButton"
 import _ from "lodash"
 
 function StudentsDataTable({ students = [], onDelete, deleteAllowed = true, editAllowed = true, showCourse = false }) {
-    const { translate } = useLocaleContext()
+    const { translate, formatCalendarDate } = useLocaleContext()
     const { go } = useNavigate()
     const { openModal } = useModalContext()
     const { deleteStudent } = useDeleteStudentService()
@@ -46,7 +46,13 @@ function StudentsDataTable({ students = [], onDelete, deleteAllowed = true, edit
         const columns = [
             { field: 'firstName', flex: 1, headerName: translate(TEXTS.STUDENT_FIRST_NAME_LABEL), hideable: false },
             { field: 'lastName', flex: 1, headerName: translate(TEXTS.STUDENT_LAST_NAME_LABEL), hideable: false },
-            { field: 'birthDate', flex: 1, headerName: translate(TEXTS.STUDENT_BIRTH_DATE_LABEL) },
+            {
+                field: 'birthDate',
+                flex: 1,
+                headerName: translate(TEXTS.STUDENT_BIRTH_DATE_LABEL),
+                valueGetter: ({ row }) => row?.birthDate,
+                valueFormatter: ({ value }) => formatCalendarDate(value),
+            },
             {
                 field: 'actions',
                 type: 'actions',
@@ -73,7 +79,7 @@ function StudentsDataTable({ students = [], onDelete, deleteAllowed = true, edit
             })
         }
         return columns
-    }, [translate, navigateToStudent, handleClickDeleteStudent, navigateToEditStudent, deleteAllowed, editAllowed, showCourse])
+    }, [translate, formatCalendarDate, navigateToStudent, handleClickDeleteStudent, navigateToEditStudent, deleteAllowed, editAllowed, showCourse])
 
     return <CustomDataGrid rows={students} columns={columns}></CustomDataGrid>
 }

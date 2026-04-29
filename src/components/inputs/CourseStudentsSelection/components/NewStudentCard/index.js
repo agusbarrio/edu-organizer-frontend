@@ -4,6 +4,7 @@ import CORE_TEXTS from "constants/CORE_TEXTS";
 import TEXTS from "constants/TEXTS";
 import useLocaleContext from "hooks/useLocaleContext";
 import { useCallback, useRef } from "react";
+import { serializeOptionalDateOnlyForApi } from "utils/calendarDate";
 
 
 function NewStudentCard({ onSubmit }) {
@@ -15,7 +16,7 @@ function NewStudentCard({ onSubmit }) {
             lastName: data.lastName,
             courseId: data.courseId,
             avatarFileId: data.avatar?.id || null,
-            birthDate: data.birthDate,
+            birthDate: serializeOptionalDateOnlyForApi(data.birthDate),
             additionalInfo: data.additionalInfo
         })
         if (formRef.current) formRef.current.reset()

@@ -10,6 +10,7 @@ import { useCallback, useEffect } from "react";
 import useCreateTeacherCourseStudentService from "services/teacherCourse/useCreateTeacherCourseStudentService";
 import useGetTeacherCourseService from "services/teacherCourse/useGetTeacherCourseService";
 import { renderText } from "utils/text";
+import { serializeOptionalDateOnlyForApi } from "utils/calendarDate";
 
 function TeacherCourseNewStudentPage() {
     const { translate } = useLocaleContext();
@@ -32,7 +33,7 @@ function TeacherCourseNewStudentPage() {
                 firstName: data.firstName,
                 lastName: data.lastName,
                 avatarFileId: data.avatar?.id || null,
-                birthDate: data.birthDate,
+                birthDate: serializeOptionalDateOnlyForApi(data.birthDate),
                 additionalInfo: data.additionalInfo,
             });
             if (result) {

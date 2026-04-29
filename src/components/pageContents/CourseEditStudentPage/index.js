@@ -10,7 +10,7 @@ import useSessionContext from "hooks/useSessionContext"
 import useGetCourseStudentService from "services/courseAccess/useGetCourseStudentService"
 import useService from "hooks/useService"
 import useEditCourseStudentService from "services/courseAccess/useEditCourseStudentService"
-import moment from "moment"
+import { parseOptionalCalendarDateForForm, serializeOptionalDateOnlyForApi } from "utils/calendarDate"
 
 function CourseEditStudentPage() {
     const { translate } = useLocaleContext()
@@ -30,7 +30,7 @@ function CourseEditStudentPage() {
             firstName: data.firstName,
             lastName: data.lastName,
             avatarFileId: data.avatar?.id || null,
-            birthDate: data.birthDate,
+            birthDate: serializeOptionalDateOnlyForApi(data.birthDate),
             additionalInfo: data.additionalInfo
         })
         if (result) go(PATHS.COURSE_STUDENTS)
@@ -40,7 +40,7 @@ function CourseEditStudentPage() {
         if (!currentStudent) return undefined
         return {
             ...currentStudent,
-            birthDate: currentStudent.birthDate ? moment(currentStudent.birthDate) : null,
+            birthDate: parseOptionalCalendarDateForForm(currentStudent.birthDate),
             avatar: currentStudent.avatar || null,
             course
         }
