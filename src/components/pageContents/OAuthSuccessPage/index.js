@@ -1,12 +1,9 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import { Stack, Typography } from "@mui/material";
 import PublicTemplate from "components/templates/PublicTemplate";
 import PATHS from "constants/PATHS";
-import TEXTS from "constants/TEXTS";
 import { AUTH_ENDPOINTS } from "constants/ENDPOINTS";
-import useLocaleContext from "hooks/useLocaleContext";
 import useSessionContext from "hooks/useSessionContext";
 
 function parseAccessTokenFromHash() {
@@ -16,7 +13,6 @@ function parseAccessTokenFromHash() {
 }
 
 function OAuthSuccessPage() {
-    const { translate } = useLocaleContext();
     const { userLogin } = useSessionContext();
     const router = useRouter();
 
@@ -58,13 +54,7 @@ function OAuthSuccessPage() {
         };
     }, [router, userLogin]);
 
-    return (
-        <PublicTemplate title={translate(TEXTS.OAUTH_SUCCESS_PAGE_TITLE)}>
-            <Stack spacing={2} alignItems="center" width="100%">
-                <Typography color="text.secondary">{translate(TEXTS.OAUTH_SUCCESS_PAGE_PENDING)}</Typography>
-            </Stack>
-        </PublicTemplate>
-    );
+    return <PublicTemplate loading />;
 }
 
 export default OAuthSuccessPage;

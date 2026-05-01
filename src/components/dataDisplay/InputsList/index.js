@@ -10,7 +10,7 @@ function InputsList({ onClickItem, inputs = [], itemIconProps, cardTitle, help }
         <Card title={cardTitle} help={help}>
             <List >
                 {inputs.map((input) =>
-                    <Fragment key={input.name}>
+                    <Fragment key={input.key ?? input.name}>
                         <InputListItem
                             onClick={() => onClickItem(input)}
                             input={input}

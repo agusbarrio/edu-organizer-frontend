@@ -11,7 +11,7 @@ function AdditionalInformationFields({ fields = [], prefix }) {
                 const resultName = prefix ? `${prefix}.${inputData.name}` : inputData.name
                 return <ControllerInput
                     {...controllerInputProps}
-                    key={resultName}
+                    key={inputData.key ?? resultName}
                     name={resultName}
                 ></ControllerInput>
             })}

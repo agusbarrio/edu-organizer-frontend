@@ -11,9 +11,9 @@ function NumberInput({ value: valueProp, onChange, ...props }) {
     }, [valueProp])
 
     const handleValueChange = useCallback((values) => {
-        onChange({
+        onChange?.({
             target: {
-                value: values.floatValue || 0
+                value: values.floatValue ?? 0
             }
         })
     }, [onChange])
