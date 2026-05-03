@@ -76,7 +76,7 @@ const AvatarEditor = forwardRef(({ label, value, onChange }, ref) => {
         <Stack direction={'row'} justifyContent={'center'}>
             {!file ? (
                 <StyledDiv  {...getRootProps({ isFocused, isDragAccept, isDragReject })} >
-                    <input {...getInputProps()} />
+                    <input {...getInputProps()} capture />
                     <CloudUpload sx={{ fontSize: 100 }} color={"primary"} />
                     <Typography variant={"h6"}>{label}</Typography>
                 </StyledDiv>
