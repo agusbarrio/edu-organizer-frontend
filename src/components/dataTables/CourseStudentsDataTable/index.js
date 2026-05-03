@@ -6,10 +6,11 @@ import { useMemo } from "react"
 import CustomDataGrid from "components/generic/CustomDataGrid"
 import StudentAvatarWithPreview from "components/dataDisplay/StudentAvatarWithPreview"
 import EditIconButton from "components/generic/EditIconButton"
+import ViewDetailsIconButton from "components/generic/ViewDetailsIconButton"
 import PATHS from "constants/PATHS"
 import { renderText } from "utils/text"
 
-function CourseStudentsDataTable({ students = [], getEditStudentPath }) {
+function CourseStudentsDataTable({ students = [], getEditStudentPath, getViewStudentPath }) {
     const { translate, formatCalendarDate } = useLocaleContext()
     const { go } = useNavigate()
 
@@ -46,15 +47,25 @@ function CourseStudentsDataTable({ students = [], getEditStudentPath }) {
             {
                 field: 'actions',
                 type: 'actions',
-                width: 64,
+                width: getViewStudentPath ? 112 : 64,
                 headerName: translate(CORE_TEXTS.GENERIC_ACTIONS),
-                getActions: ({ id }) => ([
-                    <EditIconButton key={`edit-${id}`} onClick={() => { go(resolveEditPath(id)) }} />
-                ]),
+                getActions: ({ id }) => {
+                    const actions = []
+
+                    actions.push(
+                        <EditIconButton key={`edit-${id}`} onClick={() => { go(resolveEditPath(id)) }} />
+                    )
+                    if (getViewStudentPath) {
+                        actions.push(
+                            <ViewDetailsIconButton key={`view-${id}`} onClick={() => go(getViewStudentPath(id))} />
+                        )
+                    }
+                    return actions
+                },
                 hideable: false
             }
         ]
-    }, [go, translate, formatCalendarDate, resolveEditPath])
+    }, [go, translate, formatCalendarDate, resolveEditPath, getViewStudentPath])
 
     return (
         <CustomDataGrid

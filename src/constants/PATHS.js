@@ -42,6 +42,7 @@ const PATHS = {
     TEACHER_COURSE_NEW_CLASS: '/dashboard/teacher/courses/{{courseId}}/new-class',
     TEACHER_COURSE_NEW_STUDENT: '/dashboard/teacher/courses/{{courseId}}/new-student',
     TEACHER_COURSE_STUDENTS: '/dashboard/teacher/courses/{{courseId}}/students',
+    TEACHER_COURSE_STUDENT: '/dashboard/teacher/courses/{{courseId}}/students/{{studentId}}',
     TEACHER_COURSE_EDIT_STUDENT: '/dashboard/teacher/courses/{{courseId}}/students/{{studentId}}/edit',
     TEACHER_COURSE_CLASS_SESSIONS: '/dashboard/teacher/courses/{{courseId}}/class-sessions',
     TEACHER_COURSE_CLASS_SESSION: '/dashboard/teacher/courses/{{courseId}}/class-sessions/{{classSessionId}}',

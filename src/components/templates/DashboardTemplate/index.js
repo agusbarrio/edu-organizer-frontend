@@ -1,5 +1,5 @@
 import { ArrowBack } from "@mui/icons-material";
-import { Box, Button, Stack, } from "@mui/material";
+import { Box, Button, Stack, Typography } from "@mui/material";
 import Header from "components/dataDisplay/Header";
 import DrawerMenu from "components/dataDisplay/DrawerMenu";
 import { useCallback, useRef } from "react";
@@ -39,7 +39,17 @@ function DashboardTemplate({ children, title, subtitle, backButtonProps, rightBu
                                 <Stack>
                                     {!!backButtonProps && <Button size="small" startIcon={<ArrowBack></ArrowBack>} {...backButtonProps} sx={{ width: 'max-content', ...backButtonProps?.sx }}></Button>}
                                     {!!title && <Truncate line={1} element={'h1'} variant={'h4'} sx={{ pl: 2, fontWeight: 'bold' }}>{title}</Truncate>}
-                                    {!!subtitle && <Truncate line={2} element={'h2'} variant={'subtitle1'} sx={{ pl: 2, fontWeight: 'bold' }}>{subtitle}</Truncate>}
+                                    {!!subtitle && (
+                                        <Truncate
+                                            line={2}
+                                            component={Typography}
+                                            variant="subtitle1"
+                                            color="text.secondary"
+                                            sx={{ pl: 2, textAlign: 'center' }}
+                                        >
+                                            {subtitle}
+                                        </Truncate>
+                                    )}
                                 </Stack>
                                 <Stack justifyContent={'center'} alignItems={'center'}>
                                     {!!rightButtonProps && <Button variant="contained" size="small"{...rightButtonProps}></Button>}

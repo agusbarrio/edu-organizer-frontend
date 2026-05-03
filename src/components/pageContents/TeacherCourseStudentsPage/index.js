@@ -63,6 +63,9 @@ function TeacherCourseStudentsPage() {
             <CourseStudentsDataTable
                 students={students}
                 getEditStudentPath={getEditStudentPath}
+                getViewStudentPath={(studentId) =>
+                    renderText(PATHS.TEACHER_COURSE_STUDENT, { courseId, studentId })
+                }
             />
         </DashboardTemplate>
     );
