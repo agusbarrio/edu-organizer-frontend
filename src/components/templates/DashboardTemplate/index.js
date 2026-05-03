@@ -1,8 +1,8 @@
 import { ArrowBack } from "@mui/icons-material";
-import { Box, Button, Divider, Stack, } from "@mui/material";
+import { Box, Button, Stack, } from "@mui/material";
 import Header from "components/dataDisplay/Header";
 import DrawerMenu from "components/dataDisplay/DrawerMenu";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useRef } from "react";
 import Truncate from "components/generic/Truncate";
 import LoadingBox from "components/dataDisplay/LoadingBox";
 
@@ -11,8 +11,6 @@ const drawerWidth = 240;
 function DashboardTemplate({ children, title, subtitle, backButtonProps, rightButtonProps, loading = false }) {
 
     const drawerRef = useRef(null)
-    const headerRef = useRef(null)
-    const titleRef = useRef(null)
 
     const handleOpenDrawer = useCallback(() => {
         if (!!drawerRef?.current) {
@@ -20,29 +18,23 @@ function DashboardTemplate({ children, title, subtitle, backButtonProps, rightBu
         }
     }, [drawerRef]);
 
-    const [headerHeight, setHeaderHeight] = useState(0)
-    const [titleHeight, setTitleHeight] = useState(0)
-
-    useEffect(() => {
-        if (!!headerRef?.current) {
-            setHeaderHeight(headerRef.current.getBoundingClientRect().height)
-        }
-    }, [headerRef])
-
-    useEffect(() => {
-        if (!!titleRef?.current) {
-            setTitleHeight(titleRef.current.getBoundingClientRect().height)
-        }
-    }, [titleRef])
-
     return (
-        <Stack height={'100dvh'} width={'100vw'} >
-            <Header onClickDrawerButton={handleOpenDrawer} ref={headerRef}></Header>
-            <Stack direction={'row'} height={`calc(100% - ${headerHeight}px)`}>
+        <Stack height={'100dvh'} width={'100vw'} direction="column" sx={{ minHeight: 0, overflow: 'hidden' }}>
+            <Box sx={{ flexShrink: 0 }}>
+                <Header onClickDrawerButton={handleOpenDrawer}></Header>
+            </Box>
+            <Stack direction={'row'} sx={{ flex: 1, minHeight: 0 }}>
                 <DrawerMenu drawerWidth={drawerWidth} ref={drawerRef}></DrawerMenu>
-                <Box sx={{ flexGrow: 1, width: { xs: '100%', sm: `calc(100% - ${drawerWidth}px)` } }}>
+                <Box sx={{
+                    flexGrow: 1,
+                    minHeight: 0,
+                    width: { xs: '100%', sm: `calc(100% - ${drawerWidth}px)` },
+                    display: 'flex',
+                    flexDirection: 'column',
+                    overflow: 'hidden',
+                }}>
                     {(!!title || !!subtitle || !!backButtonProps) &&
-                        <Stack width={'100%'} padding={2} pb={0} ref={titleRef}>
+                        <Stack width={'100%'} padding={2} pb={0} flexShrink={0}>
                             <Stack direction={'row'} justifyContent={'space-between'}>
                                 <Stack>
                                     {!!backButtonProps && <Button size="small" startIcon={<ArrowBack></ArrowBack>} {...backButtonProps} sx={{ width: 'max-content', ...backButtonProps?.sx }}></Button>}
@@ -56,8 +48,14 @@ function DashboardTemplate({ children, title, subtitle, backButtonProps, rightBu
                         </Stack>}
                     {
                         loading
-                            ? <LoadingBox></LoadingBox>
-                            : <Box sx={{ padding: 2, height: `calc(100% - ${titleHeight}px)`, width: '100%' }} >
+                            ? <Box sx={{ flex: 1, minHeight: 0, width: '100%' }}><LoadingBox></LoadingBox></Box>
+                            : <Box sx={{
+                                flex: 1,
+                                minHeight: 0,
+                                width: '100%',
+                                overflowY: 'auto',
+                                padding: 2,
+                            }} >
                                 {children}
                             </Box>
                     }
