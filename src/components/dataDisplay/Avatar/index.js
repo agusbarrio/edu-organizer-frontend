@@ -1,6 +1,6 @@
 import { Avatar as AvatarMUI } from "@mui/material"
 import { useMemo } from "react"
-function Avatar({ src, alt, children }) {
+function Avatar({ src, alt, children, sx }) {
     const resultChildren = useMemo(() => {
         if (children) return children
         //Return initials
@@ -10,7 +10,7 @@ function Avatar({ src, alt, children }) {
         }
         return null
     }, [alt, children, src])
-    return <AvatarMUI src={src} alr={alt}>{resultChildren}</AvatarMUI>
+    return <AvatarMUI src={src} alt={alt} sx={sx}>{resultChildren}</AvatarMUI>
 }
 
 export default Avatar

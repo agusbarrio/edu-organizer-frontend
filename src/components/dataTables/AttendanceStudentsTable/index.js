@@ -2,7 +2,7 @@ import TEXTS from "constants/TEXTS"
 import useLocaleContext from "hooks/useLocaleContext"
 import { useMemo } from "react"
 import CustomDataGrid from "components/generic/CustomDataGrid"
-import Avatar from "components/dataDisplay/Avatar"
+import StudentAvatarWithPreview from "components/dataDisplay/StudentAvatarWithPreview"
 import { Stack, Typography } from "@mui/material"
 import { Check, CheckCircle } from "@mui/icons-material"
 
@@ -14,15 +14,19 @@ function AttendanceStudentsTable({ students = [], ...props }) {
         return [
             {
                 field: 'avatar',
-                flex: 1,
-                headerName: translate(TEXTS.STUDENT_AVATAR_LABEL),
-                renderCell: ({ row }) => {
-                    return <Avatar src={row.avatar?.file} alt={`${row.firstName} ${row.lastName}`}></Avatar>
-                },
+                width: 72,
+                minWidth: 72,
+                maxWidth: 72,
+                resizable: false,
+                sortable: false,
                 filterable: false,
+                align: 'center',
+                headerAlign: 'center',
+                headerName: translate(TEXTS.STUDENT_AVATAR_LABEL),
+                renderCell: ({ row }) => <StudentAvatarWithPreview row={row} size={40} />,
             },
-            { field: 'firstName', flex: 1, headerName: translate(TEXTS.STUDENT_FIRST_NAME_LABEL) },
-            { field: 'lastName', flex: 1, headerName: translate(TEXTS.STUDENT_LAST_NAME_LABEL) },
+            { field: 'firstName', flex: 1, minWidth: 120, headerName: translate(TEXTS.STUDENT_FIRST_NAME_LABEL) },
+            { field: 'lastName', flex: 1, minWidth: 120, headerName: translate(TEXTS.STUDENT_LAST_NAME_LABEL) },
         ]
     }, [translate])
 

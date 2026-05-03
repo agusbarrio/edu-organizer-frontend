@@ -76,6 +76,8 @@ const CORE_TEXTS = {
     GENERIC_ZOOM_OUT: { es: 'Alejar', en: 'Zoom out' },
     GENERIC_ZOOM_IN: { es: 'Acercar', en: 'Zoom in' },
     GENERIC_AVATAR_EDITOR_TITLE: { es: 'Foto de perfil', en: 'Profile picture' },
+    AVATAR_TAKE_PHOTO: { es: 'Tomar foto', en: 'Take photo' },
+    AVATAR_UPLOAD_FILES_HINT: { es: 'Arrastra una imagen aquí o haz clic para elegir un archivo', en: 'Drag an image here or click to choose a file' },
     VALIDATIONS_NAME: { es: 'Solo se permiten letras y espacios', en: 'Only letters and spaces are allowed' },
     GENERIC_DATE: { es: 'Fecha', en: 'Date' },
     GENERIC_LABEL_LABEL: { es: 'Etiqueta', en: 'Label' },

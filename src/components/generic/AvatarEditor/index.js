@@ -1,17 +1,18 @@
-import { Slider, Stack, Typography, useTheme } from "@mui/material";
-import { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useState } from "react";
+import { Button, Divider, Slider, Stack, Typography, useTheme } from "@mui/material";
+import { forwardRef, useCallback, useImperativeHandle, useMemo, useRef, useState } from "react";
 import ReactAvatarEditor from "react-avatar-editor";
 import { useDropzone } from "react-dropzone";
-import { Check, CloudUpload, Delete, ZoomIn, ZoomOut } from "@mui/icons-material"
+import { CloudUpload, Delete, PhotoCamera, ZoomIn, ZoomOut } from "@mui/icons-material"
 import useLocaleContext from "hooks/useLocaleContext";
 import styled from "@emotion/styled";
 import IconButton from "../IconButton";
 import CORE_TEXTS from "constants/CORE_TEXTS";
 
-const AvatarEditor = forwardRef(({ label, value, onChange }, ref) => {
+const AvatarEditor = forwardRef(({ label, value }, ref) => {
     const [editor, setEditor] = useState(null);
     const [file, setFile] = useState(value);
     const [scale, setScale] = useState(1);
+    const cameraInputRef = useRef(null);
     const { translate } = useLocaleContext();
     const handleScale = (e) => {
         setScale(parseFloat(e.target.value));
@@ -63,7 +64,9 @@ const AvatarEditor = forwardRef(({ label, value, onChange }, ref) => {
                 const canvas = editor.getImageScaledToCanvas()
                 return new Promise((resolve) => {
                     canvas.toBlob((blob) => {
-                        const newFile = new File([blob], file.name, { type: file.type })
+                        const name = file?.name || "photo.jpg"
+                        const type = file?.type || blob?.type || "image/jpeg"
+                        const newFile = new File([blob], name, { type })
                         resolve(newFile)
                     })
                 }
@@ -72,14 +75,42 @@ const AvatarEditor = forwardRef(({ label, value, onChange }, ref) => {
         }
     }), [editor, file])
 
+    const handleCameraChange = useCallback((e) => {
+        const picked = e.target.files?.[0]
+        if (picked) setFile(picked)
+        e.target.value = ""
+    }, [])
+
     return (
         <Stack direction={'row'} justifyContent={'center'}>
             {!file ? (
-                <StyledDiv  {...getRootProps({ isFocused, isDragAccept, isDragReject })} >
-                    <input {...getInputProps()} capture />
-                    <CloudUpload sx={{ fontSize: 100 }} color={"primary"} />
-                    <Typography variant={"h6"}>{label}</Typography>
-                </StyledDiv>
+                <Stack spacing={2} alignItems="center" sx={{ maxWidth: 280 }}>
+                    <StyledDiv {...getRootProps({ isFocused, isDragAccept, isDragReject })}>
+                        <input {...getInputProps()} />
+                        <CloudUpload sx={{ fontSize: 100 }} color={"primary"} />
+                        <Typography variant={"h6"} textAlign="center">{label}</Typography>
+                        <Typography variant="body2" color="text.secondary" textAlign="center" sx={{ mt: 1 }}>
+                            {translate(CORE_TEXTS.AVATAR_UPLOAD_FILES_HINT)}
+                        </Typography>
+                    </StyledDiv>
+                    <Divider sx={{ width: "100%" }} />
+                    <input
+                        ref={cameraInputRef}
+                        type="file"
+                        accept="image/png,image/jpeg"
+                        capture="environment"
+                        style={{ display: "none" }}
+                        onChange={handleCameraChange}
+                    />
+                    <Button
+                        variant="outlined"
+                        color="primary"
+                        startIcon={<PhotoCamera />}
+                        onClick={() => cameraInputRef.current?.click()}
+                    >
+                        {translate(CORE_TEXTS.AVATAR_TAKE_PHOTO)}
+                    </Button>
+                </Stack>
 
             ) : (
                 <Stack>

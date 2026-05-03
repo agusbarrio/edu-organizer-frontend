@@ -1,7 +1,9 @@
 import { Download } from "@mui/icons-material"
+import { Stack } from "@mui/material"
 import Card from "components/generic/Card"
 import FileChip from "components/generic/FileChip"
 import LabelValue from "components/generic/LabelValue"
+import StudentAvatarWithPreview from "components/dataDisplay/StudentAvatarWithPreview"
 import TEXTS from "constants/TEXTS"
 import useLocaleContext from "hooks/useLocaleContext"
 import { useCallback } from "react"
@@ -20,6 +22,9 @@ function StudentDataCard({ student }) {
 
     return (
         <Card title={translate(TEXTS.STUDENT_DATA_CARD_TITLE)}>
+            <Stack alignItems="center" sx={{ mb: 2 }}>
+                <StudentAvatarWithPreview row={student} size={120} />
+            </Stack>
             <LabelValue label={translate(TEXTS.STUDENT_FIRST_NAME_LABEL)} value={student?.firstName}></LabelValue>
             <LabelValue label={translate(TEXTS.STUDENT_LAST_NAME_LABEL)} value={student?.lastName}></LabelValue>
             {student?.course?.name && <LabelValue label={translate(TEXTS.STUDENT_COURSE_NAME_LABEL)} value={student?.course?.name}></LabelValue>}
